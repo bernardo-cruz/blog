@@ -1,0 +1,44 @@
+
+# Education
+|      Period       | Title                                  |                       School                           |
+|:------------------|----------------------------------------|--------------------------------------------------------|
+| 09/2020 - 06/2023 | MSc in Data Science                    | Lucerne University of Applied Science (HSLU)           |
+| 09/2010 - 09/2013 | BSc in Aviation ZFH                    | Zurich University of Applied Sciences (ZHAW)           |
+| 09/2020 - 06/2023 | Federal vocational baccalaureate (BMS) | Berufsmaturitätsschule Zurich (BMZ)                    |
+
+# Experience
+
+## [Prognolite AG](https://prognolite.com/site/de/) (10/2022 - 03/2023)
+Develop and maintain machine learning models aimed at reducing food waste in the gastronomic 
+sector. Specifically, the job involves developing regression models to predict turnover and menu 
+sales using customer data and external data such as weather or public holidays.  
+
+- Maintenance and further development of the restaurant sales forecasting process
+- Development of efficient optimization algorithms to improve forecast models based on various influencing factors.
+- Maintenance and further development of the data preparation process of POS system data.
+
+## [Crealogix AG](https://crealogix.com/en){.external target="_blank"} (09/2021 - 09/2022)
+His principal duties in the function of Junior Data Science Specialist were as follows:  
+
+- Advice and support of the department on new products related to data science and machine learning
+- Creation of prospect and upsell model
+- Extraction of information from fact sheet using a customised OCR
+- Support of development system architecture
+- Developing user journeys for chatbot dialogue flow
+- Development of chatbot solutions using IBM Watson and Spacy
+- Investigation of replacement of IBM Discovery by transformer-based structure
+- Use of company's version control system
+
+## [Bucher Leichtbau AG](https://bucher-group.com/){.external target="_blank"} (01/2014 - 09/2021)
+Sein Aufgaben- und Kompetenzbereich  umfasste folgende Arbeiten:  
+
+- Durchführen von FEM Analysen
+- Beratung der Entwicklungsabteilung  (DOA) in allen Fragen der Lufttüchtigkeit, Zulassung und Auslegung
+- Nachweiserbringung,  dass die Konstruktionsaktivitäten  in Übereinstimmung  mit den anzuwendenden  Vorgaben erfolgen
+- Verfassen von Zulassungsdokumenten  wie Certification Plans, Load Reports und Test Reports
+- Projektplanung  und -controlling für Stress, Flammability und Cabin Safety (Milestone / Budget)
+- Beurteilen von Design-Anderungen  und Concessions, Approval von Zulassungsdokumenten
+- Planung und Leitung von Statik-Zulassungstests 
+- Kommunikation  mit Behörden und OEM's
+
+   

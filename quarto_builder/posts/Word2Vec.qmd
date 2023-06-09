@@ -1,0 +1,109 @@
+---
+title: "Word2Vec Playground"
+description: "My first post - so be nice :P"
+author: "Bernardo Cruz"
+date: "June, 7 2023"
+categories:
+  - nlp
+  - word2vec
+  - food-data
+  - German
+---
+
+
+# Objective
+I have crawled Netdoktor for my thesis at [HSLU](https://www.hslu.ch/en/lucerne-school-of-business/degree-programmes/master/applied-information-and-data-science/). The task at hand was to use Netdoktor as an additional source to the main data source to the one provided by [IML](https://www.iml.unibe.ch/). Unfortunatelly, I cannot share this confidential information, because the IML data consists of Multiple Choice Questions for medical students - and yes, I am talking about exam questions :P 
+
+However, I am therefore forced to create a Word2Vec model using public available data. Therefore, a data set is obtained by web crawling of Netdoktor^[<https://www.netdoktor.ch/>]. Netdoktor is a free internet platform for medical information: It provides information about diseases and symptoms in German and other languages. The website is a part of the German media company Hubert Burda Media^[<https://www.burda.com/en/imprint/>] and was founded by  Dr. Carl Brandt and Rune Bech.
+
+
+Let's start to code :) 
+
+# Code
+First, the necessary libraries are imported. We use Pandas, Matplotlib and Seaborn and use only the columns `disease`, `description` and `symptoms`.
+
+## Import Libraries and Data
+
+```{python}
+%matplotlib inline
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+sns.set_style("whitegrid")
+sns.set(rc={'figure.figsize':(16, 8)})
+plt.rcParams['figure.figsize'] = (16, 8)
+
+
+from IPython.display import display, Markdown
+
+df = (
+    pd.read_pickle(
+        '../data/corpus.pkl', 
+        compression = {'method': 'gzip'},
+    )
+    # Select only columns 'disease', 'description', 'symptoms'
+    [['disease','description','symptoms']]
+)
+
+
+df.head()
+```
+
+```{python}
+#| output: true
+#| echo: false
+
+display(Markdown(f'The data consists of {df.shape[0]} diseases and {df.shape[1]} columns.'))
+```
+
+## Exploration
+First we perform some basic text exploration that includes: for each column we calculate the text length and we calculate of the number of tokens. We use the `.str.split()` methods from Pandas without any fancy library in the first step.
+
+```{python}
+
+df = (
+    df
+    .assign(
+        len_description = lambda df: df.description.apply(len),
+        len_symptoms = lambda df: df.symptoms.apply(len),
+        tokens_description = lambda df: df.description.str.split(),
+        tokens_symptoms = lambda df: df.symptoms.str.split(),
+        n_tokens_description = lambda df: df.tokens_description.apply(len),
+        n_tokens_symptom = lambda df: df.tokens_symptoms.apply(len),
+    )
+)
+
+df_melted = (
+    df
+    .melt(
+        id_vars='disease', 
+        value_vars = ['len_description','len_symptoms','n_tokens_description','n_tokens_symptom']
+    )
+)
+```
+
+```{python}
+plt.figure();
+g = sns.displot(
+    data = (
+        df_melted.query('variable != "n_tokens_description" & variable != "n_tokens_symptom"')
+    ),
+    x = 'value',
+    hue = 'variable',
+    multiple = "stack",
+);
+plt.show(g)
+```
+
+On the left (figure above) shows the distribution of the length of `description` and on the right shows the distribution of the length of `symptoms`. 
+
+```{python}
+plt.figure()
+g = sns.displot(
+    data = df_melted.query('variable == "len_description" | variable == "len_symptoms"'),
+    x = 'value',
+    hue = 'variable',
+    multiple = "stack",
+)
+plt.show(g)
+```

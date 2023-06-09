@@ -1,0 +1,39 @@
+project:
+  type: website
+  output-dir: ../
+
+website:
+  title: "Bernardo Cruz"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: blog.qmd
+        text: Blog
+      - href: cv.qmd
+        text: CV
+      - href: contact.qmd
+        text: Contact
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    theme: 
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    link-external-icon: true
+    link-external-newwindow: true
+    email-obfuscation: javascript
+    search: true
+    links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+page-layout: full
+
