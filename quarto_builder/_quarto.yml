@@ -13,7 +13,7 @@ website:
       - href: cv.qmd
         text: CV
       - href: contact.qmd
-        text: Contact
+        text: Personal Information
 
 format:
   html:
