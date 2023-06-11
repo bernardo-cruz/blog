@@ -35,5 +35,6 @@ format:
     - icon: github
       text: Github
       href: https://github.com
-page-layout: full
-
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/

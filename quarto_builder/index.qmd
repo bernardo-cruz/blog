@@ -4,7 +4,7 @@ about:
   template: jolla
   image: imgs/profile.jpeg
   links:
-    - icon: Linkedin
+    - icon: linkedin
       text: Linkedin
       href: https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/
     - icon: github
@@ -66,3 +66,4 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
