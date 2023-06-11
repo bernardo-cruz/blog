@@ -10,5 +10,11 @@
   },
   "blog.qmd": {
     "blog.html": "ce47dc64"
+  },
+  "posts/predictive_maintenance.qmd": {
+    "predictive_maintenance.html": "6112fb1d"
+  },
+  "posts/Word2Vec.qmd": {
+    "Word2Vec.html": "f6b04ee6"
   }
 }

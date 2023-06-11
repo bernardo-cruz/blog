@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Bernardo Cruz">
+<meta name="dcterms.date" content="2023-06-09">
+<meta name="description" content="My second post - so be nice :P">
 
-<title>Bernardo Cruz – cv</title>
+<title>Bernardo Cruz - Predictive Maintenance - Part 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +23,90 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -72,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Bernardo Cruz</span>
     </a>
   </div>
@@ -82,19 +148,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
+    <a class="nav-link" href="../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html">
+    <a class="nav-link" href="../blog.html">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./cv.html" aria-current="page">
+    <a class="nav-link" href="../cv.html">
  <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html">
+    <a class="nav-link" href="../contact.html">
  <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -115,99 +181,88 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#education" id="toc-education" class="nav-link active" data-scroll-target="#education">Education</a></li>
-  <li><a href="#experience" id="toc-experience" class="nav-link" data-scroll-target="#experience">Experience</a>
-  <ul class="collapse">
-  <li><a href="#prognolite-ag-102022-032023" id="toc-prognolite-ag-102022-032023" class="nav-link" data-scroll-target="#prognolite-ag-102022-032023">Prognolite AG (10/2022 – 03/2023)</a></li>
-  <li><a href="#crealogix-ag-092021-092022" id="toc-crealogix-ag-092021-092022" class="nav-link" data-scroll-target="#crealogix-ag-092021-092022">Crealogix AG (09/2021 – 09/2022)</a></li>
-  <li><a href="#bucher-leichtbau-ag-012014-092021" id="toc-bucher-leichtbau-ag-012014-092021" class="nav-link" data-scroll-target="#bucher-leichtbau-ag-012014-092021">Bucher Leichtbau AG (01/2014 – 09/2021)</a></li>
-  </ul></li>
+  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Predictive Maintenance - Part 1</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">predictive maintenance</div>
+    <div class="quarto-category">unsupervised learning</div>
+    <div class="quarto-category">mechanical engineering</div>
+    <div class="quarto-category">guassian mixture models</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    My second post - so be nice :P
+  </div>
+</div>
 
 
-<section id="education" class="level1">
-<h1>Education</h1>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 34%">
-<col style="width: 48%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Period</th>
-<th>Title</th>
-<th>School</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">09/2020 - 06/2023</td>
-<td>MSc in Data Science</td>
-<td>Lucerne University of Applied Science (HSLU)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">09/2010 - 09/2013</td>
-<td>BSc in Aviation ZFH</td>
-<td>&nbsp;Zurich University of Applied Sciences (ZHAW)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">09/2020 - 06/2023</td>
-<td>Federal vocational baccalaureate (BMS)</td>
-<td>Berufsmaturitätsschule Zurich (BMZ)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="experience" class="level1">
-<h1>Experience</h1>
-<section id="prognolite-ag-102022-032023" class="level2">
-<h2 class="anchored" data-anchor-id="prognolite-ag-102022-032023"><a href="https://prognolite.com/site/de/">Prognolite AG</a> (10/2022 – 03/2023)</h2>
-<p>Develop and maintain machine learning models aimed at reducing food waste in the gastronomic sector. Specifically, the job involves developing regression models to predict turnover and menu sales using customer data and external data such as weather or public holidays.</p>
-<ul>
-<li>Maintenance and further development of the restaurant sales forecasting process</li>
-<li>Development of efficient optimization algorithms to improve forecast models based on various influencing factors.</li>
-<li>Maintenance and further development of the data preparation process of POS system data.</li>
-</ul>
-</section>
-<section id="crealogix-ag-092021-092022" class="level2">
-<h2 class="anchored" data-anchor-id="crealogix-ag-092021-092022"><a href="https://crealogix.com/en" class="external" target="_blank">Crealogix AG</a> (09/2021 – 09/2022)</h2>
-<p>His principal duties in the function of Junior Data Science Specialist were as follows:</p>
-<ul>
-<li>Advice and support of the department on new products related to data science and machine learning</li>
-<li>Creation of prospect and upsell model</li>
-<li>Extraction of information from fact sheet using a customised OCR</li>
-<li>Support of development system architecture</li>
-<li>Developing user journeys for chatbot dialogue flow</li>
-<li>Development of chatbot solutions using IBM Watson and Spacy</li>
-<li>Investigation of replacement of IBM Discovery by transformer-based structure</li>
-<li>Use of company’s version control system</li>
-</ul>
-</section>
-<section id="bucher-leichtbau-ag-012014-092021" class="level2">
-<h2 class="anchored" data-anchor-id="bucher-leichtbau-ag-012014-092021"><a href="https://bucher-group.com/" class="external" target="_blank">Bucher Leichtbau AG</a> (01/2014 – 09/2021)</h2>
-<p>Sein Aufgaben- und Kompetenzbereich umfasste folgende Arbeiten:</p>
-<ul>
-<li>Durchführen von FEM Analysen</li>
-<li>Beratung der Entwicklungsabteilung (DOA) in allen Fragen der Lufttüchtigkeit, Zulassung und Auslegung</li>
-<li>Nachweiserbringung, dass die Konstruktionsaktivitäten in Übereinstimmung mit den anzuwendenden Vorgaben erfolgen</li>
-<li>Verfassen von Zulassungsdokumenten wie Certification Plans, Load Reports und Test Reports</li>
-<li>Projektplanung und -controlling für Stress, Flammability und Cabin Safety (Milestone / Budget)</li>
-<li>Beurteilen von Design-Anderungen und Concessions, Approval von Zulassungsdokumenten</li>
-<li>Planung und Leitung von Statik-Zulassungstests</li>
-<li>Kommunikation mit Behörden und OEM’s</li>
-</ul>
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Bernardo Cruz </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 9, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="objective" class="level1">
+<h1>Objective</h1>
+<p>The objective of predictive maintenance is quite easy to explain: It is to predict when a machine or a component will fail or not. This makes it possible to move from a preventive maintenance approach to a predictive maintenance approach. This approach is more efficient because it allows to avoid unnecessary maintenance operations and to anticipate the failures of the machines. This approach is also more economical because it allows to avoid the immobilization of the machines for maintenance operations that are not necessary. The hard part of predictive maintenance is to get label, <code>fail = yes</code> and <code>fail = no</code> as well as the <code>when</code>. It sounds quite obvious, but, normally the maintenance schedule is organized in such a way, that the failure does not occur between the checks. In my current work, we have a lot of data, but we do not have the labels. So, we have to find a way to get the labels. In this post, I will show you how I did it.</p>
+<p>Imagine you have a heating-ventilation-and-air-conditioning (HVAC) system. Normally, this system consists of several interconnected subsystems such as ventilation, heat-exchanger unit etc. Each of these subsystems consists of several components such as fans, pumps, valves, heat exchangers etc. Each of these components has a specific function and is subject to wear and tear. The wear and tear of these components can lead to a failure of the component. The failure of a component can lead to the failure of the subsystem. The failure of a subsystem can lead to the failure of the HVAC system. The failure of the HVAC leads to discomfort of the passengers. However, is it possible to predict the <code>when</code> based on historical data?</p>
+<p>The important question is how to do it. In data science jargon, which variables lead to this state? What can be measured? One could measure the temperature of the air, the temperature of the water, the pressure of the air, the pressure of the water, the flow of the air, the flow of the water, the speed of the fans, the speed of the pumps, the position of the valves, the position of the dampers, the power consumption of the fans, the power consumption of the pumps, the power consumption of the heat exchangers, the power consumption of the HVAC system… The most obvious technique is to concentrate on the power consumption and treat the subsystems etc. as detail information. This is what we did.</p>
+<p>We used Gaussian-Mixture-Models<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to try to find a pattern which deviates from the normal behavior. The normal behavior corresponds to the historical data obtained by energy counters and lies with the distribution.</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn.mixture <span class="im">as</span> mix</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate data</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    n_samples<span class="op">=</span><span class="dv">100</span><span class="op">*</span><span class="dv">60</span><span class="op">*</span><span class="dv">24</span><span class="op">*</span><span class="dv">7</span>, </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    centers<span class="op">=</span><span class="dv">3</span>, </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    n_features<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Mixture_model" class="uri">https://en.wikipedia.org/wiki/Mixture_model</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bernardo Cruz – blog</title>
+<title>Bernardo Cruz - My Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -60,7 +62,37 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -110,27 +142,122 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="German">German <span class="quarto-category-count">(1)</span></div><div class="category" data-category="food-data">food-data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="job">job <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mechanical engineering">mechanical engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="nlp">nlp <span class="quarto-category-count">(1)</span></div><div class="category" data-category="predictive maintenance">predictive maintenance <span class="quarto-category-count">(1)</span></div><div class="category" data-category="unsupervised learning">unsupervised learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="word2vec">word2vec <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">My Blog</h1>
+</div>
 
 
 
-<!-- ---
-title: "My Blog"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
---- -->
-<p><img src="imgs/under_construction_PNG46.png" class="img-fluid"></p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
 
 
 
-</main> <!-- /main -->
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="predictive maintenance,unsupervised learning,mechanical engineering,job" data-listing-date-sort="1686261600000" data-listing-file-modified-sort="1686327178309" data-listing-reading-time-sort="0.685">
+<div class="body">
+<a href="./posts/predictive_maintenance.html">
+<h3 class="no-anchor listing-title">
+Predictive Maintenance
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('predictive maintenance'); return false;">
+predictive maintenance
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('unsupervised learning'); return false;">
+unsupervised learning
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('mechanical engineering'); return false;">
+mechanical engineering
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('job'); return false;">
+job
+</div>
+</div>
+<a href="./posts/predictive_maintenance.html">
+<div class="listing-description">
+<p>My second post - so be nice :P</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/predictive_maintenance.html">
+<div class="listing-date">
+Jun 9, 2023
+</div>
+<div class="listing-author">
+Bernardo Cruz
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="nlp,word2vec,food-data,German" data-listing-date-sort="1686088800000" data-listing-file-modified-sort="1686327202847" data-listing-reading-time-sort="2.485">
+<div class="body">
+<a href="./posts/Word2Vec.html">
+<h3 class="no-anchor listing-title">
+Word2Vec Playground
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('nlp'); return false;">
+nlp
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('word2vec'); return false;">
+word2vec
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('food-data'); return false;">
+food-data
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('German'); return false;">
+German
+</div>
+</div>
+<a href="./posts/Word2Vec.html">
+<div class="listing-description">
+<p>My first post - so be nice :P</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./posts/Word2Vec.html">
+<div class="listing-date">
+Jun 7, 2023
+</div>
+<div class="listing-author">
+Bernardo Cruz
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
