@@ -1,3 +1,3 @@
 Repository for personal page:
 
-[](https://bernardo-cruz.github.io/blog/)
+[Personal Page]([]https://bernardo-cruz.github.io/blog/)
