@@ -1,12 +1,12 @@
 
-# Contact
+# Personal Information
 |                  |                                                                                           |
 |:-----------------|-------------------------------------------------------------------------------------------|
 | First Name       | Bernardo                                                                                  |
 | Last Name        | Freire Barboza da Cruz                                                                    |
 | Birthday         | 29/05/1985                                                                                |
 | Nationalities    | Swiss \& Brazilian                                                                        |
-| Languages        | Portuguese (Native), English (Fluent), German (Fluent),                                   |
+| Languages        | German (Native), Portuguese (Native), English (Fluent)                                    |
 | Place of Origin  | Wildberg ZH, Switzerland                                                                  |
 | Place of Birth   | Rio de Janeiro, RJ, Brazil                                                                |
 | Address          | Frankentalerstrasse 24, 8049 Zürich, Switzerland                                          |
