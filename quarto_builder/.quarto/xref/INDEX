@@ -16,5 +16,8 @@
   },
   "posts/Word2Vec.qmd": {
     "Word2Vec.html": "f6b04ee6"
+  },
+  "posts/Word2Vec.ipynb": {
+    "Word2Vec.html": "3e799590"
   }
 }

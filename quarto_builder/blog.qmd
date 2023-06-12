@@ -1,10 +1,9 @@
-<!-- ---
+---
 title: "My Blog"
 listing:
   contents: posts
   sort: "date desc"
   type: default
   categories: true
---- -->
+---
 
-![](quarto_builder/imgs/under_construction_PNG46.png){width=50%}
