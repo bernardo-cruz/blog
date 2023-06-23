@@ -18,7 +18,7 @@ sales using customer data and external data such as weather or public holidays.
 - Maintenance and further development of the data preparation process of POS system data.
 
 ## [Crealogix AG](https://crealogix.com/en){.external target="_blank"} (09/2021 -- 09/2022)
-His principal duties in the function of Junior Data Science Specialist were as follows:  
+Principal duties in the function of Data Science Specialist were as follows:  
 
 - Advice and support of the department on new products related to data science and machine learning
 - Creation of prospect and upsell model
@@ -30,15 +30,15 @@ His principal duties in the function of Junior Data Science Specialist were as f
 - Use of company's version control system
 
 ## [Bucher Leichtbau AG](https://bucher-group.com/){.external target="_blank"} (01/2014 -- 09/2021)
-Sein Aufgaben- und Kompetenzbereich  umfasste folgende Arbeiten:  
+Area of responsibility and competence included the following tasks:
 
-- Durchführen von FEM Analysen
-- Beratung der Entwicklungsabteilung  (DOA) in allen Fragen der Lufttüchtigkeit, Zulassung und Auslegung
-- Nachweiserbringung,  dass die Konstruktionsaktivitäten  in Übereinstimmung  mit den anzuwendenden  Vorgaben erfolgen
-- Verfassen von Zulassungsdokumenten  wie Certification Plans, Load Reports und Test Reports
-- Projektplanung  und -controlling für Stress, Flammability und Cabin Safety (Milestone / Budget)
-- Beurteilen von Design-Anderungen  und Concessions, Approval von Zulassungsdokumenten
-- Planung und Leitung von Statik-Zulassungstests 
-- Kommunikation  mit Behörden und OEM's
+- Conducting FEM analyses
+- Consulting the development department (DOA) on all matters of airworthiness, certification, and design
+- Providing evidence that the design activities are in compliance with the applicable requirements
+- Writing certification documents such as Certification Plans, Load Reports, and Test Reports
+- Project planning and controlling for stress, flammability, and cabin safety (milestone/budget)
+- Assessing design changes and concessions, approving certification documents
+- Planning and conducting static certification tests
+- Communicating with authorities and OEMs
 
    
