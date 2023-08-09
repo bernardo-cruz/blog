@@ -19,5 +19,11 @@
   },
   "posts/Word2Vec.ipynb": {
     "Word2Vec.html": "3e799590"
+  },
+  "posts/automobile.ipynb": {
+    "automobile.html": "0b22e65e"
+  },
+  "posts/glm.ipynb": {
+    "glm.html": "8e79304d"
   }
 }

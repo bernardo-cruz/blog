@@ -1,14 +1,28 @@
+# Personal Information
+|                  |                                                                                           |
+|:-----------------|-------------------------------------------------------------------------------------------|
+| First Name       | Bernardo                                                                                  |
+| Last Name        | Freire Barboza da Cruz                                                                    |
+| Birthday         | 29/05/1985                                                                                |
+| Nationalities    | Swiss \& Brazilian                                                                        |
+| Languages        | German (Native), Portuguese (Native), English (Fluent)                                    |
+| Place of Origin  | Wildberg ZH, Switzerland                                                                  |
+| Place of Birth   | Rio de Janeiro, RJ, Brazil                                                                |
+| Address          | Frankentalerstrasse 24, 8049 Zürich, Switzerland                                          |
+| Email            | [berni.dacruz@gmail.com](mailto:berni.dacruz@gmail.com?subject=Hello There I like your Blog :P &body=Hello Bernardo){.external target="_blank"}               |
+| GitHub           | [github.com/bernardo-cruz](https://github.com/bernardo-cruz){.external target="_blank"}   |
+| Linkedin         | [![](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/) |
 
 # Education
-|      Period       | Title                                  |                       School                           |
-|:------------------|----------------------------------------|--------------------------------------------------------|
-| 09/2020 - 06/2023 | MSc in Data Science                    | Lucerne University of Applied Science (HSLU)           |
-| 09/2010 - 09/2013 | BSc in Aviation ZFH                    | Zurich University of Applied Sciences (ZHAW)           |
-| 09/2020 - 06/2023 | Federal vocational baccalaureate (BMS) | Berufsmaturitätsschule Zurich (BMZ)                    |
+|      Period        | Title                                  |                       School                           |
+|:-------------------|----------------------------------------|--------------------------------------------------------|
+| 09/2020 -- 06/2023 | MSc in Data Science                    | Lucerne University of Applied Science (HSLU)           |
+| 09/2010 -- 09/2013 | BSc in Aviation ZFH                    | Zurich University of Applied Sciences (ZHAW)           |
+| 09/2020 -- 06/2023 | Federal vocational baccalaureate (BMS) | Berufsmaturitätsschule Zurich (BMZ)                    |
 
 # Experience
 
-## [Prognolite AG](https://prognolite.com/site/de/) (10/2022 -- 03/2023)
+## Data Scientist [Prognolite AG](https://prognolite.com/site/de/) (10/2022 -- 03/2023)
 Develop and maintain machine learning models aimed at reducing food waste in the gastronomic 
 sector. Specifically, the job involves developing regression models to predict turnover and menu 
 sales using customer data and external data such as weather or public holidays.  
@@ -17,7 +31,7 @@ sales using customer data and external data such as weather or public holidays.
 - Development of efficient optimization algorithms to improve forecast models based on various influencing factors.
 - Maintenance and further development of the data preparation process of POS system data.
 
-## [Crealogix AG](https://crealogix.com/en){.external target="_blank"} (09/2021 -- 09/2022)
+## Data Scientist [Crealogix AG](https://crealogix.com/en){.external target="_blank"} (09/2021 -- 09/2022)
 Principal duties in the function of Data Science Specialist were as follows:  
 
 - Advice and support of the department on new products related to data science and machine learning
@@ -29,7 +43,7 @@ Principal duties in the function of Data Science Specialist were as follows:
 - Investigation of replacement of IBM Discovery by transformer-based structure
 - Use of company's version control system
 
-## [Bucher Leichtbau AG](https://bucher-group.com/){.external target="_blank"} (01/2014 -- 09/2021)
+## Aeronautical Engineer [Bucher Leichtbau AG](https://bucher-group.com/){.external target="_blank"} (01/2014 -- 09/2021)
 Area of responsibility and competence included the following tasks:
 
 - Conducting FEM analyses
@@ -40,5 +54,3 @@ Area of responsibility and competence included the following tasks:
 - Assessing design changes and concessions, approving certification documents
 - Planning and conducting static certification tests
 - Communicating with authorities and OEMs
-
-   

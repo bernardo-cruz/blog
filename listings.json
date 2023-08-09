@@ -2,30 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/predictive_maintenance.html",
-      "/posts/Word2Vec.html"
-    ]
-  },
-  {
-    "listing": "/index.html",
-    "items": [
-      "/posts/Word2Vec.html"
-    ]
-  },
-  {
-    "listing": "/posts/Word2Vec.html",
-    "items": []
-  },
-  {
-    "listing": "/cv.html",
-    "items": [
-      "/posts/Word2Vec.html"
-    ]
-  },
-  {
-    "listing": "/contact.html",
-    "items": [
-      "/posts/Word2Vec.html"
+      "/posts/glm.html"
     ]
   }
 ]

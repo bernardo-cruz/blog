@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernardo Cruz">
-<meta name="dcterms.date" content="2023-06-07">
-<meta name="description" content="My first post - so be nice :P">
+<meta name="dcterms.date" content="2023-06-13">
+<meta name="description" content="Regression Analysis for Automobile">
 
-<title>Bernardo Cruz - Word2Vec Playground</title>
+<title>Bernardo Cruz - Automobile Dataset</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -180,36 +180,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a>
-  <ul class="collapse">
-  <li><a href="#import-libraries-and-data" id="toc-import-libraries-and-data" class="nav-link" data-scroll-target="#import-libraries-and-data">Import Libraries and Data</a></li>
-  <li><a href="#exploration" id="toc-exploration" class="nav-link" data-scroll-target="#exploration">Exploration</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Word2Vec Playground</h1>
+<h1 class="title">Automobile Dataset</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">nlp</div>
-    <div class="quarto-category">word2vec</div>
-    <div class="quarto-category">food-data</div>
-    <div class="quarto-category">German</div>
+    <div class="quarto-category">Linear Regression</div>
+    <div class="quarto-category">Price Prediction</div>
+    <div class="quarto-category"></div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    My first post - so be nice :P
+    Regression Analysis for Automobile
   </div>
 </div>
 
@@ -226,7 +214,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 7, 2023</p>
+      <p class="date">June 13, 2023</p>
     </div>
   </div>
   
@@ -236,41 +224,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="objective" class="level1">
-<h1>Objective</h1>
-<p>I have crawled Netdoktor for my thesis at <a href="https://www.hslu.ch/en/lucerne-school-of-business/degree-programmes/master/applied-information-and-data-science/">HSLU</a>. The task at hand was to use Netdoktor as an additional source to the main data source to the one provided by <a href="https://www.iml.unibe.ch/">IML</a>. Unfortunatelly, I cannot share this confidential information, because the IML data consists of Multiple Choice Questions for medical students - and yes, I am talking about exam questions :P</p>
-<p>However, I am therefore forced to create a Word2Vec model using public available data. Therefore, a data set is obtained by web crawling of Netdoktor<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Netdoktor is a free internet platform for medical information: It provides information about diseases and symptoms in German and other languages. The website is a part of the German media company Hubert Burda Media<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and was founded by Dr.&nbsp;Carl Brandt and Rune Bech.</p>
-<p>Let’s start to code :)</p>
-</section>
-<section id="code" class="level1">
-<h1>Code</h1>
-<p>First, the necessary libraries are imported. We use Pandas, Matplotlib and Seaborn and use only the columns <code>disease</code>, <code>description</code> and <code>symptoms</code>.</p>
-<section id="import-libraries-and-data" class="level2">
-<h2 class="anchored" data-anchor-id="import-libraries-and-data">Import Libraries and Data</h2>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>{<span class="st">'figure.figsize'</span>:(<span class="fl">11.7</span>,<span class="fl">8.27</span>)})</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ydata_profiling <span class="im">import</span> ProfileReport</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    pd.read_pickle(</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'../data/corpus.pkl'</span>, </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        compression <span class="op">=</span> {<span class="st">'method'</span>: <span class="st">'gzip'</span>},</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select only columns 'disease', 'description', 'symptoms'</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">'disease'</span>,<span class="st">'description'</span>,<span class="st">'symptoms'</span>]]</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    pd.read_csv(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'../data/cars.csv'</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        manufacturer <span class="op">=</span> <span class="kw">lambda</span> df: df.manufacturer.astype(<span class="st">'category'</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> <span class="kw">lambda</span> df: df.model.astype(<span class="st">'category'</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        year <span class="op">=</span> <span class="kw">lambda</span> df: df.year.astype(<span class="st">'int'</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        transmission <span class="op">=</span> <span class="kw">lambda</span> df: df.transmission.astype(<span class="st">'category'</span>),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="1">
+</div>
+<p>In dieser Arbeit geht es um die Vorhersage von Autopreisen auf der Grundlage eines Datensatzes von Kaggle<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Wir werden verschiedene Modelle und Methoden unter Verwendung der Python-Bibliothek Sklearn<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> und statmodels<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> ausprobieren. Das Benchmark-Modell wird die lineare Regression sein, alle anderen Modelle werden mit diesem Modell verglichen.</p>
+<p>Zum Ablauf: Zuerst werden die Daten importiert und bereinigt, dann werden die Daten in train-test-split Verfahren aufgeteilt. Der grosse Teil, <code>train</code>, wird zum Trainieren des Modells verwendet, während der kleine Teil, <code>test</code>, zur Überprüfung der Leistung verwendet wird.</p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="2">
 
 <div>
 
@@ -278,159 +263,195 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <thead>
     <tr>
       <th></th>
-      <th>disease</th>
-      <th>description</th>
-      <th>symptoms</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>year</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>transmission</th>
+      <th>drivetrain</th>
+      <th>fuel_type</th>
+      <th>mpg</th>
+      <th>exterior_color</th>
+      <th>interior_color</th>
+      <th>accidents_or_damage</th>
+      <th>one_owner</th>
+      <th>personal_use_only</th>
+      <th>seller_name</th>
+      <th>seller_rating</th>
+      <th>driver_rating</th>
+      <th>driver_reviews_num</th>
+      <th>price_drop</th>
+      <th>price</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>arthrose</td>
-      <td>Als Arthrose bezeichnen Mediziner den Verschle...</td>
-      <td>Symptome Anfangs verursacht Gelenk-Verschleiss...</td>
+      <td>Acura</td>
+      <td>ILX Hybrid 1.5L</td>
+      <td>2013</td>
+      <td>92945.0</td>
+      <td>1.5L I-4 i-VTEC variable valve control, engine...</td>
+      <td>Automatic</td>
+      <td>Front-wheel Drive</td>
+      <td>Gasoline</td>
+      <td>39-38</td>
+      <td>Black</td>
+      <td>Parchment</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Iconic Coach</td>
+      <td>NaN</td>
+      <td>4.4</td>
+      <td>12.0</td>
+      <td>300.0</td>
+      <td>13988.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>niedriger-blutdruck</td>
-      <td>Niedriger Blutdruck (arterielle Hypotonie) ist...</td>
-      <td>Niedriger Blutdruck: Symptome Nicht immer ruft...</td>
+      <td>Acura</td>
+      <td>ILX Hybrid 1.5L</td>
+      <td>2013</td>
+      <td>47645.0</td>
+      <td>1.5L I4 8V MPFI SOHC Hybrid</td>
+      <td>Automatic CVT</td>
+      <td>Front-wheel Drive</td>
+      <td>Hybrid</td>
+      <td>39-38</td>
+      <td>Gray</td>
+      <td>Ebony</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Kars Today</td>
+      <td>NaN</td>
+      <td>4.4</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>17995.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>alkoholvergiftung</td>
-      <td>Bei einer Alkoholvergiftung (Alkoholintoxikati...</td>
-      <td>Alkoholvergiftung: Symptome Es gibt fliessende...</td>
+      <td>Acura</td>
+      <td>ILX Hybrid 1.5L</td>
+      <td>2013</td>
+      <td>53422.0</td>
+      <td>1.5L I4 8V MPFI SOHC Hybrid</td>
+      <td>Automatic CVT</td>
+      <td>Front-wheel Drive</td>
+      <td>Hybrid</td>
+      <td>39-38</td>
+      <td>Bellanova White Pearl</td>
+      <td>Ebony</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Weiss Toyota of South County</td>
+      <td>4.3</td>
+      <td>4.4</td>
+      <td>12.0</td>
+      <td>500.0</td>
+      <td>17000.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Acura</td>
+      <td>ILX Hybrid 1.5L</td>
+      <td>2013</td>
+      <td>117598.0</td>
+      <td>1.5L I4 8V MPFI SOHC Hybrid</td>
+      <td>Automatic CVT</td>
+      <td>Front-wheel Drive</td>
+      <td>Hybrid</td>
+      <td>39-38</td>
+      <td>Polished Metal Metallic</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Apple Tree Acura</td>
+      <td>NaN</td>
+      <td>4.4</td>
+      <td>12.0</td>
+      <td>675.0</td>
+      <td>14958.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>plazentaabloesung</td>
-      <td>Die Plazenta (Mutterkuchen) ist ein Gewebe an ...</td>
-      <td>Wie erkennt man eine vorzeitige Plazentaablösu...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>salmonellenvergiftung</td>
-      <td>Eine Salmonellenvergiftung (Salmonellose) ist ...</td>
-      <td>Welche Symptome treten bei einer Salmonellenve...</td>
+      <td>Acura</td>
+      <td>ILX Hybrid 1.5L</td>
+      <td>2013</td>
+      <td>114865.0</td>
+      <td>1.5L I4 8V MPFI SOHC Hybrid</td>
+      <td>Automatic CVT</td>
+      <td>Front-wheel Drive</td>
+      <td>Hybrid</td>
+      <td>39-38</td>
+      <td>NaN</td>
+      <td>Ebony</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>Herb Connolly Chevrolet</td>
+      <td>3.7</td>
+      <td>4.4</td>
+      <td>12.0</td>
+      <td>300.0</td>
+      <td>14498.0</td>
     </tr>
   </tbody>
 </table>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display">
-<p>The data consists of 639 diseases and 3 columns.</p>
-</div>
-</div>
-</section>
-<section id="exploration" class="level2">
-<h2 class="anchored" data-anchor-id="exploration">Exploration</h2>
-<p>First we perform some basic text exploration that includes: for each column we calculate the text length and we calculate of the number of tokens. We use the <code>.str.split()</code> methods from Pandas without any fancy library in the first step.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    df</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        len_description <span class="op">=</span> <span class="kw">lambda</span> df: df.description.<span class="bu">apply</span>(<span class="bu">len</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        len_symptoms <span class="op">=</span> <span class="kw">lambda</span> df: df.symptoms.<span class="bu">apply</span>(<span class="bu">len</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        tokens_description <span class="op">=</span> <span class="kw">lambda</span> df: df.description.<span class="bu">str</span>.split(),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        tokens_symptoms <span class="op">=</span> <span class="kw">lambda</span> df: df.symptoms.<span class="bu">str</span>.split(),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        n_tokens_description <span class="op">=</span> <span class="kw">lambda</span> df: df.tokens_description.<span class="bu">apply</span>(<span class="bu">len</span>),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        n_tokens_symptom <span class="op">=</span> <span class="kw">lambda</span> df: df.tokens_symptoms.<span class="bu">apply</span>(<span class="bu">len</span>),</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df_melted <span class="op">=</span> (</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    df</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    .melt(</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        id_vars<span class="op">=</span><span class="st">'disease'</span>, </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        value_vars <span class="op">=</span> [<span class="st">'len_description'</span>,<span class="st">'len_symptoms'</span>,<span class="st">'n_tokens_description'</span>,<span class="st">'n_tokens_symptom'</span>]</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        manufacturer        <span class="op">=</span> <span class="kw">lambda</span> df: df.manufacturer.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        model               <span class="op">=</span> <span class="kw">lambda</span> df: df.model.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        year                <span class="op">=</span> <span class="kw">lambda</span> df: pd.to_datetime(df.year, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y'</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        mileage             <span class="op">=</span> <span class="kw">lambda</span> df: df.mileage.astype(<span class="st">'int'</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        engine              <span class="op">=</span> <span class="kw">lambda</span> df: df.engine.astype(<span class="st">'str'</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        transmission        <span class="op">=</span> <span class="kw">lambda</span> df: df.transmission.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        drivetrain          <span class="op">=</span> <span class="kw">lambda</span> df: df.drivetrain.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        fuel                <span class="op">=</span> <span class="kw">lambda</span> df: df.fuel.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        mpg                 <span class="op">=</span> <span class="kw">lambda</span> df: df.mpg.astype(<span class="st">'float'</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        exterior_color      <span class="op">=</span> <span class="kw">lambda</span> df: df.exterior_color.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        interior_color      <span class="op">=</span> <span class="kw">lambda</span> df: df.interior_color.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        accidents_or_damage <span class="op">=</span> <span class="kw">lambda</span> df: df.accidents_or_damage.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        one_owner           <span class="op">=</span> <span class="kw">lambda</span> df: df.one_owner.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        personal_use_only   <span class="op">=</span> <span class="kw">lambda</span> df: df.personal_use_only.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        seller_name         <span class="op">=</span> <span class="kw">lambda</span> df: df.seller_name.astype(<span class="st">'category'</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        seller_rating       <span class="op">=</span> <span class="kw">lambda</span> df: df.seller_rating.fillna(<span class="dv">0</span>).astype(<span class="st">'float'</span>),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        driver_rating       <span class="op">=</span> <span class="kw">lambda</span> df: df.driver_rating.fillna(<span class="dv">0</span>).astype(<span class="st">'float'</span>),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        driver_reviews_num  <span class="op">=</span> <span class="kw">lambda</span> df: df.driver_reviews_num.fillna(<span class="dv">0</span>).astype(<span class="st">'int'</span>),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        price_drop          <span class="op">=</span> <span class="kw">lambda</span> df: df.price_drop.fillna(<span class="dv">0</span>).astype(<span class="st">'int'</span>),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        price               <span class="op">=</span> <span class="kw">lambda</span> df: df.price.astype(<span class="st">'int'</span>),</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="fig-text_length_description_and_symptoms" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df_melted.query(<span class="st">'variable != "n_tokens_description" &amp; variable != "n_tokens_symptom"'</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'value'</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    hue <span class="op">=</span> <span class="st">'variable'</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    multiple <span class="op">=</span> <span class="st">"stack"</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of text length of "symptoms" and "description"'</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Text length'</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-text_length_description_and_symptoms-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<pre><code>&lt;Figure size 1170x827 with 0 Axes&gt;</code></pre>
-<p></p><figcaption class="figure-caption">(a) Distribution of text length of columns “description” and “symptoms”</figcaption><p></p>
-</figure>
 </div>
-<div class="cell-output cell-output-display">
-<div id="fig-text_length_description_and_symptoms-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Word2Vec_files/figure-html/fig-text_length_description_and_symptoms-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-text_length_description_and_symptoms"></p>
-<p></p><figcaption class="figure-caption">(b)</figcaption><p></p>
-</figure>
-</div>
-</div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption><p></p>
-</figure>
-</div>
-<p>The figure above shows the distribution of the text length and count of the columns “description” and “symptoms”. Both distribution shows approximately the same distribution and range between <code>0</code> and about <code>5000</code> with a few outliers above <code>5000</code>. Next, the number of tokens is investigated for both columns.</p>
-<div id="fig-text_number_of_tokens_description_and_symptoms" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<details>
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df_melted.query(<span class="st">'variable == "n_tokens_description" | variable == "n_tokens_symptom"'</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'value'</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    hue <span class="op">=</span> <span class="st">'variable'</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    multiple <span class="op">=</span> <span class="st">"stack"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Number of Tokens of "symptoms" and "description"'</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Text length'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div id="fig-text_number_of_tokens_description_and_symptoms-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<pre><code>&lt;Figure size 1170x827 with 0 Axes&gt;</code></pre>
-<p></p><figcaption class="figure-caption">(a) Distribution of number of tokens of columns “description” and “symptoms”</figcaption><p></p>
-</figure>
-</div>
-<div class="cell-output cell-output-display">
-<div id="fig-text_number_of_tokens_description_and_symptoms-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Word2Vec_files/figure-html/fig-text_number_of_tokens_description_and_symptoms-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-text_number_of_tokens_description_and_symptoms"></p>
-<p></p><figcaption class="figure-caption">(b)</figcaption><p></p>
-</figure>
-</div>
-</div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: <strong>?(caption)</strong></figcaption><p></p>
-</figure>
-</div>
-<p>The graph above shows the distribution of the number of tokens by columns <code>description</code> and <code>symptoms</code>. Again, we see a similar distribution between the values <code>0</code> and <code>750</code> and a peak around <code>250</code>.</p>
 
 
-</section>
-</section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p><a href="https://www.netdoktor.ch/" class="uri">https://www.netdoktor.ch/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><a href="https://www.burda.com/en/imprint/" class="uri">https://www.burda.com/en/imprint/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://www.kaggle.com/datasets/andreinovikov/used-cars-dataset?resource=download" class="uri">https://www.kaggle.com/datasets/andreinovikov/used-cars-dataset?resource=download</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://scikit-learn.org/stable/" class="uri">https://scikit-learn.org/stable/</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.statsmodels.org/stable/index.html" class="uri">https://www.statsmodels.org/stable/index.html</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,136 +1,17 @@
 [
   {
+    "objectID": "posts/glm.html",
+    "href": "posts/glm.html",
+    "title": "statmodels :)",
+    "section": "",
+    "text": "Introduction: Play with GLMs\nDuring my study at HSLU I have learned to use mostly r when it comes to statistic and for some machine learning courses as well. When it comes to work, the most companies I have seen so far, use Python as their main programming language. My previous two employers used Python and r. This article is not going to discuss which language is better, but rather focus on how to use Python and the library statmodels which seems to produce similar outputs as it would in r.\nOne important and cool thing about the statmodels library is that it has a lot of data sets already included. You can find them here. The data set I use is a r data set from Rdatasets. In particular, the dataset from the package modeldata called car_prices is used.\n## Data imports\ndf = (\n    statsmodels.api # imported as sm in following code\n    .datasets\n    .get_rdataset(\"car_prices\", package='modeldata')\n    .data\n)\nAnother important thing about this blog post is the usage of Quarto. Quarto allowed me to write this blog post directly from a Jupyter-Notebook without any fancy and complicated transformations. For more information, please visit the quarto website.\nHowever, let’s start with the analysis. The first thing we do is to import the necessary libraries and the data set.\n\n\nShow the code\n## Data manipulation imports\nimport pandas as pd\nimport numpy as np\n\n## Display imports\nfrom IPython.display import display, Markdown\n\n## statmodels import\nimport statsmodels.api as sm\nimport statsmodels.formula.api as smf\nimport statsmodels.genmod.families.family as fam\nfrom patsy import dmatrices\n\n## Plot imports\nimport matplotlib.pyplot as plt\nplt.rcParams['figure.figsize'] = (5,5/2.5)\nimport seaborn as sns\nsns.set_style('whitegrid')\nsns.set_theme()\nsns.set_context(\n    \"paper\", \n    rc={\n        \"figsize\"       :   plt.rcParams['figure.figsize'],\n        'font_scale'    :   1.25,\n    }\n)\n\n\n## Data imports\ndf = (\n    sm\n    .datasets\n    .get_rdataset(\"car_prices\", package='modeldata')\n    .data\n)\n\n\n\n\nExplanatory Data Exploration\nThe data exploration is a crucial step before fitting a model. It allows to understand the data and to identify potential problems. In this notebook, we will explore very briefly the data, as the focus of this article is to understand and apply statmodels.\n\n\nThe data set contains 804 observations (rows) and 18 predictors (columns). The data set contains information about car prices and the variables are described as follows: Price; Mileage; Cylinder; Doors; Cruise; Sound; Leather; Buick; Cadillac; Chevy; Pontiac; Saab; Saturn; convertible; coupe; hatchback; sedan; wagon.\n\n\nFirst, two approximately continous variables Price and Mileage are investigated by means of graphical analysis. The following bar plots show the distribution of the two variables.\n\n\nShow the code\nheight = plt.rcParams['figure.figsize'][0]\naspect = plt.rcParams['figure.figsize'][0]/plt.rcParams['figure.figsize'][1] / 2\n\ng1 = sns.displot(\n    data = df,\n    x = 'Price',\n    kde = True,\n    height = height,\n    aspect = aspect,\n)\nplt.title('Distribution of car price')\nplt.xlabel('Price')\nplt.ylabel('Count of occurance')\nplt.show(g1)\n\ng2 = sns.displot(\n    data = df,\n    x = 'Mileage',\n    kde = True,\n    height = height,\n    aspect = aspect,\n)\nplt.title('Distribution of Mileage')\nplt.xlabel('Mileage')\nplt.ylabel('Count of occurance')\nplt.show(g2)\n\n\n\n\n\n\n\n\n(a) Distribution of the variable Price\n\n\n\n\n\n\n\n(b) Distribution of the variable Mileage\n\n\n\n\nFigure 1: Distribution of price and mileage variables.\n\n\n\nFigure 1 (a) shows the left a right-skewed distribution with a peak around 15k$ and price values ranging from 8k dollars to 70k dollars. On the other hand, figure 1 (b) shows on the right a more ballanced distribution with a peak around 20k$ and price values ranging from 266 miles up to 50k miles.\nProceeding to the next two variables, Cylinder and Doors, one can see less possible values, ranging from\n\n\nShow the code\nheight = plt.rcParams['figure.figsize'][0]\naspect = plt.rcParams['figure.figsize'][0]/plt.rcParams['figure.figsize'][1] / 2\n\ng = sns.displot(\n    data = df,\n    x = 'Cylinder',\n    discrete = True,\n    height = height,\n    aspect = aspect,\n)\nplt.title('Distribution of Cylinder')\nplt.xlabel('Cylinder')\nplt.ylabel('Count of occurance')\nplt.show(g)\n\n# plt.figure()\ng = sns.displot(\n    data = df,\n    x = 'Doors',\n    discrete = True,\n    height = height,\n    aspect = aspect,\n)\nplt.title('Distribution of Doors')\nplt.xlabel('Doors')\nplt.ylabel('Count of occurance')\nplt.show(g)\n\n\n\n\n\n\n\n\n(a) Distribution of the variable cylinder\n\n\n\n\n\n\n\n(b) Distribution of the variable doors\n\n\n\n\nFigure 2: Distribution of cylinder and doors variables.\n\n\n\nThe Figure 2 (a) surprised me quite a bit. I had anticipated the car to feature more than 8 cylinders, given that this dataset pertains to American cars. The cylinder count typically spans from 4 to 8, with the values accurately reflecting this range. It’s worth noting that the number of cylinders is expected to be even.\nAgain surprisingly, the Figure 2 (b) shows that the number of doors per car. The values are either 2 or 4, with the latter being more common. This is a bit surprising, as I would have expected the number of doors to be higher for American cars (SUV).\n\n\nModeling\nModeling with statsmodels becomes straightforward once the formula API and provided documentation are well understood. I encountered a minor challenge in grasping the formula API, but once I comprehended it, the usage turned out to be quite intuitive. Let’s delve into an understanding of the formula API. This feature enables us to employ R-style formulas for specifying models. To illustrate, when fitting a linear model, the following formula suffices:\nimport statsmodels.formula.api as smf\n\nmodel = smf.ols(\n    formula='y ~ x1 + x2 + x3', \n    data=df\n)\nThe formula API leverages the patsy package (Patsy Package). It’s worth noting that the formula API’s potency extends to intricate models. Additionally, it’s important to mention that the formula API automatically incorporates an intercept into the formula if one isn’t explicitly specified. For cases where the intercept is undesired, a -1 can be used within the formula.\nWith the glm class, a vast array of models becomes accessible importing as follows:\nimport statsmodels.formula.api as smf\nimport statsmodels.genmod.families.family as fam\nThe fam import is necessary for specifying the family of the model. The families available are:\n\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nFamily(link, variance[, check_link])\nThe parent class for one-parameter exponential families.\n\n\nBinomial([link, check_link])\nBinomial exponential family distribution.\n\n\nGamma([link, check_link])\nGamma exponential family distribution.\n\n\nGaussian([link, check_link])\nGaussian exponential family distribution.\n\n\nInverseGaussian([link, check_link])\nInverseGaussian exponential family.\n\n\nNegativeBinomial([link, alpha, check_link])\nNegative Binomial exponential family (corresponds to NB2).\n\n\nPoisson([link, check_link])\nPoisson exponential family.\n\n\nTweedie([link, var_power, eql, check_link])\nTweedie family.\n\n\n\n\n\n\n\nShow the code\nvariables = df.columns.to_list()\n\nresponse_variable = variables.pop(0)\nvariables = variables\n\nformula = 'Price ~' + ' + '.join(variables) + ' - 1'\n\nmodel1 = (\n    smf\n    .glm(\n        formula = formula, \n        offset  = None,\n        data    = df, \n        family  = fam.Gaussian(),\n        missing = 'drop',\n    )\n    .fit()\n)\n\nprint(\n    model1.summary()\n)\n\n\n                 Generalized Linear Model Regression Results                  \n==============================================================================\nDep. Variable:                  Price   No. Observations:                  804\nModel:                            GLM   Df Residuals:                      789\nModel Family:                Gaussian   Df Model:                           14\nLink Function:               Identity   Scale:                      8.4460e+06\nMethod:                          IRLS   Log-Likelihood:                -7544.8\nDate:                Wed, 09 Aug 2023   Deviance:                   6.6639e+09\nTime:                        23:43:38   Pearson chi2:                 6.66e+09\nNo. Iterations:                     3   Pseudo R-squ. (CS):              1.000\nCovariance Type:            nonrobust                                         \n===============================================================================\n                  coef    std err          z      P>|z|      [0.025      0.975]\n-------------------------------------------------------------------------------\nMileage        -0.1842      0.013    -14.664      0.000      -0.209      -0.160\nCylinder     3659.4543    113.345     32.286      0.000    3437.303    3881.606\nDoors        1654.6326    174.525      9.481      0.000    1312.570    1996.695\nCruise        340.8695    295.962      1.152      0.249    -239.205     920.944\nSound         440.9169    234.484      1.880      0.060     -18.664     900.497\nLeather       790.8220    249.745      3.167      0.002     301.331    1280.313\nBuick       -1911.3752    336.292     -5.684      0.000   -2570.495   -1252.256\nCadillac      1.05e+04    409.274     25.663      0.000    9701.132    1.13e+04\nChevy       -3408.2863    213.274    -15.981      0.000   -3826.295   -2990.278\nPontiac     -4258.9628    256.358    -16.613      0.000   -4761.416   -3756.509\nSaab         9419.1227    331.211     28.438      0.000    8769.960    1.01e+04\nSaturn      -2859.0803    358.709     -7.970      0.000   -3562.137   -2156.023\nconvertible  1.258e+04    525.984     23.922      0.000    1.16e+04    1.36e+04\ncoupe        1559.7620    395.946      3.939      0.000     783.723    2335.801\nhatchback   -4977.3196    339.046    -14.680      0.000   -5641.837   -4312.803\nsedan       -3064.7176    215.007    -14.254      0.000   -3486.123   -2643.312\nwagon        1384.6400    364.920      3.794      0.000     669.410    2099.870\n===============================================================================\n\n\n\n\nShow the code\npreds = (\n    df\n    .assign(\n        Price_pred = lambda df: model1.params.loc['Mileage'] * df.Mileage +  model1.params.loc['Cylinder'] * df.Cylinder + model1.params.loc['Doors'] * df.Doors,\n        procent_error = lambda df: df.Price_pred / df.Price,\n    )\n)\n\nheight = plt.rcParams['figure.figsize'][0]\naspect = plt.rcParams['figure.figsize'][0]/plt.rcParams['figure.figsize'][1] / 2\n\ng = sns.relplot(\n    data    = preds,\n    x       = 'Price',\n    y       = 'Price_pred',\n    height  = height,\n    aspect  = aspect,\n    kind    = 'scatter',\n)\nplt.xlim(0, 50000)\nplt.ylim(0, 50000)\nplt.xlabel('Price')\nplt.ylabel('Prediction')\nplt.axline((0,0),(1,1))\nplt.title('Prediction vs. Data')\nplt.show(g)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Bernardo Freire Barboza da Cruz",
     "section": "",
     "text": "I am Bernardo, an aeronautical engineer with a BSc in Aeronautical Engineering and (soon: hopefully :P) an MSc in Data Science. My passion lies in both coding and engineering. I am from Zurich 🇨🇭 and have over seven years of experience working as an aeronautical engineer and about two years as a data scientist."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Home",
-    "section": "",
-    "text": "I am Bernardo, an aeronautical engineer with a BSc in Aeronautical Engineering and (soon: hopefully :P) an MSc in Data Science. My passion lies in both coding and engineering. I am from Zurich 🇨🇭 and have over seven years of experience working as an aeronautical engineer and about two years as a data scientist."
-  },
-  {
-    "objectID": "about.html#experience",
-    "href": "about.html#experience",
-    "title": "Home",
-    "section": "👨🏽‍💻 Experience",
-    "text": "👨🏽‍💻 Experience\nIn my role at Bucher Leichtbau AG, I provided advice and support to all departments regarding initial airworthiness certification. My expertise included interpreting certification specifications, verifying documentation for “minor” and “major changes,” and communicating with customers, official bodies, and authorities. I also provided consulting services to the development department for design optimization.\nI switched to data science back in 2021. At Crealogix AG, I provided advice and support to the department on new data science and machine learning products. I created prospect and upsell models, extracted information from fact-sheets using a customized OCR, and developed user journeys for chatbot dialogue flow. Furthermore, I developed chatbot solutions using IBM Watson and Spacy.\nAfter Crealogix, I joined Prognolite AG, where I developed regression models to predict turnover and menu sales using customer data and external data such as weather or public holidays. We used Multi-Output Regression, Quarto👍, R, and Python, and customized API calls to fetch the data from the database - really cool stuff ⚡.\nAt the moment, I am finishing my Master’s thesis 🙈, and soon, I will be working for… (to be continued 😎)."
-  },
-  {
-    "objectID": "about.html#socials",
-    "href": "about.html#socials",
-    "title": "Home",
-    "section": "🌐 Socials:",
-    "text": "🌐 Socials:\n\n\n\nLinkedIn"
-  },
-  {
-    "objectID": "about.html#tech-stack",
-    "href": "about.html#tech-stack",
-    "title": "Home",
-    "section": "💻 Tech Stack:",
-    "text": "💻 Tech Stack:"
-  },
-  {
-    "objectID": "about.html#github-trophies",
-    "href": "about.html#github-trophies",
-    "title": "Home",
-    "section": "🏆 GitHub Trophies",
-    "text": "🏆 GitHub Trophies"
-  },
-  {
-    "objectID": "index.html#the-comic-data-scientist",
-    "href": "index.html#the-comic-data-scientist",
-    "title": "Bernardo Cruz",
-    "section": "The Comic Data Scientist",
-    "text": "The Comic Data Scientist\nBernardo Freire Barboza da Cruz, a data scientist with a flair for comedy, embarked on a series of uproarious adventures during his time at Crealogix AG. Armed with his analytical skills and a penchant for laughter, Bernardo brought a unique and hilarious perspective to his role."
-  },
-  {
-    "objectID": "index.html#the-upside-down-algorithms",
-    "href": "index.html#the-upside-down-algorithms",
-    "title": "Bernardo Cruz",
-    "section": "The Upside-Down Algorithms",
-    "text": "The Upside-Down Algorithms\nAs Bernardo delved into developing prospect and upsell models at Crealogix AG, his comedic genius took center stage. With every line of code he wrote, Bernardo managed to infuse unexpected humor. His algorithms had a mind of their own, suggesting the most bizarre and outrageous upselling strategies, leaving his colleagues in stitches."
-  },
-  {
-    "objectID": "index.html#laughter-in-the-midst-of-innovation",
-    "href": "index.html#laughter-in-the-midst-of-innovation",
-    "title": "Bernardo Cruz",
-    "section": "Laughter in the Midst of Innovation",
-    "text": "Laughter in the Midst of Innovation\nWhen Bernardo joined Prognolite AG, his comedy skills found a new playground. As he developed regression models to predict turnover and menu sales, he couldn’t resist injecting humor into his data analyses. His presentations often turned into hilarious stand-up routines, with his colleagues eagerly awaiting his predictions and punchlines."
-  },
-  {
-    "objectID": "index.html#the-jester-of-insights",
-    "href": "index.html#the-jester-of-insights",
-    "title": "Bernardo Cruz",
-    "section": "The Jester of Insights",
-    "text": "The Jester of Insights\nWith each project at Prognolite AG, Bernardo became known as the “Jester of Insights.” His unconventional approach to data science left everyone in stitches, as he brought levity and amusement to even the most serious of meetings. Bernardo’s ability to find humor in complex datasets and present them with comedic flair made him an unforgettable presence.\nEpilogue: The Comic Luminary\nBernardo’s comedic antics became legendary within the industry. His colleagues and clients sought out his company not only for his exceptional data science skills but also for the laughter he brought into their lives. Bernardo’s career showcased the incredible power of humor to transform even the most technical and demanding fields into joy-filled experiences.\nAs he moved forward in his professional journey, Bernardo left a lasting legacy of laughter and mirth. His comedic genius reminded everyone that work could be both productive and entertaining. Bernardo’s ability to bring joy and laughter to the workplace served as a reminder that a lighthearted approach can unlock creativity, foster strong relationships, and create unforgettable memories.\nThe world will forever remember Bernardo as the data scientist who sprinkled humor into his algorithms and brought smiles to the faces of all those around him. His comedic escapades inspired others to find the laughter hidden within their own professional lives, making the world a brighter and happier place."
-  },
-  {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Bernardo Cruz",
-    "section": "",
-    "text": "Period\nTitle\nSchool\n\n\n\n\n09/2020 - 06/2023\nMSc in Data Science\nLucerne University of Applied Science (HSLU)\n\n\n09/2010 - 09/2013\nBSc in Aviation ZFH\n Zurich University of Applied Sciences (ZHAW)\n\n\n09/2020 - 06/2023\nFederal vocational baccalaureate (BMS)\nBerufsmaturitätsschule Zurich (BMZ)"
-  },
-  {
-    "objectID": "cv.html#msc-in-data-science-hslu",
-    "href": "cv.html#msc-in-data-science-hslu",
-    "title": "Bernardo Cruz",
-    "section": "MSc in Data Science, HSLU",
-    "text": "MSc in Data Science, HSLU\n09/2020 – 06/2023 & MSc in Data Science, Lucerne University of Applied Science (HSLU) ## BSc in Aviation, ZHAW 09/2010 – 09/2013 & BSc in Aviation ZFH, Zurich University of Applied Sciences (ZHAW) ## BMS, BMZ 08/2008 – 08/2009 & Federal vocational baccalaureate (BMS), Berufsmaturitätsschule Zurich (BMZ) ## Apprenticeship Electrician 08/2002 – 08/2006 & Apprenticeship electrician EFZ, Gemeindewerke Rüti (GWR)"
-  },
-  {
-    "objectID": "cv.html#prognolite-ag",
-    "href": "cv.html#prognolite-ag",
-    "title": "Bernardo Cruz",
-    "section": "Prognolite AG",
-    "text": "Prognolite AG\n## Crealogix AG\n## Bucher Leichtbau AG"
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Bernardo Cruz",
-    "section": "",
-    "text": "Personal Information\n\n\n\nFirst Name\nBernardo\n\n\nLast Name\nFreire Barboza da Cruz    \n\n\nBirthday\n29/05/1985\n\n\nNationalities\nSwiss & Brazilian\n\n\nLanguages\nGerman (Native), Portuguese (Native), English (Fluent)\n\n\nPlace of Origin\nWildberg ZH, Switzerland\n\n\nPlace of Birth\nRio de Janeiro, RJ, Brazil\n\n\nAddress\nFrankentalerstrasse 24, 8049 Zürich, Switzerland\n\n\nEmail\nberni.dacruz@gmail.com (berni.dacruz at gmail dot com?subject=Hello%20There%20I%20like%20your%20Blog%20:P%20&body=Hello%20Bernardo)\n\n\nGitHub\ngithub.com/bernardo-cruz\n\n\nLinkedin"
-  },
-  {
-    "objectID": "cv.html#prognolite-ag-102022---032023",
-    "href": "cv.html#prognolite-ag-102022---032023",
-    "title": "Bernardo Cruz",
-    "section": "Prognolite AG (10/2022 - 03/2023)",
-    "text": "Prognolite AG (10/2022 - 03/2023)\nDevelop and maintain machine learning models aimed at reducing food waste in the gastronomic sector. Specifically, the job involves developing regression models to predict turnover and menu sales using customer data and external data such as weather or public holidays.\n\nMaintenance and further development of the restaurant sales forecasting process\nDevelopment of efficient optimization algorithms to improve forecast models based on various influencing factors.\nMaintenance and further development of the data preparation process of POS system data."
-  },
-  {
-    "objectID": "cv.html#crealogix-ag-092010---092013",
-    "href": "cv.html#crealogix-ag-092010---092013",
-    "title": "Bernardo Cruz",
-    "section": "Crealogix AG (09/2010 - 09/2013)",
-    "text": "Crealogix AG (09/2010 - 09/2013)"
-  },
-  {
-    "objectID": "cv.html#bucher-leichtbau-ag-012014--",
-    "href": "cv.html#bucher-leichtbau-ag-012014--",
-    "title": "Bernardo Cruz",
-    "section": "Bucher Leichtbau AG (01/2014 - )",
-    "text": "Bucher Leichtbau AG (01/2014 - )"
-  },
-  {
-    "objectID": "cv.html#crealogix-ag-092021---092022",
-    "href": "cv.html#crealogix-ag-092021---092022",
-    "title": "Bernardo Cruz",
-    "section": "Crealogix AG (09/2021 - 09/2022)",
-    "text": "Crealogix AG (09/2021 - 09/2022)\nHis principal duties in the function of Junior Data Science Specialist were as follows:\n\nAdvice and support of the department on new products related to data science and machine learning\nCreation of prospect and upsell model\nExtraction of information from fact sheet using a customised OCR\nSupport of development system architecture\nDeveloping user journeys for chatbot dialogue flow\nDevelopment of chatbot solutions using IBM Watson and Spacy\nInvestigation of replacement of IBM Discovery by transformer-based structure\nUse of company’s version control system"
-  },
-  {
-    "objectID": "cv.html#bucher-leichtbau-ag-012014---092021",
-    "href": "cv.html#bucher-leichtbau-ag-012014---092021",
-    "title": "Bernardo Cruz",
-    "section": "Bucher Leichtbau AG (01/2014 - 09/2021)",
-    "text": "Bucher Leichtbau AG (01/2014 - 09/2021)\nSein Aufgaben- und Kompetenzbereich umfasste folgende Arbeiten:\n\nDurchführen von FEM Analysen\nBeratung der Entwicklungsabteilung (DOA) in allen Fragen der Lufttüchtigkeit, Zulassung und Auslegung\nNachweiserbringung, dass die Konstruktionsaktivitäten in Übereinstimmung mit den anzuwendenden Vorgaben erfolgen\nVerfassen von Zulassungsdokumenten wie Certification Plans, Load Reports und Test Reports\nProjektplanung und -controlling für Stress, Flammability und Cabin Safety (Milestone / Budget)\nBeurteilen von Design-Anderungen und Concessions, Approval von Zulassungsdokumenten\nPlanung und Leitung von Statik-Zulassungstests\nKommunikation mit Behörden und OEM’s"
   },
   {
     "objectID": "index.html#experience",
@@ -161,59 +42,38 @@
     "text": "🏆 GitHub Trophies"
   },
   {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Bernardo Cruz",
+    "section": "",
+    "text": "First Name\nBernardo\n\n\nLast Name\nFreire Barboza da Cruz    \n\n\nBirthday\n29/05/1985\n\n\nNationalities\nSwiss & Brazilian\n\n\nLanguages\nGerman (Native), Portuguese (Native), English (Fluent)\n\n\nPlace of Origin\nWildberg ZH, Switzerland\n\n\nPlace of Birth\nRio de Janeiro, RJ, Brazil\n\n\nAddress\nFrankentalerstrasse 24, 8049 Zürich, Switzerland\n\n\nEmail\nberni.dacruz@gmail.com (berni.dacruz at gmail dot com?subject=Hello%20There%20I%20like%20your%20Blog%20:P%20&body=Hello%20Bernardo)\n\n\nGitHub\ngithub.com/bernardo-cruz\n\n\nLinkedin"
+  },
+  {
+    "objectID": "cv.html#data-scientist-prognolite-ag-102022-032023",
+    "href": "cv.html#data-scientist-prognolite-ag-102022-032023",
+    "title": "Bernardo Cruz",
+    "section": "Data Scientist Prognolite AG (10/2022 – 03/2023)",
+    "text": "Data Scientist Prognolite AG (10/2022 – 03/2023)\nDevelop and maintain machine learning models aimed at reducing food waste in the gastronomic sector. Specifically, the job involves developing regression models to predict turnover and menu sales using customer data and external data such as weather or public holidays.\n\nMaintenance and further development of the restaurant sales forecasting process\nDevelopment of efficient optimization algorithms to improve forecast models based on various influencing factors.\nMaintenance and further development of the data preparation process of POS system data."
+  },
+  {
+    "objectID": "cv.html#data-scientist-crealogix-ag-092021-092022",
+    "href": "cv.html#data-scientist-crealogix-ag-092021-092022",
+    "title": "Bernardo Cruz",
+    "section": "Data Scientist Crealogix AG (09/2021 – 09/2022)",
+    "text": "Data Scientist Crealogix AG (09/2021 – 09/2022)\nPrincipal duties in the function of Data Science Specialist were as follows:\n\nAdvice and support of the department on new products related to data science and machine learning\nCreation of prospect and upsell model\nExtraction of information from fact sheet using a customised OCR\nSupport of development system architecture\nDeveloping user journeys for chatbot dialogue flow\nDevelopment of chatbot solutions using IBM Watson and Spacy\nInvestigation of replacement of IBM Discovery by transformer-based structure\nUse of company’s version control system"
+  },
+  {
+    "objectID": "cv.html#aeronautical-engineer-bucher-leichtbau-ag-012014-092021",
+    "href": "cv.html#aeronautical-engineer-bucher-leichtbau-ag-012014-092021",
+    "title": "Bernardo Cruz",
+    "section": "Aeronautical Engineer Bucher Leichtbau AG (01/2014 – 09/2021)",
+    "text": "Aeronautical Engineer Bucher Leichtbau AG (01/2014 – 09/2021)\nArea of responsibility and competence included the following tasks:\n\nConducting FEM analyses\nConsulting the development department (DOA) on all matters of airworthiness, certification, and design\nProviding evidence that the design activities are in compliance with the applicable requirements\nWriting certification documents such as Certification Plans, Load Reports, and Test Reports\nProject planning and controlling for stress, flammability, and cabin safety (milestone/budget)\nAssessing design changes and concessions, approving certification documents\nPlanning and conducting static certification tests\nCommunicating with authorities and OEMs"
+  },
+  {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "My Blog",
     "section": "",
-    "text": "Predictive Maintenance - Part 1\n\n\n\n\n\n\n\npredictive maintenance\n\n\nunsupervised learning\n\n\nmechanical engineering\n\n\nguassian mixture models\n\n\n\n\nMy second post - so be nice :P\n\n\n\n\n\n\nJun 9, 2023\n\n\nBernardo Cruz\n\n\n\n\n\n\n\n\nWord2Vec Playground\n\n\n\n\n\n\n\nnlp\n\n\nword2vec\n\n\nfood-data\n\n\nGerman\n\n\n\n\nMy first post - so be nice :P\n\n\n\n\n\n\nJun 7, 2023\n\n\nBernardo Cruz\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/Word2Vec.html",
-    "href": "posts/Word2Vec.html",
-    "title": "Word2Vec Playground",
-    "section": "",
-    "text": "I have crawled Netdoktor for my thesis at HSLU. The task at hand was to use Netdoktor as an additional source to the main data source to the one provided by IML. Unfortunatelly, I cannot share this confidential information, because the IML data consists of Multiple Choice Questions for medical students - and yes, I am talking about exam questions :P\nHowever, I am therefore forced to create a Word2Vec model using public available data. Therefore, a data set is obtained by web crawling of Netdoktor1. Netdoktor is a free internet platform for medical information: It provides information about diseases and symptoms in German and other languages. The website is a part of the German media company Hubert Burda Media2 and was founded by Dr. Carl Brandt and Rune Bech.\nLet’s start to code :)"
-  },
-  {
-    "objectID": "posts/Word2Vec.html#import-libraries-and-data",
-    "href": "posts/Word2Vec.html#import-libraries-and-data",
-    "title": "Word2Vec Playground",
-    "section": "Import Libraries and Data",
-    "text": "Import Libraries and Data\n\n\nShow the code\nimport pandas as pd\nfrom matplotlib import pyplot as plt\nimport seaborn as sns\nsns.set_style(\"whitegrid\")\nsns.set(rc={'figure.figsize':(16, 8)})\nplt.rcParams['figure.figsize'] = (16, 8)\n\n\nfrom IPython.display import display, Markdown\n\ndf = (\n    pd.read_pickle(\n        '../data/corpus.pkl', \n        compression = {'method': 'gzip'},\n    )\n    # Select only columns 'disease', 'description', 'symptoms'\n    [['disease','description','symptoms']]\n)\n\n\ndf.head()\n\n\n\n\n\n\n  \n    \n      \n      disease\n      description\n      symptoms\n    \n  \n  \n    \n      0\n      arthrose\n      Als Arthrose bezeichnen Mediziner den Verschle...\n      Symptome Anfangs verursacht Gelenk-Verschleiss...\n    \n    \n      1\n      niedriger-blutdruck\n      Niedriger Blutdruck (arterielle Hypotonie) ist...\n      Niedriger Blutdruck: Symptome Nicht immer ruft...\n    \n    \n      2\n      alkoholvergiftung\n      Bei einer Alkoholvergiftung (Alkoholintoxikati...\n      Alkoholvergiftung: Symptome Es gibt fliessende...\n    \n    \n      4\n      plazentaabloesung\n      Die Plazenta (Mutterkuchen) ist ein Gewebe an ...\n      Wie erkennt man eine vorzeitige Plazentaablösu...\n    \n    \n      5\n      salmonellenvergiftung\n      Eine Salmonellenvergiftung (Salmonellose) ist ...\n      Welche Symptome treten bei einer Salmonellenve...\n    \n  \n\n\n\n\n\n\nThe data consists of 639 diseases and 3 columns."
-  },
-  {
-    "objectID": "posts/Word2Vec.html#exploration",
-    "href": "posts/Word2Vec.html#exploration",
-    "title": "Word2Vec Playground",
-    "section": "Exploration",
-    "text": "Exploration\nFirst we perform some basic text exploration that includes: for each column we calculate the text length and we calculate of the number of tokens. We use the .str.split() methods from Pandas without any fancy library in the first step.\n\n\nShow the code\ndf = (\n    df\n    .assign(\n        len_description = lambda df: df.description.apply(len),\n        len_symptoms = lambda df: df.symptoms.apply(len),\n        tokens_description = lambda df: df.description.str.split(),\n        tokens_symptoms = lambda df: df.symptoms.str.split(),\n        n_tokens_description = lambda df: df.tokens_description.apply(len),\n        n_tokens_symptom = lambda df: df.tokens_symptoms.apply(len),\n    )\n)\n\ndf_melted = (\n    df\n    .melt(\n        id_vars='disease', \n        value_vars = ['len_description','len_symptoms','n_tokens_description','n_tokens_symptom']\n    )\n)\n\n\n\n\n\nShow the code\nplt.figure()\ng = sns.displot(\n    data = df_melted.query('variable != \"n_tokens_description\" & variable != \"n_tokens_symptom\"'),\n    x = 'value',\n    hue = 'variable',\n    multiple = \"stack\",\n);\nplt.title('Distribution of Number of Tokens of \"symptoms\" and \"description\"')\nplt.xlabel('Text length')\nplt.ylabel('Count of occurance')\nplt.show(g)\n\n\n\n<Figure size 1536x768 with 0 Axes>\n(a) Distribution of text length of columns “description” and “symptoms”\n\n\n\n\n\n\n(b)\n\n\n\nFigure 1: ?(caption)\n\n\nThe figure above shows the distribution of the description and symptoms of the Netdoktor dataset.\n\n\n\nShow the code\nplt.figure()\ng = sns.displot(\n    data = df_melted.query('variable == \"n_tokens_description\" | variable == \"n_tokens_symptom\"'),\n    x = 'value',\n    hue = 'variable',\n    multiple = \"stack\",\n);\nplt.title('Distribution of Text length')\nplt.xlabel('Text length')\nplt.ylabel('Count of occurance')\nplt.show(g)\n\n\n\n<Figure size 1536x768 with 0 Axes>\n(a) Distribution of number of tokens of columns “description” and “symptoms”\n\n\n\n\n\n\n(b)\n\n\n\nFigure 2: ?(caption)\n\n\nOn the left (figure above) shows the distribution of the length of description and on the right shows the distribution of the length of symptoms."
-  },
-  {
-    "objectID": "cv.html#prognolite-ag-102022-032023",
-    "href": "cv.html#prognolite-ag-102022-032023",
-    "title": "Bernardo Cruz",
-    "section": "Prognolite AG (10/2022 – 03/2023)",
-    "text": "Prognolite AG (10/2022 – 03/2023)\nDevelop and maintain machine learning models aimed at reducing food waste in the gastronomic sector. Specifically, the job involves developing regression models to predict turnover and menu sales using customer data and external data such as weather or public holidays.\n\nMaintenance and further development of the restaurant sales forecasting process\nDevelopment of efficient optimization algorithms to improve forecast models based on various influencing factors.\nMaintenance and further development of the data preparation process of POS system data."
-  },
-  {
-    "objectID": "cv.html#crealogix-ag-092021-092022",
-    "href": "cv.html#crealogix-ag-092021-092022",
-    "title": "Bernardo Cruz",
-    "section": "Crealogix AG (09/2021 – 09/2022)",
-    "text": "Crealogix AG (09/2021 – 09/2022)\nHis principal duties in the function of Junior Data Science Specialist were as follows:\n\nAdvice and support of the department on new products related to data science and machine learning\nCreation of prospect and upsell model\nExtraction of information from fact sheet using a customised OCR\nSupport of development system architecture\nDeveloping user journeys for chatbot dialogue flow\nDevelopment of chatbot solutions using IBM Watson and Spacy\nInvestigation of replacement of IBM Discovery by transformer-based structure\nUse of company’s version control system"
-  },
-  {
-    "objectID": "cv.html#bucher-leichtbau-ag-012014-092021",
-    "href": "cv.html#bucher-leichtbau-ag-012014-092021",
-    "title": "Bernardo Cruz",
-    "section": "Bucher Leichtbau AG (01/2014 – 09/2021)",
-    "text": "Bucher Leichtbau AG (01/2014 – 09/2021)\nSein Aufgaben- und Kompetenzbereich umfasste folgende Arbeiten:\n\nDurchführen von FEM Analysen\nBeratung der Entwicklungsabteilung (DOA) in allen Fragen der Lufttüchtigkeit, Zulassung und Auslegung\nNachweiserbringung, dass die Konstruktionsaktivitäten in Übereinstimmung mit den anzuwendenden Vorgaben erfolgen\nVerfassen von Zulassungsdokumenten wie Certification Plans, Load Reports und Test Reports\nProjektplanung und -controlling für Stress, Flammability und Cabin Safety (Milestone / Budget)\nBeurteilen von Design-Anderungen und Concessions, Approval von Zulassungsdokumenten\nPlanung und Leitung von Statik-Zulassungstests\nKommunikation mit Behörden und OEM’s"
-  },
-  {
-    "objectID": "posts/predictive_maintenance.html",
-    "href": "posts/predictive_maintenance.html",
-    "title": "Predictive Maintenance - Part 1",
-    "section": "",
-    "text": "Objective\nThe objective of predictive maintenance is quite easy to explain: It is to predict when a machine or a component will fail or not. This makes it possible to move from a preventive maintenance approach to a predictive maintenance approach. This approach is more efficient because it allows to avoid unnecessary maintenance operations and to anticipate the failures of the machines. This approach is also more economical because it allows to avoid the immobilization of the machines for maintenance operations that are not necessary. The hard part of predictive maintenance is to get label, fail = yes and fail = no as well as the when. It sounds quite obvious, but, normally the maintenance schedule is organized in such a way, that the failure does not occur between the checks. In my current work, we have a lot of data, but we do not have the labels. So, we have to find a way to get the labels. In this post, I will show you how I did it.\nImagine you have a heating-ventilation-and-air-conditioning (HVAC) system. Normally, this system consists of several interconnected subsystems such as ventilation, heat-exchanger unit etc. Each of these subsystems consists of several components such as fans, pumps, valves, heat exchangers etc. Each of these components has a specific function and is subject to wear and tear. The wear and tear of these components can lead to a failure of the component. The failure of a component can lead to the failure of the subsystem. The failure of a subsystem can lead to the failure of the HVAC system. The failure of the HVAC leads to discomfort of the passengers. However, is it possible to predict the when based on historical data?\nThe important question is how to do it. In data science jargon, which variables lead to this state? What can be measured? One could measure the temperature of the air, the temperature of the water, the pressure of the air, the pressure of the water, the flow of the air, the flow of the water, the speed of the fans, the speed of the pumps, the position of the valves, the position of the dampers, the power consumption of the fans, the power consumption of the pumps, the power consumption of the heat exchangers, the power consumption of the HVAC system… The most obvious technique is to concentrate on the power consumption and treat the subsystems etc. as detail information. This is what we did.\n\n\nCoding\nWe used Gaussian-Mixture-Models1 to try to find a pattern which deviates from the normal behavior. The normal behavior corresponds to the historical data obtained by energy counters and lies with the distribution.\n\n\nShow the code\nimport pandas as pd\nimport sklearn.mixture as mix\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.datasets import make_blobs\n\n# Generate data\nX, y = make_blobs(\n    n_samples=100*60*24*7, \n    centers=3, \n    n_features=2,\n    random_state=0\n)\n\n\n\n\n\n\n\nFootnotes\n\n\nhttps://en.wikipedia.org/wiki/Mixture_model↩︎"
+    "text": "statmodels :)\n\n\n\n\n\n\n\nstatmodels\n\n\nPython vs. R\n\n\nFormula API\n\n\nRDatasets in Python\n\n\n\n\n\n\n\n\n\n\n\nMar 6, 2025\n\n\nBernardo Freire\n\n\n\n\n\n\nNo matching items"
   }
 ]
