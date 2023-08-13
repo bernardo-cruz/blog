@@ -12,11 +12,11 @@ website:
         text: Blog
       - href: cv.qmd
         text: CV
-      - href: contact.qmd
-        text: Personal Information
 
 format:
   html:
+    highlight-style: github
+    code-tools: true
     code-fold: true
     code-summary: "Show the code"
     theme: 

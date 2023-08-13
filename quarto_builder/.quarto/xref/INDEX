@@ -16,5 +16,17 @@
   },
   "posts/Word2Vec.qmd": {
     "Word2Vec.html": "f6b04ee6"
+  },
+  "posts/Word2Vec.ipynb": {
+    "Word2Vec.html": "3e799590"
+  },
+  "posts/automobile.ipynb": {
+    "automobile.html": "0b22e65e"
+  },
+  "posts/glm.ipynb": {
+    "glm.html": "8e79304d"
+  },
+  "posts/pandas_method_chaning.ipynb": {
+    "pandas_method_chaning.html": "347c08a5"
   }
 }
