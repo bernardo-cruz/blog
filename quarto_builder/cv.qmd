@@ -31,13 +31,8 @@ sales using customer data and external data such as weather or public holidays.
 - Development of efficient optimization algorithms to improve forecast models based on various influencing factors.
 - Maintenance and further development of the data preparation process of POS system data.
 
-<<<<<<< HEAD
-## [Crealogix AG](https://crealogix.com/en){.external target="_blank"} (09/2021 -- 09/2022)
-Principal duties in the function of Junior Data Science Specialist were as follows:  
-=======
 ## Data Scientist [Crealogix AG](https://crealogix.com/en){.external target="_blank"} (09/2021 -- 09/2022)
 Principal duties in the function of Data Science Specialist were as follows:  
->>>>>>> blog
 
 - Advice and support of the department on new products related to data science and machine learning
 - Creation of prospect and upsell model
@@ -48,11 +43,7 @@ Principal duties in the function of Data Science Specialist were as follows:
 - Investigation of replacement of IBM Discovery by transformer-based structure
 - Use of company's version control system
 
-<<<<<<< HEAD
-## [Bucher Leichtbau AG](https://bucher-group.com/){.external target="_blank"} (01/2014 -- 09/2021)
-=======
 ## Aeronautical Engineer [Bucher Leichtbau AG](https://bucher-group.com/){.external target="_blank"} (01/2014 -- 09/2021)
->>>>>>> blog
 Area of responsibility and competence included the following tasks:
 
 - Conducting FEM analyses
@@ -63,7 +54,3 @@ Area of responsibility and competence included the following tasks:
 - Assessing design changes and concessions, approving certification documents
 - Planning and conducting static certification tests
 - Communicating with authorities and OEMs
-<<<<<<< HEAD
-   
-=======
->>>>>>> blog
