@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernardo Freire">
-<meta name="dcterms.date" content="2025-03-06">
+<meta name="dcterms.date" content="2023-08-13">
 
-<title>Bernardo Cruz - statmodels :)</title>
+<title>Bernardo Cruz - My first post about statmodels - so be nice! :)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -182,6 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#introduction-play-with-glms" id="toc-introduction-play-with-glms" class="nav-link active" data-scroll-target="#introduction-play-with-glms">Introduction: Play with GLMs</a></li>
   <li><a href="#explanatory-data-exploration" id="toc-explanatory-data-exploration" class="nav-link" data-scroll-target="#explanatory-data-exploration">Explanatory Data Exploration</a></li>
   <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling">Modeling</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -190,12 +191,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">statmodels :)</h1>
+<div class="quarto-title-block"><div><h1 class="title">My first post about statmodels - so be nice! :)</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
   <div class="quarto-categories">
     <div class="quarto-category">statmodels</div>
+    <div class="quarto-category">Seaborn</div>
+    <div class="quarto-category">Pandas</div>
     <div class="quarto-category">Python vs.&nbsp;R</div>
     <div class="quarto-category">Formula API</div>
     <div class="quarto-category">RDatasets in Python</div>
+    <div class="quarto-category">Patsy in Python</div>
   </div>
   </div>
 
@@ -213,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 6, 2025</p>
+      <p class="date">August 13, 2023</p>
     </div>
   </div>
   
@@ -225,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="introduction-play-with-glms" class="level1">
 <h1>Introduction: Play with GLMs</h1>
-<p>During my study at <a href="https://www.hslu.ch/en/lucerne-school-of-business/degree-programmes/master/applied-information-and-data-science/">HSLU</a> I have learned to use mostly <a href="https://www.r-project.org/"><code>r</code></a> when it comes to statistic and for some machine learning courses as well. When it comes to work, the most companies I have seen so far, use <code>Python</code> as their main programming language. My previous two employers used <code>Python</code> and <code>r</code>. <strong>This article is not going to discuss which language is better, but rather focus on how to use <code>Python</code> and the library <code>statmodels</code> which seems to produce similar outputs as it would in <code>r</code>.</strong></p>
+<p>During my study at <a href="https://www.hslu.ch/en/lucerne-school-of-business/degree-programmes/master/applied-information-and-data-science/">HSLU</a> I have learned to use mostly <a href="https://www.r-project.org/"><code>r</code></a> when it comes to statistic and for some machine learning courses as well. When it comes to work, the most companies I have seen so far, use <code>Python</code> as their main programming language. My previous two employers used <code>Python</code> and <code>R</code>. <strong>This article is not going to discuss which language is better, but rather focus on how to use <code>Python</code> and the library <code>statmodels</code> which seems to produce similar outputs as it would in <code>r</code>.</strong></p>
 <p>One important and cool thing about the <code>statmodels</code> library is that it has a lot of data sets already included. You can find them <a href="https://www.statsmodels.org/stable/datasets/index.html">here</a>. The data set I use is a <code>r</code> data set from <a href="https://vincentarelbundock.github.io/Rdatasets/">Rdatasets</a>. In particular, the dataset from the package <code>modeldata</code> called <code>car_prices</code> is used.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Data imports</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
@@ -236,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Another important thing about this blog post is the usage of <a href="https://quarto.org/"><code>Quarto</code></a>. Quarto allowed me to write this blog post directly from a Jupyter-Notebook without any fancy and complicated transformations. For more information, please visit the quarto website.</p>
 <p>However, let’s start with the analysis. The first thing we do is to import the necessary libraries and the data set.</p>
-<div id="code" class="cell" data-execution_count="1">
+<div id="code" class="cell" data-execution_count="60">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Data manipulation imports</span></span>
@@ -280,9 +284,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="explanatory-data-exploration" class="level1">
 <h1>Explanatory Data Exploration</h1>
 <p>The data exploration is a crucial step before fitting a model. It allows to understand the data and to identify potential problems. In this notebook, we will explore very briefly the data, as the focus of this article is to understand and apply <code>statmodels</code>.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="61">
 <div class="cell-output cell-output-display">
-<p>The data set contains 804 observations (rows) and 18 predictors (columns). The data set contains information about car prices and the variables are described as follows: Price; Mileage; Cylinder; Doors; Cruise; Sound; Leather; Buick; Cadillac; Chevy; Pontiac; Saab; Saturn; convertible; coupe; hatchback; sedan; wagon.</p>
+<p>The data set contains 804 observations (rows) and 18 predictors (columns). The data set contains information about car prices and the variables are described as follows: Price; Mileage; Cylinder; Doors; Cruise; Sound; Leather; Buick; Cadillac; Chevy; Pontiac; Saab; Saturn; convertible; coupe; hatchback; sedan; and wagon.</p>
 </div>
 </div>
 <p>First, two approximately continous variables <code>Price</code> and <code>Mileage</code> are investigated by means of graphical analysis. The following bar plots show the distribution of the two variables.</p>
@@ -316,7 +320,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.show(g2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-distplot" class="cell quarto-layout-panel" data-execution_count="4">
+<div id="fig-distplot" class="cell quarto-layout-panel" data-execution_count="63">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
@@ -340,7 +344,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </div>
-<p><a href="#fig-distplot-1">Figure&nbsp;1 (a)</a> shows the left a right-skewed distribution with a peak around 15k$ and price values ranging from 8k dollars to 70k dollars. On the other hand, <a href="#fig-distplot-2">figure&nbsp;1 (b)</a> shows on the right a more ballanced distribution with a peak around 20k$ and price values ranging from 266 miles up to 50k miles.</p>
+<p><a href="#fig-distplot-1">Figure&nbsp;1 (a)</a> shows on the left a right-skewed distribution with a peak around 15k$ and price values ranging from 8k dollars to 70k dollars. On the other hand, <a href="#fig-distplot-2">figure&nbsp;1 (b)</a> shows on the right a more ballanced distribution with a peak around 20k$ and price values ranging from 266 miles up to 50k miles.</p>
 <p>Proceeding to the next two variables, <code>Cylinder</code> and <code>Doors</code>, one can see less possible values, ranging from</p>
 <div>
 <details>
@@ -365,15 +369,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Doors'</span>,</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Doors'</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Doors'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    shrink <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Doors'</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Doors'</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="fig-distplot2" class="cell quarto-layout-panel" data-execution_count="5">
+<div id="fig-distplot2" class="cell quarto-layout-panel" data-execution_count="64">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
@@ -399,24 +404,114 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>The <a href="#fig-distplot2-1">Figure&nbsp;2 (a)</a> surprised me quite a bit. I had anticipated the car to feature more than 8 cylinders, given that this dataset pertains to American cars. The cylinder count typically spans from 4 to 8, with the values accurately reflecting this range. It’s worth noting that the number of cylinders is expected to be even.</p>
 <p>Again surprisingly, the <a href="#fig-distplot2-2">Figure&nbsp;2 (b)</a> shows that the number of doors per car. The values are either 2 or 4, with the latter being more common. This is a bit surprising, as I would have expected the number of doors to be higher for American cars (SUV).</p>
+<p>Next, we check the distribution of the make of the cars in the dataset. For this analysis, we first pivot the dataframe using <code>pd.melt()</code> and calculate the sum by means of <code>groupby()</code> and <code>sum()</code> method as follows:</p>
+<div class="cell" data-execution_count="67">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>brands <span class="op">=</span> (</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">'Buick'</span>, <span class="st">'Cadillac'</span>, <span class="st">'Chevy'</span>, <span class="st">'Pontiac'</span>, <span class="st">'Saab'</span>]]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    .melt()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'variable'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>brands.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<div id="tbl-carsbybrand" class="anchored">
+
+<div>
+
+<table class="dataframe table table-sm table-striped"><caption>Table&nbsp;1:  Cars by brand after melting, grouping, and summing </caption>
+  <thead>
+    <tr>
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Buick</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cadillac</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Chevy</td>
+      <td>320</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pontiac</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Saab</td>
+      <td>114</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<p>After aggregation, the visualization of the data is as follows:</p>
+<div class="cell" data-execution_count="68">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    data    <span class="op">=</span> brands.sort_values(<span class="st">'value'</span>, ascending<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x       <span class="op">=</span> <span class="st">'variable'</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    y       <span class="op">=</span> <span class="st">'value'</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    kind    <span class="op">=</span> <span class="st">'bar'</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    height  <span class="op">=</span> <span class="dv">5</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    aspect  <span class="op">=</span> <span class="dv">2</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of cars by brand'</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Brand'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of cars'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-brand" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="glm_files/figure-html/fig-brand-output-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Number of cars by make</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In descending order the most present make is: Chevy followed by Pontiac, Saab, Buick and Cadilac.</p>
+<p>At this point it should be mentioned, that the data set is not balanced and the distribution of the features is not uniform across the different makes and car features. In a normal project this would be a point to consider and to take care of. However, for the purpose of this project, this is not necessary.</p>
 </section>
 <section id="modeling" class="level1">
 <h1>Modeling</h1>
-<p>Modeling with <code>statsmodels</code> becomes straightforward once the formula API and provided documentation are well understood. I encountered a minor challenge in grasping the formula API, but once I comprehended it, the usage turned out to be quite intuitive. Let’s delve into an understanding of the formula API. This feature enables us to employ R-style formulas for specifying models. To illustrate, when fitting a linear model, the following formula suffices:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    formula<span class="op">=</span><span class="st">'y ~ x1 + x2 + x3'</span>, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Modeling with <code>statsmodels</code> becomes straightforward once the formula API and provided documentation are well understood. I encountered a minor challenge in grasping the formula API, but once I comprehended it, the usage turned out to be quite intuitive.</p>
+<p>Let’s delve into an understanding of the formula API (<code>statsmodels.formula.api</code>). This feature enables us to employ R-style formulas for specifying models. To illustrate, when fitting a linear model, the following formula suffices:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    formula<span class="op">=</span><span class="st">'y ~ x1 + x2 + x3'</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The formula API leverages the <code>patsy</code> package (<a href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy Package</a>). It’s worth noting that the formula API’s potency extends to intricate models. Additionally, it’s important to mention that the formula API automatically incorporates an intercept into the formula if one isn’t explicitly specified. For cases where the intercept is undesired, a <code>-1</code> can be used within the formula.</p>
 <p>With the <code>glm</code> class, a vast array of models becomes accessible importing as follows:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>fam</code> import is necessary for specifying the family of the model. The families available are:</p>
-<div class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell" data-execution_count="69">
+<div class="cell-output cell-output-display" data-execution_count="69">
+<div id="tbl-glmfamilies" class="anchored">
 <table class="table table-sm table-striped">
+<caption>Table&nbsp;2: GLM Families</caption>
 <colgroup>
 <col style="width: 42%">
 <col style="width: 57%">
@@ -464,32 +559,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
-<details>
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> df.columns.to_list()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>response_variable <span class="op">=</span> variables.pop(<span class="dv">0</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> variables</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>formula <span class="op">=</span> <span class="st">'Price ~'</span> <span class="op">+</span> <span class="st">' + '</span>.join(variables) <span class="op">+</span> <span class="st">' - 1'</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>model1 <span class="op">=</span> (</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    smf</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    .glm(</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        formula <span class="op">=</span> formula, </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        offset  <span class="op">=</span> <span class="va">None</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        data    <span class="op">=</span> df, </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        family  <span class="op">=</span> fam.Gaussian(),</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        missing <span class="op">=</span> <span class="st">'drop'</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    .fit()</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    model1.summary()</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</div>
+<p>Fitting the model and analyzing the results are the same as one would using <code>r</code>. First define the model, then fit it, then analyze the results. The details of the fit can be accessed using the <code>summary</code> method.</p>
+<div class="cell" data-execution_count="70">
 <div class="cell-output cell-output-stdout">
 <pre><code>                 Generalized Linear Model Regression Results                  
 ==============================================================================
@@ -498,8 +570,8 @@ Model:                            GLM   Df Residuals:                      789
 Model Family:                Gaussian   Df Model:                           14
 Link Function:               Identity   Scale:                      8.4460e+06
 Method:                          IRLS   Log-Likelihood:                -7544.8
-Date:                Wed, 09 Aug 2023   Deviance:                   6.6639e+09
-Time:                        23:43:38   Pearson chi2:                 6.66e+09
+Date:                Sun, 13 Aug 2023   Deviance:                   6.6639e+09
+Time:                        22:02:28   Pearson chi2:                 6.66e+09
 No. Iterations:                     3   Pseudo R-squ. (CS):              1.000
 Covariance Type:            nonrobust                                         
 ===============================================================================
@@ -525,40 +597,56 @@ wagon        1384.6400    364.920      3.794      0.000     669.410    2099.870
 ===============================================================================</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
-<details>
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>preds <span class="op">=</span> (</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    df</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        Price_pred <span class="op">=</span> <span class="kw">lambda</span> df: model1.params.loc[<span class="st">'Mileage'</span>] <span class="op">*</span> df.Mileage <span class="op">+</span>  model1.params.loc[<span class="st">'Cylinder'</span>] <span class="op">*</span> df.Cylinder <span class="op">+</span> model1.params.loc[<span class="st">'Doors'</span>] <span class="op">*</span> df.Doors,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        procent_error <span class="op">=</span> <span class="kw">lambda</span> df: df.Price_pred <span class="op">/</span> df.Price,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>aspect <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]<span class="op">/</span>plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.relplot(</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    data    <span class="op">=</span> preds,</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    x       <span class="op">=</span> <span class="st">'Price'</span>,</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    y       <span class="op">=</span> <span class="st">'Price_pred'</span>,</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    height  <span class="op">=</span> height,</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    aspect  <span class="op">=</span> aspect,</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    kind    <span class="op">=</span> <span class="st">'scatter'</span>,</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">50000</span>)</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">50000</span>)</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Price'</span>)</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Prediction'</span>)</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>plt.axline((<span class="dv">0</span>,<span class="dv">0</span>),(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Prediction vs. Data'</span>)</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="glm_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
-</div>
-</div>
+<p>After fitting a GLM using the <code>glm</code> class in <code>statsmodels</code>, you can obtain a summary of the model’s results using the <code>.summary()</code> method on the fitted model object. Here’s a general overview of the information typically included in the summary output:</p>
+<ol type="1">
+<li><strong>Model Information:</strong>
+<ul>
+<li>The name of the model.</li>
+<li>The method used for estimation (e.g., maximum likelihood).</li>
+<li>The distribution family (e.g., Gaussian, binomial, Poisson).</li>
+<li>The link function used in the model (e.g., logit, identity, etc.).</li>
+<li>The number of observations used in the model.</li>
+</ul></li>
+<li><strong>Model Fit Statistics:</strong>
+<ul>
+<li>Log-likelihood value.</li>
+<li>AIC (Akaike Information Criterion) and/or BIC (Bayesian Information Criterion).</li>
+<li>Deviance and Pearson chi-square statistics.</li>
+<li>Dispersion parameter (if applicable).</li>
+</ul></li>
+<li><strong>Coefficients:</strong>
+<ul>
+<li>Estimated coefficients for each predictor variable.</li>
+<li>Standard errors of the coefficients.</li>
+<li>z-scores and p-values for testing the significance of the coefficients.</li>
+</ul></li>
+<li><strong>Confidence Intervals:</strong>
+<ul>
+<li>Confidence intervals for each coefficient, often at a default level like 95%.</li>
+</ul></li>
+<li><strong>Hypothesis Testing:</strong>
+<ul>
+<li>Hypothesis tests for the coefficients, typically with null hypothesis being that the coefficient is zero.</li>
+</ul></li>
+<li><strong>Goodness of Fit:</strong>
+<ul>
+<li>Likelihood-ratio test for overall model fit.</li>
+<li>Tests for assessing the contribution of individual predictors to the model.</li>
+</ul></li>
+<li><strong>Diagnostic Information:</strong>
+<ul>
+<li>Information about model assumptions and diagnostics, depending on the type of GLM and the method used.</li>
+</ul></li>
+<li><strong>Residuals:</strong>
+<ul>
+<li>Information about residuals, which can include measures like deviance residuals, Pearson residuals, etc.</li>
+</ul></li>
+</ol>
+<p>Refer to the official documentation for the most accurate and up-to-date information about the summary output for your specific use case.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Statsmodels is a powerful Python library for statistical modeling and hypothesis testing, making it an excellent transition for <code>R</code> users or Python users who like <code>R</code> to solve certain problems. It offers a familiar syntax and functionality for regression, ANOVA, and more. Its integration with Python’s data analysis ecosystem, like pandas, allows seamless data manipulation. With support for various statistical methods and a comprehensive summary output, Statsmodels facilitates effortless migration from R, enabling R users to harness its capabilities in a Python environment.</p>
 
 
 </section>
@@ -744,6 +832,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
