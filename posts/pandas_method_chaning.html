@@ -709,7 +709,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>Summarizing, we could go on forever and adding more steps to our method chain. But I think you get the point. We can do a lot with method chaining and it is a great way to write clean and readable code. I hope you enjoyed this post and learned something new. If you have any questions or comments, please leave them in the comment section below. Thanks for reading!</p>
+<p>Summarizing, we could go on forever and adding more steps to our method chain. But I think you get the point. We can do a lot with method chaining and it is a great way to write clean and readable code.</p>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
@@ -718,6 +718,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Secondly, it encourages the use of functionally composed operations, leading to more modular and reusable code. This modular nature facilitates changes and updates, as adjustments can be made within the chain without affecting other parts of the code.</p>
 <p>Furthermore, method chaining promotes better memory usage and performance optimization. Pandas optimizes these chains under the hood, reducing the creation of unnecessary intermediate copies of data frames, which leads to improved execution speed and reduced memory overhead.</p>
 <p>Lastly, method chaining aligns well with the “tidy data” philosophy, as it emphasizes a more structured, organized approach to data manipulation. This promotes consistency and clarity in the analysis process, aiding in collaboration and code maintenance.</p>
+<p>I hope you enjoyed this post and learned something new. If you have any questions contact me. Thanks for reading!</p>
 
 
 </section>
@@ -903,57 +904,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
