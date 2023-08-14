@@ -16,6 +16,7 @@ website:
 format:
   html:
     highlight-style: github
+    google-analytics: "G-HVQQBHLK7D"
     code-fold: true
     code-summary: "Show the code"
     theme: 
