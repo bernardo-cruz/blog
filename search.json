@@ -51,30 +51,37 @@
   {
     "objectID": "cv.html",
     "href": "cv.html",
-    "title": "Bernardo Cruz",
+    "title": "Curriculum Vitae",
     "section": "",
-    "text": "First Name\nBernardo\n\n\nLast Name\nFreire Barboza da Cruz    \n\n\nBirthday\n29/05/1985\n\n\nNationalities\nSwiss & Brazilian\n\n\nLanguages\nGerman (Native), Portuguese (Native), English (Fluent)\n\n\nPlace of Origin\nWildberg ZH, Switzerland\n\n\nPlace of Birth\nRio de Janeiro, RJ, Brazil\n\n\nAddress\nFrankentalerstrasse 24, 8049 Zürich, Switzerland\n\n\nEmail\nberni.dacruz@gmail.com (berni.dacruz at gmail dot com?subject=Hello%20There%20I%20like%20your%20Blog%20:P%20&body=Hello%20Bernardo)\n\n\nGitHub\ngithub.com/bernardo-cruz\n\n\nLinkedin"
+    "text": "First Name:\nBernardo\n\n\nLast Name:\nFreire Barboza da Cruz\n\n\nBirthday:\n29/05/1985\n\n\nNationalities:\nSwiss & Brazilian\n\n\nPlace of Origin:\nWildberg ZH, Switzerland\n\n\nPlace of Birth:\nRio de Janeiro, RJ, Brazil\n\n\nAddress:\nFrankentalerstrasse 24, 8049 Zürich, Switzerland\n\n\nPhone:\n+41 76 412 53 89\n\n\nEmail:\nberni.dacruz at gmail dot com\n\n\nGitHub:\ngithub.com/bernardo-cruz\n\n\nLinkedIn:\nlinkedin.com/in/bernardo-freire"
   },
   {
-    "objectID": "cv.html#data-scientist-prognolite-ag-102022-032023",
-    "href": "cv.html#data-scientist-prognolite-ag-102022-032023",
-    "title": "Bernardo Cruz",
-    "section": "Data Scientist Prognolite AG (10/2022 – 03/2023)",
-    "text": "Data Scientist Prognolite AG (10/2022 – 03/2023)\nDevelop and maintain machine learning models aimed at reducing food waste in the gastronomic sector. Specifically, the job involves developing regression models to predict turnover and menu sales using customer data and external data such as weather or public holidays.\n\nMaintenance and further development of the restaurant sales forecasting process\nDevelopment of efficient optimization algorithms to improve forecast models based on various influencing factors.\nMaintenance and further development of the data preparation process of POS system data."
+    "objectID": "cv.html#stadler-rail-ag-data-scientist-062023-present",
+    "href": "cv.html#stadler-rail-ag-data-scientist-062023-present",
+    "title": "Curriculum Vitae",
+    "section": "Stadler Rail AG, Data Scientist (06/2023 – present)",
+    "text": "Stadler Rail AG, Data Scientist (06/2023 – present)\n\nDeveloped machine learning models for predictive maintenance, e.g., door systems, compressor systems, HVAC systems.\nContributed to projects developing data-driven solutions for optimizing rolling stock maintenance processes.\nEstablished CI/CD pipeline for modeling activities and created Python packages for internal use. Technologies: Gitlab, Gitlab CI/CD, Sklearn, FastAPI (Python, SQL, API)"
   },
   {
-    "objectID": "cv.html#data-scientist-crealogix-ag-092021-092022",
-    "href": "cv.html#data-scientist-crealogix-ag-092021-092022",
-    "title": "Bernardo Cruz",
-    "section": "Data Scientist Crealogix AG (09/2021 – 09/2022)",
-    "text": "Data Scientist Crealogix AG (09/2021 – 09/2022)\nPrincipal duties in the function of Data Science Specialist were as follows:\n\nAdvice and support of the department on new products related to data science and machine learning\nCreation of prospect and upsell model\nExtraction of information from fact sheet using a customised OCR\nSupport of development system architecture\nDeveloping user journeys for chatbot dialogue flow\nDevelopment of chatbot solutions using IBM Watson and Spacy\nInvestigation of replacement of IBM Discovery by transformer-based structure\nUse of company’s version control system"
+    "objectID": "cv.html#prognolite-ag-data-scientist-102022-032023",
+    "href": "cv.html#prognolite-ag-data-scientist-102022-032023",
+    "title": "Curriculum Vitae",
+    "section": "Prognolite AG, Data Scientist (10/2022 – 03/2023)",
+    "text": "Prognolite AG, Data Scientist (10/2022 – 03/2023)\n\nDeveloped regression models predicting turnover using customer data and external factors like weather and holidays.\nCreated multi-output regression models to predict menu sales based on customer data and external factors. Technologies: Github, Tidymodels, Sklearn, Random Forest, XGBoost, Cubist (R, Python)"
   },
   {
-    "objectID": "cv.html#aeronautical-engineer-bucher-leichtbau-ag-012014-092021",
-    "href": "cv.html#aeronautical-engineer-bucher-leichtbau-ag-012014-092021",
-    "title": "Bernardo Cruz",
-    "section": "Aeronautical Engineer Bucher Leichtbau AG (01/2014 – 09/2021)",
-    "text": "Aeronautical Engineer Bucher Leichtbau AG (01/2014 – 09/2021)\nArea of responsibility and competence included the following tasks:\n\nConducting FEM analyses\nConsulting the development department (DOA) on all matters of airworthiness, certification, and design\nProviding evidence that the design activities are in compliance with the applicable requirements\nWriting certification documents such as Certification Plans, Load Reports, and Test Reports\nProject planning and controlling for stress, flammability, and cabin safety (milestone/budget)\nAssessing design changes and concessions, approving certification documents\nPlanning and conducting static certification tests\nCommunicating with authorities and OEMs"
+    "objectID": "cv.html#crealogix-ag-data-scientist-092021-092022",
+    "href": "cv.html#crealogix-ag-data-scientist-092021-092022",
+    "title": "Curriculum Vitae",
+    "section": "Crealogix AG, Data Scientist (09/2021 – 09/2022)",
+    "text": "Crealogix AG, Data Scientist (09/2021 – 09/2022)\n\nDeveloped prospect and upsell models.\nExtracted information from fact-sheets using customized OCR.\nCreated user journeys for chatbot solutions using IBM Watson and Spacy. Technologies: Sklearn, Spacy, Random Forest, XGBoost, RMarkdown (Python, SQL, R)"
+  },
+  {
+    "objectID": "cv.html#bucher-leichtbau-ag-012014-092021",
+    "href": "cv.html#bucher-leichtbau-ag-012014-092021",
+    "title": "Curriculum Vitae",
+    "section": "Bucher Leichtbau AG (01/2014 – 09/2021)",
+    "text": "Bucher Leichtbau AG (01/2014 – 09/2021)\n\nCompliance Verification Engineer (10/2017 – 09/2021)\n\nAdvised and supported all departments of Bucher Leichtbau AG in initial airworthiness certification matters.\nIndependently verified documentation for “minor” and “major changes” against certification requirements. Technologies: FEMAP, Mechanical Engineering\n\n\n\nCertification Engineer (01/2014 – 10/2017)\n\nConducted FEM calculations/verification and prepared internal and external test reports.\nCommunicated with customers, official bodies, and authorities.\nConsulted development department for design optimization. Technologies: FEMAP, Mechanical Engineering"
   },
   {
     "objectID": "blog.html",

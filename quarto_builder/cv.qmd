@@ -1,56 +1,87 @@
+---
+title: Curriculum Vitae
+author: Bernardo Freire
+date: '2023-08-14'
+toc: true
+categories:
+  - CV
+  - Personal Information
+---
 # Personal Information
-|                  |                                                                                           |
-|:-----------------|-------------------------------------------------------------------------------------------|
-| First Name       | Bernardo                                                                                  |
-| Last Name        | Freire Barboza da Cruz                                                                    |
-| Birthday         | 29/05/1985                                                                                |
-| Nationalities    | Swiss \& Brazilian                                                                        |
-| Languages        | German (Native), Portuguese (Native), English (Fluent)                                    |
-| Place of Origin  | Wildberg ZH, Switzerland                                                                  |
-| Place of Birth   | Rio de Janeiro, RJ, Brazil                                                                |
-| Address          | Frankentalerstrasse 24, 8049 Zürich, Switzerland                                          |
-| Email            | [berni.dacruz@gmail.com](mailto:berni.dacruz@gmail.com?subject=Hello There I like your Blog :P &body=Hello Bernardo){.external target="_blank"}               |
-| GitHub           | [github.com/bernardo-cruz](https://github.com/bernardo-cruz){.external target="_blank"}   |
-| Linkedin         | [![](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/) |
+|                        |                                                                      |
+|:-----------------------|----------------------------------------------------------------------|
+| **First Name:**        | Bernardo                                                             |
+| **Last Name:**         | Freire Barboza da Cruz                                               |
+| **Birthday:**          | 29/05/1985                                                           |
+| **Nationalities:**     | Swiss & Brazilian                                                    |
+| **Place of Origin:**   | Wildberg ZH, Switzerland                                             |
+| **Place of Birth:**    | Rio de Janeiro, RJ, Brazil                                           |
+| **Address:**           | Frankentalerstrasse 24, 8049 Zürich, Switzerland                     |
+| **Phone:**             | [+41 76 412 53 89](tel:+41764125389)                                 |
+| **Email:**             | [berni.dacruz@gmail.com](mailto:berni.dacruz@gmail.com)              |
+| **GitHub:**            | [github.com/bernardo-cruz](https://bernardo-cruz.github.io/blog/)    |
+| **LinkedIn:**          | [linkedin.com/in/bernardo-freire](https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/) |
+
+# Personal Profile
+I am a former aeronautical engineer with 3 years of experience as a data scientist and a recent graduate of MSc in Data Science (summer 2023). During my 7 years as an aeronautical engineer, I managed complex interdisciplinary projects in aircraft structure development and certification. As a data scientist, I developed and maintained machine learning models, demonstrating a passion for learning and innovation.
+
+# Career
+## Stadler Rail AG, Data Scientist (06/2023 -- present)
+- Developed machine learning models for predictive maintenance, e.g., door systems, compressor systems, HVAC systems.
+- Contributed to projects developing data-driven solutions for optimizing rolling stock maintenance processes.
+- Established CI/CD pipeline for modeling activities and created Python packages for internal use.
+**Technologies:** Gitlab, Gitlab CI/CD, Sklearn, FastAPI (Python, SQL, API)
+
+## Prognolite AG, Data Scientist (10/2022 -- 03/2023)
+- Developed regression models predicting turnover using customer data and external factors like weather and holidays.
+- Created multi-output regression models to predict menu sales based on customer data and external factors.
+**Technologies:** Github, Tidymodels, Sklearn, Random Forest, XGBoost, Cubist (R, Python)
+
+## Crealogix AG, Data Scientist (09/2021 -- 09/2022)
+- Developed prospect and upsell models.
+- Extracted information from fact-sheets using customized OCR.
+- Created user journeys for chatbot solutions using IBM Watson and Spacy.
+**Technologies:** Sklearn, Spacy, Random Forest, XGBoost, RMarkdown (Python, SQL, R)
+
+## Bucher Leichtbau AG (01/2014 -- 09/2021)
+### Compliance Verification Engineer (10/2017 -- 09/2021)
+- Advised and supported all departments of Bucher Leichtbau AG in initial airworthiness certification matters.
+- Independently verified documentation for "minor" and "major changes" against certification requirements.
+**Technologies:** FEMAP, Mechanical Engineering
+
+### Certification Engineer (01/2014 -- 10/2017)
+- Conducted FEM calculations/verification and prepared internal and external test reports.
+- Communicated with customers, official bodies, and authorities.
+- Consulted development department for design optimization.
+**Technologies:** FEMAP, Mechanical Engineering
 
 # Education
-|      Period        | Title                                  |                       School                           |
-|:-------------------|----------------------------------------|--------------------------------------------------------|
-| 09/2020 -- 06/2023 | MSc in Data Science                    | Lucerne University of Applied Science (HSLU)           |
-| 09/2010 -- 09/2013 | BSc in Aviation ZFH                    | Zurich University of Applied Sciences (ZHAW)           |
-| 09/2020 -- 06/2023 | Federal vocational baccalaureate (BMS) | Berufsmaturitätsschule Zurich (BMZ)                    |
+- 09/2020 -- 06/2023: MSc in Data Science, Lucerne University of Applied Sciences (HSLU)
+- 09/2010 -- 09/2013: BSc in Aviation ZFH, Zurich University of Applied Sciences (ZHAW)
+- 08/2008 -- 08/2009: Federal vocational baccalaureate (BMS), Berufsmaturitätsschule Zurich (BMZ)
+- 08/2002 -- 08/2006: Apprenticeship electrician EFZ, Gemeindewerke Rüti (GWR)
 
-# Experience
+# Curated Collection of Commercial Projects
+| Topic                                 | Technology                                     |
+|---------------------------------------|-----------------------------------------------|
+| Prospect and up-sell model for deposit account | Python, XGBoost, Shap, Pandas, Sklearn |
+| Multioutput regression model for central kitchen | Python, Pandas, XGBoost, Sklearn, R, tidymodels |
+| Multioutput regression model for bakery | Python, Pandas, XGBoost, Sklearn, R, tidymodels |
 
-## Data Scientist [Prognolite AG](https://prognolite.com/site/de/) (10/2022 -- 03/2023)
-Develop and maintain machine learning models aimed at reducing food waste in the gastronomic 
-sector. Specifically, the job involves developing regression models to predict turnover and menu 
-sales using customer data and external data such as weather or public holidays.  
+# Curated Collection of Side Projects
+| Topic                                         | Technology                            |
+|-----------------------------------------------|--------------------------------------|
+| [Web-App for Project Management](https://github.com/bernardo-cruz/PM_app) | Python, Flask, SQLAlchemy, SQLite, JINJA2 |
+| [Energy Dashboard](https://github.com/bernardo-cruz/energy-data) | Python, AWS Lambda, S3, RDS, Streamlit |
+| [Electro Mobility in CH](https://github.com/bernardo-cruz/MongoDB_HSLU) | MongoDB, Python, Streamlit |
+| [Personal Blog (ongoing)](https://bernardo-cruz.github.io/blog/) | Python, Statmodels, Pandas, Quarto |
+| Streaming Wikipedia Changes | Apache Kafka, KSQL, Docker |
+| Scraping of Netdoktor for ETL of Master Thesis | BeautifulSoup, Selenium, Pandas, Spacy |
+| Scraping of Bettybossi for Nutrition Investigation | BeautifulSoup, Selenium, Pandas, Spacy |
 
-- Maintenance and further development of the restaurant sales forecasting process
-- Development of efficient optimization algorithms to improve forecast models based on various influencing factors.
-- Maintenance and further development of the data preparation process of POS system data.
-
-## Data Scientist [Crealogix AG](https://crealogix.com/en){.external target="_blank"} (09/2021 -- 09/2022)
-Principal duties in the function of Data Science Specialist were as follows:  
-
-- Advice and support of the department on new products related to data science and machine learning
-- Creation of prospect and upsell model
-- Extraction of information from fact sheet using a customised OCR
-- Support of development system architecture
-- Developing user journeys for chatbot dialogue flow
-- Development of chatbot solutions using IBM Watson and Spacy
-- Investigation of replacement of IBM Discovery by transformer-based structure
-- Use of company's version control system
-
-## Aeronautical Engineer [Bucher Leichtbau AG](https://bucher-group.com/){.external target="_blank"} (01/2014 -- 09/2021)
-Area of responsibility and competence included the following tasks:
-
-- Conducting FEM analyses
-- Consulting the development department (DOA) on all matters of airworthiness, certification, and design
-- Providing evidence that the design activities are in compliance with the applicable requirements
-- Writing certification documents such as Certification Plans, Load Reports, and Test Reports
-- Project planning and controlling for stress, flammability, and cabin safety (milestone/budget)
-- Assessing design changes and concessions, approving certification documents
-- Planning and conducting static certification tests
-- Communicating with authorities and OEMs
+# Individual Interests
+- Python Web Development
+- Reading Articles on "Medium"
+- Online Courses
+- Traveling
+- Surfing

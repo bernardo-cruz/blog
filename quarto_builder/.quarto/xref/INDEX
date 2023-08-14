@@ -6,7 +6,8 @@
     "index.html": "eba80e97"
   },
   "cv.qmd": {
-    "cv.html": "a200f3ef"
+    "cv.html": "a200f3ef",
+    "cv.tex": "63a2e5de"
   },
   "blog.qmd": {
     "blog.html": "ce47dc64"
@@ -28,5 +29,9 @@
   },
   "posts/pandas_method_chaning.ipynb": {
     "pandas_method_chaning.html": "347c08a5"
+  },
+  "posts/cv.qmd": {
+    "cv.html": "9001349c",
+    "cv.tex": "e0df9479"
   }
 }
