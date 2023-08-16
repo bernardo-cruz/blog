@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "FastAPI_DB",
+            "database": "${workspaceFolder:Blog}/quarto_builder/data/FastAPI.db"
+        }
+    ]
+}
