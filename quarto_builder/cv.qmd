@@ -17,7 +17,6 @@ categories:
 | **Place of Origin:**   | Wildberg ZH, Switzerland                                             |
 | **Place of Birth:**    | Rio de Janeiro, RJ, Brazil                                           |
 | **Address:**           | Frankentalerstrasse 24, 8049 Zürich, Switzerland                     |
-| **Phone:**             | [+41 76 412 53 89](tel:+41764125389)                                 |
 | **Email:**             | [berni.dacruz@gmail.com](mailto:berni.dacruz@gmail.com)              |
 | **GitHub:**            | [github.com/bernardo-cruz](https://bernardo-cruz.github.io/blog/)    |
 | **LinkedIn:**          | [linkedin.com/in/bernardo-freire](https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/) |
