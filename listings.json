@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/api.html",
       "/posts/pandas_method_chaning.html",
       "/posts/glm.html"
     ]

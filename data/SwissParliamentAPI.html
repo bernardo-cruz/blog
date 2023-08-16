@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bernardo Cruz – swissparliamentapi</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HVQQBHLK7D"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HVQQBHLK7D', { 'anonymize_ip': true});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Bernardo Cruz</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html">
+ <span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#usage-examples-of-swissparlpy" id="toc-usage-examples-of-swissparlpy" class="nav-link active" data-scroll-target="#usage-examples-of-swissparlpy">Usage examples of <code>swissparlpy</code></a>
+  <ul class="collapse">
+  <li><a href="#create-client-with-custom-session" id="toc-create-client-with-custom-session" class="nav-link" data-scroll-target="#create-client-with-custom-session">Create client with custom session</a></li>
+  <li><a href="#get-metadata-of-tables-and-variables" id="toc-get-metadata-of-tables-and-variables" class="nav-link" data-scroll-target="#get-metadata-of-tables-and-variables">Get metadata of tables and variables</a></li>
+  <li><a href="#load-data-in-pandas-dataframe" id="toc-load-data-in-pandas-dataframe" class="nav-link" data-scroll-target="#load-data-in-pandas-dataframe">Load data in <code>pandas</code> DataFrame</a></li>
+  <li><a href="#use-substring-operators-to-query-data-__startswith-__contains" id="toc-use-substring-operators-to-query-data-__startswith-__contains" class="nav-link" data-scroll-target="#use-substring-operators-to-query-data-__startswith-__contains">Use substring operators to query data (<code>__startswith</code>, <code>__contains</code>)</a></li>
+  <li><a href="#query-with-date-ranges" id="toc-query-with-date-ranges" class="nav-link" data-scroll-target="#query-with-date-ranges">Query with date ranges</a></li>
+  <li><a href="#download-large-query-in-batches" id="toc-download-large-query-in-batches" class="nav-link" data-scroll-target="#download-large-query-in-batches">Download large query in batches</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="usage-examples-of-swissparlpy" class="level1">
+<h1>Usage examples of <code>swissparlpy</code></h1>
+<div class="cell" data-execution_count="8">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> swissparlpy</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib3</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>urllib3.disable_warnings()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>__location__ <span class="op">=</span> os.path.realpath(os.getcwd())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="create-client-with-custom-session" class="level2">
+<h2 class="anchored" data-anchor-id="create-client-with-custom-session">Create client with custom session</h2>
+<p>Sometimes it’s necessary to tweak the requests Session (e.g.&nbsp;to provide authentication or disable SSL verification). For this purpose a custom session can be passed to <code>SwissParlClient</code>.</p>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> requests.Session()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>session.verify <span class="op">=</span> <span class="va">False</span> <span class="co"># disable SSL verification</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> swissparlpy.SwissParlClient(session<span class="op">=</span>session)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>For most common cases, this is not necessary and you don’t even have to create your own <code>SwissParlClient</code>.</p>
+<p>Simply use the shorthand methods to get the data:</p>
+<div class="cell" data-execution_count="11">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> swissparlpy <span class="im">as</span> spp</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> spp.get_tables()</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>glimpse_df <span class="op">=</span> (</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    pd.DataFrame(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        spp.get_glimpse(tables[<span class="dv">0</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>glimpse_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>Language</th>
+      <th>PartyNumber</th>
+      <th>PartyName</th>
+      <th>PersonNumber</th>
+      <th>PersonIdCode</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>GenderAsString</th>
+      <th>PartyFunction</th>
+      <th>Modified</th>
+      <th>PartyAbbreviation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>DE</td>
+      <td>12</td>
+      <td>Sozialdemokratische Partei der Schweiz</td>
+      <td>1</td>
+      <td>2200</td>
+      <td>Pierre</td>
+      <td>Aguet</td>
+      <td>m</td>
+      <td>Mitglied</td>
+      <td>2023-08-15 11:42:37.287000+00:00</td>
+      <td>SP</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>EN</td>
+      <td>12</td>
+      <td>Parti socialiste suisse</td>
+      <td>1</td>
+      <td>2200</td>
+      <td>Pierre</td>
+      <td>Aguet</td>
+      <td>m</td>
+      <td>Mitglied</td>
+      <td>2023-08-15 11:42:37.287000+00:00</td>
+      <td>PSS</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>FR</td>
+      <td>12</td>
+      <td>Parti socialiste suisse</td>
+      <td>1</td>
+      <td>2200</td>
+      <td>Pierre</td>
+      <td>Aguet</td>
+      <td>m</td>
+      <td>Mitglied</td>
+      <td>2023-08-15 11:42:37.287000+00:00</td>
+      <td>PSS</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>IT</td>
+      <td>12</td>
+      <td>Partito socialista svizzero</td>
+      <td>1</td>
+      <td>2200</td>
+      <td>Pierre</td>
+      <td>Aguet</td>
+      <td>m</td>
+      <td>Mitglied</td>
+      <td>2023-08-15 11:42:37.287000+00:00</td>
+      <td>PSS</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>RM</td>
+      <td>12</td>
+      <td>Sozialdemokratische Partei der Schweiz</td>
+      <td>1</td>
+      <td>2200</td>
+      <td>Pierre</td>
+      <td>Aguet</td>
+      <td>m</td>
+      <td>Mitglied</td>
+      <td>2023-08-15 11:42:37.287000+00:00</td>
+      <td>SP</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="get-metadata-of-tables-and-variables" class="level2">
+<h2 class="anchored" data-anchor-id="get-metadata-of-tables-and-variables">Get metadata of tables and variables</h2>
+<div class="cell" data-execution_count="12">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>client.get_tables() <span class="co"># get list of all tables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>['MemberParty',
+ 'Party',
+ 'Person',
+ 'PersonAddress',
+ 'PersonCommunication',
+ 'PersonInterest',
+ 'Session',
+ 'Committee',
+ 'MemberCommittee',
+ 'Canton',
+ 'Council',
+ 'Objective',
+ 'Resolution',
+ 'Publication',
+ 'External',
+ 'Meeting',
+ 'Subject',
+ 'Citizenship',
+ 'Preconsultation',
+ 'Bill',
+ 'BillLink',
+ 'BillStatus',
+ 'Business',
+ 'BusinessResponsibility',
+ 'BusinessRole',
+ 'LegislativePeriod',
+ 'MemberCouncil',
+ 'MemberParlGroup',
+ 'ParlGroup',
+ 'PersonOccupation',
+ 'RelatedBusiness',
+ 'BusinessStatus',
+ 'BusinessType',
+ 'MemberCouncilHistory',
+ 'MemberCommitteeHistory',
+ 'Vote',
+ 'Voting',
+ 'SubjectBusiness',
+ 'Transcript',
+ 'ParlGroupHistory',
+ 'Tags',
+ 'SeatOrganisationNr',
+ 'PersonEmployee',
+ 'Rapporteur',
+ 'Mutation']</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>client.get_variables(<span class="st">'Party'</span>) <span class="co"># get list of variables of a table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>['ID',
+ 'Language',
+ 'PartyNumber',
+ 'PartyName',
+ 'StartDate',
+ 'EndDate',
+ 'Modified',
+ 'PartyAbbreviation']</code></pre>
+</div>
+</div>
+</section>
+<section id="load-data-in-pandas-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="load-data-in-pandas-dataframe">Load data in <code>pandas</code> DataFrame</h2>
+<div class="cell" data-execution_count="14">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>parties <span class="op">=</span> client.get_data(<span class="st">'Party'</span>, Language<span class="op">=</span><span class="st">'DE'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>parties_df <span class="op">=</span> pd.DataFrame(parties)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>parties_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="14">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>Language</th>
+      <th>PartyNumber</th>
+      <th>PartyName</th>
+      <th>StartDate</th>
+      <th>EndDate</th>
+      <th>Modified</th>
+      <th>PartyAbbreviation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>12</td>
+      <td>DE</td>
+      <td>12</td>
+      <td>Sozialdemokratische Partei der Schweiz</td>
+      <td>1888-01-01 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2010-12-26 13:05:26.430000+00:00</td>
+      <td>SP</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13</td>
+      <td>DE</td>
+      <td>13</td>
+      <td>Schweizerische Volkspartei</td>
+      <td>1848-01-01 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2010-12-26 13:05:26.430000+00:00</td>
+      <td>SVP</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14</td>
+      <td>DE</td>
+      <td>14</td>
+      <td>Christlichdemokratische Volkspartei der Schweiz</td>
+      <td>1848-01-01 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2010-12-26 13:05:26.430000+00:00</td>
+      <td>CVP</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>15</td>
+      <td>DE</td>
+      <td>15</td>
+      <td>FDP.Die Liberalen</td>
+      <td>1848-01-01 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2010-12-26 13:05:26.430000+00:00</td>
+      <td>FDP-Liberale</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16</td>
+      <td>DE</td>
+      <td>16</td>
+      <td>Liberal-Demokratische Partei</td>
+      <td>1848-01-01 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2010-12-26 13:05:26.430000+00:00</td>
+      <td>LDP</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>1582</td>
+      <td>DE</td>
+      <td>1582</td>
+      <td>Grüne (Basels starke Alternative)</td>
+      <td>1995-01-01 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2015-12-03 08:48:38.250000+00:00</td>
+      <td>BastA</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>1583</td>
+      <td>DE</td>
+      <td>1583</td>
+      <td>Christlichdemokratische Volkspartei Oberwallis</td>
+      <td>2019-03-04 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2019-03-07 17:24:15.013000+00:00</td>
+      <td>CVPO</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>1584</td>
+      <td>DE</td>
+      <td>1584</td>
+      <td>Alternative-die Grünen Kanton Zug</td>
+      <td>2019-11-08 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2019-11-08 17:28:43.947000+00:00</td>
+      <td>Al</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>1585</td>
+      <td>DE</td>
+      <td>1585</td>
+      <td>Ensemble à Gauche</td>
+      <td>2019-11-08 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2019-11-08 17:41:39.513000+00:00</td>
+      <td>EàG</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1586</td>
+      <td>DE</td>
+      <td>1586</td>
+      <td>Die Mitte</td>
+      <td>2021-02-02 00:00:00+00:00</td>
+      <td>1753-01-01 00:00:00+00:00</td>
+      <td>2021-08-12 07:59:22.627000+00:00</td>
+      <td>M-E</td>
+    </tr>
+  </tbody>
+</table>
+<p>83 rows × 8 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="use-substring-operators-to-query-data-__startswith-__contains" class="level2">
+<h2 class="anchored" data-anchor-id="use-substring-operators-to-query-data-__startswith-__contains">Use substring operators to query data (<code>__startswith</code>, <code>__contains</code>)</h2>
+<div class="cell" data-execution_count="15">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>persons <span class="op">=</span> client.get_data(<span class="st">"Person"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, LastName__startswith<span class="op">=</span><span class="st">'Bal'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>persons.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>12</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>person_df <span class="op">=</span> pd.DataFrame(persons)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>person_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="20">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>Language</th>
+      <th>PersonNumber</th>
+      <th>PersonIdCode</th>
+      <th>Title</th>
+      <th>TitleText</th>
+      <th>LastName</th>
+      <th>GenderAsString</th>
+      <th>DateOfBirth</th>
+      <th>DateOfDeath</th>
+      <th>...</th>
+      <th>MaritalStatusText</th>
+      <th>PlaceOfBirthCity</th>
+      <th>PlaceOfBirthCanton</th>
+      <th>Modified</th>
+      <th>FirstName</th>
+      <th>OfficialName</th>
+      <th>MilitaryRank</th>
+      <th>MilitaryRankText</th>
+      <th>NativeLanguage</th>
+      <th>NumberOfChildren</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1442</td>
+      <td>DE</td>
+      <td>1442</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Baldinger</td>
+      <td>m</td>
+      <td>1838-06-26 00:00:00+00:00</td>
+      <td>1907-01-05 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:45:47.190000+00:00</td>
+      <td>Emil A.</td>
+      <td>Emil A. Baldinger</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1443</td>
+      <td>DE</td>
+      <td>1443</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Baldinger</td>
+      <td>m</td>
+      <td>1800-11-29 00:00:00+00:00</td>
+      <td>1881-01-26 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 12:07:54.837000+00:00</td>
+      <td>Karl L.</td>
+      <td>Karl L. Baldinger</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1444</td>
+      <td>DE</td>
+      <td>1444</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Baldinger</td>
+      <td>m</td>
+      <td>1810-11-30 00:00:00+00:00</td>
+      <td>1881-07-13 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:52:09.533000+00:00</td>
+      <td>Wilhelm K.</td>
+      <td>Wilhelm K. Baldinger</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1445</td>
+      <td>DE</td>
+      <td>1445</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Balestra</td>
+      <td>m</td>
+      <td>1873-07-17 00:00:00+00:00</td>
+      <td>1970-03-30 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 12:10:58.890000+00:00</td>
+      <td>Luigi A.</td>
+      <td>Luigi A. Balestra</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1446</td>
+      <td>DE</td>
+      <td>1446</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Balli</td>
+      <td>m</td>
+      <td>1852-09-20 00:00:00+00:00</td>
+      <td>1924-12-21 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:42:29.907000+00:00</td>
+      <td>Francesco</td>
+      <td>Francesco Balli</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1447</td>
+      <td>DE</td>
+      <td>1447</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Balli</td>
+      <td>m</td>
+      <td>1796-10-09 00:00:00+00:00</td>
+      <td>1863-09-08 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:14:45.110000+00:00</td>
+      <td>Valentino Alessandro</td>
+      <td>Valentino Alessandro Balli</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1448</td>
+      <td>DE</td>
+      <td>1448</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Ballmoos</td>
+      <td>m</td>
+      <td>1911-07-07 00:00:00+00:00</td>
+      <td>1993-07-20 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:27:08.147000+00:00</td>
+      <td>Walter</td>
+      <td>Walter Ballmoos</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1449</td>
+      <td>DE</td>
+      <td>1449</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Bally</td>
+      <td>m</td>
+      <td>1821-10-24 00:00:00+00:00</td>
+      <td>1899-08-05 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:43:44.773000+00:00</td>
+      <td>Carl Franz</td>
+      <td>Carl Franz Bally</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1450</td>
+      <td>DE</td>
+      <td>1450</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Bally</td>
+      <td>m</td>
+      <td>1847-08-11 00:00:00+00:00</td>
+      <td>1926-07-24 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:40:52.433000+00:00</td>
+      <td>Eduard</td>
+      <td>Eduard Bally</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1451</td>
+      <td>DE</td>
+      <td>1451</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Bally</td>
+      <td>m</td>
+      <td>1876-12-13 00:00:00+00:00</td>
+      <td>1965-08-02 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:51:15.100000+00:00</td>
+      <td>Iwan</td>
+      <td>Iwan Bally</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1452</td>
+      <td>DE</td>
+      <td>1452</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Balmer</td>
+      <td>m</td>
+      <td>1859-04-25 00:00:00+00:00</td>
+      <td>1936-03-13 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 12:00:11.637000+00:00</td>
+      <td>Josef Anton</td>
+      <td>Josef Anton Balmer</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1453</td>
+      <td>DE</td>
+      <td>1453</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>Balmer</td>
+      <td>m</td>
+      <td>1872-10-01 00:00:00+00:00</td>
+      <td>1951-07-20 00:00:00+00:00</td>
+      <td>...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2023-08-15 11:26:07.167000+00:00</td>
+      <td>Peter</td>
+      <td>Peter Balmer</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>12 rows × 21 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>co2_business <span class="op">=</span> client.get_data(<span class="st">"Business"</span>, Title__contains<span class="op">=</span><span class="st">"CO2"</span>, Language <span class="op">=</span> <span class="st">"DE"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>co2_business.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>294</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>co2_df <span class="op">=</span> pd.DataFrame(co2_business)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>co2_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="18">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>Language</th>
+      <th>BusinessShortNumber</th>
+      <th>BusinessType</th>
+      <th>BusinessTypeName</th>
+      <th>BusinessTypeAbbreviation</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>InitialSituation</th>
+      <th>Proceedings</th>
+      <th>...</th>
+      <th>SubmissionCouncilAbbreviation</th>
+      <th>SubmissionSession</th>
+      <th>SubmissionLegislativePeriod</th>
+      <th>FirstCouncil1</th>
+      <th>FirstCouncil1Name</th>
+      <th>FirstCouncil1Abbreviation</th>
+      <th>FirstCouncil2</th>
+      <th>FirstCouncil2Name</th>
+      <th>FirstCouncil2Abbreviation</th>
+      <th>TagNames</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>19923245</td>
+      <td>DE</td>
+      <td>92.3245</td>
+      <td>5</td>
+      <td>Motion</td>
+      <td>Mo.</td>
+      <td>Senkung der CO2-Emissionen</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td>NR</td>
+      <td>4404</td>
+      <td>44</td>
+      <td>1</td>
+      <td>Nationalrat</td>
+      <td>NR</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>19952011</td>
+      <td>DE</td>
+      <td>95.2011</td>
+      <td>10</td>
+      <td>Petition</td>
+      <td>Pet.</td>
+      <td>CO2 Lenkungsabgaben</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td></td>
+      <td>4418</td>
+      <td>44</td>
+      <td>2</td>
+      <td>Ständerat</td>
+      <td>SR</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>19953546</td>
+      <td>DE</td>
+      <td>95.3546</td>
+      <td>5</td>
+      <td>Motion</td>
+      <td>Mo.</td>
+      <td>Reduktion des CO2-Ausstosses und Kernenergie</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td>NR</td>
+      <td>4420</td>
+      <td>44</td>
+      <td>1</td>
+      <td>Nationalrat</td>
+      <td>NR</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>19970030</td>
+      <td>DE</td>
+      <td>97.030</td>
+      <td>1</td>
+      <td>Geschäft des Bundesrates</td>
+      <td>BRG</td>
+      <td>Reduktion der CO2-Emissionen. Bundesgesetz</td>
+      <td>Botschaft vom 17. März 1997 zum Bundesgesetz ü...</td>
+      <td>&lt;p&gt;Der Klimaschutz gehört zu den wichtigsten g...</td>
+      <td>&lt;p&gt; Der &lt;b&gt;Ständerat &lt;/b&gt;verabschiedete das CO...</td>
+      <td>...</td>
+      <td></td>
+      <td>4506</td>
+      <td>45</td>
+      <td>2</td>
+      <td>Ständerat</td>
+      <td>SR</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>20005227</td>
+      <td>DE</td>
+      <td>00.5227</td>
+      <td>14</td>
+      <td>Fragestunde. Frage</td>
+      <td>Fra.</td>
+      <td>Wer rechnet die CO2-Emissionen des Luftverkehr...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td>NR</td>
+      <td>4605</td>
+      <td>46</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>Verkehr|Umwelt</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>20233569</td>
+      <td>DE</td>
+      <td>23.3569</td>
+      <td>8</td>
+      <td>Interpellation</td>
+      <td>Ip.</td>
+      <td>Wirksamkeit der CO2-Sanktionen für neue Person...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td>NR</td>
+      <td>5120</td>
+      <td>51</td>
+      <td>1</td>
+      <td>Nationalrat</td>
+      <td>NR</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>Staatspolitik|Verkehr|Umwelt</td>
+    </tr>
+    <tr>
+      <th>290</th>
+      <td>20233940</td>
+      <td>DE</td>
+      <td>23.3940</td>
+      <td>6</td>
+      <td>Postulat</td>
+      <td>Po.</td>
+      <td>Alternativen zur CO2-Betäubung. Auftrag des BL...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td>NR</td>
+      <td>5121</td>
+      <td>51</td>
+      <td>1</td>
+      <td>Nationalrat</td>
+      <td>NR</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>Umwelt|Landwirtschaft</td>
+    </tr>
+    <tr>
+      <th>291</th>
+      <td>20237089</td>
+      <td>DE</td>
+      <td>23.7089</td>
+      <td>14</td>
+      <td>Fragestunde. Frage</td>
+      <td>Fra.</td>
+      <td>CO2-Preis zur Lenkung?</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td>NR</td>
+      <td>5118</td>
+      <td>51</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>Umwelt|Energie|Steuer</td>
+    </tr>
+    <tr>
+      <th>292</th>
+      <td>20237091</td>
+      <td>DE</td>
+      <td>23.7091</td>
+      <td>14</td>
+      <td>Fragestunde. Frage</td>
+      <td>Fra.</td>
+      <td>Stellungnahme des Bundesrats zur Medienmitteil...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td>NR</td>
+      <td>5118</td>
+      <td>51</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>Finanzwesen|Umwelt|Energie</td>
+    </tr>
+    <tr>
+      <th>293</th>
+      <td>20237413</td>
+      <td>DE</td>
+      <td>23.7413</td>
+      <td>14</td>
+      <td>Fragestunde. Frage</td>
+      <td>Fra.</td>
+      <td>Auswirkung geänderter rechtlicher Vorgaben zu ...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>...</td>
+      <td>NR</td>
+      <td>5121</td>
+      <td>51</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>Verkehr|Umwelt|Energie</td>
+    </tr>
+  </tbody>
+</table>
+<p>294 rows × 43 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="query-with-date-ranges" class="level2">
+<h2 class="anchored" data-anchor-id="query-with-date-ranges">Query with date ranges</h2>
+<div class="cell" data-execution_count="21">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>business_oct19 <span class="op">=</span> client.get_data(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Business"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    Language<span class="op">=</span><span class="st">"DE"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    SubmissionDate__gte<span class="op">=</span>datetime.fromisoformat(<span class="st">'2019-10-01'</span>),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    SubmissionDate__lt<span class="op">=</span>datetime.fromisoformat(<span class="st">'2019-10-31'</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>business_oct19.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>PyODataModelError: Edm.DateTime accepts only UTC</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>busi_oct19 <span class="op">=</span> pd.DataFrame(business_oct19)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>busi_oct19 <span class="op">=</span> busi_oct19.sort_values(by<span class="op">=</span>[<span class="st">'SubmissionDate'</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>busi_oct19[[<span class="st">'SubmissionDate'</span>, <span class="st">'Title'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'business_oct19' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="download-large-query-in-batches" class="level2">
+<h2 class="anchored" data-anchor-id="download-large-query-in-batches">Download large query in batches</h2>
+<p>This script shows how to download votes from the <code>Voting</code> table by iterating over each session in a legislative period. The chunks are then saved in a directory as pickled DataFrames.</p>
+<p>Later on, those chunks can easily be combined together as a single DataFrame containing all the votes of a legislative period.</p>
+<div class="cell" data-execution_count="23">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_votes_of_session(<span class="bu">id</span>):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(path):</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        os.mkdir(path)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    pickle_path <span class="op">=</span> os.path.join(path, <span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.pks'</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(pickle_path):</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"File </span><span class="sc">{</span>pickle_path<span class="sc">}</span><span class="ss"> already exists, skipping"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Loading votes of session </span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">..."</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> client.get_data(<span class="st">"Voting"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, IdSession<span class="op">=</span><span class="bu">id</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>data<span class="sc">.</span>count<span class="sc">}</span><span class="ss"> rows loaded."</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    df.to_pickle(pickle_path)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Saved pickle at </span><span class="sc">{</span>pickle_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">""</span>)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="co"># get all session of the 50 legislative period</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>sessions50 <span class="op">=</span> client.get_data(<span class="st">"Session"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, LegislativePeriodNumber<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>sessions50.count</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> session <span class="kw">in</span> sessions50:</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Loading session </span><span class="sc">{</span>session[<span class="st">'ID'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    save_votes_of_session(session[<span class="st">'ID'</span>])</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine to one dataframe</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>df_voting50 <span class="op">=</span> pd.concat([pd.read_pickle(os.path.join(path, x)) <span class="cf">for</span> x <span class="kw">in</span> os.listdir(path)])</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>df_voting50</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Loading session 5001
+Loading votes of session 5001...</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_5005 <span class="op">=</span> pd.read_pickle(os.path.join(__location__, <span class="st">"voting50"</span>, <span class="st">'5005.pks'</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df_5005</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine to one dataframe</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>df_voting50 <span class="op">=</span> pd.concat([pd.read_pickle(os.path.join(path, x)) <span class="cf">for</span> x <span class="kw">in</span> os.listdir(path)])</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>df_voting50</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -10,6 +10,9 @@ about:
     - icon: github
       text: Github
       href: https://github.com/bernardo-cruz
+    - icon: Email
+      text: Contact me!
+      href: mailto:berni.dacruz@gmail.com
 ---
 
 <!-- Google tag (gtag.js) -->
@@ -23,22 +26,24 @@ about:
 </script>
 
 ## 👋 Hi there 
-I am Bernardo, an aeronautical engineer with a BSc in Aeronautical Engineering and a MSc in Data Science. My passion lies in both coding and engineering. I am from Zurich 🇨🇭 and have over seven years of experience working as an aeronautical engineer and about three years as a data scientist.
 
-## 👨🏽‍💻 Experience  
-I am presently employed as a Data Scientist at [Stadler Rail AG](https://www.stadlerrail.com/de/). In this capacity, I am tasked with developing machine learning models and executing data science projects in the realm of predictive maintenance. I am a member of a nascent team within `Stadler Service AG` devoted to devising data science solutions for train and component maintenance. To date, we have employed tools such as Python, Gitlab (Version Control and CI/CD), Python Packages, statistical models like Gaussian Mixture Models, and a lot of other cool stuff 🚂🚂🚂.
+I am Bernardo, an aeronautical engineer with a BSc in Aeronautical Engineering and a MSc in Data Science. My passion lies in both coding and engineering. I am from Zurich 🇨🇭 and have over seven years of experience working as an aeronautical engineer and about three years as a data scientist. 
 
-Prior to joining Stadler Rail, I held the position of Data Scientist at [Prognolite AG](https://www.prognolite.com/). In this role, my primary focus was on crafting regression models to predict turnover and menu sales 🍔🍕🍝. This involved analyzing customer data in conjunction with external factors such as weather and public holidays. Our team harnessed techniques like Multi-Output Regression, Quarto, R, and Python. We even customized API calls to efficiently extract data from the database. My time at Prognolite, an early-stage startup, was marked by substantial organizational changes spurred by dynamic growth. These shifts necessitated adjustments in team composition and operations, leaning more towards backend functions than data science 😐.
+I would like to invite you go through my [CV](cv.qmd) and [blog](https://bernardo-cruz.github.io/blog/) to learn more about me 🤓. Please don't hesitate to contact me if you have any questions or would like to collaborate on a project 🤝.
 
-Preceding my tenure at Prognolite, I honed my expertise at [Crealogix AG](https://crealogix.com/en). During this period, I played a pivotal role in guiding and supporting the department in the domains of data science and machine learning for the banking sector 💰📈📉. My contributions encompassed creating prospect and upsell models, extracting insights from fact-sheets using customized OCR tools, and designing user journeys for chatbot dialogues. At Crealogix, the entire team underwent a restructuring process, culminating in workforce reductions due to the company's financial challenges and strategic realignments 📉📉.
+## 👨🏽‍💻 Experience
+Explore my journey through various industries and roles in the world of data science and beyond! From predictive maintenance in the railway sector 🚂🚂🚂, to crafting models for turnover prediction in the food industry 🍔🍕🍝 and upsell models banking 💵💰💳, my experiences have been diverse and impactful. Delve into my work with Gaussian Mixture Models, Multi-Output Regression, OCR tools, and more. For a detailed account of my professional voyage, head to Section [CV](cv.qmd).
 
-Before joining Crealogix, my professional journey led me to Bucher Leichtbau AG 🛫🛬. In this role, I provided invaluable advice and support to all departments, particularly concerning matters related to initial airworthiness certification. My expertise spanned interpreting certification specifications, meticulously reviewing documentation for "minor" and "major changes," and maintaining effective communication channels with customers, official bodies, and authorities. Additionally, I offered consultation services to the development department, contributing to the optimization of design strategies. I left Bucher Leichtbau AG to pursue a career in data science, a field that has always fascinated me 🤓 and after a Hackathon at HSLU I was offered a position at Crealogix AG.
+<!-- I currently work as a Data Scientist at [Stadler Rail AG](https://www.stadlerrail.com/de/), where I focus on developing machine learning models and executing data science projects for predictive maintenance. I'm part of the emerging team at `Stadler Service AG` dedicated to creating data science solutions for train and component upkeep. Our toolbox includes Python, Gitlab, Python Packages, Gaussian Mixture Models, and more 🚂🚂🚂.
 
-My inaugural steps in the professional realm date back to 2002 when I commenced an apprenticeship as an electrician at [Gemeindewerke Rüti ZH](https://www.gwrueti.ch/). In this capacity, I was entrusted with the maintenance and construction of the electrical infrastructure 🔌💡.
+Previously, I was a Data Scientist at [Prognolite AG](https://www.prognolite.com/), specializing in crafting regression models for turnover and menu sales prediction 🍔🍕🍝. We used techniques like Multi-Output Regression, Quarto, R, and Python, even customizing API calls for efficient data extraction. My time there saw significant organizational changes due to dynamic growth, shifting the focus more towards backend functions.
 
-## 🌐 Socials:
+Before that, I contributed to data science and machine learning in the banking sector at [Crealogix AG](https://crealogix.com/en). I created prospect and upsell models, extracted insights from fact-sheets using customized OCR tools, and designed user journeys for chatbots. The team underwent restructuring due to financial challenges and realignments 📉📉.
 
-[![](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/)
+Earlier, I advised departments at Bucher Leichtbau AG 🛫🛬 on matters like airworthiness certification. My role included interpreting certification specs, reviewing documentation, and maintaining communication with stakeholders. I also provided consultation to the development department. Before entering data science, I began as an electrician apprentice at [Gemeindewerke Rüti ZH](https://www.gwrueti.ch/), responsible for electrical infrastructure 🔌💡. -->
+
+## 🏝️ 🏙️ 💻 📺 Hobbies
+I love to travel 🛩️ 🚂 ⛰️ 🏝️ 🏙️  to code  💻  and binge watch  📺  in my free time. In particular I discovered a passion for web development and this blog 🤓😎.
 
 ## 💻 Tech Stack:
 
@@ -80,4 +85,10 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-[![](https://visitcount.itsvg.in/api?id=Blog&label=Profile%20Views&color=0&icon=5&pretty=false)](https://visitcount.itsvg.in)
+<!-- [![](https://visitcount.itsvg.in/api?id=Blog&label=Profile%20Views&color=0&icon=5&pretty=false)](https://visitcount.itsvg.in) -->
+
+## 🧐 Wisdom of the Day
+![](quarto_builder/imgs/wisdom.png)
+
+see you soon
+![](https://imgur.com/LnmMX1F)

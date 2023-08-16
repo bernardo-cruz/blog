@@ -22,7 +22,7 @@ categories:
 | **GitHub:**            | [github.com/bernardo-cruz](https://bernardo-cruz.github.io/blog/)    |
 | **LinkedIn:**          | [linkedin.com/in/bernardo-freire](https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/) |
 
-# Personal Profile
+# Personal Profile {#sec-PersonalProfile}
 I am a former aeronautical engineer with 3 years of experience as a data scientist and a recent graduate of MSc in Data Science (summer 2023). During my 7 years as an aeronautical engineer, I managed complex interdisciplinary projects in aircraft structure development and certification. As a data scientist, I developed and maintained machine learning models, demonstrating a passion for learning and innovation.
 
 # Career
@@ -78,10 +78,3 @@ I am a former aeronautical engineer with 3 years of experience as a data scienti
 | Streaming Wikipedia Changes | Apache Kafka, KSQL, Docker |
 | Scraping of Netdoktor for ETL of Master Thesis | BeautifulSoup, Selenium, Pandas, Spacy |
 | Scraping of Bettybossi for Nutrition Investigation | BeautifulSoup, Selenium, Pandas, Spacy |
-
-# Individual Interests
-- Python Web Development
-- Reading Articles on "Medium"
-- Online Courses
-- Traveling
-- Surfing

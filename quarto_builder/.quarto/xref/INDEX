@@ -33,5 +33,11 @@
   "posts/cv.qmd": {
     "cv.html": "9001349c",
     "cv.tex": "e0df9479"
+  },
+  "posts/api.ipynb": {
+    "api.html": "d358f7d0"
+  },
+  "data/SwissParliamentAPI.ipynb": {
+    "SwissParliamentAPI.html": "d20fb69c"
   }
 }
