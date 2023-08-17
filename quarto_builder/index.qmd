@@ -3,6 +3,7 @@ title: "Bernardo Freire Barboza da Cruz"
 about:
   template: marquee
   image: imgs/profile.jpeg
+  image-shape: round
   links:
     - icon: linkedin
       text: Linkedin

@@ -2,7 +2,6 @@
 title: "My Blog"
 listing:
   contents: posts
-  sort: "date"
   type: default
   categories: true
 ---

@@ -2,8 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/pandas_method_chaning.html",
-      "/posts/glm.html"
+      "/posts/glm.html",
+      "/posts/pandas_method_chaning.html"
     ]
   }
 ]

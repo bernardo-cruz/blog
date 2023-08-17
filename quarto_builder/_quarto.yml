@@ -4,7 +4,10 @@ project:
 
 website:
   title: "Bernardo Cruz"
-  google-analytics: "G-HVQQBHLK7D"
+  cookie-consent:
+    type: express
+    style: headline
+    palette: dark
   navbar:
     left:
       - href: index.qmd
@@ -20,8 +23,8 @@ format:
     code-fold: true
     code-summary: "Show the code"
     theme: 
-      light: flatly
-      dark: darkly
+      light: sandstone
+      dark: cyborg
     css: styles.css
     toc: true
     link-external-icon: true

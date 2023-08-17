@@ -1,12 +1,13 @@
 ---
 title: Curriculum Vitae
-author: Bernardo Freire
-date: '2023-08-14'
 toc: true
-categories:
-  - CV
-  - Personal Information
+body-footer: true
+about:
+  template: solana
 ---
+
+I am a former aeronautical engineer with 3 years of experience as a data scientist and a recent graduate of MSc in Data Science (summer 2023). During my 7 years as an aeronautical engineer, I managed complex interdisciplinary projects in aircraft structure development and certification. As a data scientist, I developed and maintained machine learning models, demonstrating a passion for learning and innovation.
+
 # Personal Information
 |                        |                                                                      |
 |:-----------------------|----------------------------------------------------------------------|
@@ -21,8 +22,8 @@ categories:
 | **GitHub:**            | [github.com/bernardo-cruz](https://bernardo-cruz.github.io/blog/)    |
 | **LinkedIn:**          | [linkedin.com/in/bernardo-freire](https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/) |
 
-# Personal Profile {#sec-PersonalProfile}
-I am a former aeronautical engineer with 3 years of experience as a data scientist and a recent graduate of MSc in Data Science (summer 2023). During my 7 years as an aeronautical engineer, I managed complex interdisciplinary projects in aircraft structure development and certification. As a data scientist, I developed and maintained machine learning models, demonstrating a passion for learning and innovation.
+<!-- # Personal Profile {#sec-PersonalProfile} -->
+<!-- I am a former aeronautical engineer with 3 years of experience as a data scientist and a recent graduate of MSc in Data Science (summer 2023). During my 7 years as an aeronautical engineer, I managed complex interdisciplinary projects in aircraft structure development and certification. As a data scientist, I developed and maintained machine learning models, demonstrating a passion for learning and innovation. -->
 
 # Career
 ## Stadler Rail AG, Data Scientist (06/2023 -- present)
