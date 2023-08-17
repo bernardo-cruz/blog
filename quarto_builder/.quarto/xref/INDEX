@@ -25,7 +25,8 @@
     "automobile.html": "0b22e65e"
   },
   "posts/glm.ipynb": {
-    "glm.html": "8e79304d"
+    "glm.html": "8e79304d",
+    "glm.out.ipynb": "333a810a"
   },
   "posts/pandas_method_chaning.ipynb": {
     "pandas_method_chaning.html": "347c08a5"
