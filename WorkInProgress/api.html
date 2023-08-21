@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernardo Freire">
-<meta name="dcterms.date" content="2023-08-13">
+<meta name="dcterms.date" content="2023-08-19">
 
 <title>Bernardo Cruz - FastAPI</title>
 <style>
@@ -143,9 +143,6 @@ cookieconsent.run({
 });
 </script> 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -197,11 +194,12 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
+  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
   <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#database" id="toc-database" class="nav-link" data-scroll-target="#database">Database</a></li>
+  <li><a href="#fastapi-setup" id="toc-fastapi-setup" class="nav-link" data-scroll-target="#fastapi-setup">FastAPI setup</a></li>
   </ul>
 </nav>
     </div>
@@ -234,7 +232,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 13, 2023</p>
+      <p class="date">August 19, 2023</p>
     </div>
   </div>
   
@@ -244,216 +242,91 @@ cookieconsent.run({
 
 </header>
 
-<div id="code" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">## Data manipulation imports</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">## Display imports</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">## statmodels import</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> patsy <span class="im">import</span> dmatrices</span>
-<span id="cb1-13"><a href="#cb1-13"></a></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co">## Plot imports</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-16"><a href="#cb1-16"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">5</span><span class="op">/</span><span class="fl">2.5</span>)</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-18"><a href="#cb1-18"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
-<span id="cb1-19"><a href="#cb1-19"></a>sns.set_theme()</span>
-<span id="cb1-20"><a href="#cb1-20"></a>sns.set_context(</span>
-<span id="cb1-21"><a href="#cb1-21"></a>    <span class="st">"paper"</span>, </span>
-<span id="cb1-22"><a href="#cb1-22"></a>    rc<span class="op">=</span>{</span>
-<span id="cb1-23"><a href="#cb1-23"></a>        <span class="st">"figsize"</span>       :   plt.rcParams[<span class="st">'figure.figsize'</span>],</span>
-<span id="cb1-24"><a href="#cb1-24"></a>        <span class="st">'font_scale'</span>    :   <span class="fl">1.25</span>,</span>
-<span id="cb1-25"><a href="#cb1-25"></a>    }</span>
-<span id="cb1-26"><a href="#cb1-26"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="tldr" class="level1">
+<h1>TL;DR</h1>
+<p>We build a custom API service using public available data from the canton of Zurich in Switzerland. We share this data using FastAPI from a local database of type SQLite. We use the libraries <code>pandas</code>, <code>fastapi</code>, type-annotation, <code>sqlalchemy</code> and <code>seaborn</code> for plots.</p>
+</section>
 <section id="motivation" class="level1">
 <h1>Motivation</h1>
-<p>Did you ever dream to build your own fast API? Well, as the title of this post suggests, <a href="https://fastapi.tiangolo.com/">FastAPI</a> is really fast and easy to use, even the documentation is very well written. FastAPI is a modern, high-performance web framework for building APIs with Python. It blends the ease of use of Python with exceptional speed, making it an ideal choice for developing robust and efficient web applications. Leveraging asynchronous programming, FastAPI offers lightning-fast execution, enabling real-time applications and high-traffic services. Its automatic validation, interactive documentation, and type hints enhance developer productivity and code reliability. Whether you’re crafting a simple REST API or a complex microservices architecture, FastAPI streamlines development, promotes clean code, and optimizes performance, making it the go-to framework for those seeking both speed and simplicity in their Python web projects.</p>
-</section>
-<section id="data" class="level1">
-<h1>Data</h1>
-<p>I have alway being facinated how the Switzerland works when it come to taxation individuals and companies. Switzerland’s unique tax system is characterized by its federal structure, granting significant fiscal autonomy to its municipalities and cantons. The country’s taxation policies are designed to maintain a balanced distribution of responsibilities and resources between the federal government, cantonal governments, and local municipalities. This results in a decentralized tax framework where both cantons and municipalities possess substantial authority over taxation, allowing them to tailor policies according to their specific needs and preferences. This system encourages competition among cantons and municipalities while also fostering a sense of local ownership and control over financial matters. As a result, Switzerland’s tax landscape is complex, diverse, and reflective of the nation’s commitment to decentralized governance.</p>
-<p>We are going to work in this post with data from the nicest and best canton of Switzerland called Zurich :)</p>
-<div class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># helper function for reading datasets with proper separator</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> get_dataset(url):</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    <span class="cf">if</span> url[<span class="op">-</span><span class="dv">3</span>:] <span class="op">!=</span> <span class="st">"csv"</span>:</span>
-<span id="cb2-4"><a href="#cb2-4"></a>        <span class="bu">print</span>(<span class="st">"The data set URL has no proper 'csv' extension. Reading the dataset might not have worked as expected.</span><span class="ch">\n</span><span class="st">Please check the dataset link and adjust pandas' read_csv() parameters accordingly."</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    data <span class="op">=</span> pd.read_csv(</span>
-<span id="cb2-6"><a href="#cb2-6"></a>        url, </span>
-<span id="cb2-7"><a href="#cb2-7"></a>        sep <span class="op">=</span> <span class="st">","</span>, </span>
-<span id="cb2-8"><a href="#cb2-8"></a>        on_bad_lines <span class="op">=</span> <span class="st">'warn'</span>, </span>
-<span id="cb2-9"><a href="#cb2-9"></a>        encoding_errors <span class="op">=</span> <span class="st">'ignore'</span>, </span>
-<span id="cb2-10"><a href="#cb2-10"></a>        low_memory <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    )</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    <span class="co"># if dataframe only has one column or less the data is not comma separated, use ";" instead</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>    <span class="cf">if</span> data.shape[<span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
-<span id="cb2-14"><a href="#cb2-14"></a>        data <span class="op">=</span> pd.read_csv(url, sep<span class="op">=</span><span class="st">';'</span>, on_bad_lines<span class="op">=</span><span class="st">'warn'</span>, encoding_errors<span class="op">=</span><span class="st">'ignore'</span>, low_memory<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>        <span class="cf">if</span> data.shape[<span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
-<span id="cb2-16"><a href="#cb2-16"></a>            <span class="bu">print</span>(<span class="st">"The data wasn't imported properly. Very likely the correct separator couldn't be found.</span><span class="ch">\n</span><span class="st">Please check the dataset manually and adjust the code."</span>)</span>
-<span id="cb2-17"><a href="#cb2-17"></a>    <span class="cf">return</span> data</span>
-<span id="cb2-18"><a href="#cb2-18"></a></span>
-<span id="cb2-19"><a href="#cb2-19"></a>df <span class="op">=</span> get_dataset(<span class="st">'https://www.web.statistik.zh.ch/ogd/data/KANTON_ZUERICH_286.csv'</span>)</span>
-<span id="cb2-20"><a href="#cb2-20"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="50">
-
-<div>
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>BFS_NR</th>
-      <th>GEBIET_NAME</th>
-      <th>THEMA_NAME</th>
-      <th>SET_NAME</th>
-      <th>SUBSET_NAME</th>
-      <th>INDIKATOR_ID</th>
-      <th>INDIKATOR_NAME</th>
-      <th>INDIKATOR_JAHR</th>
-      <th>INDIKATOR_VALUE</th>
-      <th>EINHEIT_KURZ</th>
-      <th>EINHEIT_LANG</th>
-      <th>Unnamed: 11</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>Aeugst a.A.</td>
-      <td>Öffentliche Finanzen</td>
-      <td>Gemeindesteuern</td>
-      <td>Steuergrundlagen</td>
-      <td>286</td>
-      <td>Ø steuerbares Vermögen natürliche Pers. [1000 ...</td>
-      <td>1990</td>
-      <td>434</td>
-      <td>1000 Fr.</td>
-      <td>Tausend Franken</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>Aeugst a.A.</td>
-      <td>Öffentliche Finanzen</td>
-      <td>Gemeindesteuern</td>
-      <td>Steuergrundlagen</td>
-      <td>286</td>
-      <td>Ø steuerbares Vermögen natürliche Pers. [1000 ...</td>
-      <td>1991</td>
-      <td>453</td>
-      <td>1000 Fr.</td>
-      <td>Tausend Franken</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>Aeugst a.A.</td>
-      <td>Öffentliche Finanzen</td>
-      <td>Gemeindesteuern</td>
-      <td>Steuergrundlagen</td>
-      <td>286</td>
-      <td>Ø steuerbares Vermögen natürliche Pers. [1000 ...</td>
-      <td>1992</td>
-      <td>453</td>
-      <td>1000 Fr.</td>
-      <td>Tausend Franken</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>Aeugst a.A.</td>
-      <td>Öffentliche Finanzen</td>
-      <td>Gemeindesteuern</td>
-      <td>Steuergrundlagen</td>
-      <td>286</td>
-      <td>Ø steuerbares Vermögen natürliche Pers. [1000 ...</td>
-      <td>1993</td>
-      <td>600</td>
-      <td>1000 Fr.</td>
-      <td>Tausend Franken</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>Aeugst a.A.</td>
-      <td>Öffentliche Finanzen</td>
-      <td>Gemeindesteuern</td>
-      <td>Steuergrundlagen</td>
-      <td>286</td>
-      <td>Ø steuerbares Vermögen natürliche Pers. [1000 ...</td>
-      <td>1994</td>
-      <td>665</td>
-      <td>1000 Fr.</td>
-      <td>Tausend Franken</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="51">
-<div class="cell-output cell-output-display">
-<p>We have data from 201 municipalities during the period between 1990-2022. The data presents the mean income tax. Let’s have a look at the data.</p>
-</div>
-</div>
-</section>
-<section id="requirements" class="level1">
-<h1>Requirements</h1>
-<p>For this post we use <code>python&gt;=3.7</code> and <code>fastapi==0.101.1</code>.</p>
+<p>Did you ever dream to build your own fast API written in Python?</p>
+<p>FastAPI is a modern, high-performance web framework for building APIs with Python. It blends the ease of use of Python with exceptional speed, making it an ideal choice for developing robust and efficient web applications.</p>
+<p>Its automatic validation, interactive documentation, and type hints enhance developer productivity and code reliability. Whether you’re crafting a simple REST API or a complex microservices architecture, FastAPI streamlines development, promotes clean code, and optimizes performance, making it the go-to framework for those seeking both speed and simplicity in their Python web projects.</p>
 </section>
 <section id="installation" class="level1">
 <h1>Installation</h1>
 <p>You will need to install two packages: (1) FastAPI and (2) Uvicorn. The first one is the framework itself and the second one is the server that will run the API.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">pip</span> install fastapi</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">pip</span> install uvicorn[standard]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install fastapi</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">pip</span> install <span class="st">"uvicorn[standard]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine, MetaData, Table, Column, Integer, String</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Create a connection to the database</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>engine <span class="op">=</span> create_engine(</span>
-<span id="cb4-6"><a href="#cb4-6"></a>    <span class="st">'sqlite:///../data/FastAPI.db'</span>, echo<span class="op">=</span><span class="va">True</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a></span>
-<span id="cb4-9"><a href="#cb4-9"></a>iris <span class="op">=</span> (</span>
-<span id="cb4-10"><a href="#cb4-10"></a>    sm</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    .datasets</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    .get_rdataset(<span class="st">'iris'</span>)</span>
-<span id="cb4-13"><a href="#cb4-13"></a>    .data</span>
-<span id="cb4-14"><a href="#cb4-14"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="data" class="level1">
+<h1>Data</h1>
+<p>Switzerland’s unique tax system is characterized by its federal structure, granting significant fiscal autonomy to its municipalities and cantons. The country’s taxation policies are designed to maintain a balanced distribution of responsibilities and resources between the federal government, cantonal governments, and local municipalities. This results in a decentralized tax framework where both cantons and municipalities possess substantial authority over taxation, allowing them to tailor policies according to their specific needs and preferences.</p>
+<p>This system encourages competition among cantons and municipalities while also fostering a sense of local ownership and control over financial matters. As a result, Switzerland’s tax landscape is complex, diverse, and reflective of the nation’s commitment to decentralized governance.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<p>We are going to work in this post with data from the nicest and best canton of Switzerland called Zurich :) We have data from 201 municipalities during the period between 1990-2022. The data presents the mean income tax per municipality and year.</p>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> typing <span class="im">import</span> Union</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="kw">def</span> read_root():</span>
-<span id="cb5-8"><a href="#cb5-8"></a>    <span class="cf">return</span> {<span class="st">"Hello"</span>: <span class="st">"World"</span>}</span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="at">@app.get</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">"</span>)</span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="kw">def</span> read_item(</span>
-<span id="cb5-12"><a href="#cb5-12"></a>    item_id: <span class="bu">int</span>, </span>
-<span id="cb5-13"><a href="#cb5-13"></a>    q: Union[<span class="bu">str</span>, <span class="va">None</span>] <span class="op">=</span> <span class="va">None</span>,</span>
-<span id="cb5-14"><a href="#cb5-14"></a>):</span>
-<span id="cb5-15"><a href="#cb5-15"></a>    <span class="cf">return</span> {<span class="st">"item_id"</span>: item_id, <span class="st">"q"</span>: q}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-income_tax_zurich" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="api_files/figure-html/fig-income_tax_zurich-output-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Distribution of average income tax per municipality in the canton of Zurich per year.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-income_tax_zurich">Figure&nbsp;1</a> shows for each municipality the average paid income tax per person per year. It can be observed that the spread between the municipalities seems to increasing. Since the focus of this article is in creating a custom API service we continue without futher analysis.</p>
+</section>
+<section id="database" class="level1">
+<h1>Database</h1>
+<p>In our process, the initial step involves storing the data within a database, a crucial endeavor that lays the foundation for simulating a dynamic production environment. What adds an extra layer of versatility and efficiency to our approach is our utilization of sqlalchemy. This remarkable tool empowers us to seamlessly alter the connection string, enabling us to effortlessly establish connections across a diverse array of database types. This fusion of careful data handling and technological prowess harmonizes to create a truly agile and adaptable simulation framework.</p>
+<div class="cell" data-execution_count="6">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> (</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    create_engine, MetaData, Table, </span>
+<span id="cb2-4"><a href="#cb2-4"></a>    Column, Integer, String</span>
+<span id="cb2-5"><a href="#cb2-5"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Create a connection to the database</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>engine <span class="op">=</span> create_engine(</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="co">## Path to database</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>    <span class="st">'sqlite:///../../data/FastAPI.db'</span>, </span>
+<span id="cb2-11"><a href="#cb2-11"></a>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">## Create a table in new database</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>df.to_sql(</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    name <span class="op">=</span> <span class="st">'fastapi'</span>,</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    con <span class="op">=</span> engine,</span>
+<span id="cb2-17"><a href="#cb2-17"></a>    if_exists <span class="op">=</span> <span class="st">'replace'</span>,</span>
+<span id="cb2-18"><a href="#cb2-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="fastapi-setup" class="level1">
+<h1>FastAPI setup</h1>
+<div class="cell" data-execution_count="7">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> typing <span class="im">import</span> Union</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">def</span> read_root():</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="cf">return</span> {<span class="st">"Hello"</span>: <span class="st">"World"</span>}</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="at">@app.get</span>(<span class="st">"/items/</span><span class="sc">{item_id}</span><span class="st">"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">def</span> read_item(</span>
+<span id="cb3-12"><a href="#cb3-12"></a>    item_id: <span class="bu">int</span>, </span>
+<span id="cb3-13"><a href="#cb3-13"></a>    q: Union[<span class="bu">str</span>, <span class="va">None</span>] <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb3-14"><a href="#cb3-14"></a>):</span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="cf">return</span> {<span class="st">"item_id"</span>: item_id, <span class="st">"q"</span>: q}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 
