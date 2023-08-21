@@ -34,18 +34,7 @@ app = FastAPI(
     version="0.0.1",
 )
 
-class Municipality(Enum):
-    """Name of the municipality"""
-    pass
-
-class Year(Enum):
-    """Year of the data"""
-    pass
-
-class IncomeTax(Enum):
-    """Income tax in kCHF"""
-    pass
-
+## Create a index route
 @app.get("/")
 def index():
     """
@@ -77,6 +66,7 @@ def index():
         index = False,
     )
 
+## Create a route to return data for a given year
 @app.get("/year/{year}")
 def get_data_of_year(year: int):
     """
@@ -119,6 +109,7 @@ def get_data_of_year(year: int):
         index = False,
     )
 
+## Create a route to return data for a given city
 @app.get("/city/{city}")
 def get_city_data(city: str):
     """
@@ -162,6 +153,7 @@ def get_city_data(city: str):
         index = False,
     )
 
+## Create a route to return data for a given district
 @app.get("/district/{district}")
 def get_district_data(district: str):
     """
