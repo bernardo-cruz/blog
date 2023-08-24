@@ -143,9 +143,6 @@ cookieconsent.run({
 });
 </script> 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -245,13 +242,13 @@ cookieconsent.run({
 
 <section id="tldr" class="level1">
 <h1>TL;DR</h1>
-<p>We build a custom API service using public available data from the canton of Zurich in Switzerland. We share this data using FastAPI from a local database of type SQLite. We use the libraries <code>pandas</code>, <code>fastapi</code>, type-annotation, <code>sqlalchemy</code> and <code>seaborn</code> for plots.</p>
-<p>A complete example is showed how to create a custom API service considering public available data, in this case, from the canton of Zurich in Switzerland. We use <code>pandas</code> for data manipulation, <code>fastapi</code> for the schematics of our api, <code>sqlalchemy</code> as ORM for a <code>SQLite</code> database and <code>seaborn</code> for plots.</p>
+<p>We build a custom API service using public available data from the canton of Zurich in Switzerland. We share this data using FastAPI from a local database of type SQLite. We use the libraries <code>pandas</code>, <a href="https://fastapi.tiangolo.com/"><code>fastapi</code></a>, type-annotation, <code>sqlalchemy</code> and <code>seaborn</code> for plots.</p>
+<p>A complete example is showed how to create a custom API service considering public available data, in this case, from the canton of Zurich in Switzerland. We use <code>pandas</code> for data manipulation, <a href="https://fastapi.tiangolo.com/"><code>fastapi</code></a> for the schematics of our api, <code>sqlalchemy</code> as ORM for a <code>SQLite</code> database and <code>seaborn</code> for plots.</p>
 </section>
 <section id="motivation-installation" class="level1">
 <h1>Motivation &amp; Installation</h1>
 <p>Did you ever dream to build your own fast API written in Python?</p>
-<p>FastAPI is a modern, high-performance web framework for building APIs with Python. It blends the ease of use of Python with exceptional speed, making it an ideal choice for developing robust and efficient web applications.</p>
+<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> is a modern, high-performance web framework for building APIs with Python. It blends the ease of use of Python with exceptional speed, making it an ideal choice for developing robust and efficient web applications.</p>
 <p>Its automatic validation, interactive documentation, and type hints enhance developer productivity and code reliability. Whether you’re crafting a simple REST API or a complex microservices architecture, FastAPI streamlines development, promotes clean code, and optimizes performance, making it the go-to framework for those seeking both speed and simplicity in their Python web projects.</p>
 <p>The installation of FastAPI is very simple and it involves the installation of two packages: (1) FastAPI and (2) Uvicorn. The first one is the framework itself and the second one is the server that will run the API.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install fastapi</span>
@@ -300,7 +297,8 @@ cookieconsent.run({
 </section>
 <section id="fastapi-setup" class="level1">
 <h1>FastAPI setup</h1>
-<div class="cell" data-execution_count="18">
+<p>(use <a href="https://docs.sqlalchemy.org/en/20/core/sqlelement.html#sqlalchemy.sql.expression.lambda_stmt">lambda statement when possible</a>)</p>
+<div class="cell" data-execution_count="6">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine, MetaData, Table, select</span>
@@ -346,7 +344,7 @@ cookieconsent.run({
 <span id="cb3-41"><a href="#cb3-41"></a></span>
 <span id="cb3-42"><a href="#cb3-42"></a>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>[('Aeugst a.A.', 2022, 859),
  ('Affoltern a.A.', 2022, 314),
  ('Bonstetten', 2022, 365),
@@ -1350,137 +1348,46 @@ cookieconsent.run({
  ...]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="7">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> typing <span class="im">import</span> Union</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">## Instantiate a FastAPI object</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>app <span class="op">=</span> FastAPI()</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="kw">def</span> read_root():</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    <span class="co">"""</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">    Returns all data from the fastapi table</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">    """</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>    <span class="co">## Create an sql statement to select ALL columns from the census table</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>    stmt <span class="op">=</span> (</span>
+<span id="cb5-14"><a href="#cb5-14"></a>        <span class="co">##&nbsp;Select ALL columns from the census table</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>        select(</span>
+<span id="cb5-16"><a href="#cb5-16"></a>            fastapi</span>
+<span id="cb5-17"><a href="#cb5-17"></a>        )</span>
+<span id="cb5-18"><a href="#cb5-18"></a>        <span class="co">## Order by the Year column</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a>        .order_by(</span>
+<span id="cb5-20"><a href="#cb5-20"></a>            fastapi.columns.Year.desc()</span>
+<span id="cb5-21"><a href="#cb5-21"></a>        )</span>
+<span id="cb5-22"><a href="#cb5-22"></a>    )</span>
+<span id="cb5-23"><a href="#cb5-23"></a></span>
+<span id="cb5-24"><a href="#cb5-24"></a>    <span class="co"># Execute the statement and print the results</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a>    results <span class="op">=</span> (</span>
+<span id="cb5-26"><a href="#cb5-26"></a>        connection</span>
+<span id="cb5-27"><a href="#cb5-27"></a>        .execute(stmt)</span>
+<span id="cb5-28"><a href="#cb5-28"></a>        .fetchall()</span>
+<span id="cb5-29"><a href="#cb5-29"></a>    )</span>
+<span id="cb5-30"><a href="#cb5-30"></a></span>
+<span id="cb5-31"><a href="#cb5-31"></a>    </span>
+<span id="cb5-32"><a href="#cb5-32"></a>    <span class="cf">return</span> results</span>
+<span id="cb5-33"><a href="#cb5-33"></a></span>
+<span id="cb5-34"><a href="#cb5-34"></a></span>
+<span id="cb5-35"><a href="#cb5-35"></a>read_root()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="22">
-
-<div>
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Municipality</th>
-      <th>Year</th>
-      <th>IncomeTax</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Aeugst a.A.</td>
-      <td>2022</td>
-      <td>859</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Affoltern a.A.</td>
-      <td>2022</td>
-      <td>314</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Bonstetten</td>
-      <td>2022</td>
-      <td>365</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Hausen a.A.</td>
-      <td>2022</td>
-      <td>479</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Hedingen</td>
-      <td>2022</td>
-      <td>496</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>6554</th>
-      <td>Region Weinland</td>
-      <td>1990</td>
-      <td>181</td>
-    </tr>
-    <tr>
-      <th>6555</th>
-      <td>Region Winterthur u. Umg.</td>
-      <td>1990</td>
-      <td>157</td>
-    </tr>
-    <tr>
-      <th>6556</th>
-      <td>Region Zimmerberg</td>
-      <td>1990</td>
-      <td>216</td>
-    </tr>
-    <tr>
-      <th>6557</th>
-      <td>Region Zürich</td>
-      <td>1990</td>
-      <td>188</td>
-    </tr>
-    <tr>
-      <th>6558</th>
-      <td>Zürich - ganzer Kanton</td>
-      <td>1990</td>
-      <td>202</td>
-    </tr>
-  </tbody>
-</table>
-<p>6559 rows × 3 columns</p>
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="15">
-<details>
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> typing <span class="im">import</span> Union</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> fastapi <span class="im">import</span> FastAPI</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">## Instantiate a FastAPI object</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>app <span class="op">=</span> FastAPI()</span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="at">@app.get</span>(<span class="st">"/"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="kw">def</span> read_root():</span>
-<span id="cb6-9"><a href="#cb6-9"></a>    <span class="co">"""</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co">    Returns all data from the fastapi table</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="co">    """</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>    <span class="co">## Create an sql statement to select ALL columns from the census table</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a>    stmt <span class="op">=</span> (</span>
-<span id="cb6-14"><a href="#cb6-14"></a>        <span class="co">##&nbsp;Select ALL columns from the census table</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a>        select(</span>
-<span id="cb6-16"><a href="#cb6-16"></a>            fastapi</span>
-<span id="cb6-17"><a href="#cb6-17"></a>        )</span>
-<span id="cb6-18"><a href="#cb6-18"></a>        <span class="co">## Order by the Year column</span></span>
-<span id="cb6-19"><a href="#cb6-19"></a>        .order_by(</span>
-<span id="cb6-20"><a href="#cb6-20"></a>            fastapi.columns.Year.desc()</span>
-<span id="cb6-21"><a href="#cb6-21"></a>        )</span>
-<span id="cb6-22"><a href="#cb6-22"></a>    )</span>
-<span id="cb6-23"><a href="#cb6-23"></a></span>
-<span id="cb6-24"><a href="#cb6-24"></a>    <span class="co"># Execute the statement and print the results</span></span>
-<span id="cb6-25"><a href="#cb6-25"></a>    results <span class="op">=</span> (</span>
-<span id="cb6-26"><a href="#cb6-26"></a>        connection</span>
-<span id="cb6-27"><a href="#cb6-27"></a>        .execute(stmt)</span>
-<span id="cb6-28"><a href="#cb6-28"></a>        .fetchall()</span>
-<span id="cb6-29"><a href="#cb6-29"></a>    )</span>
-<span id="cb6-30"><a href="#cb6-30"></a></span>
-<span id="cb6-31"><a href="#cb6-31"></a>    </span>
-<span id="cb6-32"><a href="#cb6-32"></a>    <span class="cf">return</span> results</span>
-<span id="cb6-33"><a href="#cb6-33"></a></span>
-<span id="cb6-34"><a href="#cb6-34"></a></span>
-<span id="cb6-35"><a href="#cb6-35"></a>read_root()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>[('Aeugst a.A.', 2022, 859),
  ('Affoltern a.A.', 2022, 314),
  ('Bonstetten', 2022, 365),
