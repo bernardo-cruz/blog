@@ -56,7 +56,10 @@ app = FastAPI(
     Basic CRUD operations are supported (Create, Read, Update, Delete)
 
     # To-Do:
-    - Add more documentation
+    - Add tag parameter to routes decorators see https://fastapi.tiangolo.com/tutorial/metadata/
+    - Check HTTPException status codes
+    
+    # Future:
     - Add more routes
     - Create Authentication
     - Create separate modules for routes, database connection, etc.
