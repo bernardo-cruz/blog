@@ -194,10 +194,10 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr">TL;DR</a></li>
-  <li><a href="#motivation-installation" id="toc-motivation-installation" class="nav-link" data-scroll-target="#motivation-installation">Motivation &amp; Installation</a></li>
-  <li><a href="#data-database" id="toc-data-database" class="nav-link" data-scroll-target="#data-database">Data &amp; Database</a></li>
-  <li><a href="#build-basic-api" id="toc-build-basic-api" class="nav-link" data-scroll-target="#build-basic-api">Build basic API</a></li>
+  <li><a href="#motivation-installation" id="toc-motivation-installation" class="nav-link active" data-scroll-target="#motivation-installation">Motivation &amp; Installation</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#database" id="toc-database" class="nav-link" data-scroll-target="#database">Database</a></li>
+  <li><a href="#structure-of-api" id="toc-structure-of-api" class="nav-link" data-scroll-target="#structure-of-api">Structure of API</a></li>
   </ul>
 </nav>
     </div>
@@ -211,7 +211,8 @@ cookieconsent.run({
     <div class="quarto-category">API Development</div>
     <div class="quarto-category">FastAPI</div>
     <div class="quarto-category">Python</div>
-    <div class="quarto-category">SQLite</div>
+    <div class="quarto-category">SQL</div>
+    <div class="quarto-category">CRUD Operations</div>
     <div class="quarto-category">SQLAlchemy</div>
   </div>
   </div>
@@ -240,11 +241,6 @@ cookieconsent.run({
 
 </header>
 
-<section id="tldr" class="level1">
-<h1>TL;DR</h1>
-<p>We build a custom API service using public available data from the canton of Zurich in Switzerland. We share this data using FastAPI from a local database of type SQLite. We use the libraries <code>pandas</code>, <a href="https://fastapi.tiangolo.com/"><code>fastapi</code></a>, type-annotation, <code>sqlalchemy</code> and <code>seaborn</code> for plots.</p>
-<p>A complete example is showed how to create a custom API service considering public available data, in this case, from the canton of Zurich in Switzerland. We use <code>pandas</code> for data manipulation, <a href="https://fastapi.tiangolo.com/"><code>fastapi</code></a> for the schematics of our api, <code>sqlalchemy</code> as ORM for a <code>SQLite</code> database and <code>seaborn</code> for plots.</p>
-</section>
 <section id="motivation-installation" class="level1">
 <h1>Motivation &amp; Installation</h1>
 <p>Did you ever dream to build your own fast API written in Python?</p>
@@ -255,27 +251,20 @@ cookieconsent.run({
 <span id="cb1-2"><a href="#cb1-2"></a><span class="ex">pip</span> install <span class="st">"uvicorn[standard]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Next, we discuss the data and the corresponding database technology that we will use to store the data.</p>
 </section>
-<section id="data-database" class="level1">
-<h1>Data &amp; Database</h1>
-<p>Switzerland’s unique tax system is characterized by its federal structure, granting significant fiscal autonomy to its municipalities and cantons. The country’s taxation policies are designed to maintain a balanced distribution of responsibilities and resources between the federal government, cantonal governments, and local municipalities. This results in a decentralized tax framework where both cantons and municipalities possess substantial authority over taxation, allowing them to tailor policies according to their specific needs and preferences.</p>
-<p>This system encourages competition among cantons and municipalities while also fostering a sense of local ownership and control over financial matters. As a result, Switzerland’s tax landscape is complex, diverse, and reflective of the nation’s commitment to decentralized governance.</p>
+<section id="data" class="level1">
+<h1>Data</h1>
+<p>Switzerland’s unique tax system is characterized by its federal structure, granting significant fiscal autonomy to its municipalities and cantons. This system encourages competition among cantons and municipalities while also fostering a sense of local ownership and control over financial matters. As a result, Switzerland’s tax landscape is complex, diverse, and reflective of the nation’s commitment to decentralized governance.</p>
 <div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <p>We are going to work in this post with data from the nicest and best canton of Switzerland called Zurich :) We have data from 201 municipalities during the period between 1990-2022. The data presents the mean income tax per municipality and year.</p>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display">
-<div id="fig-income_tax_zurich" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="api_files/figure-html/fig-income_tax_zurich-output-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Distribution of average income tax per municipality in the canton of Zurich per year.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p><a href="#fig-income_tax_zurich">Figure&nbsp;1</a> shows for each municipality the average paid income tax per person per year. It can be observed that the spread and average income tax is increasing. Since the focus of this article is in creating a custom API service we continue without futher analysis.</p>
-<p>The next step involves storing the data within a database, a crucial endeavor that lays the foundation for simulating a dynamic production environment. What adds an extra layer of versatility and efficiency to our approach is the utilization of <code>sqlalchemy</code>: a remarkable tool empowers us to seamlessly alter the connection string (see code below, line 10), enabling us to effortlessly establish connections across a diverse array of database types. This fusion of careful data handling and technological prowess harmonizes to create a truly agile and adaptable simulation framework.</p>
+<!-- @fig-income_tax_zurich shows for each municipality the average paid income tax per person per year. It can be observed that the spread and average income tax is increasing. Since the focus of this article is in creating a custom API service we continue without futher analysis. -->
+</section>
+<section id="database" class="level1">
+<h1>Database</h1>
+<p>The data is stored in a database, a crucial endeavor that lays the foundation for simulating a dynamic production environment. We are going to use <code>sqlalchemy</code>: a remarkable tool empowers us to seamlessly alter the connection string enabling effortlessly establishment of connections across a diverse database types.</p>
+<p>First, the connection is defined by <code>sqlalchemy.create_engine()</code> and subsequently used in order to save the data to the database using pandas method <code>to_sql()</code>.</p>
 <div id="lst-database" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
@@ -294,9 +283,58 @@ cookieconsent.run({
 <span id="cb2-15"><a href="#cb2-15"></a>    index <span class="op">=</span> <span class="va">False</span>,</span>
 <span id="cb2-16"><a href="#cb2-16"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>After the creation of the <code>fastapi</code> table within the <code>FastAPI</code> database, we can continue with the creation of the API.</p>
 </section>
-<section id="build-basic-api" class="level1">
-<h1>Build basic API</h1>
+<section id="structure-of-api" class="level1">
+<h1>Structure of API</h1>
+<p>The building blocks of our API-service consists of basic CRUD (Create, Read, Update, Delete) operations as follows:</p>
+<table class="table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Get Data for a Given Year</td>
+<td>Returns income tax data for a given year.</td>
+</tr>
+<tr class="even">
+<td>Get Data for a Given Municipality</td>
+<td>Returns income tax data for a given municipality.</td>
+</tr>
+<tr class="odd">
+<td>Get Data for a Given District</td>
+<td>Returns income tax data for a given district.</td>
+</tr>
+<tr class="even">
+<td>Get Data for the Canton</td>
+<td>Returns income tax data for the entire canton.</td>
+</tr>
+<tr class="odd">
+<td>Create New Entry</td>
+<td>Creates a new entry in the income tax table.</td>
+</tr>
+<tr class="even">
+<td>Update Income Tax Entry</td>
+<td>Updates the income tax value for a given municipality and year.</td>
+</tr>
+<tr class="odd">
+<td>Update Year Entry</td>
+<td>Updates the year value for a given municipality and year.</td>
+</tr>
+<tr class="even">
+<td>Delete Entry</td>
+<td>Deletes an entry from the income tax table.</td>
+</tr>
+</tbody>
+</table>
+<p>Our api-service is going to use no authentication for its endpoints.</p>
 <p>(use <a href="https://docs.sqlalchemy.org/en/20/core/sqlelement.html#sqlalchemy.sql.expression.lambda_stmt">lambda statement when possible</a>)</p>
 
 
