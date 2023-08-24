@@ -5,7 +5,7 @@ from typing import Union
 from pydantic import BaseModel, Field
 from fastapi import FastAPI, HTTPException, Path, Query
 
-from sqlalchemy import create_engine, MetaData, Table, select, insert, update
+from sqlalchemy import create_engine, MetaData, Table, select, insert, update, delete
 
 ## Create a metadata object
 metadata = MetaData()
@@ -16,10 +16,6 @@ engine = create_engine(
     'sqlite:///../../data/FastAPI.db',      # <1>
 )
 
-## Create a connection to the database
-connection = engine.connect()
-engine.execution_options(isolation_level = "AUTOCOMMIT")
-
 ## Reflect census table from the engine: census
 fastapi = Table(
     "fastapi", 
@@ -27,21 +23,25 @@ fastapi = Table(
     autoload_with = engine,
 )
 
+def connect_to_db():
+    return engine.connect()
+
 ## Helper function to fetch data
 def fetch_return_dict(
         stmt, 
-        connection : create_engine= connection,
+        engine = engine,
     ) -> dict:
     """
     Utility function to convert sql query results to dict via pandas dataframe
     """
+    ## Create a connection to the database
+    connection = connect_to_db()
+    data = connection.execute(stmt).fetchall()
+    connection.close()
+
     return (
         pd.DataFrame(
-            data = (
-                connection
-                .execute(stmt)
-                .fetchall()
-            )
+            data = data
         )
         .to_dict(
             orient = "records", 
@@ -51,7 +51,18 @@ def fetch_return_dict(
 ## Instantiate a FastAPI object
 app = FastAPI(
     title           =   "My first API",
-    description     =   "API for access of income tax data from the canton of Zurich, Switzerland",
+    description     =   """
+    API for access of income tax data from the canton of Zurich, Switzerland. 
+    Basic CRUD operations are supported (Create, Read, Update, Delete)
+
+    # To-Do:
+    - Add more documentation
+    - Add more routes
+    - Create Authentication
+    - Create separate modules for routes, database connection, etc.
+
+    © 2023, Bernardo Freire Barboza da Cruz
+    """,
     version         =   "0.0.1",
 )
 
@@ -201,6 +212,9 @@ def create_new_entry(
         year            : int = None,
         incometax       : int = None,
     ):
+    """
+    Create a new entry in database
+    """
     in_stmt = (
         select(
             fastapi
@@ -208,14 +222,17 @@ def create_new_entry(
         .where(
             fastapi.columns.Municipality == municipality,
             fastapi.columns.Year == year,
-            fastapi.columns.IncomeTax == incometax,
         )
     )
-    result = connection.execute(in_stmt)
+    
+    connection = connect_to_db()
+    result = connection.execute(in_stmt).fetchall()
+    
     if result:
         raise HTTPException(
             status_code=400, 
-            detail=f"Item with {municipality} {incometax} {incometax} already exists.",
+            detail = f"Item with name {municipality} and year {year} already exists."
+            + "Use update to change this value or delete this entry and retry",
         )
     else:
         stmt = (
@@ -233,4 +250,148 @@ def create_new_entry(
         connection.commit()
         connection.close()
 
-        return {"success": f"Item with {municipality} {incometax} {incometax} added"}
+        return {"success": f"Item with name {municipality}; income tax of {incometax}; and year {year} added."}
+
+## Update an income tax entry
+@app.put("/update_tax/{municipality}/{year}/{incometax}")
+def update_tax_entry(
+        municipality    : str = None,
+        year            : int = None,
+        incometax       : int = None,
+    ):
+    """
+    Update income tax value for a given municipality and year 
+    """
+    in_stmt = (
+        select(
+            fastapi
+        )
+        .where(
+            fastapi.columns.Municipality == municipality,
+            fastapi.columns.Year == year,
+        )
+    )
+    
+    connection = connect_to_db()
+    result = connection.execute(in_stmt).fetchall()
+
+    if not result:
+        raise HTTPException(
+            status_code=400, 
+            detail = f"Item with name {municipality} and year {year} not found. "
+            + "Only values available in database can be updated"
+        )
+    else:
+        stmt = (
+            update(
+                fastapi
+            )
+            .where(
+                fastapi.columns.Municipality == municipality,
+                fastapi.columns.Year == year,
+            )
+            .values(
+                IncomeTax = incometax,
+            )
+        )
+
+        connection.execute(stmt)
+        connection.commit()
+        connection.close()
+
+        return {"success": f"Item with name {municipality}; and year {year} updated to income tax of {incometax};"}
+    
+## update year entry
+@app.put("/update_year/{municipality}/{year_old}/{year_new}")
+def update_year_entry(
+        municipality    : str = None,
+        year_old        : int = None,
+        year_new        : int = None,
+    ):
+    """
+    Update year of a municipality and year entry
+    """
+    in_stmt = (
+        select(
+            fastapi
+        )
+        .where(
+            fastapi.columns.Municipality == municipality,
+            fastapi.columns.Year == year_old,
+        )
+    )
+    
+    connection = connect_to_db()
+    result = connection.execute(in_stmt).fetchall()
+
+    if not result:
+        raise HTTPException(
+            status_code=400, 
+            detail = f"Item with name {municipality} and year {year_old} not found. "
+            + "Only values available in database can be updated"
+        )
+    else:
+        stmt = (
+            update(
+                fastapi.columns.Year
+            )
+            .where(
+                fastapi.columns.Year == year_old,
+            )
+            .values(
+                Year = year_new,
+            )
+        )
+
+        connection.execute(stmt)
+        connection.commit()
+        connection.close()
+
+        return {"success": f"Item with name {municipality}; and year {year_old} updated to year {year_new};"}
+
+@app.delete("/delete/{municipality}/{year}/{incometax}")
+def delete_tax_entry(
+        municipality    : str = None,
+        year            : int = None,
+        incometax       : int = None,
+    ):
+    """
+    Delete entry given municipality, year and income tax value
+    """
+    in_stmt = (
+        select(
+            fastapi
+        )
+        .where(
+            fastapi.columns.Municipality == municipality,
+            fastapi.columns.Year == year,
+        )
+    )
+    
+    connection = connect_to_db()
+    result = connection.execute(in_stmt).fetchall()
+    
+    if not result:
+        raise HTTPException(
+            status_code=400, 
+            detail = f"Item with name {municipality} and year {year} not found. "
+            + "Only values in database can be deleted",
+        )
+    else:
+        stmt = (
+            delete(
+                fastapi
+            )
+            .where(
+                fastapi.columns.Municipality == municipality,
+                fastapi.columns.Year == year,
+                fastapi.columns.IncomeTax == incometax,
+            )
+        )
+
+        connection.execute(stmt)
+        connection.commit()
+        connection.close()
+
+        return {"success": f"Item with name {municipality}; income tax of {incometax}; and year {year} deleted."}
+
