@@ -1,9 +1,7 @@
 import pandas as pd
 
-from enum import Enum
-from typing import Union
 from pydantic import BaseModel, Field
-from fastapi import FastAPI, HTTPException, Path, Query
+from fastapi import FastAPI, HTTPException
 
 from sqlalchemy import create_engine, MetaData, Table, select, insert, update, delete
 
@@ -23,9 +21,6 @@ fastapi = Table(
     autoload_with = engine,
 )
 
-def connect_to_db():
-    return engine.connect()
-
 ## Helper function to fetch data
 def fetch_return_dict(
         stmt, 
@@ -35,7 +30,7 @@ def fetch_return_dict(
     Utility function to convert sql query results to dict via pandas dataframe
     """
     ## Create a connection to the database
-    connection = connect_to_db()
+    connection = engine.connect()
     data = connection.execute(stmt).fetchall()
     connection.close()
 
@@ -104,7 +99,15 @@ def index() -> list[IncomeTaxModel]:
         )
     ) 
 
-    return fetch_return_dict(stmt)
+    result = fetch_return_dict(stmt)
+
+    if result:
+        return result
+    else:
+        raise HTTPException(
+            status_code = 404, 
+            detail = f"Item not found",
+        )
 
 ## Create a route to return data for a given year
 @app.get("/year/{year}")
@@ -128,7 +131,17 @@ def get_data_of_year(year: int) -> list[YearDataOut]:
         )
     )
     
-    return fetch_return_dict(stmt)
+    ## Execute the statement and fetch the results
+    result = fetch_return_dict(stmt)
+    
+    ## If the result is not empty return it, otherwise raise an exception
+    if result:
+        return result
+    else:
+        raise HTTPException(
+            status_code = 404, 
+            detail = f"Item not found",
+        )
 
 ## Create a route to return data for a given city
 @app.get("/municipality/{municipality}")
@@ -155,7 +168,17 @@ def get_municipality_data(municipality: str) -> list[MunicipalityDataOut]:
         
     )
     
-    return fetch_return_dict(stmt)
+    ## Execute the statement and fetch the results
+    result = fetch_return_dict(stmt)
+    
+    ## If the result is not empty return it, otherwise raise an exception
+    if result:
+        return result
+    else:
+        raise HTTPException(
+            status_code = 404, 
+            detail = f"Item not found",
+        )
 
 ## Create a route to return data for a given district
 @app.get("/district/{district}")
@@ -181,7 +204,17 @@ def get_district_data(district: str) -> list[MunicipalityDataOut]:
         
     )
     
-    return fetch_return_dict(stmt)
+    ## Execute the statement and fetch the results
+    result = fetch_return_dict(stmt)
+    
+    ## If the result is not empty return it, otherwise raise an exception
+    if result:
+        return result
+    else:
+        raise HTTPException(
+            status_code = 404, 
+            detail = f"Item not found",
+        )
 
 ## Create a route to return data from the canton
 @app.get("/canton/")
@@ -206,7 +239,17 @@ def get_canton_data() -> list[MunicipalityDataOut]:
         
     )
     
-    return fetch_return_dict(stmt)
+    ## Execute the statement and fetch the results
+    result = fetch_return_dict(stmt)
+    
+    ## If the result is not empty return it, otherwise raise an exception
+    if result:
+        return result
+    else:
+        raise HTTPException(
+            status_code = 404, 
+            detail = f"Item not found",
+        )
 
 ## Create a new entry
 @app.post('/entry/{municipality}/{year}/{incometax}')
@@ -228,12 +271,12 @@ def create_new_entry(
         )
     )
     
-    connection = connect_to_db()
+    connection = engine.connect()
     result = connection.execute(in_stmt).fetchall()
     
     if result:
         raise HTTPException(
-            status_code=400, 
+            status_code=405, 
             detail = f"Item with name {municipality} and year {year} already exists."
             + "Use update to change this value or delete this entry and retry",
         )
@@ -275,12 +318,12 @@ def update_tax_entry(
         )
     )
     
-    connection = connect_to_db()
+    connection = engine.connect()
     result = connection.execute(in_stmt).fetchall()
 
     if not result:
         raise HTTPException(
-            status_code=400, 
+            status_code=404, 
             detail = f"Item with name {municipality} and year {year} not found. "
             + "Only values available in database can be updated"
         )
@@ -324,12 +367,12 @@ def update_year_entry(
         )
     )
     
-    connection = connect_to_db()
+    connection = engine.connect()
     result = connection.execute(in_stmt).fetchall()
 
     if not result:
         raise HTTPException(
-            status_code=400, 
+            status_code=404, 
             detail = f"Item with name {municipality} and year {year_old} not found. "
             + "Only values available in database can be updated"
         )
@@ -371,12 +414,12 @@ def delete_tax_entry(
         )
     )
     
-    connection = connect_to_db()
+    connection = engine.connect()
     result = connection.execute(in_stmt).fetchall()
     
     if not result:
         raise HTTPException(
-            status_code=400, 
+            status_code=404, 
             detail = f"Item with name {municipality} and year {year} not found. "
             + "Only values in database can be deleted",
         )
