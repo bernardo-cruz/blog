@@ -305,7 +305,7 @@ cookieconsent.run({
 </colgroup>
 <thead>
 <tr class="header">
-<th>Function</th>
+<th>Function (api endpoints)</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -346,6 +346,16 @@ cookieconsent.run({
 </table>
 <p>Our api-service is going to use no authentication for its endpoints. This is not recommended for production environments. However, it is a good starting point for learning purposes.</p>
 <p>Next, we are going to discuss and review portions of the code that are relevant for the creation of the API. The complete code can be found in the end of the article.</p>
+<p><strong>Note:</strong> An API endpoint serves as a specific URL or URI through which an application can interact with a particular functionality or resource on a server. It acts as a gateway, allowing clients to send requests for data or perform actions, while the server processes these requests and sends back the appropriate response. Here’s an example of an API endpoint for a hypothetical online bookstore:</p>
+<blockquote class="blockquote">
+<p>API Base URL: https://api.bookstore.com</p>
+</blockquote>
+<p>Example Endpoints:</p>
+<blockquote class="blockquote">
+<p>Action: Retrieve Book Information Endpoint: /books/{book_id}<br>
+Description: Retrieves detailed information about a specific book.<br>
+Example URL: https://api.bookstore.com/books/123</p>
+</blockquote>
 <section id="setting-up-the-project" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-the-project">Setting Up the Project</h2>
 <p>To begin, we import the necessary libraries including <code>pandas</code>, <code>pydantic</code>, and <code>fastapi</code>. We’re also using <code>sqlalchemy</code> for database interactions. Our code starts by creating a database connection using the SQLAlchemy library. We’ve chosen an SQLite database for this demonstration. However, you can use any database you like.</p>
@@ -393,7 +403,6 @@ cookieconsent.run({
 <span id="cb4-19"><a href="#cb4-19"></a>            orient <span class="op">=</span> <span class="st">"records"</span>, </span>
 <span id="cb4-20"><a href="#cb4-20"></a>        )</span>
 <span id="cb4-21"><a href="#cb4-21"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Note:</strong> An API endpoint serves as a specific URL or URI through which an application can interact with a particular functionality or resource on a server. It acts as a gateway, allowing clients to send requests for data or perform actions, while the server processes these requests and sends back the appropriate response.</p>
 </section>
 <section id="fastapi-object" class="level2">
 <h2 class="anchored" data-anchor-id="fastapi-object">FastAPI Object</h2>
