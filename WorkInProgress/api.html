@@ -194,13 +194,13 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#motivation-installation" id="toc-motivation-installation" class="nav-link active" data-scroll-target="#motivation-installation">Motivation &amp; Installation</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#database" id="toc-database" class="nav-link" data-scroll-target="#database">Database</a></li>
-  <li><a href="#structure-of-api" id="toc-structure-of-api" class="nav-link" data-scroll-target="#structure-of-api">Structure of API</a>
+  <li><a href="#building-our-api" id="toc-building-our-api" class="nav-link" data-scroll-target="#building-our-api">Building our API</a>
   <ul class="collapse">
   <li><a href="#setting-up-the-project" id="toc-setting-up-the-project" class="nav-link" data-scroll-target="#setting-up-the-project">Setting Up the Project</a></li>
-  <li><a href="#creating-the-fastapi-application" id="toc-creating-the-fastapi-application" class="nav-link" data-scroll-target="#creating-the-fastapi-application">Creating the FastAPI Application</a></li>
+  <li><a href="#fastapi-object" id="toc-fastapi-object" class="nav-link" data-scroll-target="#fastapi-object">FastAPI Object</a></li>
   <li><a href="#defining-the-data-model" id="toc-defining-the-data-model" class="nav-link" data-scroll-target="#defining-the-data-model">Defining the Data Model</a></li>
   <li><a href="#building-api-endpoints" id="toc-building-api-endpoints" class="nav-link" data-scroll-target="#building-api-endpoints">Building API Endpoints</a></li>
   <li><a href="#error-handling" id="toc-error-handling" class="nav-link" data-scroll-target="#error-handling">Error Handling</a></li>
@@ -209,6 +209,7 @@ cookieconsent.run({
   <ul class="collapse">
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
+  <li><a href="#appendix-complete-code" id="toc-appendix-complete-code" class="nav-link" data-scroll-target="#appendix-complete-code">Appendix: Complete code</a></li>
   </ul>
 </nav>
     </div>
@@ -252,11 +253,10 @@ cookieconsent.run({
 
 </header>
 
-<section id="motivation-installation" class="level1">
-<h1>Motivation &amp; Installation</h1>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <p>Did you ever dream to build your own fast API written in Python?</p>
-<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> is a modern, high-performance web framework for building APIs with Python. It blends the ease of use of Python with exceptional speed, making it an ideal choice for developing robust and efficient web applications.</p>
-<p>Its automatic validation, interactive documentation, and type hints enhance developer productivity and code reliability. Whether you’re crafting a simple REST API or a complex microservices architecture, FastAPI streamlines development, promotes clean code, and optimizes performance, making it the go-to framework for those seeking both speed and simplicity in their Python web projects.</p>
+<p><a href="https://fastapi.tiangolo.com/">FastAPI</a> is a modern, high-performance web framework for building APIs with Python. It blends the ease of use of Python with exceptional speed, making it an ideal choice for developing robust and efficient web applications. Whether you’re crafting a simple REST API or a complex microservices architecture, FastAPI will help you with that.</p>
 <p>The installation of FastAPI is very simple and it involves the installation of two packages: (1) FastAPI and (2) Uvicorn. The first one is the framework itself and the second one is the server that will run the API.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">pip</span> install fastapi</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="ex">pip</span> install <span class="st">"uvicorn[standard]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -264,19 +264,18 @@ cookieconsent.run({
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<p>Switzerland’s unique tax system is characterized by its federal structure, granting significant fiscal autonomy to its municipalities and cantons. This system encourages competition among cantons and municipalities while also fostering a sense of local ownership and control over financial matters. As a result, Switzerland’s tax landscape is complex, diverse, and reflective of the nation’s commitment to decentralized governance.</p>
-<div class="cell" data-execution_count="3">
+<p>In this post we are going to talk about taxes. More specifically, we will focus on the tax system of Switzerland. Switzerland’s unique tax system is characterized by its federal structure, granting significant fiscal autonomy to its municipalities (cities) and cantons (states). This system encourages competition among cantons and municipalities while also fostering a sense of local ownership and control over financial matters. As a result, Switzerland’s tax landscape is complex, diverse, and reflective of the nation’s commitment to decentralized governance.</p>
+<div class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
-<p>We are going to work in this post with data from the nicest and best canton of Switzerland called Zurich :) We have data from 201 municipalities during the period between 1990-2022. The data presents the mean income tax per municipality and year.</p>
+<p>We have data from 201 municipalities during the period between 1990-2022. The data presents the mean income tax per municipality and year.</p>
 </div>
 </div>
-<!-- @fig-income_tax_zurich shows for each municipality the average paid income tax per person per year. It can be observed that the spread and average income tax is increasing. Since the focus of this article is in creating a custom API service we continue without futher analysis. -->
 </section>
 <section id="database" class="level1">
 <h1>Database</h1>
 <p>The data is stored in a database, a crucial endeavor that lays the foundation for simulating a dynamic production environment. We are going to use <code>sqlalchemy</code>: a remarkable tool empowers us to seamlessly alter the connection string enabling effortlessly establishment of connections across a diverse database types.</p>
 <p>First, the connection is defined by <code>sqlalchemy.create_engine()</code> and subsequently used in order to save the data to the database using pandas method <code>to_sql()</code>.</p>
-<div id="lst-database" class="cell" data-execution_count="5">
+<div id="lst-database" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -296,8 +295,8 @@ cookieconsent.run({
 </div>
 <p>After the creation of the <code>fastapi</code> table within the <code>FastAPI</code> database, we can continue with the creation of the API.</p>
 </section>
-<section id="structure-of-api" class="level1">
-<h1>Structure of API</h1>
+<section id="building-our-api" class="level1">
+<h1>Building our API</h1>
 <p>The building blocks of our API-service consists of basic CRUD (Create, Read, Update, Delete) operations as follows:</p>
 <table class="table">
 <colgroup>
@@ -349,7 +348,7 @@ cookieconsent.run({
 <p>Next, we are going to discuss and review portions of the code that are relevant for the creation of the API. The complete code can be found in the end of the article.</p>
 <section id="setting-up-the-project" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-the-project">Setting Up the Project</h2>
-<p>To begin, we import the necessary libraries including <code>pandas</code>, <code>pydantic</code>, and <code>fastapi</code>. We’re also using SQLAlchemy for database interactions. Our code starts by creating a database connection using the SQLAlchemy library. We’ve chosen an SQLite database for this demonstration. However, you can use any database you like.</p>
+<p>To begin, we import the necessary libraries including <code>pandas</code>, <code>pydantic</code>, and <code>fastapi</code>. We’re also using <code>sqlalchemy</code> for database interactions. Our code starts by creating a database connection using the SQLAlchemy library. We’ve chosen an SQLite database for this demonstration. However, you can use any database you like.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
@@ -394,10 +393,11 @@ cookieconsent.run({
 <span id="cb4-19"><a href="#cb4-19"></a>            orient <span class="op">=</span> <span class="st">"records"</span>, </span>
 <span id="cb4-20"><a href="#cb4-20"></a>        )</span>
 <span id="cb4-21"><a href="#cb4-21"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note:</strong> An API endpoint serves as a specific URL or URI through which an application can interact with a particular functionality or resource on a server. It acts as a gateway, allowing clients to send requests for data or perform actions, while the server processes these requests and sends back the appropriate response.</p>
 </section>
-<section id="creating-the-fastapi-application" class="level2">
-<h2 class="anchored" data-anchor-id="creating-the-fastapi-application">Creating the FastAPI Application</h2>
-<p>We instantiate a FastAPI app object with a title, description, and version. This app will serve as the backbone of our API. The description section contains details about the API’s purpose, future plans, and the creator’s information.</p>
+<section id="fastapi-object" class="level2">
+<h2 class="anchored" data-anchor-id="fastapi-object">FastAPI Object</h2>
+<p>We instantiate a FastAPI app object with a title, description, and version. This app will serve as the backbone of our API. The description section contains details about the API and apear in the documentation.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## Instantiate a FastAPI object</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>app <span class="op">=</span> FastAPI(</span>
 <span id="cb5-3"><a href="#cb5-3"></a>    title           <span class="op">=</span>   <span class="st">"API Service"</span>,</span>
@@ -411,7 +411,8 @@ cookieconsent.run({
 </section>
 <section id="defining-the-data-model" class="level2">
 <h2 class="anchored" data-anchor-id="defining-the-data-model">Defining the Data Model</h2>
-<p>FastAPI encourages the use of Pydantic models for data validation and serialization. We’ve defined <code>IncomeTaxModel</code>, <code>MunicipalityDataOut</code>, <code>IncomeTaxDataOut</code>, and <code>YearDataOut</code> as Pydantic models to structure the data that will be sent and received by the API endpoints.</p>
+<p>FastAPI encourages the use of <a href="https://docs.pydantic.dev/latest/">Pydantic</a> models for data validation and serialization. Pydantic is a Python library that simplifies the process of data validation and settings management in applications. It allows you to define data schemas using Python data classes with type annotations, and automatically validates and parses incoming data according to these schemas.</p>
+<p>We’ve defined <code>IncomeTaxModel</code>, <code>MunicipalityDataOut</code>, <code>IncomeTaxDataOut</code>, and <code>YearDataOut</code> as Pydantic models (<code>BaseModel</code> and type annotation) to structure the data that will be sent and received by the API endpoints.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">## Create a BaseModel Child class for data representation</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="kw">class</span> IncomeTaxModel(BaseModel):</span>
 <span id="cb6-3"><a href="#cb6-3"></a>    Municipality    :   <span class="bu">str</span>    <span class="op">=</span>  Field(<span class="st">"Name of item"</span>)</span>
@@ -528,7 +529,10 @@ cookieconsent.run({
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>In this article, we’ve walked through the creation of a FastAPI web service for accessing income tax data. We’ve covered the setup process, defining data models, creating API endpoints, and handling database interactions. FastAPI’s intuitive syntax and powerful features make it a fantastic choice for building efficient and robust APIs. This project serves as a foundation, demonstrating how to construct APIs that facilitate data retrieval and manipulation, crucial tasks in today’s data-centric world.</p>
 <p>Overall, this FastAPI-based web service exemplifies the elegance and utility of modern Python frameworks in building APIs that bridge the gap between data and applications.</p>
-<p>Complete code:</p>
+</section>
+</section>
+<section id="appendix-complete-code" class="level1">
+<h1>Appendix: Complete code</h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2"></a></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
@@ -973,7 +977,6 @@ cookieconsent.run({
 <span id="cb9-442"><a href="#cb9-442"></a>        <span class="cf">return</span> {<span class="st">"success"</span>: <span class="ss">f"Item with name </span><span class="sc">{</span>municipality<span class="sc">}</span><span class="ss">; income tax of </span><span class="sc">{</span>incometax<span class="sc">}</span><span class="ss">; and year </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> deleted."</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
