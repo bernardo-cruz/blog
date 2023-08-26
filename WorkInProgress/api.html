@@ -391,7 +391,7 @@ Example URL: https://api.bookstore.com/books/123</p>
 <span id="cb4-7"><a href="#cb4-7"></a><span class="co">    Utility function to convert sql query results to dict via pandas dataframe</span></span>
 <span id="cb4-8"><a href="#cb4-8"></a><span class="co">    """</span></span>
 <span id="cb4-9"><a href="#cb4-9"></a>    <span class="co">## Create a connection to the database</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>    connection <span class="op">=</span> connect_to_db()</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    connection <span class="op">=</span> engine.connection()</span>
 <span id="cb4-11"><a href="#cb4-11"></a>    data <span class="op">=</span> connection.execute(stmt).fetchall()</span>
 <span id="cb4-12"><a href="#cb4-12"></a>    connection.close()</span>
 <span id="cb4-13"><a href="#cb4-13"></a></span>
