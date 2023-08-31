@@ -47,7 +47,7 @@ def fetch_return_dict(
 app = FastAPI(
     title           =   "My first API",
     description     =   """
-    API for access of income tax data from the canton of Zurich, Switzerland. 
+    API for access of wealth tax data from the canton of Zurich, Switzerland. 
     Basic CRUD operations are supported (Create, Read, Update, Delete)
 
     # To-Do:
@@ -65,26 +65,26 @@ app = FastAPI(
 )
 
 ## Create a BaseModel Child class for data representation
-class IncomeTaxModel(BaseModel):
+class TaxModel(BaseModel):
     Municipality    :   str    =  Field("Name of item")
-    IncomeTax       :   int    =  Field("Average income tax for a given year")
+    Tax             :   int    =  Field("Average tax for a given year")
     Year            :   int    =  Field("Year of meassurement")
 
 class MunicipalityDataOut(BaseModel):
-    IncomeTax       :   int    =  Field("Average income tax for a given year")
+    Tax             :   int    =  Field("Average tax for a given year")
     Year            :   int    =  Field("Year of meassurement")
     
-class IncomeTaxDataOut(BaseModel):
+class TaxDataOut(BaseModel):
     Municipality    :   str    =  Field("Name of item")
     Year            :   int    =  Field("Year of meassurement")
 
 class YearDataOut(BaseModel):
     Municipality    :   str    =  Field("Name of item")
-    IncomeTax       :   int    =  Field("Average income tax for a given year")
+    Tax             :   int    =  Field("Average tax for a given year")
  
 ## Create a index route
 @app.get("/")
-def index() -> list[IncomeTaxModel]:
+def index() -> list[TaxModel]:
     """
     Returns all data from the fastapi table
     """
@@ -120,7 +120,7 @@ def get_data_of_year(year: int) -> list[YearDataOut]:
         ## Select ALL columns from the census table
         select(
             fastapi.columns.Municipality, 
-            fastapi.columns.IncomeTax
+            fastapi.columns.Tax
         )
         ## Order by the Year column
         .order_by(
@@ -154,7 +154,7 @@ def get_municipality_data(municipality: str) -> list[MunicipalityDataOut]:
         ## Select ALL columns from the census table
         select(
             fastapi.columns.Year, 
-            fastapi.columns.IncomeTax
+            fastapi.columns.Tax
         )
         ## Order by the Year column
         .order_by(
@@ -191,7 +191,7 @@ def get_district_data(district: str) -> list[MunicipalityDataOut]:
         ## Select ALL columns from the census table
         select(
             fastapi.columns.Year, 
-            fastapi.columns.IncomeTax
+            fastapi.columns.Tax
         )
         ## Order by the Year column
         .order_by(
@@ -227,7 +227,7 @@ def get_canton_data() -> list[MunicipalityDataOut]:
         ## Select ALL columns from the census table
         select(
             fastapi.columns.Year, 
-            fastapi.columns.IncomeTax
+            fastapi.columns.Tax
         )
         ## Order by the Year column
         .order_by(
@@ -252,11 +252,11 @@ def get_canton_data() -> list[MunicipalityDataOut]:
         )
 
 ## Create a new entry
-@app.post('/entry/{municipality}/{year}/{incometax}')
+@app.post('/entry/{municipality}/{year}/{tax}')
 def create_new_entry(
         municipality    : str = None,
         year            : int = None,
-        incometax       : int = None,
+        tax             : int = None,
     ):
     """
     Create a new entry in database
@@ -277,7 +277,7 @@ def create_new_entry(
     if result:
         raise HTTPException(
             status_code=405, 
-            detail = f"Item with name {municipality} and year {year} already exists."
+            detail = f"Item with name {municipality} and year {year} already exists. "
             + "Use update to change this value or delete this entry and retry",
         )
     else:
@@ -288,7 +288,7 @@ def create_new_entry(
             .values(
                 Municipality = municipality,
                 Year = year,
-                IncomeTax = incometax,
+                Tax = tax,
             )
         )
 
@@ -296,14 +296,14 @@ def create_new_entry(
         connection.commit()
         connection.close()
 
-        return {"success": f"Item with name {municipality}; income tax of {incometax}; and year {year} added."}
+        return {"success": f"Item with name {municipality}; tax of {tax}; and year {year} added."}
 
 ## Update an income tax entry
-@app.put("/update_tax/{municipality}/{year}/{incometax}")
+@app.put("/update_tax/{municipality}/{year}/{tax}")
 def update_tax_entry(
         municipality    : str = None,
         year            : int = None,
-        incometax       : int = None,
+        tax             : int = None,
     ):
     """
     Update income tax value for a given municipality and year 
@@ -337,7 +337,7 @@ def update_tax_entry(
                 fastapi.columns.Year == year,
             )
             .values(
-                IncomeTax = incometax,
+                Tax = tax,
             )
         )
 
@@ -345,7 +345,7 @@ def update_tax_entry(
         connection.commit()
         connection.close()
 
-        return {"success": f"Item with name {municipality}; and year {year} updated to income tax of {incometax};"}
+        return {"success": f"Item with name {municipality}; and year {year} updated to tax of {tax};"}
     
 ## update year entry
 @app.put("/update_year/{municipality}/{year_old}/{year_new}")
@@ -355,7 +355,7 @@ def update_year_entry(
         year_new        : int = None,
     ):
     """
-    Update year of a municipality and year entry
+    Update year of a municipality entry
     """
     in_stmt = (
         select(
@@ -379,7 +379,7 @@ def update_year_entry(
     else:
         stmt = (
             update(
-                fastapi.columns.Year
+                fastapi
             )
             .where(
                 fastapi.columns.Year == year_old,
@@ -395,11 +395,11 @@ def update_year_entry(
 
         return {"success": f"Item with name {municipality}; and year {year_old} updated to year {year_new};"}
 
-@app.delete("/delete/{municipality}/{year}/{incometax}")
+@app.delete("/delete/{municipality}/{year}/{tax}")
 def delete_tax_entry(
         municipality    : str = None,
         year            : int = None,
-        incometax       : int = None,
+        tax             : int = None,
     ):
     """
     Delete entry given municipality, year and income tax value
@@ -431,7 +431,7 @@ def delete_tax_entry(
             .where(
                 fastapi.columns.Municipality == municipality,
                 fastapi.columns.Year == year,
-                fastapi.columns.IncomeTax == incometax,
+                fastapi.columns.Tax == tax,
             )
         )
 
@@ -439,5 +439,5 @@ def delete_tax_entry(
         connection.commit()
         connection.close()
 
-        return {"success": f"Item with name {municipality}; income tax of {incometax}; and year {year} deleted."}
+        return {"success": f"Item with name {municipality}; tax of {tax}; and year {year} deleted."}
 

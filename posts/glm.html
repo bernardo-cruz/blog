@@ -338,13 +338,21 @@ cookieconsent.run({
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.show(g2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/Bernardo/opt/anaconda3/envs/thesis/lib/python3.9/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/Bernardo/opt/anaconda3/envs/thesis/lib/python3.9/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
 <div id="fig-distplot" class="cell quarto-layout-panel" data-execution_count="4">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-distplot-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="glm_files/figure-html/fig-distplot-output-1.png" class="img-fluid figure-img" data-ref-parent="fig-distplot"></p>
+<p><img src="glm_files/figure-html/fig-distplot-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-distplot"></p>
 <p></p><figcaption class="figure-caption">(a) Distribution of the variable Price</figcaption><p></p>
 </figure>
 </div>
@@ -352,7 +360,7 @@ cookieconsent.run({
 <div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-distplot-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="glm_files/figure-html/fig-distplot-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-distplot"></p>
+<p><img src="glm_files/figure-html/fig-distplot-output-4.png" class="img-fluid figure-img" data-ref-parent="fig-distplot"></p>
 <p></p><figcaption class="figure-caption">(b) Distribution of the variable Mileage</figcaption><p></p>
 </figure>
 </div>
@@ -367,42 +375,50 @@ cookieconsent.run({
 <div>
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>aspect <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]<span class="op">/</span>plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Cylinder'</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Cylinder'</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cylinder'</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.figure()</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Doors'</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    shrink <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Doors'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Doors'</span>)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>aspect <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]<span class="op">/</span>plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Cylinder'</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Cylinder'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cylinder'</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.figure()</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Doors'</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    shrink <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Doors'</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Doors'</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/Bernardo/opt/anaconda3/envs/thesis/lib/python3.9/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/Bernardo/opt/anaconda3/envs/thesis/lib/python3.9/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
 <div id="fig-distplot2" class="cell quarto-layout-panel" data-execution_count="5">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-distplot2-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="glm_files/figure-html/fig-distplot2-output-1.png" class="img-fluid figure-img" data-ref-parent="fig-distplot2"></p>
+<p><img src="glm_files/figure-html/fig-distplot2-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-distplot2"></p>
 <p></p><figcaption class="figure-caption">(a) Distribution of the variable cylinder</figcaption><p></p>
 </figure>
 </div>
@@ -410,7 +426,7 @@ cookieconsent.run({
 <div class="cell-output cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-distplot2-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="glm_files/figure-html/fig-distplot2-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-distplot2"></p>
+<p><img src="glm_files/figure-html/fig-distplot2-output-4.png" class="img-fluid figure-img" data-ref-parent="fig-distplot2"></p>
 <p></p><figcaption class="figure-caption">(b) Distribution of the variable doors</figcaption><p></p>
 </figure>
 </div>
@@ -426,16 +442,16 @@ cookieconsent.run({
 <div class="cell" data-execution_count="8">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>brands <span class="op">=</span> (</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    df</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">'Buick'</span>, <span class="st">'Cadillac'</span>, <span class="st">'Chevy'</span>, <span class="st">'Pontiac'</span>, <span class="st">'Saab'</span>]]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    .melt()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'variable'</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>brands.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>brands <span class="op">=</span> (</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">'Buick'</span>, <span class="st">'Cadillac'</span>, <span class="st">'Chevy'</span>, <span class="st">'Pontiac'</span>, <span class="st">'Saab'</span>]]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    .melt()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'variable'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>brands.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div id="tbl-carsbybrand" class="anchored">
@@ -486,23 +502,27 @@ cookieconsent.run({
 <div class="cell" data-execution_count="9">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    data    <span class="op">=</span> brands.sort_values(<span class="st">'value'</span>, ascending<span class="op">=</span><span class="va">False</span>),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x       <span class="op">=</span> <span class="st">'variable'</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    y       <span class="op">=</span> <span class="st">'value'</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    kind    <span class="op">=</span> <span class="st">'bar'</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    height  <span class="op">=</span> <span class="dv">5</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    aspect  <span class="op">=</span> <span class="dv">2</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of cars by brand'</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Brand'</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of cars'</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    data    <span class="op">=</span> brands.sort_values(<span class="st">'value'</span>, ascending<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    x       <span class="op">=</span> <span class="st">'variable'</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    y       <span class="op">=</span> <span class="st">'value'</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    kind    <span class="op">=</span> <span class="st">'bar'</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    height  <span class="op">=</span> <span class="dv">5</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    aspect  <span class="op">=</span> <span class="dv">2</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of cars by brand'</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Brand'</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of cars'</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/Bernardo/opt/anaconda3/envs/thesis/lib/python3.9/site-packages/seaborn/axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div id="fig-brand" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="glm_files/figure-html/fig-brand-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="glm_files/figure-html/fig-brand-output-2.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;3: Number of cars by make</figcaption><p></p>
 </figure>
 </div>
@@ -515,71 +535,28 @@ cookieconsent.run({
 <h1>Modeling</h1>
 <p>Modeling with <code>statsmodels</code> becomes straightforward once the formula API and provided documentation are well understood. I encountered a minor challenge in grasping the formula API, but once I comprehended it, the usage turned out to be quite intuitive.</p>
 <p>Let’s delve into an understanding of the formula API (<code>statsmodels.formula.api</code>). This feature enables us to employ R-style formulas for specifying models. To illustrate, when fitting a linear model, the following formula suffices:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    formula<span class="op">=</span><span class="st">'y ~ x1 + x2 + x3'</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    formula<span class="op">=</span><span class="st">'y ~ x1 + x2 + x3'</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The formula API leverages the <code>patsy</code> package (<a href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy Package</a>). It’s worth noting that the formula API’s potency extends to intricate models. Additionally, it’s important to mention that the formula API automatically incorporates an intercept into the formula if one isn’t explicitly specified. For cases where the intercept is undesired, a <code>-1</code> can be used within the formula.</p>
 <p>With the <code>glm</code> class, a vast array of models becomes accessible importing as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>fam</code> import is necessary for specifying the family of the model. The families available are:</p>
-<div class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display" data-execution_count="10">
-<div id="tbl-glmfamilies" class="anchored">
-<table class="table table-sm table-striped">
-<caption>Table&nbsp;2: GLM Families</caption>
-<colgroup>
-<col style="width: 42%">
-<col style="width: 57%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Family(link,&nbsp;variance[,&nbsp;check_link])</td>
-<td style="text-align: left;">The parent class for one-parameter exponential families.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Binomial([link,&nbsp;check_link])</td>
-<td style="text-align: left;">Binomial exponential family distribution.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Gamma([link,&nbsp;check_link])</td>
-<td style="text-align: left;">Gamma exponential family distribution.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Gaussian([link,&nbsp;check_link])</td>
-<td style="text-align: left;">Gaussian exponential family distribution.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">InverseGaussian([link,&nbsp;check_link])</td>
-<td style="text-align: left;">InverseGaussian exponential family.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">NegativeBinomial([link,&nbsp;alpha,&nbsp;check_link])</td>
-<td style="text-align: left;">Negative Binomial exponential family (corresponds to NB2).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Poisson([link,&nbsp;check_link])</td>
-<td style="text-align: left;">Poisson exponential family.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tweedie([link,&nbsp;var_power,&nbsp;eql,&nbsp;check_link])</td>
-<td style="text-align: left;">Tweedie family.</td>
-</tr>
-</tbody>
-</table>
+<div id="tbl-glmfamilies" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="GLM Families" data-execution_count="10">
+<div class="panel-caption table-caption">
+<p><strong>?(caption)</strong></p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-error quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<pre><code>ImportError: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.</code></pre>
 </div>
 </div>
 </div>
 <p>Fitting the model and analyzing the results are the same as one would using <code>R</code>. First define the model, then fit it, then analyze the results. The details of the fit can be accessed using the <code>summary</code> method.</p>
-<div class="cell" data-execution_count="11">
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>                 Generalized Linear Model Regression Results                  
 ==============================================================================
