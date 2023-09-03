@@ -2,8 +2,8 @@
 title: "Bernardo Freire Barboza da Cruz"
 about:
   template: marquee
-  image: imgs/profile.jpeg
-  image-shape: round
+#  image-shape: rounded
+#  image: imgs/profile.jpeg
   links:
     - icon: linkedin
       text: Linkedin
@@ -26,6 +26,10 @@ about:
   gtag('config', 'G-HVQQBHLK7D');
 </script>
 
+:::{.column-page}
+![](quarto_builder/imgs/profile.jpeg)
+:::
+
 ## 👋 Hi there 
 
 I am Bernardo, an aeronautical engineer with a BSc in Aeronautical Engineering and a MSc in Data Science. My passion lies in both coding and engineering. I am from Zurich 🇨🇭 and have over seven years of experience working as an aeronautical engineer and about three years as a data scientist. 
@@ -35,24 +39,18 @@ I would like to invite you go through my [CV](cv.qmd) and [blog](blog.qmd) to le
 ## 👨🏽‍💻 Experience
 Explore my journey through various industries and roles in the world of data science and beyond! From predictive maintenance in the railway sector 🚂🚂🚂, to crafting models for turnover prediction in the food industry 🍔🍕🍝 and upsell models banking 💵💰💳, my experiences have been diverse and impactful. Delve into my work with Gaussian Mixture Models, Multi-Output Regression, OCR tools, and more. For a detailed account of my professional voyage, head to Section [CV](cv.qmd).
 
-<!-- I currently work as a Data Scientist at [Stadler Rail AG](https://www.stadlerrail.com/de/), where I focus on developing machine learning models and executing data science projects for predictive maintenance. I'm part of the emerging team at `Stadler Service AG` dedicated to creating data science solutions for train and component upkeep. Our toolbox includes Python, Gitlab, Python Packages, Gaussian Mixture Models, and more 🚂🚂🚂.
-
-Previously, I was a Data Scientist at [Prognolite AG](https://www.prognolite.com/), specializing in crafting regression models for turnover and menu sales prediction 🍔🍕🍝. We used techniques like Multi-Output Regression, Quarto, R, and Python, even customizing API calls for efficient data extraction. My time there saw significant organizational changes due to dynamic growth, shifting the focus more towards backend functions.
-
-Before that, I contributed to data science and machine learning in the banking sector at [Crealogix AG](https://crealogix.com/en). I created prospect and upsell models, extracted insights from fact-sheets using customized OCR tools, and designed user journeys for chatbots. The team underwent restructuring due to financial challenges and realignments 📉📉.
-
-Earlier, I advised departments at Bucher Leichtbau AG 🛫🛬 on matters like airworthiness certification. My role included interpreting certification specs, reviewing documentation, and maintaining communication with stakeholders. I also provided consultation to the development department. Before entering data science, I began as an electrician apprentice at [Gemeindewerke Rüti ZH](https://www.gwrueti.ch/), responsible for electrical infrastructure 🔌💡. -->
-
 ## 🏝️ 🏙️ 💻 📺 Hobbies
 I love to travel 🛩️ 🚂 ⛰️ 🏝️ 🏙️  to code  💻  and binge watch  📺  in my free time. In particular I discovered a passion for web development and this blog 🤓😎.
 
 ## 💻 Tech Stack:
 
+<!-- badges: https://ileriayo.github.io/markdown-badges/ -->
+
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) 
-![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) 
 ![R](https://img.shields.io/badge/r-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white) 
-![Anaconda](https://img.shields.io/badge/Anaconda-%2344A833.svg?style=for-the-badge&logo=anaconda&logoColor=white) 
-![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
+
+![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) 
 ![Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white) 
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) 
@@ -61,11 +59,9 @@ I love to travel 🛩️ 🚂 ⛰️ 🏝️ 🏙️  to code  💻  and binge w
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) 
 ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) 
 ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) 
-![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white) 
 ![LINUX](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) 
-![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white) 
-![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white) 
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white)
 
 ## 🏆 GitHub Trophies
 
