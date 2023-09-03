@@ -1,8 +1,11 @@
 ---
 title: "My Blog"
 listing:
+  sort-ui: [title, date]
+  fields: [date, title, description, categories, reading-time]
   contents: posts
   type: default
+  sort: "date asc"
   categories: true
 ---
 

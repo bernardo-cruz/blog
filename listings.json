@@ -2,9 +2,9 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/api.html",
       "/posts/glm.html",
-      "/posts/pandas_method_chaning.html"
+      "/posts/pandas_method_chaning.html",
+      "/posts/api.html"
     ]
   }
 ]
