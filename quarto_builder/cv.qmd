@@ -35,7 +35,7 @@ I am a former aeronautical engineer with 3 years of experience as a data scienti
 ## Prognolite AG, Data Scientist (10/2022 -- 03/2023)
 - Developed regression models predicting turnover using customer data and external factors like weather and holidays.
 - Created multi-output regression models to predict menu sales based on customer data and external factors.
-**Technologies:** Github, Tidymodels, Sklearn, Random Forest, XGBoost, Cubist (R, Python)
+- **Technologies:** Github, Tidymodels, Sklearn, Random Forest, XGBoost, Cubist (R, Python)
 
 ## Crealogix AG, Data Scientist (09/2021 -- 09/2022)
 - Developed prospect and upsell models.

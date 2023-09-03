@@ -130,7 +130,7 @@
     "href": "cv.html#prognolite-ag-data-scientist-102022-032023",
     "title": "Curriculum Vitae",
     "section": "Prognolite AG, Data Scientist (10/2022 – 03/2023)",
-    "text": "Prognolite AG, Data Scientist (10/2022 – 03/2023)\n\nDeveloped regression models predicting turnover using customer data and external factors like weather and holidays.\nCreated multi-output regression models to predict menu sales based on customer data and external factors. Technologies: Github, Tidymodels, Sklearn, Random Forest, XGBoost, Cubist (R, Python)"
+    "text": "Prognolite AG, Data Scientist (10/2022 – 03/2023)\n\nDeveloped regression models predicting turnover using customer data and external factors like weather and holidays.\nCreated multi-output regression models to predict menu sales based on customer data and external factors.\nTechnologies: Github, Tidymodels, Sklearn, Random Forest, XGBoost, Cubist (R, Python)"
   },
   {
     "objectID": "cv.html#crealogix-ag-data-scientist-092021-092022",
