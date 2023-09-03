@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -286,7 +286,7 @@ cookieconsent.run({
 <h1>Database</h1>
 <p>The data is stored in a database, a crucial endeavor that lays the foundation for simulating a dynamic production environment. We are going to use <code>sqlalchemy</code>: a remarkable tool empowers us to seamlessly alter the connection string enabling effortlessly establishment of connections across a diverse database types.</p>
 <p>First, the connection is defined by <code>sqlalchemy.create_engine()</code> and subsequently used in order to save the data to the database using pandas method <code>to_sql()</code>.</p>
-<div id="lst-database" class="cell" data-execution_count="5">
+<div id="lst-database" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
