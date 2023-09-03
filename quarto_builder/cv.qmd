@@ -29,31 +29,36 @@ I am a former aeronautical engineer with 3 years of experience as a data scienti
 ## Stadler Rail AG, Data Scientist (06/2023 -- present)
 - Developed machine learning models for predictive maintenance, e.g., door systems, compressor systems, HVAC systems.
 - Contributed to projects developing data-driven solutions for optimizing rolling stock maintenance processes.
-- Established CI/CD pipeline for modeling activities and created Python packages for internal use.
-- **Technologies:** Gitlab, Gitlab CI/CD, Sklearn, FastAPI (Python, SQL, API)
+- Established CI/CD pipeline for modeling activities and created Python packages for internal use.  
+
+**Technologies:** Gitlab, Gitlab CI/CD, Sklearn, FastAPI (Python, SQL, API)
 
 ## Prognolite AG, Data Scientist (10/2022 -- 03/2023)
 - Developed regression models predicting turnover using customer data and external factors like weather and holidays.
-- Created multi-output regression models to predict menu sales based on customer data and external factors.
-- **Technologies:** Github, Tidymodels, Sklearn, Random Forest, XGBoost, Cubist (R, Python)
+- Created multi-output regression models to predict menu sales based on customer data and external factors.  
+
+**Technologies:** Github, Tidymodels, Sklearn, Random Forest, XGBoost, Cubist (R, Python)
 
 ## Crealogix AG, Data Scientist (09/2021 -- 09/2022)
 - Developed prospect and upsell models.
 - Extracted information from fact-sheets using customized OCR.
-- Created user journeys for chatbot solutions using IBM Watson and Spacy.
-- **Technologies:** Sklearn, Spacy, Random Forest, XGBoost, RMarkdown (Python, SQL, R)
+- Created user journeys for chatbot solutions using IBM Watson and Spacy.  
+
+**Technologies:** Sklearn, Spacy, Random Forest, XGBoost, RMarkdown (Python, SQL, R)
 
 ## Bucher Leichtbau AG (01/2014 -- 09/2021)
 ### Compliance Verification Engineer (10/2017 -- 09/2021)
 - Advised and supported all departments of Bucher Leichtbau AG in initial airworthiness certification matters.
-- Independently verified documentation for "minor" and "major changes" against certification requirements.
-- **Technologies:** FEMAP, Mechanical Engineering
+- Independently verified documentation for "minor" and "major changes" against certification requirements.  
+
+**Technologies:** FEMAP, Mechanical Engineering
 
 ### Certification Engineer (01/2014 -- 10/2017)
 - Conducted FEM calculations/verification and prepared internal and external test reports.
 - Communicated with customers, official bodies, and authorities.
-- Consulted development department for design optimization.
-- **Technologies:** FEMAP, Mechanical Engineering
+- Consulted development department for design optimization.  
+
+**Technologies:** FEMAP, Mechanical Engineering
 
 # Education
 - 09/2020 -- 06/2023: MSc in Data Science, Lucerne University of Applied Sciences (HSLU)
