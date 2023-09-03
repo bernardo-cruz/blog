@@ -123,7 +123,7 @@
     "href": "cv.html#stadler-rail-ag-data-scientist-062023-present",
     "title": "Curriculum Vitae",
     "section": "Stadler Rail AG, Data Scientist (06/2023 – present)",
-    "text": "Stadler Rail AG, Data Scientist (06/2023 – present)\n\nDeveloped machine learning models for predictive maintenance, e.g., door systems, compressor systems, HVAC systems.\nContributed to projects developing data-driven solutions for optimizing rolling stock maintenance processes.\nEstablished CI/CD pipeline for modeling activities and created Python packages for internal use. Technologies: Gitlab, Gitlab CI/CD, Sklearn, FastAPI (Python, SQL, API)"
+    "text": "Stadler Rail AG, Data Scientist (06/2023 – present)\n\nDeveloped machine learning models for predictive maintenance, e.g., door systems, compressor systems, HVAC systems.\nContributed to projects developing data-driven solutions for optimizing rolling stock maintenance processes.\nEstablished CI/CD pipeline for modeling activities and created Python packages for internal use.\nTechnologies: Gitlab, Gitlab CI/CD, Sklearn, FastAPI (Python, SQL, API)"
   },
   {
     "objectID": "cv.html#prognolite-ag-data-scientist-102022-032023",
@@ -137,14 +137,14 @@
     "href": "cv.html#crealogix-ag-data-scientist-092021-092022",
     "title": "Curriculum Vitae",
     "section": "Crealogix AG, Data Scientist (09/2021 – 09/2022)",
-    "text": "Crealogix AG, Data Scientist (09/2021 – 09/2022)\n\nDeveloped prospect and upsell models.\nExtracted information from fact-sheets using customized OCR.\nCreated user journeys for chatbot solutions using IBM Watson and Spacy. Technologies: Sklearn, Spacy, Random Forest, XGBoost, RMarkdown (Python, SQL, R)"
+    "text": "Crealogix AG, Data Scientist (09/2021 – 09/2022)\n\nDeveloped prospect and upsell models.\nExtracted information from fact-sheets using customized OCR.\nCreated user journeys for chatbot solutions using IBM Watson and Spacy.\nTechnologies: Sklearn, Spacy, Random Forest, XGBoost, RMarkdown (Python, SQL, R)"
   },
   {
     "objectID": "cv.html#bucher-leichtbau-ag-012014-092021",
     "href": "cv.html#bucher-leichtbau-ag-012014-092021",
     "title": "Curriculum Vitae",
     "section": "Bucher Leichtbau AG (01/2014 – 09/2021)",
-    "text": "Bucher Leichtbau AG (01/2014 – 09/2021)\n\nCompliance Verification Engineer (10/2017 – 09/2021)\n\nAdvised and supported all departments of Bucher Leichtbau AG in initial airworthiness certification matters.\nIndependently verified documentation for “minor” and “major changes” against certification requirements. Technologies: FEMAP, Mechanical Engineering\n\n\n\nCertification Engineer (01/2014 – 10/2017)\n\nConducted FEM calculations/verification and prepared internal and external test reports.\nCommunicated with customers, official bodies, and authorities.\nConsulted development department for design optimization. Technologies: FEMAP, Mechanical Engineering"
+    "text": "Bucher Leichtbau AG (01/2014 – 09/2021)\n\nCompliance Verification Engineer (10/2017 – 09/2021)\n\nAdvised and supported all departments of Bucher Leichtbau AG in initial airworthiness certification matters.\nIndependently verified documentation for “minor” and “major changes” against certification requirements.\nTechnologies: FEMAP, Mechanical Engineering\n\n\n\nCertification Engineer (01/2014 – 10/2017)\n\nConducted FEM calculations/verification and prepared internal and external test reports.\nCommunicated with customers, official bodies, and authorities.\nConsulted development department for design optimization.\nTechnologies: FEMAP, Mechanical Engineering"
   },
   {
     "objectID": "blog.html",
