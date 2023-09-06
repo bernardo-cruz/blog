@@ -19,9 +19,12 @@ website:
         text: Blog
       - href: cv.qmd
         text: CV
+      - href: tutorials.qmd
+        text: Tutorials
 
 format:
   html:
+    code-overflow: scroll
     highlight-style: github
     code-fold: true
     code-summary: "Show the code"

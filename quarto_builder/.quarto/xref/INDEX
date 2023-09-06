@@ -43,5 +43,17 @@
   },
   "WorkInProgress/api.ipynb": {
     "api.html": "7722aa92"
+  },
+  "WorkInProgress/streamlit.ipynb": {
+    "streamlit.html": "54b1b494"
+  },
+  "WorkInProgress/AirflowArticle.ipynb": {
+    "AirflowArticle.html": "92ba5592"
+  },
+  "tutorials/DC_airflow.ipynb": {
+    "DC_airflow.html": "b63e4010"
+  },
+  "tutorials.qmd": {
+    "tutorials.html": "93ea3dad"
   }
 }

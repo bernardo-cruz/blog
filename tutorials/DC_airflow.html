@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bernardo Freire">
+<meta name="dcterms.date" content="2023-09-04">
+
+<title>Bernardo Cruz - Datacamp Airflow Course</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Bernardo Cruz</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../tutorials.html">
+ <span class="menu-text">Tutorials</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section-1-introduction-to-airflow" id="toc-section-1-introduction-to-airflow" class="nav-link active" data-scroll-target="#section-1-introduction-to-airflow">Section 1: Introduction to Airflow</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-workflow" id="toc-what-is-a-workflow" class="nav-link" data-scroll-target="#what-is-a-workflow">What is a workflow?</a></li>
+  <li><a href="#what-is-airflow" id="toc-what-is-airflow" class="nav-link" data-scroll-target="#what-is-airflow">What is Airflow?</a></li>
+  <li><a href="#quick-introduction-to-dags" id="toc-quick-introduction-to-dags" class="nav-link" data-scroll-target="#quick-introduction-to-dags">Quick introduction to DAGs</a></li>
+  <li><a href="#dag-code-example" id="toc-dag-code-example" class="nav-link" data-scroll-target="#dag-code-example">DAG code example</a></li>
+  <li><a href="#running-a-workflow-in-airflow" id="toc-running-a-workflow-in-airflow" class="nav-link" data-scroll-target="#running-a-workflow-in-airflow">Running a workflow in Airflow</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-running-a-task-in-airflow" id="toc-exercise-1-running-a-task-in-airflow" class="nav-link" data-scroll-target="#exercise-1-running-a-task-in-airflow">Exercise 1: Running a task in Airflow</a></li>
+  <li><a href="#exercise-2-examining-airflow-commands" id="toc-exercise-2-examining-airflow-commands" class="nav-link" data-scroll-target="#exercise-2-examining-airflow-commands">Exercise 2: Examining Airflow commands</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-2-airflow-dags" id="toc-section-2-airflow-dags" class="nav-link" data-scroll-target="#section-2-airflow-dags">Section 2: Airflow DAGs</a>
+  <ul class="collapse">
+  <li><a href="#dag-in-airflow" id="toc-dag-in-airflow" class="nav-link" data-scroll-target="#dag-in-airflow">DAG in Airflow</a></li>
+  <li><a href="#define-a-dag" id="toc-define-a-dag" class="nav-link" data-scroll-target="#define-a-dag">Define a DAG</a></li>
+  <li><a href="#dags-on-the-command-line" id="toc-dags-on-the-command-line" class="nav-link" data-scroll-target="#dags-on-the-command-line">DAGs on the command line</a></li>
+  <li><a href="#command-line-vs-python" id="toc-command-line-vs-python" class="nav-link" data-scroll-target="#command-line-vs-python">Command line vs Python</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-defining-a-simple-dag" id="toc-exercise-1-defining-a-simple-dag" class="nav-link" data-scroll-target="#exercise-1-defining-a-simple-dag">Exercise 1: Defining a simple DAG</a></li>
+  <li><a href="#exercise-2-working-with-dags-and-the-airflow-shell" id="toc-exercise-2-working-with-dags-and-the-airflow-shell" class="nav-link" data-scroll-target="#exercise-2-working-with-dags-and-the-airflow-shell">Exercise 2: Working with DAGs and the Airflow shell</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-3-airflow-web-interface" id="toc-section-3-airflow-web-interface" class="nav-link" data-scroll-target="#section-3-airflow-web-interface">Section 3: Airflow web interface</a>
+  <ul class="collapse">
+  <li><a href="#dags-view-dags" id="toc-dags-view-dags" class="nav-link" data-scroll-target="#dags-view-dags">DAGs view DAGs</a></li>
+  <li><a href="#dag-detail-view" id="toc-dag-detail-view" class="nav-link" data-scroll-target="#dag-detail-view">DAG detail view</a></li>
+  <li><a href="#dag-graph-view" id="toc-dag-graph-view" class="nav-link" data-scroll-target="#dag-graph-view">DAG graph view</a></li>
+  <li><a href="#dag-code-view" id="toc-dag-code-view" class="nav-link" data-scroll-target="#dag-code-view">DAG code view</a></li>
+  <li><a href="#logs" id="toc-logs" class="nav-link" data-scroll-target="#logs">Logs</a></li>
+  <li><a href="#web-ui-vs-command-line" id="toc-web-ui-vs-command-line" class="nav-link" data-scroll-target="#web-ui-vs-command-line">Web UI vs command line</a></li>
+  <li><a href="#lets-practice" id="toc-lets-practice" class="nav-link" data-scroll-target="#lets-practice">Let’s practice!</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Datacamp Airflow Course</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Apache Airflow</div>
+    <div class="quarto-category">DAG</div>
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">Workflow</div>
+    <div class="quarto-category">ETL</div>
+    <div class="quarto-category">Data Engineering</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Bernardo Freire </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 4, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="section-1-introduction-to-airflow" class="level1">
+<h1>Section 1: Introduction to Airflow</h1>
+<p>Apache Airflow is a platform to program workflows (general), including the creation, scheduling, and monitoring of said workflows. Airflow can use various tools and languages, but the actual workflow code is written with Python. Airflow implements workflows as DAGs, or Directed Acyclic Graphs. Airflow can be accessed and controlled via code, via the command-line, or via a built-in web interface.</p>
+<section id="what-is-a-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-workflow">What is a workflow?</h2>
+<p>Before we can really discuss Airflow, we need to talk about workflows. A workflow is a set of steps to accomplish a given data engineering task. These can include any given task, such as downloading a file, copying data, filtering information, writing to a database, and so forth. A workflow is of varying levels of complexity. Some workflows may only have 2 or 3 steps, while others consist of hundreds of components.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../tutorials/0X20.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<p></p><figcaption class="figure-caption">Workflow example containing 5 steps</figcaption><p></p>
+</figure>
+</div>
+<p>The complexity of a workflow is completely dependent on the needs of the user. We show an example of a possible workflow to the right. It’s important to note that we’re defining a workflow here in a general data engineering sense. This is an informal definition to introduce the concept. As you’ll see later, workflow can have specific meaning within specific tools.</p>
+</section>
+<section id="what-is-airflow" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-airflow">What is Airflow?</h2>
+<p>Airflow is a platform to program workflows (general), including the creation, scheduling, and monitoring of said workflows.</p>
+<p>Airflow can use various tools and languages, but the actual workflow code is written with Python. Airflow implements workflows as DAGs, or Directed Acyclic Graphs. We’ll discuss exactly what this means throughout this course, but for now think of it as a set of tasks and the dependencies between them. Airflow can be accessed and controlled via code, via the command-line, or via a built-in web interface. We’ll look at all these options later on.</p>
+</section>
+<section id="quick-introduction-to-dags" class="level2">
+<h2 class="anchored" data-anchor-id="quick-introduction-to-dags">Quick introduction to DAGs</h2>
+<p>A DAG stands for a Directed Acyclic Graph. In Airflow, this represents the set of tasks that make up your workflow. It consists of the tasks and the dependencies between tasks.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../tutorials/0X48.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example of DAG consisting of five set of tasks</figcaption><p></p>
+</figure>
+</div>
+<p>DAGs are created with various details about the DAG, including the name, start date, owner, email alerting options, etc.</p>
+</section>
+<section id="dag-code-example" class="level2">
+<h2 class="anchored" data-anchor-id="dag-code-example">DAG code example</h2>
+<p>We will go into further detail in the next lesson but a very simple DAG is defined using the following code. A new DAG is created with the dag_id of etl_pipeline and a default_args dictionary containing a start_date for the DAG.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>etl_dag <span class="op">=</span> DAG(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    dag_id <span class="op">=</span> <span class="st">'etl_pipeline'</span>,    </span>
+<span id="cb1-3"><a href="#cb1-3"></a>    default_args <span class="op">=</span> {<span class="st">"start_date"</span>: <span class="st">"2020-01-08"</span>},</span>
+<span id="cb1-4"><a href="#cb1-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that within any Python code, this is referred to via the variable identifier, etl_dag, but within the Airflow shell command, you must use the dag_id.</p>
+</section>
+<section id="running-a-workflow-in-airflow" class="level2">
+<h2 class="anchored" data-anchor-id="running-a-workflow-in-airflow">Running a workflow in Airflow</h2>
+<p>To get started, let’s look at how to run a component of an Airflow workflow. These components are called tasks and simply represent a portion of the workflow. We’ll go into further detail in later chapters. There are several ways to run a task, but one of the simplest is using the airflow run shell command.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">airflow</span> run <span class="op">&lt;</span>dag_id<span class="op">&gt;</span> <span class="op">&lt;</span>task_id<span class="op">&gt;</span> <span class="op">&lt;</span>start_date<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Airflow run takes three arguments, a dag_id, a task_id, and a start_date. All of these arguments have specific meaning and will make more sense later in the course. For our example, we’ll use a dag_id of example-etl, a task named download-file, and a start date of 2020-01-10. This task would simply download a specific file, perhaps a daily update from a remote source. Our command as such is airflow run example-etl download-file 2020-01-10. This will then run the specified task within Airflow.</p>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<p>We’ve looked at Airflow and some of the basic aspects of why you’d use it. We’ve also looked at how to run a task within Airflow from the command-line. Let’s practice what we’ve learned.</p>
+<section id="exercise-1-running-a-task-in-airflow" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-running-a-task-in-airflow">Exercise 1: Running a task in Airflow</h3>
+<p>You’ve just started looking at using Airflow within your company and would like to try to run a task within the Airflow platform. You remember that you can use the <code>airflow run</code> command to execute a specific task within a workflow. Note that an error while using <code>airflow run</code> will return <code>airflow.exceptions.AirflowException:</code> on the last line of output.</p>
+<p>An Airflow DAG is set up for you with a dag_id of <code>etl_pipeline</code>. The <code>task_id</code> is <code>download_file</code> and the <code>start_date</code> is <code>2020-01-08</code>. All other components needed are defined for you.</p>
+<p>Which command would you enter in the console to run the desired task?</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">airflow run dag task 2020-01-08<br>
+</li>
+<li><input type="checkbox" disabled="">airflow run etl_pipeline task 2020-01-08<br>
+</li>
+<li><input type="checkbox" disabled="">airflow run etl_pipeline download_file 2020-01-08</li>
+</ul>
+</section>
+<section id="exercise-2-examining-airflow-commands" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-examining-airflow-commands">Exercise 2: Examining Airflow commands</h3>
+<p>While researching how to use Airflow, you start to wonder about the airflow command in general. You realize that by simply running airflow you can get further information about various sub-commands that are available.</p>
+<p>Which of the following is NOT an Airflow sub-command?</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">list_dags</li>
+<li><input type="checkbox" disabled="">edit_dag</li>
+<li><input type="checkbox" disabled="">test</li>
+<li><input type="checkbox" disabled="">scheduler</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="section-2-airflow-dags" class="level1">
+<h1>Section 2: Airflow DAGs</h1>
+<p>Our first question is what is a DAG? Beyond any specific mathematical meaning, a DAG, or Directed Acyclic Graph, has the following attributes:</p>
+<ul>
+<li><p>It is <strong>Directed</strong>, meaning there is an inherent flow representing the dependencies or order between execution of components. These dependencies (even implicit ones) provide context to the tools on how to order the running of components.</p></li>
+<li><p>A DAG is also <strong>Acyclic</strong> - it does not loop or repeat. This does not imply that the entire DAG cannot be rerun, only that the individual components are executed once per run.</p></li>
+<li><p>In this case, a <strong>Graph</strong> represents the components and the relationships (or dependencies) between them.</p></li>
+</ul>
+<p>The term DAG is found often in data engineering, not just in Airflow but also Apache Spark, Luigi, and others<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p><img src="../imgs/0X78.png" class="img-fluid"></p>
+<section id="dag-in-airflow" class="level2">
+<h2 class="anchored" data-anchor-id="dag-in-airflow">DAG in Airflow</h2>
+<p>As we’re working with Airflow, let’s look at its implementation of the DAG concept. Within Airflow, DAGs are written in Python, but can use components written in other languages or technologies. This means we’ll define the DAG using Python, but we could include Bash scripts, other executables, Spark jobs, and so on. Airflow DAGs are made up of components to be executed, such as operators, sensors, etc. Airflow typically refers to these as tasks. We’ll cover these in much greater depth later on, but for now think of a task as a thing within the workflow that needs to be done. Airflow DAGs contain dependencies that are defined, either explicitly or implicitly. These dependencies define the execution order so Airflow knows which components should be run at what point within the workflow. For example, you would likely want to copy a file to a server prior to trying to import it to a database.</p>
+</section>
+<section id="define-a-dag" class="level2">
+<h2 class="anchored" data-anchor-id="define-a-dag">Define a DAG</h2>
+<p>Let’s look at defining a simple DAG within Airflow. When defining the DAG in Python, you must first import the DAG object from airflow dot models. Once imported, we create a default arguments dictionary consisting of attributes that will be applied to the components of our DAG. These attributes are optional, but provide a lot of power to define the runtime behavior of Airflow.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>default_arguments <span class="op">=</span> {</span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="st">'owner'</span>         : <span class="st">'jdoe'</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="st">'email'</span>         : <span class="st">'jdoe@email.com'</span>, </span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="st">'start_date'</span>    : datetime(<span class="dv">2020</span>, <span class="dv">1</span>, <span class="dv">20</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>etl_dag <span class="op">=</span> DAG(</span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="st">'etl_workflow'</span>, </span>
+<span id="cb3-12"><a href="#cb3-12"></a>    default_args <span class="op">=</span> default_arguments</span>
+<span id="cb3-13"><a href="#cb3-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here we define the owner name as jdoe, an email address for any alerting, and specify the start date of the DAG. The start date represents the earliest datetime that a DAG could be run. Finally, we define our DAG object with the first argument using a name for the DAG, etl underscore workflow, and assign the default arguments dictionary to the default underscore args argument. There are many other optional configurations we will use later on. Note that the entire DAG is assigned to a variable called etl underscore dag. This will be used later when defining the components of the DAG, but the variable name etl underscore dag does not actually appear in the Airflow interfaces. Note, DAG is case sensitive in Python code.</p>
+</section>
+<section id="dags-on-the-command-line" class="level2">
+<h2 class="anchored" data-anchor-id="dags-on-the-command-line">DAGs on the command line</h2>
+<p>When working with DAGs (and Airflow in general), you’ll often want to use the airflow command line tool. The airflow command line program contains many subcommands that handle various aspects of running Airflow. You’ve used a couple of these already in previous exercises. Use the</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">airflow</span> <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>command for help and descriptions of the subcommands. Many of these subcommands are related to DAGs. You can use the</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">airflow</span> list_dags</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>option to see all recognized DAGs in an installation. When in doubt, try a few different commands to find the information you’re looking for.</p>
+</section>
+<section id="command-line-vs-python" class="level2">
+<h2 class="anchored" data-anchor-id="command-line-vs-python">Command line vs Python</h2>
+<p>You may be wondering when to use the Airflow command line tool vs writing Python.</p>
+<table class="table">
+<caption>Command line vs Python</caption>
+<thead>
+<tr class="header">
+<th>Command line</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Start Airflow processes</td>
+<td>Create a DAGs</td>
+</tr>
+<tr class="even">
+<td>Manually run DAGs / tasks</td>
+<td>Edit individual prop of DAG</td>
+</tr>
+<tr class="odd">
+<td>Review logging information</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>In general, the airflow command line program is used to start Airflow processes (ie, webserver or scheduler), manually run DAGs or tasks, and review logging information. Python code itself is usually used in the creation and editing of a DAG, not to mention the actual data processing code itself.</p>
+</section>
+<section id="exercises-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-1">Exercises</h2>
+<section id="exercise-1-defining-a-simple-dag" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-defining-a-simple-dag">Exercise 1: Defining a simple DAG</h3>
+<p>You’ve spent some time reviewing the Airflow components and are interested in testing out your own workflows. To start you decide to define the default arguments and create a DAG object for your workflow.</p>
+<p>The DateTime object has been imported for you.</p>
+<ol type="1">
+<li>Import the Airflow DAG object. Note that it is case-sensitive.</li>
+<li>Define the default_args dictionary with a key owner and a value of ‘dsmith’. Add a start_date of January 14, 2020 to default_args using the value 1 for the month of January. Add a retries count of 2 to default_args.</li>
+<li>Instantiate the DAG object to a variable called etl_dag with a DAG named example_etl. Add the default_args dictionary to the appropriate argument.</li>
+</ol>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Import the DAG object</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># Define the default_args dictionary</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>default_args <span class="op">=</span> {</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="st">'owner'</span>       : <span class="st">'dsmith'</span>,</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="st">'start_date'</span>  : datetime(<span class="dv">2020</span>, <span class="dv">1</span>, <span class="dv">14</span>),</span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="st">'retries'</span>     : <span class="dv">2</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>}</span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># Instantiate the DAG object</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>etl_dag <span class="op">=</span> DAG(</span>
+<span id="cb6-14"><a href="#cb6-14"></a>    <span class="st">'example_etl'</span>, </span>
+<span id="cb6-15"><a href="#cb6-15"></a>    default_args<span class="op">=</span>default_args</span>
+<span id="cb6-16"><a href="#cb6-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-2-working-with-dags-and-the-airflow-shell" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-working-with-dags-and-the-airflow-shell">Exercise 2: Working with DAGs and the Airflow shell</h3>
+<p>While working with Airflow, sometimes it can be tricky to remember what DAGs are defined and what they do. You want to gain some further knowledge of the Airflow shell command so you’d like to see what options are available.</p>
+<p>Multiple DAGs are already defined for you. How many DAGs are present in the Airflow system from the command-line?</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">!</span>airflow dags <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:751 UserWarning: Config scheduler.max_tis_per_query (value: 512) should NOT be greater than core.parallelism (value: 32). Will now use core.parallelism as the max task instances per query instead of specified value.
+
+Please confirm database upgrade (or wait 4 seconds to skip it). Are you sure? [y/N]
+No data found</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="section-3-airflow-web-interface" class="level1">
+<h1>Section 3: Airflow web interface</h1>
+<p>The Airflow web UI is made up of several primary page groups useful in developing and administering workflows on the Airflow platform. Note that for this course, we’ll only be focusing on a few pages but it’s helpful to click around the various options and get familiar with what’s available. The DAGs view of the Airflow UI is the page we’ll spend most of our time.</p>
+<section id="dags-view-dags" class="level2">
+<h2 class="anchored" data-anchor-id="dags-view-dags">DAGs view DAGs</h2>
+<p>It provides a quick status of the number of DAGs / workflows available.</p>
+<p><img src="../imgs/0X117.png" class="img-fluid"></p>
+<p><img src="../imgs/0X121.png" class="img-fluid"></p>
+<p>It shows us the schedule for the DAG (in date or cron format).</p>
+<p><img src="../imgs/0X125.png" class="img-fluid"></p>
+<p>We can see the owner of the DAG.</p>
+<p><img src="../imgs/0X129.png" class="img-fluid"></p>
+<p>which of the most recent tasks have run,</p>
+<p><img src="../imgs/0X133.png" class="img-fluid"></p>
+<p>when the last run started,</p>
+<p><img src="../imgs/0X137.png" class="img-fluid"></p>
+<p>and the last three DAG runs.</p>
+<p><img src="../imgs/0X141.png" class="img-fluid"></p>
+<p>The links area on the right gives us quick access to many of the DAG specific views.</p>
+<p><img src="../imgs/0X145.png" class="img-fluid"></p>
+<p>Don’t worry about those for now - instead we’ll click on the “example_dag” link which takes us to our DAG detail page.</p>
+<p><img src="../imgs/0X149.png" class="img-fluid"></p>
+</section>
+<section id="dag-detail-view" class="level2">
+<h2 class="anchored" data-anchor-id="dag-detail-view">DAG detail view</h2>
+<p>The DAG detail view gives us specific access to information about the DAG itself, including several views of information (Graph, Tree, and Code) illustrating the tasks and dependencies in the code. We also get access to the Task duration, task tries, timings, a Gantt chart view, and specific details about the DAG. We have the ability to trigger the DAG (to start), refresh our view, and delete the DAG if we desire. The detail view defaults to the Tree view, showing the specific named tasks, which operators are in use, and any dependencies between tasks. The circles in front of the words represent the state of the task / DAG. In the case of our specific DAG, we see that we have one task called generate_random_number.</p>
+<p><img src="../imgs/0X153.png" class="img-fluid"></p>
+</section>
+<section id="dag-graph-view" class="level2">
+<h2 class="anchored" data-anchor-id="dag-graph-view">DAG graph view</h2>
+<p>The DAG graph view arranges the tasks and dependencies in a chart format - this provides another view into the flow of the DAG. You can see the operators in use and the state of the tasks at any point in time. The tree and graph view provide different information depending on what you’d like to know. Try moving between them when examining a DAG to obtain further details. For this view we again see that we have a task called generate_random_number. We can also see that it is of the type BashOperator in the middle left of the image.</p>
+<p><img src="../imgs/0X159.png" class="img-fluid"></p>
+</section>
+<section id="dag-code-view" class="level2">
+<h2 class="anchored" data-anchor-id="dag-code-view">DAG code view</h2>
+<p>The DAG code view does exactly as it sounds - it provides a copy of the Python code that makes up the DAG. The code view provides easy access to exactly what defines the DAG without clicking in various portions of the UI. As you use Airflow, you’ll determine which tools work best for you. It is worth noting that the code view is read-only. Any DAG code changes must be done via the actual DAG script. In this view, we can finally see the code making up the generate_random_number task and that it runs the bash command echo $RANDOM.</p>
+<p><img src="../imgs/0X165.png" class="img-fluid"></p>
+</section>
+<section id="logs" class="level2">
+<h2 class="anchored" data-anchor-id="logs">Logs</h2>
+<p>The Logs page, under the Browse menu option, provides troubleshooting and audit ability while using Airflow. This includes items such as starting the Airflow webserver, viewing the graph or tree nodes, creating users, starting DAGs, etc. When using Airflow, look at the logs often to become more familiar with the types of information included, and also what happens behind the scenes of an Airflow install. Note that you’ll often refer to the Event type present on the Logs view when searching (such as graph, tree, cli scheduler).</p>
+<p><img src="../imgs/0X171.png" class="img-fluid"></p>
+</section>
+<section id="web-ui-vs-command-line" class="level2">
+<h2 class="anchored" data-anchor-id="web-ui-vs-command-line">Web UI vs command line</h2>
+<p>In most circumstances, you can choose between using the Airflow web UI or the command line tool based on your preference. The web UI is often easier to use overall. The command line tool may be simpler to access depending on settings (via SSH, etc.)</p>
+</section>
+<section id="lets-practice" class="level2">
+<h2 class="anchored" data-anchor-id="lets-practice">Let’s practice!</h2>
+<p>Now that we’ve covered some of the most important pages of the Airflow UI, let’s practice examining some workflows using it.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>https://en.m.wikipedia.org/wiki/Directed_acyclic_graph<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+</body></html>

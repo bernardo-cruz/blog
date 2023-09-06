@@ -6,5 +6,11 @@
       "/posts/pandas_method_chaning.html",
       "/posts/api.html"
     ]
+  },
+  {
+    "listing": "/tutorials.html",
+    "items": [
+      "/tutorials/DC_airflow.html"
+    ]
   }
 ]
