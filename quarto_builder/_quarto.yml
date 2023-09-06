@@ -19,8 +19,8 @@ website:
         text: Blog
       - href: cv.qmd
         text: CV
-      - href: tutorials.qmd
-        text: Tutorials
+      # - href: tutorials.qmd
+      #   text: Tutorials
 
 format:
   html:

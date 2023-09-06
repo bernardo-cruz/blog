@@ -1,16 +1,16 @@
 [
   {
+    "listing": "/tutorials.html",
+    "items": [
+      "/tutorials/DC_airflow.html"
+    ]
+  },
+  {
     "listing": "/blog.html",
     "items": [
       "/posts/glm.html",
       "/posts/pandas_method_chaning.html",
       "/posts/api.html"
-    ]
-  },
-  {
-    "listing": "/tutorials.html",
-    "items": [
-      "/tutorials/DC_airflow.html"
     ]
   }
 ]
