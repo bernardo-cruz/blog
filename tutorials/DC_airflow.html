@@ -227,7 +227,60 @@ cookieconsent.run({
   <li><a href="#dag-code-view" id="toc-dag-code-view" class="nav-link" data-scroll-target="#dag-code-view">DAG code view</a></li>
   <li><a href="#logs" id="toc-logs" class="nav-link" data-scroll-target="#logs">Logs</a></li>
   <li><a href="#web-ui-vs-command-line" id="toc-web-ui-vs-command-line" class="nav-link" data-scroll-target="#web-ui-vs-command-line">Web UI vs command line</a></li>
-  <li><a href="#lets-practice" id="toc-lets-practice" class="nav-link" data-scroll-target="#lets-practice">Let’s practice!</a></li>
+  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-examining-dags-with-the-airflow-ui" id="toc-exercise-1-examining-dags-with-the-airflow-ui" class="nav-link" data-scroll-target="#exercise-1-examining-dags-with-the-airflow-ui">Exercise 1: Examining DAGs with the Airflow UI</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-4-airflow-operators" id="toc-section-4-airflow-operators" class="nav-link" data-scroll-target="#section-4-airflow-operators">Section 4: Airflow operators</a>
+  <ul class="collapse">
+  <li><a href="#bashoperator" id="toc-bashoperator" class="nav-link" data-scroll-target="#bashoperator">BashOperator</a></li>
+  <li><a href="#bashoperator-examples" id="toc-bashoperator-examples" class="nav-link" data-scroll-target="#bashoperator-examples">BashOperator examples</a></li>
+  <li><a href="#operator-gotchas" id="toc-operator-gotchas" class="nav-link" data-scroll-target="#operator-gotchas">Operator gotchas</a></li>
+  <li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exericse-1-defining-a-bashoperator-task" id="toc-exericse-1-defining-a-bashoperator-task" class="nav-link" data-scroll-target="#exericse-1-defining-a-bashoperator-task">Exericse 1: Defining a BashOperator task</a></li>
+  <li><a href="#exercise-2-multiple-bashoperators" id="toc-exercise-2-multiple-bashoperators" class="nav-link" data-scroll-target="#exercise-2-multiple-bashoperators">Exercise 2: Multiple BashOperators</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-5-airflow-tasks" id="toc-section-5-airflow-tasks" class="nav-link" data-scroll-target="#section-5-airflow-tasks">Section 5: Airflow tasks</a>
+  <ul class="collapse">
+  <li><a href="#task-dependencies" id="toc-task-dependencies" class="nav-link" data-scroll-target="#task-dependencies">Task dependencies</a></li>
+  <li><a href="#upstream-vs-downstream" id="toc-upstream-vs-downstream" class="nav-link" data-scroll-target="#upstream-vs-downstream">Upstream vs Downstream</a></li>
+  <li><a href="#simple-task-dependency" id="toc-simple-task-dependency" class="nav-link" data-scroll-target="#simple-task-dependency">Simple task dependency</a></li>
+  <li><a href="#task-dependencies-in-the-airflow-ui" id="toc-task-dependencies-in-the-airflow-ui" class="nav-link" data-scroll-target="#task-dependencies-in-the-airflow-ui">Task dependencies in the Airflow UI</a></li>
+  <li><a href="#multiple-dependencies" id="toc-multiple-dependencies" class="nav-link" data-scroll-target="#multiple-dependencies">Multiple dependencies</a></li>
+  <li><a href="#exercises-4" id="toc-exercises-4" class="nav-link" data-scroll-target="#exercises-4">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-define-order-of-bashoperators" id="toc-exercise-1-define-order-of-bashoperators" class="nav-link" data-scroll-target="#exercise-1-define-order-of-bashoperators">Exercise 1: Define order of BashOperators</a></li>
+  <li><a href="#exercise-2-determining-the-order-of-tasks" id="toc-exercise-2-determining-the-order-of-tasks" class="nav-link" data-scroll-target="#exercise-2-determining-the-order-of-tasks">Exercise 2: Determining the order of tasks</a></li>
+  <li><a href="#exercise-3-troubleshooting-dag-dependencies" id="toc-exercise-3-troubleshooting-dag-dependencies" class="nav-link" data-scroll-target="#exercise-3-troubleshooting-dag-dependencies">Exercise 3: Troubleshooting DAG dependencies</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-6-additional-airflow-operators" id="toc-section-6-additional-airflow-operators" class="nav-link" data-scroll-target="#section-6-additional-airflow-operators">Section 6: Additional Airflow operators</a>
+  <ul class="collapse">
+  <li><a href="#pythonoperator" id="toc-pythonoperator" class="nav-link" data-scroll-target="#pythonoperator">PythonOperator</a></li>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#op_kwargs-example" id="toc-op_kwargs-example" class="nav-link" data-scroll-target="#op_kwargs-example">op_kwargs example</a></li>
+  <li><a href="#emailoperator" id="toc-emailoperator" class="nav-link" data-scroll-target="#emailoperator">EmailOperator</a></li>
+  <li><a href="#emailoperator-example" id="toc-emailoperator-example" class="nav-link" data-scroll-target="#emailoperator-example">EmailOperator example</a></li>
+  <li><a href="#exercises-5" id="toc-exercises-5" class="nav-link" data-scroll-target="#exercises-5">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-using-the-pythonoperator" id="toc-exercise-1-using-the-pythonoperator" class="nav-link" data-scroll-target="#exercise-1-using-the-pythonoperator">Exercise 1: Using the PythonOperator</a></li>
+  <li><a href="#exercise-2-more-pythonoperators" id="toc-exercise-2-more-pythonoperators" class="nav-link" data-scroll-target="#exercise-2-more-pythonoperators">Exercise 2: More PythonOperators</a></li>
+  <li><a href="#exercise-3-emailoperator-and-dependencies" id="toc-exercise-3-emailoperator-and-dependencies" class="nav-link" data-scroll-target="#exercise-3-emailoperator-and-dependencies">Exercise 3: EmailOperator and dependencies</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-7-airflow-scheduling" id="toc-section-7-airflow-scheduling" class="nav-link" data-scroll-target="#section-7-airflow-scheduling">Section 7: Airflow Scheduling</a>
+  <ul class="collapse">
+  <li><a href="#dag-runs-view" id="toc-dag-runs-view" class="nav-link" data-scroll-target="#dag-runs-view">DAG Runs view</a></li>
+  <li><a href="#schedule-details" id="toc-schedule-details" class="nav-link" data-scroll-target="#schedule-details">Schedule details</a></li>
+  <li><a href="#schedule-interval" id="toc-schedule-interval" class="nav-link" data-scroll-target="#schedule-interval">Schedule interval</a></li>
+  <li><a href="#cron-syntax" id="toc-cron-syntax" class="nav-link" data-scroll-target="#cron-syntax">cron syntax</a></li>
+  <li><a href="#cron-examples" id="toc-cron-examples" class="nav-link" data-scroll-target="#cron-examples">cron examples</a></li>
+  <li><a href="#airflow-scheduler-presets" id="toc-airflow-scheduler-presets" class="nav-link" data-scroll-target="#airflow-scheduler-presets">Airflow scheduler presets</a></li>
+  <li><a href="#special-presets" id="toc-special-presets" class="nav-link" data-scroll-target="#special-presets">Special presets</a></li>
+  <li><a href="#exercises-6" id="toc-exercises-6" class="nav-link" data-scroll-target="#exercises-6">Exercises</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -309,7 +362,16 @@ cookieconsent.run({
 <span id="cb1-2"><a href="#cb1-2"></a>    dag_id <span class="op">=</span> <span class="st">'etl_pipeline'</span>,    </span>
 <span id="cb1-3"><a href="#cb1-3"></a>    default_args <span class="op">=</span> {<span class="st">"start_date"</span>: <span class="st">"2020-01-08"</span>},</span>
 <span id="cb1-4"><a href="#cb1-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that within any Python code, this is referred to via the variable identifier, etl_dag, but within the Airflow shell command, you must use the dag_id.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="running-a-workflow-in-airflow" class="level2">
 <h2 class="anchored" data-anchor-id="running-a-workflow-in-airflow">Running a workflow in Airflow</h2>
@@ -322,7 +384,17 @@ cookieconsent.run({
 <p>We’ve looked at Airflow and some of the basic aspects of why you’d use it. We’ve also looked at how to run a task within Airflow from the command-line. Let’s practice what we’ve learned.</p>
 <section id="exercise-1-running-a-task-in-airflow" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1-running-a-task-in-airflow">Exercise 1: Running a task in Airflow</h3>
-<p>You’ve just started looking at using Airflow within your company and would like to try to run a task within the Airflow platform. You remember that you can use the <code>airflow run</code> command to execute a specific task within a workflow. Note that an error while using <code>airflow run</code> will return <code>airflow.exceptions.AirflowException:</code> on the last line of output.</p>
+<p>You’ve just started looking at using Airflow within your company and would like to try to run a task within the Airflow platform. You remember that you can use the <code>airflow run</code> command to execute a specific task within a workflow.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that an error while using <code>airflow run</code> will return <code>airflow.exceptions.AirflowException:</code> on the last line of output.</p>
+</div>
+</div>
+</div>
 <p>An Airflow DAG is set up for you with a dag_id of <code>etl_pipeline</code>. The <code>task_id</code> is <code>download_file</code> and the <code>start_date</code> is <code>2020-01-08</code>. All other components needed are defined for you.</p>
 <p>Which command would you enter in the console to run the desired task?</p>
 <ul class="task-list">
@@ -376,7 +448,17 @@ cookieconsent.run({
 <span id="cb3-11"><a href="#cb3-11"></a>    <span class="st">'etl_workflow'</span>, </span>
 <span id="cb3-12"><a href="#cb3-12"></a>    default_args <span class="op">=</span> default_arguments</span>
 <span id="cb3-13"><a href="#cb3-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Here we define the owner name as jdoe, an email address for any alerting, and specify the start date of the DAG. The start date represents the earliest datetime that a DAG could be run. Finally, we define our DAG object with the first argument using a name for the DAG, etl underscore workflow, and assign the default arguments dictionary to the default underscore args argument. There are many other optional configurations we will use later on. Note that the entire DAG is assigned to a variable called etl underscore dag. This will be used later when defining the components of the DAG, but the variable name etl underscore dag does not actually appear in the Airflow interfaces. Note, DAG is case sensitive in Python code.</p>
+<p>Here we define the owner name as jdoe, an email address for any alerting, and specify the start date of the DAG. The start date represents the earliest datetime that a DAG could be run. Finally, we define our DAG object with the first argument using a name for the DAG, etl underscore workflow, and assign the default arguments dictionary to the default underscore args argument. There are many other optional configurations we will use later on.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that the entire DAG is assigned to a variable called etl underscore dag. This will be used later when defining the components of the DAG, but the variable name etl underscore dag does not actually appear in the Airflow interfaces. Note, DAG is case sensitive in Python code.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="dags-on-the-command-line" class="level2">
 <h2 class="anchored" data-anchor-id="dags-on-the-command-line">DAGs on the command line</h2>
@@ -448,7 +530,7 @@ cookieconsent.run({
 <h3 class="anchored" data-anchor-id="exercise-2-working-with-dags-and-the-airflow-shell">Exercise 2: Working with DAGs and the Airflow shell</h3>
 <p>While working with Airflow, sometimes it can be tricky to remember what DAGs are defined and what they do. You want to gain some further knowledge of the Airflow shell command so you’d like to see what options are available.</p>
 <p>Multiple DAGs are already defined for you. How many DAGs are present in the Airflow system from the command-line?</p>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">!</span>airflow dags <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:751 UserWarning: Config scheduler.max_tis_per_query (value: 512) should NOT be greater than core.parallelism (value: 32). Will now use core.parallelism as the max task instances per query instead of specified value.
@@ -462,7 +544,17 @@ No data found</code></pre>
 </section>
 <section id="section-3-airflow-web-interface" class="level1">
 <h1>Section 3: Airflow web interface</h1>
-<p>The Airflow web UI is made up of several primary page groups useful in developing and administering workflows on the Airflow platform. Note that for this course, we’ll only be focusing on a few pages but it’s helpful to click around the various options and get familiar with what’s available. The DAGs view of the Airflow UI is the page we’ll spend most of our time.</p>
+<p>The Airflow web UI is made up of several primary page groups useful in developing and administering workflows on the Airflow platform.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that for this course, we’ll only be focusing on a few pages but it’s helpful to click around the various options and get familiar with what’s available. The DAGs view of the Airflow UI is the page we’ll spend most of our time.</p>
+</div>
+</div>
+</div>
 <section id="dags-view-dags" class="level2">
 <h2 class="anchored" data-anchor-id="dags-view-dags">DAGs view DAGs</h2>
 <p>It provides a quick status of the number of DAGs / workflows available.</p>
@@ -500,16 +592,581 @@ No data found</code></pre>
 </section>
 <section id="logs" class="level2">
 <h2 class="anchored" data-anchor-id="logs">Logs</h2>
-<p>The Logs page, under the Browse menu option, provides troubleshooting and audit ability while using Airflow. This includes items such as starting the Airflow webserver, viewing the graph or tree nodes, creating users, starting DAGs, etc. When using Airflow, look at the logs often to become more familiar with the types of information included, and also what happens behind the scenes of an Airflow install. Note that you’ll often refer to the Event type present on the Logs view when searching (such as graph, tree, cli scheduler).</p>
+<p>The Logs page, under the Browse menu option, provides troubleshooting and audit ability while using Airflow. This includes items such as starting the Airflow webserver, viewing the graph or tree nodes, creating users, starting DAGs, etc. When using Airflow, look at the logs often to become more familiar with the types of information included, and also what happens behind the scenes of an Airflow install.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that you’ll often refer to the Event type present on the Logs view when searching (such as graph, tree, cli scheduler).</p>
+</div>
+</div>
+</div>
 <p><img src="../imgs/0X171.png" class="img-fluid"></p>
 </section>
 <section id="web-ui-vs-command-line" class="level2">
 <h2 class="anchored" data-anchor-id="web-ui-vs-command-line">Web UI vs command line</h2>
 <p>In most circumstances, you can choose between using the Airflow web UI or the command line tool based on your preference. The web UI is often easier to use overall. The command line tool may be simpler to access depending on settings (via SSH, etc.)</p>
 </section>
-<section id="lets-practice" class="level2">
-<h2 class="anchored" data-anchor-id="lets-practice">Let’s practice!</h2>
-<p>Now that we’ve covered some of the most important pages of the Airflow UI, let’s practice examining some workflows using it.</p>
+<section id="exercises-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-2">Exercises</h2>
+<section id="exercise-1-examining-dags-with-the-airflow-ui" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-examining-dags-with-the-airflow-ui">Exercise 1: Examining DAGs with the Airflow UI</h3>
+<p>You’ve become familiar with the basics of an Airflow DAG and the basics of interacting with Airflow on the command-line. Your boss would like you to show others on your team how to examine any available DAGs. In this instance, she would like to know which operator is NOT in use with the DAG called update_state, as your team is trying to verify the components used in production workflows.</p>
+<p>Remember that the Airflow UI allows various methods to view the state of DAGs. The Tree View lists the tasks and any ordering between them in a tree structure, with the ability to compress / expand the nodes. The Graph View shows any tasks and their dependencies in a graph structure, along with the ability to access further details about task runs. The Code view provides full access to the Python code that makes up the DAG.</p>
+<p>Remember to select the operator NOT used in this DAG.</p>
+<p><img src="../imgs/Exercise_3_1.png" class="img-fluid"></p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">BashOperator</li>
+<li><input type="checkbox" disabled="">PythonOperator</li>
+<li><input type="checkbox" disabled="">JdbcOperator</li>
+<li><input type="checkbox" disabled="">SimpleHttpOperator</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="section-4-airflow-operators" class="level1">
+<h1>Section 4: Airflow operators</h1>
+<p>Airflow operators represent a single task in a workflow. This can be any type of task from running a command, sending an email, running a Python script, and so on. Typically Airflow operators run independently - meaning that all resources needed to complete the task are contained within the operator. Generally, Airflow operators do not share information between each other. This is to simplify workflows and allow Airflow to run the tasks in the most efficient manner. It is possible to share information between operators, but the details of how are beyond this course. Airflow contains many various operators to perform different tasks. For example, the DummyOperator can be used to represent a task for troubleshooting or a task that has not yet been implemented.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">## Arguments to be passed to each operator</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>default_args <span class="op">=</span> {</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="st">'owner'</span>         : <span class="st">'jdoe'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="st">'email'</span>         : <span class="st">'jdoe@email.com'</span>,</span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="st">'start_date'</span>    : datetime(<span class="dv">2020</span>, <span class="dv">1</span>, <span class="dv">20</span>)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>}</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">## Create a DAG object</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>dag <span class="op">=</span> DAG(</span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="st">'example_dag'</span>, </span>
+<span id="cb9-11"><a href="#cb9-11"></a>    default_args <span class="op">=</span> default_args</span>
+<span id="cb9-12"><a href="#cb9-12"></a>)</span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co">## Define tasks/operators</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>DummyOperator(</span>
+<span id="cb9-16"><a href="#cb9-16"></a>    task_id <span class="op">=</span> <span class="st">'dummy_task'</span>, </span>
+<span id="cb9-17"><a href="#cb9-17"></a>    dag <span class="op">=</span> dag</span>
+<span id="cb9-18"><a href="#cb9-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We are focusing on the BashOperator for this lesson but will look at the PythonOperator and several others later on.</p>
+<section id="bashoperator" class="level2">
+<h2 class="anchored" data-anchor-id="bashoperator">BashOperator</h2>
+<p>The BashOperator executes a given Bash command or script.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>BashOperator(    </span>
+<span id="cb10-2"><a href="#cb10-2"></a>    task_id<span class="op">=</span><span class="st">'bash_example'</span>,    </span>
+<span id="cb10-3"><a href="#cb10-3"></a>    bash_command<span class="op">=</span><span class="st">'echo "Example!"'</span>,    </span>
+<span id="cb10-4"><a href="#cb10-4"></a>    dag<span class="op">=</span>ml_dag</span>
+<span id="cb10-5"><a href="#cb10-5"></a>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>BashOperator(    </span>
+<span id="cb10-8"><a href="#cb10-8"></a>    task_id<span class="op">=</span><span class="st">'bash_script_example'</span>,    </span>
+<span id="cb10-9"><a href="#cb10-9"></a>    bash_command<span class="op">=</span><span class="st">'runcleanup.sh'</span>,    </span>
+<span id="cb10-10"><a href="#cb10-10"></a>    dag<span class="op">=</span>ml_dag</span>
+<span id="cb10-11"><a href="#cb10-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command can be pretty much anything Bash is capable of that would make sense in a given workflow. The BashOperator requires three arguments: the task id which is the name that shows up in the UI, the bash command (the raw command or script), and the dag it belongs to. The BashOperator runs the command in a temporary directory that gets automatically cleaned up afterwards. It is possible to specify environment variables for the bash command to try to replicate running the task as you would on a local system. If you’re unfamiliar with environment variables, these are run-time settings interpreted by the shell. It provides flexibility while running scripts in a generalized way. The first example runs a bash command to echo Example exclamation mark to standard out. The second example uses a predefined bash script for its command, runcleanup.sh.</p>
+</section>
+<section id="bashoperator-examples" class="level2">
+<h2 class="anchored" data-anchor-id="bashoperator-examples">BashOperator examples</h2>
+<p>Before using the BashOperator, it must be imported:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>...</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a>example_task <span class="op">=</span> BashOperator(</span>
+<span id="cb11-6"><a href="#cb11-6"></a>    task_id <span class="op">=</span> <span class="st">'example'</span>,</span>
+<span id="cb11-7"><a href="#cb11-7"></a>    bash_command <span class="op">=</span> <span class="st">'echo 1'</span>,</span>
+<span id="cb11-8"><a href="#cb11-8"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb11-9"><a href="#cb11-9"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The first example creates a BashOperator that takes a task_id, runs the bash command “echo 1”, and assigns the operator to the dag. ::: {.callout-caution collapse=“true” apperance=‘simple’} Note that we’ve previously defined the dag in an earlier exercise. :::</p>
+<p>The second example is a BashOperator to run a quick data cleaning operation using cat and awk.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>bash_task <span class="op">=</span> BashOperator(</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    task_id <span class="op">=</span> <span class="st">'clean_addresses'</span>,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>    bash_command <span class="op">=</span> <span class="st">'cat addresses.txt | awk "NF==10" &gt; cleaned.txt'</span>,</span>
+<span id="cb12-4"><a href="#cb12-4"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb12-5"><a href="#cb12-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Don’t worry if you don’t understand exactly what this is doing. This is a common scenario when running workflows - you may not know exactly what a command does, but you can still run it in a reliable way.</p>
+</section>
+<section id="operator-gotchas" class="level2">
+<h2 class="anchored" data-anchor-id="operator-gotchas">Operator gotchas</h2>
+<p>There are some general gotchas when using Operators. The biggest is that individual operators are not guaranteed to run in the same location or environment. This means that just because one operator ran in a given directory with a certain setup, it does not necessarily mean that the next operator will have access to that same information. If this is required, you must explicitly set it up. You may need to set up environment variables, especially for the BashOperator.</p>
+<blockquote class="blockquote">
+<p>For example, it’s common in bash to use the tilde character to represent a home directory. This is not defined by default in Airflow.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Another example of an environment variable could be AWS credentials, database connectivity details, or other information specific to running a script.</p>
+</blockquote>
+<p>Finally, it can also be tricky to run tasks with any form of elevated privilege. This means that any access to resources must be setup for the specific user running the tasks. If you’re uncertain what elevated privileges are, think of running a command as root or the administrator on a system.</p>
+</section>
+<section id="exercises-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-3">Exercises</h2>
+<section id="exericse-1-defining-a-bashoperator-task" class="level3">
+<h3 class="anchored" data-anchor-id="exericse-1-defining-a-bashoperator-task">Exericse 1: Defining a BashOperator task</h3>
+<p>The BashOperator allows you to specify any given Shell command or script and add it to an Airflow workflow. This can be a great start to implementing Airflow in your environment.</p>
+<p>As such, you’ve been running some scripts manually to clean data (using a script called cleanup.sh) prior to delivery to your colleagues in the Data Analytics group. As you get more of these tasks assigned, you’ve realized it’s becoming difficult to keep up with running everything manually, much less dealing with errors or retries. You’d like to implement a simple script as an Airflow operator.</p>
+<p>The Airflow DAG analytics_dag is already defined for you and has the appropriate configurations in place.</p>
+<ul>
+<li>Import the BashOperator object.</li>
+<li>Define a BashOperator called cleanup with the task_id of cleanup_task.</li>
+<li>Use the command cleanup.sh.</li>
+<li>Add the operator to the DAG.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Import the BashOperator</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># Define the BashOperator </span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>cleanup <span class="op">=</span> BashOperator(</span>
+<span id="cb13-6"><a href="#cb13-6"></a>    task_id<span class="op">=</span><span class="st">'cleanup_task'</span>,</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="co"># Define the bash_command</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>    bash_command<span class="op">=</span><span class="st">'cleanup.sh'</span>,</span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="co"># Add the task to the dag</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>    dag<span class="op">=</span>analytics_dag,</span>
+<span id="cb13-11"><a href="#cb13-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-2-multiple-bashoperators" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-multiple-bashoperators">Exercise 2: Multiple BashOperators</h3>
+<p>Airflow DAGs can contain many operators, each performing their defined tasks.</p>
+<p>You’ve successfully implemented one of your scripts as an Airflow task and have decided to continue migrating your individual scripts to a full Airflow DAG. You now want to add more components to the workflow. In addition to the cleanup.sh used in the previous exercise you have two more scripts, consolidate_data.sh and push_data.sh. These further process your data and copy to its final location.</p>
+<p>The DAG analytics_dag is available as before, and your cleanup task is still defined. The BashOperator is already imported.</p>
+<ul>
+<li>Define a <code>BashOperator</code> called <code>consolidate</code>, to run <code>consolidate_data.sh</code> with a <code>task_id</code> of <code>consolidate_task</code>.</li>
+<li>Add a final <code>BashOperator</code> called <code>push_data</code>, running <code>push_data.sh</code> and a <code>task_id</code> of <code>pushdata_task</code>.</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Define a second operator to run the `consolidate_data.sh` script</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>consolidate <span class="op">=</span> BashOperator(</span>
+<span id="cb14-3"><a href="#cb14-3"></a>    task_id <span class="op">=</span> <span class="st">'consolidate_task'</span>,</span>
+<span id="cb14-4"><a href="#cb14-4"></a>    bash_command <span class="op">=</span> <span class="st">'consolidate_data.sh'</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>    dag <span class="op">=</span> analytics_dag,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="co"># Define a final operator to execute the `push_data.sh` script</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>push_data <span class="op">=</span> BashOperator(</span>
+<span id="cb14-10"><a href="#cb14-10"></a>    task_id <span class="op">=</span> <span class="st">'pushdata_task'</span>,</span>
+<span id="cb14-11"><a href="#cb14-11"></a>    bash_command <span class="op">=</span> <span class="st">'push_data.sh'</span>,</span>
+<span id="cb14-12"><a href="#cb14-12"></a>    dag <span class="op">=</span> analytics_dag,</span>
+<span id="cb14-13"><a href="#cb14-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="section-5-airflow-tasks" class="level1">
+<h1>Section 5: Airflow tasks</h1>
+<p>Within Airflow, tasks are instantiated operators. It basically is a shortcut to refer to a given operator within a workflow. Tasks are usually assigned to a variable within Python code. Using a previous example, we assign the BashOperator to the variable example underscore task.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>example_task <span class="op">=</span> BashOperator(</span>
+<span id="cb15-2"><a href="#cb15-2"></a>    task_id <span class="op">=</span> <span class="st">'bash_example'</span>,</span>
+<span id="cb15-3"><a href="#cb15-3"></a>    bash_command <span class="op">=</span> <span class="st">'echo "Example!"'</span>,</span>
+<span id="cb15-4"><a href="#cb15-4"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb15-5"><a href="#cb15-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that within the Airflow tools, this task is referred by its task id, not the variable name.</p>
+</div>
+</div>
+</div>
+<section id="task-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="task-dependencies">Task dependencies</h2>
+<p>Task dependencies in Airflow define an order of task completion. While not required, task dependencies are usually present. If task dependencies are not defined, task execution is handled by Airflow itself with no guarantees of order. Task dependencies are referred to as upstream or downstream tasks. An upstream task means that it must complete prior to any downstream tasks. Since Airflow 1.8, task dependencies are defined using the bitshift operators. The upstream operator is two greater-than symbols. The downstream operator is two less-than symbols.</p>
+</section>
+<section id="upstream-vs-downstream" class="level2">
+<h2 class="anchored" data-anchor-id="upstream-vs-downstream">Upstream vs Downstream</h2>
+<p>It’s easy to get confused on when to use an upstream or downstream operator. The simplest analogy is that upstream means before and downstream means after. This means that any upstream tasks would need to complete prior to any downstream ones.</p>
+</section>
+<section id="simple-task-dependency" class="level2">
+<h2 class="anchored" data-anchor-id="simple-task-dependency">Simple task dependency</h2>
+<p>Let’s look at a simple example involving two bash operators. We define our first task, and assign it to the variable task1. We then create our second task and assign it to the variable task2. Once each operator is defined and assigned to a variable, we can define the task order using the bitshift operators. In this case, we want to run task1 before task2.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Define the tasks</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>task1 <span class="op">=</span> BashOperator(</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    task_id<span class="op">=</span><span class="st">'first_task'</span>,                     </span>
+<span id="cb16-4"><a href="#cb16-4"></a>    bash_command<span class="op">=</span><span class="st">'echo 1'</span>,                     </span>
+<span id="cb16-5"><a href="#cb16-5"></a>    dag<span class="op">=</span>example_dag)</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a>task2 <span class="op">=</span> BashOperator(</span>
+<span id="cb16-8"><a href="#cb16-8"></a>    task_id<span class="op">=</span><span class="st">'second_task'</span>,                     </span>
+<span id="cb16-9"><a href="#cb16-9"></a>    bash_command<span class="op">=</span><span class="st">'echo 2'</span>,                     </span>
+<span id="cb16-10"><a href="#cb16-10"></a>    dag<span class="op">=</span>example_dag)</span>
+<span id="cb16-11"><a href="#cb16-11"></a>    </span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="co"># Set first_task to run before second_task</span></span>
+<span id="cb16-13"><a href="#cb16-13"></a>task1 <span class="op">&gt;&gt;</span> task2   <span class="co"># or task2 &lt;&lt; task1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The most readable method for this is using the upstream operator, two greater-than symbols, as task1 upstream operator task2. ::: {.callout-caution collapse=“true” apperance=‘simple’} Note that you could also define this in reverse using the downstream operator to accomplish the same thing. In this case, it’d be task2 two less-than symbols task1. :::</p>
+</section>
+<section id="task-dependencies-in-the-airflow-ui" class="level2">
+<h2 class="anchored" data-anchor-id="task-dependencies-in-the-airflow-ui">Task dependencies in the Airflow UI</h2>
+<p>Let’s take a look at what the Airflow UI shows for tasks and their dependencies. In this case, we’re looking at the graph view within the Airflow web interface. ::: {.callout-caution collapse=“true” apperance=‘simple’} Note that in the task area, our two tasks, first_task and second_task, are both present, but there is no order to the task execution. This is the DAG prior to setting the task dependency using the bitshift operator. :::</p>
+<p><img src="../imgs/0X75.png" class="img-fluid"></p>
+<p>Now let’s look again at the view with a defined order via the bitshift operators. The view is similar but we can see the order of tasks indicated by the directed arrow between first underscore task and second underscore task.</p>
+<p><img src="../imgs/0X79.png" class="img-fluid"></p>
+</section>
+<section id="multiple-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-dependencies">Multiple dependencies</h2>
+<p>Dependencies can be as complex as required to define the workflow to your needs. We can chain a dependency, in this case setting task1 upstream of task2 upstream of task3 upstream of task4. The Airflow graph view shows a dependency view indicating this order.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>task1 <span class="op">&gt;&gt;</span> task2 <span class="op">&gt;&gt;</span> task3 <span class="op">&gt;&gt;</span> task4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="../imgs/0X85.png" class="img-fluid"></p>
+<p>You can also mix upstream and downstream bitshift operators in the same workflow. If we define task1 upstream of task2 then downstream of task3, we get a configuration different than what we might expect.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>task1 <span class="op">&gt;&gt;</span> task2 <span class="op">&lt;&lt;</span> task3</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">##&nbsp;or</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>task1 <span class="op">&gt;&gt;</span> task2</span>
+<span id="cb18-5"><a href="#cb18-5"></a>task3 <span class="op">&gt;&gt;</span> task2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="../imgs/1X86.png" class="img-fluid"></p>
+<p>This creates a DAG where first underscore task and third underscore task must finish prior to second underscore task. This means we could define the same dependency graph on two lines, in a possibly clearer form. task1 upstream of task2. task3 upstream of task2.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that because we don’t require it, either task1 or task3 could run first depending on Airflow’s scheduling.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-4">Exercises</h2>
+<section id="exercise-1-define-order-of-bashoperators" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-define-order-of-bashoperators">Exercise 1: Define order of BashOperators</h3>
+<p>Now that you’ve learned about the bitshift operators, it’s time to modify your workflow to include a pull step and to include the task ordering. You have three currently defined components, cleanup, consolidate, and push_data.</p>
+<p>The DAG analytics_dag is available as before and the BashOperator is already imported.</p>
+<ul>
+<li>Define a BashOperator called pull_sales with a bash command of <code>wget https://salestracking/latestinfo?json</code>.</li>
+<li>Set the pull_sales operator to run before the cleanup task.</li>
+<li>Configure consolidate to run next, using the downstream operator.</li>
+<li>Set push_data to run last using either bitshift operator.</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Define a new pull_sales task</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>pull_sales <span class="op">=</span> BashOperator(</span>
+<span id="cb19-3"><a href="#cb19-3"></a>    task_id <span class="op">=</span> <span class="st">'pullsales_task'</span>,</span>
+<span id="cb19-4"><a href="#cb19-4"></a>     bash_command <span class="op">=</span> <span class="st">'wget https://salestracking/latestinfo?json'</span>,</span>
+<span id="cb19-5"><a href="#cb19-5"></a>    dag <span class="op">=</span> analytics_dag,</span>
+<span id="cb19-6"><a href="#cb19-6"></a>)</span>
+<span id="cb19-7"><a href="#cb19-7"></a></span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="co"># Set pull_sales to run prior to cleanup</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>pull_sales <span class="op">&gt;&gt;</span> cleanup</span>
+<span id="cb19-10"><a href="#cb19-10"></a></span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="co"># Configure consolidate to run after cleanup</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a>cleanup <span class="op">&gt;&gt;</span> consolidate</span>
+<span id="cb19-13"><a href="#cb19-13"></a></span>
+<span id="cb19-14"><a href="#cb19-14"></a><span class="co"># Set push_data to run last</span></span>
+<span id="cb19-15"><a href="#cb19-15"></a>consolidate <span class="op">&gt;&gt;</span> push_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-2-determining-the-order-of-tasks" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-determining-the-order-of-tasks">Exercise 2: Determining the order of tasks</h3>
+<p>While looking through a colleague’s workflow definition, you’re trying to decipher exactly in which order the defined tasks run. The code in question shows the following:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>pull_data <span class="op">&lt;&lt;</span> initialize_process</span>
+<span id="cb20-2"><a href="#cb20-2"></a>pull_data <span class="op">&gt;&gt;</span> clean <span class="op">&gt;&gt;</span> run_ml_pipeline</span>
+<span id="cb20-3"><a href="#cb20-3"></a>generate_reports <span class="op">&lt;&lt;</span> run_ml_pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Order the tasks in the sequence defined by the bitshift code, with the first task to run on top and the last task to run on the bottom.</p>
+<ol type="1">
+<li>initialize_process</li>
+<li>pull_data</li>
+<li>clean</li>
+<li>run_ml_pipeline</li>
+<li>generate_reports</li>
+</ol>
+</section>
+<section id="exercise-3-troubleshooting-dag-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-troubleshooting-dag-dependencies">Exercise 3: Troubleshooting DAG dependencies</h3>
+<p>You’ve created a DAG with intended dependencies based on your workflow but for some reason Airflow won’t load / execute the DAG. Try using the terminal to:</p>
+<ul>
+<li>List the DAGs.</li>
+<li>Decipher the error message.</li>
+<li>Use cat workspace/dags/codependent.py to view the Python code.</li>
+<li>Determine which of the following lines should be removed from the Python code. You may want to consider the last line of the file.</li>
+</ul>
+<p><img src="../imgs/Exercise_5_3.png" class="img-fluid"></p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">task1 &gt;&gt; task2</li>
+<li><input type="checkbox" disabled="">task2 &gt;&gt; task3</li>
+<li><input type="checkbox" disabled="">task3 &gt;&gt; task1</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="section-6-additional-airflow-operators" class="level1">
+<h1>Section 6: Additional Airflow operators</h1>
+<section id="pythonoperator" class="level2">
+<h2 class="anchored" data-anchor-id="pythonoperator">PythonOperator</h2>
+<p>The PythonOperator is similar to the BashOperator, except that it runs a Python function or callable method. Much like the BashOperator, it requires a taskid, a dag entry, and most importantly a python underscore callable argument set to the name of the function in question. You can also pass arguments or keyword style arguments into the Python callable as needed. Our first example shows a simple printme function that writes a message to the task logs.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> PythonOperator</span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="kw">def</span> printme():</span>
+<span id="cb21-4"><a href="#cb21-4"></a>    <span class="bu">print</span>(<span class="st">"This goes in the logs!"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5"></a></span>
+<span id="cb21-6"><a href="#cb21-6"></a>python_task <span class="op">=</span> PythonOperator(</span>
+<span id="cb21-7"><a href="#cb21-7"></a>    task_id <span class="op">=</span> <span class="st">'simple_print'</span>,</span>
+<span id="cb21-8"><a href="#cb21-8"></a>    python_callable <span class="op">=</span> printme,</span>
+<span id="cb21-9"><a href="#cb21-9"></a>    dag <span class="op">=</span> example_dag,</span>
+<span id="cb21-10"><a href="#cb21-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We must first import the PythonOperator from the airflow dot operators dot python underscore operator library. Afterwards, we create our function printme, which will write a quick log message when run. Once defined, we create the PythonOperator instance called python underscore task and add the necessary arguments.</p>
+</section>
+<section id="arguments" class="level2">
+<h2 class="anchored" data-anchor-id="arguments">Arguments</h2>
+<p>The PythonOperator supports adding arguments to a given task. This allows you to pass arguments that can then be passed to the Python function assigned to python callable. The PythonOperator supports both positional and keyword style arguments as options to the task. &gt; For this course, we’ll focus on using keyword arguments only for the sake of clarity.</p>
+<p>To implement keyword arguments with the PythonOperator, we define an argument on the task called <code>op_kwargs</code>. This is a dictionary consisting of the named arguments for the intended Python function.</p>
+</section>
+<section id="op_kwargs-example" class="level2">
+<h2 class="anchored" data-anchor-id="op_kwargs-example">op_kwargs example</h2>
+<p>Let’s create a new function called sleep, which takes a length of time argument. It uses this argument to call the time dot sleep method. Once defined, we create a new task called sleep underscore task, with the taskid, dag, and python callable arguments added as before. This time we’ll add our op underscore kwargs dictionary with the length of time variable and the value of 5.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">## Function to sleep (needs argument to be passed)</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="kw">def</span> sleep(length_of_time):</span>
+<span id="cb22-3"><a href="#cb22-3"></a>    time.sleep(length_of_time)</span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a>sleep_task <span class="op">=</span> PythonOperator(</span>
+<span id="cb22-6"><a href="#cb22-6"></a>    task_id <span class="op">=</span> <span class="st">'sleep'</span>,</span>
+<span id="cb22-7"><a href="#cb22-7"></a>    python_callable <span class="op">=</span> sleep,</span>
+<span id="cb22-8"><a href="#cb22-8"></a>    <span class="co">## Pass argument to callable</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a>    op_kwargs <span class="op">=</span> {<span class="st">'length_of_time'</span>: <span class="dv">5</span>},</span>
+<span id="cb22-10"><a href="#cb22-10"></a>    dag <span class="op">=</span> example_dag,</span>
+<span id="cb22-11"><a href="#cb22-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that the dictionary key must match the name of the function argument. If the dictionary contains an unexpected key, it will be passed to the Python function and typically cause an unexpected keyword argument error.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="emailoperator" class="level2">
+<h2 class="anchored" data-anchor-id="emailoperator">EmailOperator</h2>
+<p>There are many other operators available within the Airflow ecosystem. The primary operators are in the <code>airflow.operators</code> or <code>airflow.contrib.operators</code> libraries.</p>
+<p>Another useful operator is the EmailOperator, which as expected sends an email from within an Airflow task. It can contain the typical components of an email, including HTML content and attachments. ::: {.callout-caution collapse=“true” apperance=‘simple’} Note that the Airflow system must be configured with the email server details to successfully send a message. :::</p>
+</section>
+<section id="emailoperator-example" class="level2">
+<h2 class="anchored" data-anchor-id="emailoperator-example">EmailOperator example</h2>
+<p>A quick example for sending an email would be sending a generated sales report upon completion of a workflow. We first must import the EmailOperator object from airflow dot operators dot email underscore operator. We can then create our EmailOperator instance with the task id, the to, subject, and content fields and a list of any files to attach.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">from</span> airflow.operators.email_operator <span class="im">import</span> EmailOperator</span>
+<span id="cb23-2"><a href="#cb23-2"></a></span>
+<span id="cb23-3"><a href="#cb23-3"></a>email_task <span class="op">=</span> EmailOperator(</span>
+<span id="cb23-4"><a href="#cb23-4"></a>    task_id <span class="op">=</span> <span class="st">'email_sales_report'</span>,</span>
+<span id="cb23-5"><a href="#cb23-5"></a>    to <span class="op">=</span> <span class="st">'sales_manager@example.com'</span>,</span>
+<span id="cb23-6"><a href="#cb23-6"></a>    subject <span class="op">=</span> <span class="st">'Automated Sales Report'</span>,</span>
+<span id="cb23-7"><a href="#cb23-7"></a>    html_content <span class="op">=</span> <span class="st">'Attached is the latest sales report'</span>,</span>
+<span id="cb23-8"><a href="#cb23-8"></a>    files <span class="op">=</span> <span class="st">'latest_sales.xlsx'</span>,</span>
+<span id="cb23-9"><a href="#cb23-9"></a>    dag <span class="op">=</span> example_dag</span>
+<span id="cb23-10"><a href="#cb23-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>::: {.callout-caution collapse=“true” apperance=‘simple’} Note that in this case we assume the file latest underscore sales dot xlsx was previously generated - later in the course we’ll see how to verify that first. Finally we add it to our dag as usual.</p>
+</section>
+<section id="exercises-5" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-5">Exercises</h2>
+<section id="exercise-1-using-the-pythonoperator" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-using-the-pythonoperator">Exercise 1: Using the PythonOperator</h3>
+<p>You’ve implemented several Airflow tasks using the BashOperator but realize that a couple of specific tasks would be better implemented using Python. You’ll implement a task to download and save a file to the system within Airflow.</p>
+<p>The requests library is imported for you, and the DAG process_sales_dag is already defined.</p>
+<ul>
+<li>Define a function called pull_file with two parameters, URL and savepath.</li>
+<li>Use the print() function and Python f-strings to write a message to the logs.</li>
+<li>Import the necessary object to use the Python Operator.</li>
+<li>Create a new task assigned to the variable pull_file_task, with the id pull_file.</li>
+<li>Add the pull_file(URL, savepath) function defined previously to the operator.</li>
+<li>Define the arguments needed for the task.</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Define the method</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="kw">def</span> pull_file(URL, savepath):</span>
+<span id="cb24-3"><a href="#cb24-3"></a>    r <span class="op">=</span> requests.get(URL)</span>
+<span id="cb24-4"><a href="#cb24-4"></a>    <span class="cf">with</span> <span class="bu">open</span>(savepath, <span class="st">'wb'</span>) <span class="im">as</span> f:</span>
+<span id="cb24-5"><a href="#cb24-5"></a>        f.write(r.content)    </span>
+<span id="cb24-6"><a href="#cb24-6"></a>    <span class="co"># Use the print method for logging</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>    <span class="bu">print</span>(<span class="ss">f"File pulled from </span><span class="sc">{</span>URL<span class="sc">}</span><span class="ss"> and saved to </span><span class="sc">{</span>savepath<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8"></a></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="co">## Import the PythonOperator</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> PythonOperator</span>
+<span id="cb24-11"><a href="#cb24-11"></a></span>
+<span id="cb24-12"><a href="#cb24-12"></a><span class="co"># Create the task</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a>pull_file_task <span class="op">=</span> PythonOperator(</span>
+<span id="cb24-14"><a href="#cb24-14"></a>    task_id <span class="op">=</span> <span class="st">'pull_file'</span>,</span>
+<span id="cb24-15"><a href="#cb24-15"></a>    <span class="co"># Add the callable</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>    python_callable <span class="op">=</span> pull_file,</span>
+<span id="cb24-17"><a href="#cb24-17"></a>    <span class="co"># Define the arguments</span></span>
+<span id="cb24-18"><a href="#cb24-18"></a>    op_kwargs <span class="op">=</span> {</span>
+<span id="cb24-19"><a href="#cb24-19"></a>        <span class="st">'URL'</span> : <span class="st">'http://dataserver/sales.json'</span>, </span>
+<span id="cb24-20"><a href="#cb24-20"></a>        <span class="st">'savepath'</span> : <span class="st">'latestsales.json'</span>,</span>
+<span id="cb24-21"><a href="#cb24-21"></a>    },</span>
+<span id="cb24-22"><a href="#cb24-22"></a>    dag <span class="op">=</span> process_sales_dag</span>
+<span id="cb24-23"><a href="#cb24-23"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-2-more-pythonoperators" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-more-pythonoperators">Exercise 2: More PythonOperators</h3>
+<p>To continue implementing your workflow, you need to add another step to parse and save the changes of the downloaded file. The DAG <code>process_sales_dag</code> is defined and has the <code>pull_file</code> task already added. In this case, the Python function is already defined for you, <code>parse_file(inputfile, outputfile)</code>.</p>
+<p>Note that often when implementing Airflow tasks, you won’t necessarily understand the individual steps given to you. As long as you understand how to wrap the steps within Airflow’s structure, you’ll be able to implement a desired workflow.</p>
+<ul>
+<li>Define the Python task to the variable parse_file_task with the id parse_file.</li>
+<li>Add the parse_file(inputfile, outputfile) to the Operator.</li>
+<li>Define the arguments to pass to the callable.</li>
+<li>Add the task to the DAG.</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Add another Python task</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>parse_file_task <span class="op">=</span> PythonOperator(</span>
+<span id="cb25-3"><a href="#cb25-3"></a>    task_id<span class="op">=</span><span class="st">'parse_file'</span>,</span>
+<span id="cb25-4"><a href="#cb25-4"></a>    <span class="co"># Set the function to call</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>    python_callable <span class="op">=</span> parse_file,</span>
+<span id="cb25-6"><a href="#cb25-6"></a>    <span class="co"># Add the arguments</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>    op_kwargs <span class="op">=</span> {</span>
+<span id="cb25-8"><a href="#cb25-8"></a>        <span class="st">'inputfile'</span>:<span class="st">'latestsales.json'</span>, </span>
+<span id="cb25-9"><a href="#cb25-9"></a>        <span class="st">'outputfile'</span>:<span class="st">'parsedfile.json'</span>,</span>
+<span id="cb25-10"><a href="#cb25-10"></a>    },</span>
+<span id="cb25-11"><a href="#cb25-11"></a>    <span class="co"># Add the DAG</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a>    dag <span class="op">=</span> process_sales_dag,</span>
+<span id="cb25-13"><a href="#cb25-13"></a>)</span>
+<span id="cb25-14"><a href="#cb25-14"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-3-emailoperator-and-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-emailoperator-and-dependencies">Exercise 3: EmailOperator and dependencies</h3>
+<p>Now that you’ve successfully defined the PythonOperators for your workflow, your manager would like to receive a copy of the parsed JSON file via email when the workflow completes. The previous tasks are still defined and the DAG <code>process_sales_dag</code> is configured.</p>
+<ul>
+<li>Import the class to send emails.</li>
+<li>Define the Operator and add the appropriate arguments (to, subject, files).</li>
+<li>Set the task order so the tasks run sequentially (Pull the file, parse the file, then email your manager).</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Import the Operator</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="im">from</span> airflow.operators.email_operator <span class="im">import</span> EmailOperator</span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="co"># Define the task</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>email_manager_task <span class="op">=</span> EmailOperator(</span>
+<span id="cb26-6"><a href="#cb26-6"></a>    task_id <span class="op">=</span> <span class="st">'email_manager'</span>,</span>
+<span id="cb26-7"><a href="#cb26-7"></a>    to <span class="op">=</span> <span class="st">'manager@datacamp.com'</span>,</span>
+<span id="cb26-8"><a href="#cb26-8"></a>    subject <span class="op">=</span> <span class="st">'Latest sales JSON'</span>,</span>
+<span id="cb26-9"><a href="#cb26-9"></a>    html_content <span class="op">=</span> <span class="st">'Attached is the latest sales JSON file as requested.'</span>,</span>
+<span id="cb26-10"><a href="#cb26-10"></a>    files <span class="op">=</span> <span class="st">'parsedfile.json'</span>,</span>
+<span id="cb26-11"><a href="#cb26-11"></a>    dag <span class="op">=</span> process_sales_dag,</span>
+<span id="cb26-12"><a href="#cb26-12"></a>)</span>
+<span id="cb26-13"><a href="#cb26-13"></a></span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="co"># Set the order of tasks</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a>pull_file_task <span class="op">&gt;&gt;</span> parse_file_task <span class="op">&gt;&gt;</span> email_manager_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="section-7-airflow-scheduling" class="level1">
+<h1>Section 7: Airflow Scheduling</h1>
+<p>When referring to scheduling in Airflow<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, we must first discuss a DAG run. This is an instance of a workflow at a given point in time. For example, it could be the currently running instance, or it could be one run last Tuesday at 3pm. A DAG can be run manually, or via the schedule interval parameter passed when the DAG is defined. Each DAG run maintains a state for itself and the tasks within. The DAGs can the following states:</p>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>running</p>
+</div>
+</div>
+</div>
+<div class="callout-important callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>failed</p>
+</div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>success</p>
+</div>
+</div>
+</div>
+<p>The individual tasks can have these states or others as well (ie, queued, skipped).</p>
+<section id="dag-runs-view" class="level2">
+<h2 class="anchored" data-anchor-id="dag-runs-view">DAG Runs view</h2>
+<p>Within the Airflow UI, you can view all DAG runs under the Browse: DAG Runs menu option. This provides the assorted details about any DAGs that have run within the current Airflow instance.</p>
+<p><img src="../imgs/chapter2/0X146.png" class="img-fluid"></p>
+<p>As mentioned, you can view the state of a DAG run within this page, illustrating whether the DAG run was successful or not.</p>
+<p><img src="../imgs/chapter2/0X150.png" class="img-fluid"></p>
+</section>
+<section id="schedule-details" class="level2">
+<h2 class="anchored" data-anchor-id="schedule-details">Schedule details</h2>
+<p>When scheduling a DAG, there are many attributes to consider depending on your scheduling needs. The <code>start_date</code> value specifies the first time the DAG could be scheduled. This is typically defined with a Python datetime object. The <code>end_date</code> represents the last possible time to schedule the DAG. <code>max_tries</code> represents how many times to retry before fully failing the DAG run. The <code>schedule_interval</code> represents how often to schedule the DAG for execution. There are many nuances to this which we’ll cover in a moment.</p>
+</section>
+<section id="schedule-interval" class="level2">
+<h2 class="anchored" data-anchor-id="schedule-interval">Schedule interval</h2>
+<p>The schedule interval represents how often to schedule the DAG runs. The scheduling occurs between the start date and the potential end date. Note that this is not when the DAGs will absolutely run, but rather a minimum and maximum value of when they could be scheduled. The schedule interval can be defined by a couple methods - with a cron style syntax or via built-in presets.</p>
+</section>
+<section id="cron-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="cron-syntax">cron syntax</h2>
+<p>The cron syntax is the same as the format for scheduling jobs using the Unix cron tool.</p>
+<p><img src="../imgs/chapter2/0X164.png" class="img-fluid"></p>
+<p>It consists of five fields separated by a space, starting with the minute value (0 through 59), the hour (0 through 23), the day of the month (1 through 31), the month (1 through 12), and the day of week (0 through 6). An asterisk in any of the fields represents running for every interval (for example, an asterisk in the minute field means run every minute) A list of values can be given on a field via comma separated values.</p>
+</section>
+<section id="cron-examples" class="level2">
+<h2 class="anchored" data-anchor-id="cron-examples">cron examples</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="dv">0</span> <span class="dv">12</span> <span class="op">*</span> <span class="op">*</span> <span class="op">*</span>              <span class="co"># Run daily at Noon (12:00)</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="op">*</span> <span class="op">*</span> <span class="dv">25</span> <span class="dv">2</span> <span class="op">*</span>              <span class="co"># Run once per minute, but only on February 25th</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span> <span class="op">*</span> <span class="op">*</span> <span class="op">*</span> <span class="op">*</span>      <span class="co"># Run every 15 minutes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The cron entry 0 12 asterisk asterisk asterisk means run daily at Noon (12:00) asterisk asterisk 25 2 asterisk represents running once per minute, but only on February 25th. 0 comma 15 comma 30 comma 45 asterisk asterisk asterisk asterisk means to run every 15 minutes.</p>
+</section>
+<section id="airflow-scheduler-presets" class="level2">
+<h2 class="anchored" data-anchor-id="airflow-scheduler-presets">Airflow scheduler presets</h2>
+<p>Airflow has several presets, or shortcut syntax options representing often used time intervals.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Preset</th>
+<th>cron equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="citation" data-cites="hour">@hour</span></td>
+<td>0 * * * *</td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="daily">@daily</span></td>
+<td>0 0 * * *</td>
+</tr>
+<tr class="odd">
+<td><span class="citation" data-cites="weekly">@weekly</span></td>
+<td>0 0 * * 0</td>
+</tr>
+<tr class="even">
+<td><span class="citation" data-cites="monthly">@monthly</span></td>
+<td>0 0 1 * *</td>
+</tr>
+<tr class="odd">
+<td><span class="citation" data-cites="yearly">@yearly</span></td>
+<td>0 0 1 1 *</td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="citation" data-cites="hourly">@hourly</span> preset means run once an hour at the beginning of the hour. It’s equivalent to 0 asterisk asterisk asterisk asterisk in cron. The <span class="citation" data-cites="daily">@daily</span>, <span class="citation" data-cites="weekly">@weekly</span>, <span class="citation" data-cites="monthly">@monthly</span>, and <span class="citation" data-cites="yearly">@yearly</span> presets behave similarly.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note: “0 12 * * <em>” != “</em> 12 * * *”</p>
+<p>“0 12 * * *” This cron expression specifies a specific minute and hour. It means the task should run at 12:00 PM (noon) every day. The 0 in the first position represents the minute, and 12 in the second position represents the hour.</p>
+<p>“* 12 * * *” This cron expression uses an asterisk in the minute position, which means the task will run every minute of the 12th hour (noon) of every day. In other words, it will run once every minute between 12:00 PM and 12:59 PM.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="special-presets" class="level2">
+<h2 class="anchored" data-anchor-id="special-presets">Special presets</h2>
+<p>Airflow also has two special presets for schedule intervals.</p>
+<ul>
+<li><span class="citation" data-cites="none">@none</span> means don’t ever schedule the DAG and is used for manually triggered workflows.</li>
+<li><span class="citation" data-cites="once">@once</span> means to only schedule a DAG once.</li>
+</ul>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Scheduling DAGs has an important nuance to consider. When scheduling DAG runs, Airflow will use the start date as the earliest possible value, but not actually schedule anything until at least one schedule interval has passed beyond the start date. Given a start_date of February 25, 2020 and a <span class="citation" data-cites="daily">@daily</span> schedule interval, Airflow would then use the date of February 26, 2020 for the first run of the DAG. This can be tricky to consider when adding new DAG schedules, especially if they have longer schedule intervals.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises-6" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-6">Exercises</h2>
 
 
 </section>
@@ -520,6 +1177,7 @@ No data found</code></pre>
 
 <ol>
 <li id="fn1"><p>https://en.m.wikipedia.org/wiki/Directed_acyclic_graph<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://airflow.apache.org/docs/stable/scheduler.html<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
