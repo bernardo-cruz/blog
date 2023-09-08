@@ -143,6 +143,9 @@ cookieconsent.run({
 });
 </script> 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -280,7 +283,67 @@ cookieconsent.run({
   <li><a href="#cron-examples" id="toc-cron-examples" class="nav-link" data-scroll-target="#cron-examples">cron examples</a></li>
   <li><a href="#airflow-scheduler-presets" id="toc-airflow-scheduler-presets" class="nav-link" data-scroll-target="#airflow-scheduler-presets">Airflow scheduler presets</a></li>
   <li><a href="#special-presets" id="toc-special-presets" class="nav-link" data-scroll-target="#special-presets">Special presets</a></li>
-  <li><a href="#exercises-6" id="toc-exercises-6" class="nav-link" data-scroll-target="#exercises-6">Exercises</a></li>
+  <li><a href="#exercises-6" id="toc-exercises-6" class="nav-link" data-scroll-target="#exercises-6">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-schedule-a-dag-via-python" id="toc-exercise-1-schedule-a-dag-via-python" class="nav-link" data-scroll-target="#exercise-1-schedule-a-dag-via-python">Exercise 1: Schedule a DAG via Python</a></li>
+  <li><a href="#exercise-2-deciphering-airflow-schedules" id="toc-exercise-2-deciphering-airflow-schedules" class="nav-link" data-scroll-target="#exercise-2-deciphering-airflow-schedules">Exercise 2: Deciphering Airflow schedules</a></li>
+  <li><a href="#exercise-3-troubleshooting-dag-runs" id="toc-exercise-3-troubleshooting-dag-runs" class="nav-link" data-scroll-target="#exercise-3-troubleshooting-dag-runs">Exercise 3: Troubleshooting DAG runs</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-8-airflow-sensors" id="toc-section-8-airflow-sensors" class="nav-link" data-scroll-target="#section-8-airflow-sensors">Section 8: Airflow sensors</a>
+  <ul class="collapse">
+  <li><a href="#sensor-details" id="toc-sensor-details" class="nav-link" data-scroll-target="#sensor-details">Sensor details</a></li>
+  <li><a href="#file-sensor" id="toc-file-sensor" class="nav-link" data-scroll-target="#file-sensor">File sensor</a></li>
+  <li><a href="#other-sensors" id="toc-other-sensors" class="nav-link" data-scroll-target="#other-sensors">Other sensors</a></li>
+  <li><a href="#why-sensors" id="toc-why-sensors" class="nav-link" data-scroll-target="#why-sensors">Why sensors?</a></li>
+  <li><a href="#exercises-7" id="toc-exercises-7" class="nav-link" data-scroll-target="#exercises-7">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-sensors-vs-operators" id="toc-exercise-1-sensors-vs-operators" class="nav-link" data-scroll-target="#exercise-1-sensors-vs-operators">Exercise 1: Sensors vs operators</a></li>
+  <li><a href="#exercise-2-sensory-deprivation" id="toc-exercise-2-sensory-deprivation" class="nav-link" data-scroll-target="#exercise-2-sensory-deprivation">Exercise 2: Sensory deprivation</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-9-airflow-executors" id="toc-section-9-airflow-executors" class="nav-link" data-scroll-target="#section-9-airflow-executors">Section 9: Airflow executors</a>
+  <ul class="collapse">
+  <li><a href="#what-is-an-executor" id="toc-what-is-an-executor" class="nav-link" data-scroll-target="#what-is-an-executor">What is an executor?</a></li>
+  <li><a href="#sequentialexecutor" id="toc-sequentialexecutor" class="nav-link" data-scroll-target="#sequentialexecutor">SequentialExecutor</a></li>
+  <li><a href="#localexecutor" id="toc-localexecutor" class="nav-link" data-scroll-target="#localexecutor">LocalExecutor</a></li>
+  <li><a href="#celeryexecutor" id="toc-celeryexecutor" class="nav-link" data-scroll-target="#celeryexecutor">CeleryExecutor</a></li>
+  <li><a href="#determine-your-executor" id="toc-determine-your-executor" class="nav-link" data-scroll-target="#determine-your-executor">Determine your executor</a></li>
+  <li><a href="#determine-your-executor-2" id="toc-determine-your-executor-2" class="nav-link" data-scroll-target="#determine-your-executor-2">Determine your executor #2</a></li>
+  <li><a href="#exercises-8" id="toc-exercises-8" class="nav-link" data-scroll-target="#exercises-8">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-determining-the-executor" id="toc-exercise-1-determining-the-executor" class="nav-link" data-scroll-target="#exercise-1-determining-the-executor">Exercise 1: Determining the executor</a></li>
+  <li><a href="#exercise-2-executor-implications" id="toc-exercise-2-executor-implications" class="nav-link" data-scroll-target="#exercise-2-executor-implications">Exercise 2: Executor implications</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-10-debugging-and-troubleshooting-in-airflow" id="toc-section-10-debugging-and-troubleshooting-in-airflow" class="nav-link" data-scroll-target="#section-10-debugging-and-troubleshooting-in-airflow">Section 10: Debugging and troubleshooting in Airflow</a>
+  <ul class="collapse">
+  <li><a href="#typical-issues" id="toc-typical-issues" class="nav-link" data-scroll-target="#typical-issues">Typical issues…</a></li>
+  <li><a href="#dag-wont-run-on-schedule" id="toc-dag-wont-run-on-schedule" class="nav-link" data-scroll-target="#dag-wont-run-on-schedule">DAG won’t run on schedule</a></li>
+  <li><a href="#dag-wont-run-on-schedule-1" id="toc-dag-wont-run-on-schedule-1" class="nav-link" data-scroll-target="#dag-wont-run-on-schedule-1">DAG won’t run on schedule</a></li>
+  <li><a href="#dag-wont-load" id="toc-dag-wont-load" class="nav-link" data-scroll-target="#dag-wont-load">DAG won’t load</a></li>
+  <li><a href="#syntax-errors" id="toc-syntax-errors" class="nav-link" data-scroll-target="#syntax-errors">Syntax errors</a></li>
+  <li><a href="#airflow-list_dags" id="toc-airflow-list_dags" class="nav-link" data-scroll-target="#airflow-list_dags">airflow list_dags</a></li>
+  <li><a href="#running-the-python-interpreter" id="toc-running-the-python-interpreter" class="nav-link" data-scroll-target="#running-the-python-interpreter">Running the Python interpreter</a></li>
+  <li><a href="#exercises-9" id="toc-exercises-9" class="nav-link" data-scroll-target="#exercises-9">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-dags-in-the-bag" id="toc-exercise-1-dags-in-the-bag" class="nav-link" data-scroll-target="#exercise-1-dags-in-the-bag">Exercise 1: DAGs in the bag</a></li>
+  <li><a href="#exercise-2-missing-dag" id="toc-exercise-2-missing-dag" class="nav-link" data-scroll-target="#exercise-2-missing-dag">Exercise 2: Missing DAG</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-10-slas" id="toc-section-10-slas" class="nav-link" data-scroll-target="#section-10-slas">Section 10: SLAs</a>
+  <ul class="collapse">
+  <li><a href="#sla-misses" id="toc-sla-misses" class="nav-link" data-scroll-target="#sla-misses">SLA Misses</a></li>
+  <li><a href="#defining-slas" id="toc-defining-slas" class="nav-link" data-scroll-target="#defining-slas">Defining SLAs</a></li>
+  <li><a href="#timedelta-object" id="toc-timedelta-object" class="nav-link" data-scroll-target="#timedelta-object">timedelta object</a></li>
+  <li><a href="#general-reporting" id="toc-general-reporting" class="nav-link" data-scroll-target="#general-reporting">General reporting</a></li>
+  <li><a href="#exercises-10" id="toc-exercises-10" class="nav-link" data-scroll-target="#exercises-10">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-defining-an-sla" id="toc-exercise-1-defining-an-sla" class="nav-link" data-scroll-target="#exercise-1-defining-an-sla">Exercise 1: Defining an SLA</a></li>
+  <li><a href="#exercise-2-defining-a-task-sla" id="toc-exercise-2-defining-a-task-sla" class="nav-link" data-scroll-target="#exercise-2-defining-a-task-sla">Exercise 2: Defining a task SLA</a></li>
+  <li><a href="#exercise-3-generate-and-email-a-report" id="toc-exercise-3-generate-and-email-a-report" class="nav-link" data-scroll-target="#exercise-3-generate-and-email-a-report">Exercise 3: Generate and email a report</a></li>
+  <li><a href="#exercise-4-adding-status-emails" id="toc-exercise-4-adding-status-emails" class="nav-link" data-scroll-target="#exercise-4-adding-status-emails">Exercise 4: Adding status emails</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -507,7 +570,7 @@ cookieconsent.run({
 <li>Define the default_args dictionary with a key owner and a value of ‘dsmith’. Add a start_date of January 14, 2020 to default_args using the value 1 for the month of January. Add a retries count of 2 to default_args.</li>
 <li>Instantiate the DAG object to a variable called etl_dag with a DAG named example_etl. Add the default_args dictionary to the appropriate argument.</li>
 </ol>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Import the DAG object</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
@@ -524,13 +587,17 @@ cookieconsent.run({
 <span id="cb6-14"><a href="#cb6-14"></a>    <span class="st">'example_etl'</span>, </span>
 <span id="cb6-15"><a href="#cb6-15"></a>    default_args<span class="op">=</span>default_args</span>
 <span id="cb6-16"><a href="#cb6-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:</span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">751</span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> UserWarning</span><span style="color: #808000; text-decoration-color: #808000">: Config scheduler.max_tis_per_query </span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">(</span><span style="color: #808000; text-decoration-color: #808000">value: </span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">512</span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">)</span><span style="color: #808000; text-decoration-color: #808000"> should NOT be greater than core.parallelism </span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">(</span><span style="color: #808000; text-decoration-color: #808000">value: </span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">32</span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">)</span><span style="color: #808000; text-decoration-color: #808000">. Will now use core.parallelism as the max task instances per query instead of specified value.</span>
+</pre>
+</div>
 </div>
 </section>
 <section id="exercise-2-working-with-dags-and-the-airflow-shell" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2-working-with-dags-and-the-airflow-shell">Exercise 2: Working with DAGs and the Airflow shell</h3>
 <p>While working with Airflow, sometimes it can be tricky to remember what DAGs are defined and what they do. You want to gain some further knowledge of the Airflow shell command so you’d like to see what options are available.</p>
 <p>Multiple DAGs are already defined for you. How many DAGs are present in the Airflow system from the command-line?</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">!</span>airflow dags <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:751 UserWarning: Config scheduler.max_tis_per_query (value: 512) should NOT be greater than core.parallelism (value: 32). Will now use core.parallelism as the max task instances per query instead of specified value.
@@ -1089,7 +1156,7 @@ No data found</code></pre>
 </section>
 <section id="cron-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="cron-syntax">cron syntax</h2>
-<p>The cron syntax is the same as the format for scheduling jobs using the Unix cron tool.</p>
+<p>The cron syntax<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> is the same as the format for scheduling jobs using the Unix cron tool.</p>
 <p><img src="../imgs/chapter2/0X164.png" class="img-fluid"></p>
 <p>It consists of five fields separated by a space, starting with the minute value (0 through 59), the hour (0 through 23), the day of the month (1 through 31), the month (1 through 12), and the day of week (0 through 6). An asterisk in any of the fields represents running for every interval (for example, an asterisk in the minute field means run every minute) A list of values can be given on a field via comma separated values.</p>
 </section>
@@ -1167,8 +1234,583 @@ No data found</code></pre>
 </section>
 <section id="exercises-6" class="level2">
 <h2 class="anchored" data-anchor-id="exercises-6">Exercises</h2>
+<section id="exercise-1-schedule-a-dag-via-python" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-schedule-a-dag-via-python">Exercise 1: Schedule a DAG via Python</h3>
+<p>You’ve learned quite a bit about creating DAGs, but now you would like to schedule a specific DAG on a specific day of the week at a certain time. You’d like the code include this information in case a colleague needs to reinstall the DAG to a different server.</p>
+<p>The Airflow DAG object and the appropriate datetime methods have been imported for you.</p>
+<ul>
+<li>Set the start date of the DAG to November 1, 2019.</li>
+<li>Configure the retry_delay to 20 minutes. You will learn more about the timedelta object in Chapter 3. For now, you just need to know it expects an integer value.</li>
+<li>Use the cron syntax to configure a schedule of every Wednesday at 12:30pm.</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Update the scheduling arguments as defined</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>default_args <span class="op">=</span> {</span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="st">'owner'</span>: <span class="st">'Engineering'</span>,</span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2019</span>, <span class="dv">11</span>, <span class="dv">1</span>),</span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="st">'email'</span>: [<span class="st">'airflowresults@datacamp.com'</span>],</span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="st">'email_on_failure'</span>: <span class="va">False</span>,</span>
+<span id="cb28-7"><a href="#cb28-7"></a>  <span class="st">'email_on_retry'</span>: <span class="va">False</span>,</span>
+<span id="cb28-8"><a href="#cb28-8"></a>  <span class="st">'retries'</span>: <span class="dv">3</span>,</span>
+<span id="cb28-9"><a href="#cb28-9"></a>  <span class="st">'retry_delay'</span>: timedelta(minutes<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb28-10"><a href="#cb28-10"></a>}</span>
+<span id="cb28-11"><a href="#cb28-11"></a></span>
+<span id="cb28-12"><a href="#cb28-12"></a>dag <span class="op">=</span> DAG(</span>
+<span id="cb28-13"><a href="#cb28-13"></a>    <span class="st">'update_dataflows'</span>, </span>
+<span id="cb28-14"><a href="#cb28-14"></a>    default_args<span class="op">=</span>default_args, </span>
+<span id="cb28-15"><a href="#cb28-15"></a>    schedule_interval <span class="op">=</span> <span class="st">'30 12 * * 3'</span>,</span>
+<span id="cb28-16"><a href="#cb28-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-2-deciphering-airflow-schedules" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-deciphering-airflow-schedules">Exercise 2: Deciphering Airflow schedules</h3>
+<p>Given the various options for Airflow’s schedule_interval, you’d like to verify that you understand exactly how intervals relate to each other, whether it’s a cron format, timedelta object, or a preset.</p>
+<ul>
+<li>Order the schedule intervals from least to greatest amount of time.</li>
+</ul>
+<p><img src="../imgs/chapter2/Exercise_7_2.png" class="img-fluid"></p>
+</section>
+<section id="exercise-3-troubleshooting-dag-runs" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-troubleshooting-dag-runs">Exercise 3: Troubleshooting DAG runs</h3>
+<p>You’ve scheduled a DAG called process_sales which is set to run on the first day of the month and email your manager a copy of the report generated in the workflow. The start_date for the DAG is set to February 15, 2020. Unfortunately it’s now March 2nd and your manager did not receive the report and would like to know what happened.</p>
+<p>Use the information you’ve learned about Airflow scheduling to determine what the issue is.</p>
+<p><img src="../imgs/chapter2/Exercise_7_3.png" class="img-fluid"></p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">The <code>schedule_interval</code> has not yet passed since the <code>start_date</code>.</li>
+<li><input type="checkbox" disabled="">The <code>email_manager_task</code> is not downstream of the other tasks.</li>
+<li><input type="checkbox" disabled="">The DAG run has an error.</li>
+<li><input type="checkbox" disabled="">The <code>op_kwargs</code> are incorrect for the <code>EmailOperator</code>.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="section-8-airflow-sensors" class="level1">
+<h1>Section 8: Airflow sensors</h1>
+<p>A sensor is a special kind of operator that waits for a certain condition to be true. Some examples of conditions include waiting for the creation of a file, uploading a database record, or a specific response from a web request. With sensors, you can define how often to check for the condition(s) to be true. Since sensors are a type of operator, they are assigned to tasks just like normal operators. This means you can apply the bitshift dependencies to them as well.</p>
+<section id="sensor-details" class="level2">
+<h2 class="anchored" data-anchor-id="sensor-details">Sensor details</h2>
+<p>All sensors are derived from the <code>airflow.sensors.base_ underscore _sensor_ underscore _operator</code> class. There are some default arguments available to all sensors, including mode, poke_interval, and timeout. The mode tells the sensor how to check for the condition and has two options, poke or reschedule.</p>
+<ul>
+<li><code>poke</code>: The default is poke, and means to continue checking until complete without giving up a worker slot.</li>
+<li><code>reschedule</code>: Reschedule means to give up the worker slot and wait for another slot to become available.</li>
+</ul>
+<p>We’ll discuss worker slots in the next lesson, but for now consider a worker slot to be the capability to run a task.</p>
+<ul>
+<li><code>poke_interval</code>: The poke_interval is used in the poke mode, and tells Airflow how often to check for the condition. This is should be at least 1 minute to keep from overloading the Airflow scheduler.</li>
+<li><code>timeout</code>: The timeout field is how long to wait (in seconds) before marking the sensor task as failed. To avoid issues, make sure your timeout is significantly shorter than your schedule interval.</li>
+</ul>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that as sensors are operators, they also include normal operator attributes such as task_id and dag.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="file-sensor" class="level2">
+<h2 class="anchored" data-anchor-id="file-sensor">File sensor</h2>
+<p>A useful sensor is the FileSensor, found in the <code>airflow.contrib.sensors</code> library. The FileSensor checks for the existence of a file at a certain location in the file system. It can also check for any files within a given directory. A quick example is importing the FileSensor object, then defining a task called file underscore sensor underscore task. We set the task_id and dag entries as usual.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb29-2"><a href="#cb29-2"></a></span>
+<span id="cb29-3"><a href="#cb29-3"></a>file_sensor_task <span class="op">=</span> FileSensor(</span>
+<span id="cb29-4"><a href="#cb29-4"></a>    task_id<span class="op">=</span><span class="st">'file_sense'</span>,</span>
+<span id="cb29-5"><a href="#cb29-5"></a>    filepath<span class="op">=</span><span class="st">'salesdata.csv'</span>,</span>
+<span id="cb29-6"><a href="#cb29-6"></a>    poke_interval<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb29-7"><a href="#cb29-7"></a>    dag<span class="op">=</span>sales_report_dag,</span>
+<span id="cb29-8"><a href="#cb29-8"></a>)</span>
+<span id="cb29-9"><a href="#cb29-9"></a>    </span>
+<span id="cb29-10"><a href="#cb29-10"></a>init_sales_cleanup <span class="op">&gt;&gt;</span> file_sensor_task <span class="op">&gt;&gt;</span> generate_report</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>filepath</code> argument is set to <code>salesdata.csv</code>, looking for a file with this filename to exist before continuing. We set the <code>poke_interval</code> to 300 seconds, or to repeat the check every 5 minutes until true.</p>
+<p>Finally, we use the bitshift operators to define the sensor’s dependencies within our DAG. In this case, we must run <code>init_sales_cleanup</code>, then wait for the <code>file_sensor_task</code> to finish, then we run <code>generate_report</code>.</p>
+</section>
+<section id="other-sensors" class="level2">
+<h2 class="anchored" data-anchor-id="other-sensors">Other sensors</h2>
+<p>There are many types of sensors available within Airflow.</p>
+<ul>
+<li><code>ExternalTaskSensor</code>: The ExternalTaskSensor waits for a task in a separate DAG to complete. This allows a loose connection to other workflow tasks without making any one workflow too complex.</li>
+<li><code>HttpSensor</code>: The HttpSensor will request a web URL and allow you define the content to check for.</li>
+<li><code>SqlSensor</code>: The SqlSensor runs a SQL query to check for content.</li>
+</ul>
+<p>Many other sensors are available in the <code>airflow.sensors</code> and <code>airflow.contrib.sensors</code> libraries.</p>
+</section>
+<section id="why-sensors" class="level2">
+<h2 class="anchored" data-anchor-id="why-sensors">Why sensors?</h2>
+<p>You may be wondering when to use a sensor vs an operator.</p>
+<p>For the most part, you’ll want to use a normal operator unless you have any of the following requirements:</p>
+<ul>
+<li><p>You’re uncertain when a condition will be true.</p></li>
+<li><p>If you know something will complete that day but it might vary by an hour or so, you can use a sensor to check until it is.</p></li>
+<li><p>If you want to continue to check for a condition but not necessarily fail the entire DAG immediately. This provides some flexibility in defining your DAG.</p></li>
+<li><p>Finally, if you want to repeatedly run a check without adding cycles to your DAG, sensors are a good choice.</p></li>
+</ul>
+</section>
+<section id="exercises-7" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-7">Exercises</h2>
+<section id="exercise-1-sensors-vs-operators" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-sensors-vs-operators">Exercise 1: Sensors vs operators</h3>
+<p>As you’ve just learned about sensors, you want to verify you understand what they have in common with normal operators and where they differ.</p>
+<p>Move each entry into the Sensors, Operators, or Both bucket.</p>
+<p><img src="../imgs/chapter3/Exercise_8_1.png" class="img-fluid"></p>
+</section>
+<section id="exercise-2-sensory-deprivation" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-sensory-deprivation">Exercise 2: Sensory deprivation</h3>
+<p>You’ve recently taken over for another Airflow developer and are trying to learn about the various workflows defined within the system. You come across a DAG that you can’t seem to make run properly using any of the normal tools.</p>
+<p>Try exploring the DAG for any information about what it might be looking for before continuing.</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">The DAG is waiting for the file salesdata_ready.csv to be present.</li>
+<li><input type="checkbox" disabled="">The DAG expects a response from the SimpleHttpOperator before starting.</li>
+<li><input type="checkbox" disabled="">part1 needs a dependency added.</li>
+</ul>
+<p><img src="../imgs/chapter3/Exercise_8_2.png" class="img-fluid"></p>
+</section>
+</section>
+</section>
+<section id="section-9-airflow-executors" class="level1">
+<h1>Section 9: Airflow executors</h1>
+<section id="what-is-an-executor" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-an-executor">What is an executor?</h2>
+<p>In Airflow, an executor is the component that actually runs the tasks defined within your workflows. Each executor has different capabilities and behaviors for running the set of tasks. Some may run a single task at a time on a local system, while others might split individual tasks among all the systems in a cluster. As mentioned in the previous lesson, this is often referred to as the number of worker slots available. We’ll discuss some of these in more detail soon, but a few examples of executors are: - SequentialExecutor - LocalExecutor - CeleryExecutor</p>
+<p>This is not an exhaustive list, and you can also create your own executor if required (though we won’t cover that in this course).</p>
+</section>
+<section id="sequentialexecutor" class="level2">
+<h2 class="anchored" data-anchor-id="sequentialexecutor">SequentialExecutor</h2>
+<p>The SequentialExecutor is the default execution engine for Airflow. It runs only a single task at a time. This means having multiple workflows scheduled around the same timeframe may cause things to take longer than expected. The SequentialExecutor is useful for debugging as it’s fairly simple to follow the flow of tasks and it can also be used with some integrated development environments (though we won’t cover that here).</p>
+<p>The most important aspect of the SequentialExecutor is that while it’s very functional for learning and testing, it’s not really recommended for production due to the limitations of task resources.</p>
+</section>
+<section id="localexecutor" class="level2">
+<h2 class="anchored" data-anchor-id="localexecutor">LocalExecutor</h2>
+<p>The LocalExecutor is another option for Airflow that runs entirely on a single system. It basically treats each task as a process on the local system, and is able to start as many concurrent tasks as desired / requested / and permitted by the system resources (ie, CPU cores, memory, etc). This concurrency is the parallelism of the system, and it is defined by the user in one of two ways - either unlimited, or limited to a certain number of simultaneous tasks.</p>
+<p>Defined intelligently, the LocalExecutor is a good choice for a single production Airflow system and can utilize all the resources of a given host system.</p>
+</section>
+<section id="celeryexecutor" class="level2">
+<h2 class="anchored" data-anchor-id="celeryexecutor">CeleryExecutor</h2>
+<p>The last executor we’ll look at is the Celery executor. If you’re not familiar with Celery, it’s a general queuing system written in Python that allows multiple systems to communicate as a basic cluster. Using a CeleryExecutor, multiple Airflow systems can be configured as workers for a given set of workflows / tasks. You can add extra systems at any time to better balance workflows. The power of the CeleryExecutor is significantly more difficult to setup and configure. It requires a working Celery configuration prior to configuring Airflow, not to mention some method to share DAGs between the systems (ie, a git server, Network File System, etc). While it is more difficult to configure, the CeleryExecutor is a powerful choice for anyone working with a large number of DAGs and / or expects their processing needs to grow.</p>
+</section>
+<section id="determine-your-executor" class="level2">
+<h2 class="anchored" data-anchor-id="determine-your-executor">Determine your executor</h2>
+<p>Sometimes when developing Airflow workflows, you may want to know the executor being used. If you have access to the command line, you can determine this by: Looking at the appropriate <code>airflow.cfg</code> file. Search for the executor equal line, and it will specify the executor in use.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that we haven’t discussed the airflow.cfg file in depth as we assume a configured Airflow instance in this course. The airflow.cfg file is where most of the configuration and settings for the Airflow instance are defined, including the type of executor.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="determine-your-executor-2" class="level2">
+<h2 class="anchored" data-anchor-id="determine-your-executor-2">Determine your executor #2</h2>
+<p>You can also determine the executor by running airflow list_dags from the command line. Within the first few lines, you should see an entry for which executor is in use (In this case, it’s the SequentialExecutor).</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">!</span> cat <span class="op">~/</span>airflow<span class="op">/</span>airflow.cfg <span class="op">|</span> grep <span class="st">"executor = "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>executor = SequentialExecutor</code></pre>
+</div>
+</div>
+</section>
+<section id="exercises-8" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-8">Exercises</h2>
+<section id="exercise-1-determining-the-executor" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-determining-the-executor">Exercise 1: Determining the executor</h3>
+<p>While developing your DAGs in Airflow, you realize you’re not certain the configuration of the system. Using the commands you’ve learned, determine which of the following statements is true.</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">This system can run 12 tasks at the same time.</li>
+<li><input type="checkbox" disabled="">This system can run one task at a time.</li>
+<li><input type="checkbox" disabled="">This system can run as many tasks as needed at a time.</li>
+</ul>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">!</span> cat <span class="op">~/</span>airflow<span class="op">/</span>airflow.cfg <span class="op">|</span> grep <span class="st">"executor = "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>executor = SequentialExecutor</code></pre>
+</div>
+</div>
+<p>The airflow.cfg file is configured to use the SequentialExecutor -&gt; one per time</p>
+</section>
+<section id="exercise-2-executor-implications" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-executor-implications">Exercise 2: Executor implications</h3>
+<p>You’re learning quite a bit about running Airflow DAGs and are gaining some confidence at developing new workflows. That said, your manager has mentioned that on some days, the workflows are taking a lot longer to finish and asks you to investigate. She also mentions that the salesdata_ready.csv file is taking longer to generate these days and the time of day it is completed is variable.</p>
+<p>This exercise requires information from the previous two lessons - remember the implications of the available arguments and modify the workflow accordingly.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that for this exercise, you’re expected to modify one line of code, not add any extra code.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Determine the level of parallelism available on this system. You can do this by listing dags (airflow list_dags).</li>
+<li>Look at the source for the DAG file and fix which entry is causing the problem.</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="ex">airflow</span> dags list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="../imgs/chapter3/Exercise_9_2.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb35-5"><a href="#cb35-5"></a></span>
+<span id="cb35-6"><a href="#cb35-6"></a>report_dag <span class="op">=</span> DAG(</span>
+<span id="cb35-7"><a href="#cb35-7"></a>    dag_id <span class="op">=</span> <span class="st">'execute_report'</span>,</span>
+<span id="cb35-8"><a href="#cb35-8"></a>    schedule_interval <span class="op">=</span> <span class="st">"0 0 * * *"</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a>)</span>
+<span id="cb35-10"><a href="#cb35-10"></a></span>
+<span id="cb35-11"><a href="#cb35-11"></a>precheck <span class="op">=</span> FileSensor(</span>
+<span id="cb35-12"><a href="#cb35-12"></a>    task_id<span class="op">=</span><span class="st">'check_for_datafile'</span>,</span>
+<span id="cb35-13"><a href="#cb35-13"></a>    filepath<span class="op">=</span><span class="st">'salesdata_ready.csv'</span>,</span>
+<span id="cb35-14"><a href="#cb35-14"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb35-15"><a href="#cb35-15"></a>    mode<span class="op">=</span><span class="st">'poke'</span>,</span>
+<span id="cb35-16"><a href="#cb35-16"></a>    dag<span class="op">=</span>report_dag</span>
+<span id="cb35-17"><a href="#cb35-17"></a>)</span>
+<span id="cb35-18"><a href="#cb35-18"></a></span>
+<span id="cb35-19"><a href="#cb35-19"></a>generate_report_task <span class="op">=</span> BashOperator(</span>
+<span id="cb35-20"><a href="#cb35-20"></a>    task_id<span class="op">=</span><span class="st">'generate_report'</span>,</span>
+<span id="cb35-21"><a href="#cb35-21"></a>    bash_command<span class="op">=</span><span class="st">'generate_report.sh'</span>,</span>
+<span id="cb35-22"><a href="#cb35-22"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb35-23"><a href="#cb35-23"></a>    dag<span class="op">=</span>report_dag</span>
+<span id="cb35-24"><a href="#cb35-24"></a>)</span>
+<span id="cb35-25"><a href="#cb35-25"></a></span>
+<span id="cb35-26"><a href="#cb35-26"></a>precheck <span class="op">&gt;&gt;</span> generate_report_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>use FileSensor with mode=‘reschedule’ instead of ‘poke’</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb36-3"><a href="#cb36-3"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb36-5"><a href="#cb36-5"></a></span>
+<span id="cb36-6"><a href="#cb36-6"></a>report_dag <span class="op">=</span> DAG(</span>
+<span id="cb36-7"><a href="#cb36-7"></a>    dag_id <span class="op">=</span> <span class="st">'execute_report'</span>,</span>
+<span id="cb36-8"><a href="#cb36-8"></a>    schedule_interval <span class="op">=</span> <span class="st">"0 0 * * *"</span></span>
+<span id="cb36-9"><a href="#cb36-9"></a>)</span>
+<span id="cb36-10"><a href="#cb36-10"></a></span>
+<span id="cb36-11"><a href="#cb36-11"></a>precheck <span class="op">=</span> FileSensor(</span>
+<span id="cb36-12"><a href="#cb36-12"></a>    task_id<span class="op">=</span><span class="st">'check_for_datafile'</span>,</span>
+<span id="cb36-13"><a href="#cb36-13"></a>    filepath<span class="op">=</span><span class="st">'salesdata_ready.csv'</span>,</span>
+<span id="cb36-14"><a href="#cb36-14"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb36-15"><a href="#cb36-15"></a>    mode<span class="op">=</span><span class="st">'reschedule'</span>,</span>
+<span id="cb36-16"><a href="#cb36-16"></a>    dag<span class="op">=</span>report_dag</span>
+<span id="cb36-17"><a href="#cb36-17"></a>)</span>
+<span id="cb36-18"><a href="#cb36-18"></a></span>
+<span id="cb36-19"><a href="#cb36-19"></a>generate_report_task <span class="op">=</span> BashOperator(</span>
+<span id="cb36-20"><a href="#cb36-20"></a>    task_id<span class="op">=</span><span class="st">'generate_report'</span>,</span>
+<span id="cb36-21"><a href="#cb36-21"></a>    bash_command<span class="op">=</span><span class="st">'generate_report.sh'</span>,</span>
+<span id="cb36-22"><a href="#cb36-22"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb36-23"><a href="#cb36-23"></a>    dag<span class="op">=</span>report_dag</span>
+<span id="cb36-24"><a href="#cb36-24"></a>)</span>
+<span id="cb36-25"><a href="#cb36-25"></a></span>
+<span id="cb36-26"><a href="#cb36-26"></a>precheck <span class="op">&gt;&gt;</span> generate_report_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="section-10-debugging-and-troubleshooting-in-airflow" class="level1">
+<h1>Section 10: Debugging and troubleshooting in Airflow</h1>
+<section id="typical-issues" class="level2">
+<h2 class="anchored" data-anchor-id="typical-issues">Typical issues…</h2>
+<p>There are several common issues you may run across while working with Airflow - it helps to have an idea of what these might be and how best handle them. - The first common issue is a DAG or DAGs that won’t run on schedule. - The next is a DAG that simply won’t load into the system. - The last common scenario involves syntax errors.</p>
+<p>Let’s look at these more closely.</p>
+</section>
+<section id="dag-wont-run-on-schedule" class="level2">
+<h2 class="anchored" data-anchor-id="dag-wont-run-on-schedule">DAG won’t run on schedule</h2>
+<p>The most common reason why a DAG won’t run on schedule is the scheduler is not running. Airflow contains several components that accomplish various aspects of the system. The Airflow scheduler handles DAG run and task scheduling. If it is not running, no new tasks can run. You’ll often see this error within the web UI if the scheduler component is not running.</p>
+<p><img src="../imgs/chapter3/0X103.png" class="img-fluid"></p>
+<p>You can easily fix this issue by running airflow scheduler from the command-line.</p>
+</section>
+<section id="dag-wont-run-on-schedule-1" class="level2">
+<h2 class="anchored" data-anchor-id="dag-wont-run-on-schedule-1">DAG won’t run on schedule</h2>
+<ul>
+<li>As we’ve covered before, another common issue with scheduling is the scenario where at least one schedule interval period has not passed since either the start date or the last DAG run. There isn’t a specific fix for this, but you might want to modify the start date or schedule interval to meet your requirements.</li>
+<li>The last scheduling issue you’ll often see is related to what we covered in the previous lesson - the executor does not have enough free slots to run tasks. There are basically three ways to alleviate this problem - by changing the executor type to something capable of more tasks (LocalExecutor or CeleryExecutor), by adding systems or system resources (RAM, CPUs), or finally by changing the scheduling of your DAGs.</li>
+</ul>
+</section>
+<section id="dag-wont-load" class="level2">
+<h2 class="anchored" data-anchor-id="dag-wont-load">DAG won’t load</h2>
+<p>You’ll often see an issue where a new DAG will not appear in your DAG view of the web UI or in the airflow list_dags output. The first thing to check is that the python file is in the expected DAGs folder or directory. You can determine the current DAGs folder setting by examining the airflow.cfg file. The line dags underscore folder will indicate where Airflow expects to find your Python DAG files.</p>
+<p><img src="../imgs/chapter3/0X112.png" class="img-fluid"></p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that the folder path must be an absolute path.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="syntax-errors" class="level2">
+<h2 class="anchored" data-anchor-id="syntax-errors">Syntax errors</h2>
+<p>Probably the most common reason a DAG workflow won’t appear in your DAG list is one or more syntax errors in your python code. These are sometimes difficult to find, especially in an editor not setup for Python / Airflow (such as a base Vim install). I tend to prefer using Vim with some Python tools loaded, or VSCode but it’s really up to your preference. There are two quick methods to check for these issues - airflow list_dags, and running your DAG script with python.</p>
+</section>
+<section id="airflow-list_dags" class="level2">
+<h2 class="anchored" data-anchor-id="airflow-list_dags">airflow list_dags</h2>
+<p>The first is to run airflow space list underscore dags.</p>
+<p><img src="../imgs/chapter3/0X123.png" class="img-fluid"></p>
+<p>As we’ve seen before, Airflow will output some debugging information and the list of DAGs it’s processed. If there are any errors, those will appear in the output, helping you to troubleshoot further.</p>
+</section>
+<section id="running-the-python-interpreter" class="level2">
+<h2 class="anchored" data-anchor-id="running-the-python-interpreter">Running the Python interpreter</h2>
+<p>Another method to verify Python syntax is to run the actual python3 interpreter against the file. You won’t see any output normally as there’s nothing for the interpreter to do, but it can check for any syntax errors in your code. If there are errors, you’ll get an appropriate error message. If there are no errors, you’ll be returned to the command prompt.</p>
+<p><img src="../imgs/chapter3/0X129.png" class="img-fluid"></p>
+</section>
+<section id="exercises-9" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-9">Exercises</h2>
+<section id="exercise-1-dags-in-the-bag" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-dags-in-the-bag">Exercise 1: DAGs in the bag</h3>
+<p>You’ve taken over managing an Airflow cluster that you did not setup and are trying to learn a bit more about the system. Which of the following is true?</p>
+<p><img src="../imgs/chapter3/Exercise_10_1.png" class="img-fluid"></p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">The DAG is scheduled for hourly processing.</li>
+<li><input type="checkbox" disabled="">The Airflow user does not have proper permissions.</li>
+<li><input type="checkbox" disabled="" checked="">The <code>dags_folder</code> is set to <code>/home/repl/workspace/dags</code>.</li>
+</ul>
+</section>
+<section id="exercise-2-missing-dag" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-missing-dag">Exercise 2: Missing DAG</h3>
+<p>Your manager calls you before you’re about to leave for the evening and wants to know why a new DAG workflow she’s created isn’t showing up in the system. She needs this DAG called execute_report to appear in the system so she can properly schedule it for some tests before she leaves on a trip.</p>
+<p>Airflow is configured using the ~/airflow/airflow.cfg file.</p>
+<ul>
+<li>Examine the DAG for any errors and fix those.</li>
+<li>Determine if the DAG has loaded after fixing the errors.</li>
+<li>If not, determine why the DAG has not loaded and fix the final issue.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="co"># from airflow.operators.bash_operator import BashOperator</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb37-5"><a href="#cb37-5"></a></span>
+<span id="cb37-6"><a href="#cb37-6"></a>report_dag <span class="op">=</span> DAG(</span>
+<span id="cb37-7"><a href="#cb37-7"></a>    dag_id <span class="op">=</span> <span class="st">'execute_report'</span>,</span>
+<span id="cb37-8"><a href="#cb37-8"></a>    schedule_interval <span class="op">=</span> <span class="st">"0 0 * * *"</span></span>
+<span id="cb37-9"><a href="#cb37-9"></a>)</span>
+<span id="cb37-10"><a href="#cb37-10"></a></span>
+<span id="cb37-11"><a href="#cb37-11"></a>precheck <span class="op">=</span> FileSensor(</span>
+<span id="cb37-12"><a href="#cb37-12"></a>    task_id<span class="op">=</span><span class="st">'check_for_datafile'</span>,</span>
+<span id="cb37-13"><a href="#cb37-13"></a>    filepath<span class="op">=</span><span class="st">'salesdata_ready.csv'</span>,</span>
+<span id="cb37-14"><a href="#cb37-14"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb37-15"><a href="#cb37-15"></a>    mode<span class="op">=</span><span class="st">'poke'</span>,</span>
+<span id="cb37-16"><a href="#cb37-16"></a>    dag<span class="op">=</span>report_dag)</span>
+<span id="cb37-17"><a href="#cb37-17"></a></span>
+<span id="cb37-18"><a href="#cb37-18"></a>generate_report_task <span class="op">=</span> BashOperator(</span>
+<span id="cb37-19"><a href="#cb37-19"></a>    task_id<span class="op">=</span><span class="st">'generate_report'</span>,</span>
+<span id="cb37-20"><a href="#cb37-20"></a>    bash_command<span class="op">=</span><span class="st">'generate_report.sh'</span>,</span>
+<span id="cb37-21"><a href="#cb37-21"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb37-22"><a href="#cb37-22"></a>    dag<span class="op">=</span>report_dag</span>
+<span id="cb37-23"><a href="#cb37-23"></a>)</span>
+<span id="cb37-24"><a href="#cb37-24"></a></span>
+<span id="cb37-25"><a href="#cb37-25"></a>precheck <span class="op">&gt;&gt;</span> generate_report_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>remove the comment from the line 1</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb38-5"><a href="#cb38-5"></a></span>
+<span id="cb38-6"><a href="#cb38-6"></a>report_dag <span class="op">=</span> DAG(</span>
+<span id="cb38-7"><a href="#cb38-7"></a>    dag_id <span class="op">=</span> <span class="st">'execute_report'</span>,</span>
+<span id="cb38-8"><a href="#cb38-8"></a>    schedule_interval <span class="op">=</span> <span class="st">"0 0 * * *"</span></span>
+<span id="cb38-9"><a href="#cb38-9"></a>)</span>
+<span id="cb38-10"><a href="#cb38-10"></a></span>
+<span id="cb38-11"><a href="#cb38-11"></a>precheck <span class="op">=</span> FileSensor(</span>
+<span id="cb38-12"><a href="#cb38-12"></a>    task_id<span class="op">=</span><span class="st">'check_for_datafile'</span>,</span>
+<span id="cb38-13"><a href="#cb38-13"></a>    filepath<span class="op">=</span><span class="st">'salesdata_ready.csv'</span>,</span>
+<span id="cb38-14"><a href="#cb38-14"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb38-15"><a href="#cb38-15"></a>    mode<span class="op">=</span><span class="st">'poke'</span>,</span>
+<span id="cb38-16"><a href="#cb38-16"></a>    dag<span class="op">=</span>report_dag)</span>
+<span id="cb38-17"><a href="#cb38-17"></a></span>
+<span id="cb38-18"><a href="#cb38-18"></a>generate_report_task <span class="op">=</span> BashOperator(</span>
+<span id="cb38-19"><a href="#cb38-19"></a>    task_id<span class="op">=</span><span class="st">'generate_report'</span>,</span>
+<span id="cb38-20"><a href="#cb38-20"></a>    bash_command<span class="op">=</span><span class="st">'generate_report.sh'</span>,</span>
+<span id="cb38-21"><a href="#cb38-21"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb38-22"><a href="#cb38-22"></a>    dag<span class="op">=</span>report_dag</span>
+<span id="cb38-23"><a href="#cb38-23"></a>)</span>
+<span id="cb38-24"><a href="#cb38-24"></a></span>
+<span id="cb38-25"><a href="#cb38-25"></a>precheck <span class="op">&gt;&gt;</span> generate_report_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="section-10-slas" class="level1">
+<h1>Section 10: SLAs</h1>
+<p>You may be wondering, what is an SLA? SLA stands for Service Level Agreement. Within the business world, this is often an uptime or availability guarantee. Airflow treats it a bit differently - it’s considered the amount of time a task or a DAG should require to run. An SLA miss is any situation where a task or DAG does not meet the expected timing for the SLA. If an SLA is missed, an email alert is sent out per the system configuration and a note is made in the log. Any SLA miss can be viewed in the Browse, SLA Misses menu item of the web UI.</p>
+<section id="sla-misses" class="level2">
+<h2 class="anchored" data-anchor-id="sla-misses">SLA Misses</h2>
+<p>To view any given SLA miss, you can access it in the web UI, via the Browse: SLA Misses link. It provides you general information about what task missed the SLA and when it failed. It also indicates if an email has been sent when the SLA failed.</p>
+<p><img src="../imgs/chapter3/0X153.png" class="img-fluid"></p>
+</section>
+<section id="defining-slas" class="level2">
+<h2 class="anchored" data-anchor-id="defining-slas">Defining SLAs</h2>
+<p>There are several ways to define an SLA but we’ll only look at two for this course. The first is via an sla argument on the task itself. This takes a timedelta object with the amount of time to pass.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>task1 <span class="op">=</span> BashOperator(</span>
+<span id="cb39-2"><a href="#cb39-2"></a>    task_id <span class="op">=</span> <span class="st">'sla_task'</span>,</span>
+<span id="cb39-3"><a href="#cb39-3"></a>    bash_command <span class="op">=</span> <span class="st">'runcode.sh'</span>,</span>
+<span id="cb39-4"><a href="#cb39-4"></a>    sla <span class="op">=</span> timedelta(seconds <span class="op">=</span> <span class="dv">30</span>),</span>
+<span id="cb39-5"><a href="#cb39-5"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb39-6"><a href="#cb39-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The second way is using the default_args dictionary and defining an sla key.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>default_args <span class="op">=</span> {</span>
+<span id="cb40-2"><a href="#cb40-2"></a>    <span class="st">'sla'</span>: timedelta(minutes<span class="op">=</span><span class="dv">20</span>),</span>
+<span id="cb40-3"><a href="#cb40-3"></a>    <span class="st">'start_date'</span>: datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>)</span>
+<span id="cb40-4"><a href="#cb40-4"></a>},</span>
+<span id="cb40-5"><a href="#cb40-5"></a></span>
+<span id="cb40-6"><a href="#cb40-6"></a>dag <span class="op">=</span> DAG(</span>
+<span id="cb40-7"><a href="#cb40-7"></a>    <span class="st">'sla_dag'</span>, </span>
+<span id="cb40-8"><a href="#cb40-8"></a>    default_args <span class="op">=</span> default_args</span>
+<span id="cb40-9"><a href="#cb40-9"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The dictionary is then passed into the default_args argument of the DAG and applies to any tasks internally.</p>
+</section>
+<section id="timedelta-object" class="level2">
+<h2 class="anchored" data-anchor-id="timedelta-object">timedelta object</h2>
+<p>We haven’t covered the timedelta object yet so let’s look at some of the details. It’s found in the <code>datetime</code> library, along with the datetime object. Most easily accessed with an import statement of <code>from datetime import timedelta</code>. Takes arguments of days, seconds, minutes, hours, and weeks.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>timedelta(seconds<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb41-2"><a href="#cb41-2"></a>timedelta(weeks<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb41-3"><a href="#cb41-3"></a>timedelta(days<span class="op">=</span><span class="dv">4</span>, hours<span class="op">=</span><span class="dv">10</span>, minutes<span class="op">=</span><span class="dv">20</span>, seconds<span class="op">=</span><span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It also has milliseconds and microseconds available, but those wouldn’t apply to Airflow. To create the object, you simply call timedelta with the argument or arguments you wish to reference. To create a 30 second time delta, call it with seconds equals 30. Or weeks equals 2. Or you can combine it into a longer mix of any of the arguments you wish (in this case, 4 days, 10 hours, 20 minutes, and 30 seconds).</p>
+</section>
+<section id="general-reporting" class="level2">
+<h2 class="anchored" data-anchor-id="general-reporting">General reporting</h2>
+<p>For reporting purposes you can use email alerting built into Airflow. There are a couple ways to do this. Airflow has built-in options for sending messages:</p>
+<ul>
+<li>success</li>
+<li>failure</li>
+<li>error</li>
+<li>retry</li>
+</ul>
+<p>These are handled via keys in the default_args dictionary that gets passed on DAG creation. The required component is the list of emails assigned to the email key. Then there are boolean options for email underscore on underscore failure, email underscore on underscore retry, and email underscore on underscore success.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>default_args <span class="op">=</span> {</span>
+<span id="cb42-2"><a href="#cb42-2"></a>    <span class="st">'email'</span>: [<span class="st">'address@domain.com'</span>],</span>
+<span id="cb42-3"><a href="#cb42-3"></a>    <span class="st">'email_on_failure'</span>: <span class="va">True</span>,</span>
+<span id="cb42-4"><a href="#cb42-4"></a>    <span class="st">'email_on_retry'</span>: <span class="va">False</span>,</span>
+<span id="cb42-5"><a href="#cb42-5"></a>    <span class="st">'email_on_success'</span>: <span class="va">True</span>,</span>
+<span id="cb42-6"><a href="#cb42-6"></a>    ...</span>
+<span id="cb42-7"><a href="#cb42-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In addition, we’ve already looked at the EmailOperator earlier but this is useful for sending emails outside of one of the defined Airflow options. Note that sending an email does require configuration within Airflow that is outside the scope of this course. The Airflow documentation provides information on how to set up the global email configuration.</p>
+</section>
+<section id="exercises-10" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-10">Exercises</h2>
+<section id="exercise-1-defining-an-sla" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-defining-an-sla">Exercise 1: Defining an SLA</h3>
+<p>You’ve successfully implemented several Airflow workflows into production, but you don’t currently have any method of determining if a workflow takes too long to run. After consulting with your manager and your team, you decide to implement an SLA at the DAG level on a test workflow.</p>
+<p>All appropriate Airflow libraries have been imported for you.</p>
+<ul>
+<li>Import the timedelta object.</li>
+<li>Define an SLA of 30 minutes.</li>
+<li>Add the SLA to the DAG.</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Import the timedelta object</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
+<span id="cb43-3"><a href="#cb43-3"></a></span>
+<span id="cb43-4"><a href="#cb43-4"></a><span class="co"># Create the dictionary entry</span></span>
+<span id="cb43-5"><a href="#cb43-5"></a>default_args <span class="op">=</span> {</span>
+<span id="cb43-6"><a href="#cb43-6"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2020</span>, <span class="dv">2</span>, <span class="dv">20</span>),</span>
+<span id="cb43-7"><a href="#cb43-7"></a>  <span class="st">'sla'</span>: timedelta(minutes<span class="op">=</span><span class="dv">30</span>),</span>
+<span id="cb43-8"><a href="#cb43-8"></a>}</span>
+<span id="cb43-9"><a href="#cb43-9"></a></span>
+<span id="cb43-10"><a href="#cb43-10"></a><span class="co"># Add to the DAG</span></span>
+<span id="cb43-11"><a href="#cb43-11"></a>test_dag <span class="op">=</span> DAG(</span>
+<span id="cb43-12"><a href="#cb43-12"></a>  <span class="st">'test_workflow'</span>,</span>
+<span id="cb43-13"><a href="#cb43-13"></a>  default_args<span class="op">=</span>default_args,</span>
+<span id="cb43-14"><a href="#cb43-14"></a>  schedule_interval<span class="op">=</span><span class="st">'@None'</span>,</span>
+<span id="cb43-15"><a href="#cb43-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-2-defining-a-task-sla" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-defining-a-task-sla">Exercise 2: Defining a task SLA</h3>
+<p>After completing the SLA on the entire workflow, you realize you really only need the SLA timing on a specific task instead of the full workflow.</p>
+<p>The appropriate Airflow libraries are imported for you.</p>
+<ul>
+<li>Import the timedelta object.</li>
+<li>Add a 3 hour SLA to the task object</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Import the timedelta object</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta</span>
+<span id="cb44-3"><a href="#cb44-3"></a></span>
+<span id="cb44-4"><a href="#cb44-4"></a>test_dag <span class="op">=</span> DAG(</span>
+<span id="cb44-5"><a href="#cb44-5"></a>    <span class="st">'test_workflow'</span>, </span>
+<span id="cb44-6"><a href="#cb44-6"></a>    start_date<span class="op">=</span>datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>), </span>
+<span id="cb44-7"><a href="#cb44-7"></a>    schedule_interval<span class="op">=</span><span class="st">'@None'</span></span>
+<span id="cb44-8"><a href="#cb44-8"></a>)</span>
+<span id="cb44-9"><a href="#cb44-9"></a></span>
+<span id="cb44-10"><a href="#cb44-10"></a><span class="co"># Create the task with the SLA</span></span>
+<span id="cb44-11"><a href="#cb44-11"></a>task1 <span class="op">=</span> BashOperator(</span>
+<span id="cb44-12"><a href="#cb44-12"></a>    task_id <span class="op">=</span> <span class="st">'first_task'</span>,</span>
+<span id="cb44-13"><a href="#cb44-13"></a>    sla <span class="op">=</span> timedelta(hours <span class="op">=</span> <span class="dv">3</span>),</span>
+<span id="cb44-14"><a href="#cb44-14"></a>    bash_command <span class="op">=</span> <span class="st">'initialize_data.sh'</span>,</span>
+<span id="cb44-15"><a href="#cb44-15"></a>    dag <span class="op">=</span> test_dag</span>
+<span id="cb44-16"><a href="#cb44-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-3-generate-and-email-a-report" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-generate-and-email-a-report">Exercise 3: Generate and email a report</h3>
+<p>Airflow provides the ability to automate almost any style of workflow. You would like to receive a report from Airflow when tasks complete without requiring constant monitoring of the UI or log files. You decide to use the email functionality within Airflow to provide this message.</p>
+<p>All the typical Airflow components have been imported for you, and a DAG is already defined as dag.</p>
+<ul>
+<li>Define the proper operator for the email_report task.</li>
+<li>Fill the missing details for the Operator. Use the file named monthly_report.pdf.</li>
+<li>Set the email_report task to occur after the generate_report task.</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Define the email task</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>email_report <span class="op">=</span> EmailOperator(</span>
+<span id="cb45-3"><a href="#cb45-3"></a>        task_id <span class="op">=</span> <span class="st">'email_report'</span>,</span>
+<span id="cb45-4"><a href="#cb45-4"></a>        to <span class="op">=</span> <span class="st">'airflow@datacamp.com'</span>,</span>
+<span id="cb45-5"><a href="#cb45-5"></a>        subject <span class="op">=</span> <span class="st">'Airflow Monthly Report'</span>,</span>
+<span id="cb45-6"><a href="#cb45-6"></a>        html_content <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb45-7"><a href="#cb45-7"></a><span class="st">        Attached is your monthly workflow report - please refer to it for more detail</span></span>
+<span id="cb45-8"><a href="#cb45-8"></a><span class="st">        """</span>,</span>
+<span id="cb45-9"><a href="#cb45-9"></a>        files <span class="op">=</span> [<span class="st">'monthly_report.pdf'</span>],</span>
+<span id="cb45-10"><a href="#cb45-10"></a>        dag <span class="op">=</span> report_dag,</span>
+<span id="cb45-11"><a href="#cb45-11"></a>)</span>
+<span id="cb45-12"><a href="#cb45-12"></a></span>
+<span id="cb45-13"><a href="#cb45-13"></a><span class="co"># Set the email task to run after the report is generated</span></span>
+<span id="cb45-14"><a href="#cb45-14"></a>email_report <span class="op">&lt;&lt;</span> generate_report</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-4-adding-status-emails" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-adding-status-emails">Exercise 4: Adding status emails</h3>
+<p>You’ve worked through most of the Airflow configuration for setting up your workflows, but you realize you’re not getting any notifications when DAG runs complete or fail. You’d like to setup email alerting for the success and failure cases, but you want to send it to two addresses.</p>
+<ul>
+<li>Edit the execute_report_dag.py workflow.</li>
+<li>Add the emails airflowalerts@datacamp.com and airflowadmin@datacamp.com to the appropriate key in default_args.</li>
+<li>Set the failure email option to True.</li>
+<li>Configure the success email to send you messages as well.</li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb46-3"><a href="#cb46-3"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb46-5"><a href="#cb46-5"></a></span>
+<span id="cb46-6"><a href="#cb46-6"></a>default_args<span class="op">=</span>{</span>
+<span id="cb46-7"><a href="#cb46-7"></a>    <span class="st">'email'</span>: [</span>
+<span id="cb46-8"><a href="#cb46-8"></a>        <span class="st">'airflowalerts@datacamp.com'</span>,</span>
+<span id="cb46-9"><a href="#cb46-9"></a>        <span class="st">'airflowadmin@datacamp.com'</span>,</span>
+<span id="cb46-10"><a href="#cb46-10"></a>        ...</span>
+<span id="cb46-11"><a href="#cb46-11"></a>    ],</span>
+<span id="cb46-12"><a href="#cb46-12"></a>    <span class="st">'email_on_failure'</span>: <span class="va">True</span>,</span>
+<span id="cb46-13"><a href="#cb46-13"></a>    <span class="st">'email_on_success'</span>: <span class="va">True</span>,</span>
+<span id="cb46-14"><a href="#cb46-14"></a>}</span>
+<span id="cb46-15"><a href="#cb46-15"></a></span>
+<span id="cb46-16"><a href="#cb46-16"></a>report_dag <span class="op">=</span> DAG(</span>
+<span id="cb46-17"><a href="#cb46-17"></a>    dag_id <span class="op">=</span> <span class="st">'execute_report'</span>,</span>
+<span id="cb46-18"><a href="#cb46-18"></a>    schedule_interval <span class="op">=</span> <span class="st">"0 0 * * *"</span>,</span>
+<span id="cb46-19"><a href="#cb46-19"></a>    default_args <span class="op">=</span> default_args</span>
+<span id="cb46-20"><a href="#cb46-20"></a>)</span>
+<span id="cb46-21"><a href="#cb46-21"></a></span>
+<span id="cb46-22"><a href="#cb46-22"></a>precheck <span class="op">=</span> FileSensor(</span>
+<span id="cb46-23"><a href="#cb46-23"></a>    task_id <span class="op">=</span> <span class="st">'check_for_datafile'</span>,</span>
+<span id="cb46-24"><a href="#cb46-24"></a>    filepath <span class="op">=</span> <span class="st">'salesdata_ready.csv'</span>,</span>
+<span id="cb46-25"><a href="#cb46-25"></a>    start_date <span class="op">=</span> datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb46-26"><a href="#cb46-26"></a>    mode <span class="op">=</span> <span class="st">'reschedule'</span>,</span>
+<span id="cb46-27"><a href="#cb46-27"></a>    dag <span class="op">=</span> report_dag</span>
+<span id="cb46-28"><a href="#cb46-28"></a>)</span>
+<span id="cb46-29"><a href="#cb46-29"></a></span>
+<span id="cb46-30"><a href="#cb46-30"></a>generate_report_task <span class="op">=</span> BashOperator(</span>
+<span id="cb46-31"><a href="#cb46-31"></a>    task_id <span class="op">=</span> <span class="st">'generate_report'</span>,</span>
+<span id="cb46-32"><a href="#cb46-32"></a>    bash_command <span class="op">=</span> <span class="st">'generate_report.sh'</span>,</span>
+<span id="cb46-33"><a href="#cb46-33"></a>    start_date <span class="op">=</span> datetime(<span class="dv">2020</span>,<span class="dv">2</span>,<span class="dv">20</span>),</span>
+<span id="cb46-34"><a href="#cb46-34"></a>    dag <span class="op">=</span> report_dag,</span>
+<span id="cb46-35"><a href="#cb46-35"></a>)</span>
+<span id="cb46-36"><a href="#cb46-36"></a></span>
+<span id="cb46-37"><a href="#cb46-37"></a>precheck <span class="op">&gt;&gt;</span> generate_report_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 </section>
 
@@ -1178,6 +1820,7 @@ No data found</code></pre>
 <ol>
 <li id="fn1"><p>https://en.m.wikipedia.org/wiki/Directed_acyclic_graph<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>https://airflow.apache.org/docs/stable/scheduler.html<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://bradymholt.github.io/cron-expression-descriptor/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

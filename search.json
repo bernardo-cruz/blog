@@ -130,7 +130,7 @@
     "href": "tutorials.html",
     "title": "Tutorials",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\n\nDatacamp Airflow Course\n\n\n\n\n\n\n\nApache Airflow\n\n\nDAG\n\n\nPython\n\n\nWorkflow\n\n\nETL\n\n\nData Engineering\n\n\n\n\n\n\n\n\n\n\n\nSep 4, 2023\n\n\n34 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\n\nDatacamp Airflow Course\n\n\n\n\n\n\n\nApache Airflow\n\n\nDAG\n\n\nPython\n\n\nWorkflow\n\n\nETL\n\n\nData Engineering\n\n\n\n\n\n\n\n\n\n\n\nSep 4, 2023\n\n\n55 min\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "cv.html",
@@ -207,7 +207,7 @@
     "href": "tutorials/DC_airflow.html#exercises-1",
     "title": "Datacamp Airflow Course",
     "section": "Exercises",
-    "text": "Exercises\n\nExercise 1: Defining a simple DAG\nYou’ve spent some time reviewing the Airflow components and are interested in testing out your own workflows. To start you decide to define the default arguments and create a DAG object for your workflow.\nThe DateTime object has been imported for you.\n\nImport the Airflow DAG object. Note that it is case-sensitive.\nDefine the default_args dictionary with a key owner and a value of ‘dsmith’. Add a start_date of January 14, 2020 to default_args using the value 1 for the month of January. Add a retries count of 2 to default_args.\nInstantiate the DAG object to a variable called etl_dag with a DAG named example_etl. Add the default_args dictionary to the appropriate argument.\n\n\n# Import the DAG object\nfrom datetime import datetime\nfrom airflow.models import DAG\n\n# Define the default_args dictionary\ndefault_args = {\n  'owner'       : 'dsmith',\n  'start_date'  : datetime(2020, 1, 14),\n  'retries'     : 2\n}\n\n# Instantiate the DAG object\netl_dag = DAG(\n    'example_etl', \n    default_args=default_args\n)\n\n\n\nExercise 2: Working with DAGs and the Airflow shell\nWhile working with Airflow, sometimes it can be tricky to remember what DAGs are defined and what they do. You want to gain some further knowledge of the Airflow shell command so you’d like to see what options are available.\nMultiple DAGs are already defined for you. How many DAGs are present in the Airflow system from the command-line?\n\n!airflow dags list\n\n/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:751 UserWarning: Config scheduler.max_tis_per_query (value: 512) should NOT be greater than core.parallelism (value: 32). Will now use core.parallelism as the max task instances per query instead of specified value.\n\nPlease confirm database upgrade (or wait 4 seconds to skip it). Are you sure? [y/N]\nNo data found"
+    "text": "Exercises\n\nExercise 1: Defining a simple DAG\nYou’ve spent some time reviewing the Airflow components and are interested in testing out your own workflows. To start you decide to define the default arguments and create a DAG object for your workflow.\nThe DateTime object has been imported for you.\n\nImport the Airflow DAG object. Note that it is case-sensitive.\nDefine the default_args dictionary with a key owner and a value of ‘dsmith’. Add a start_date of January 14, 2020 to default_args using the value 1 for the month of January. Add a retries count of 2 to default_args.\nInstantiate the DAG object to a variable called etl_dag with a DAG named example_etl. Add the default_args dictionary to the appropriate argument.\n\n\n# Import the DAG object\nfrom datetime import datetime\nfrom airflow.models import DAG\n\n# Define the default_args dictionary\ndefault_args = {\n  'owner'       : 'dsmith',\n  'start_date'  : datetime(2020, 1, 14),\n  'retries'     : 2\n}\n\n# Instantiate the DAG object\netl_dag = DAG(\n    'example_etl', \n    default_args=default_args\n)\n\n/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:751 UserWarning: Config scheduler.max_tis_per_query (value: 512) should NOT be greater than core.parallelism (value: 32). Will now use core.parallelism as the max task instances per query instead of specified value.\n\n\n\n\n\nExercise 2: Working with DAGs and the Airflow shell\nWhile working with Airflow, sometimes it can be tricky to remember what DAGs are defined and what they do. You want to gain some further knowledge of the Airflow shell command so you’d like to see what options are available.\nMultiple DAGs are already defined for you. How many DAGs are present in the Airflow system from the command-line?\n\n!airflow dags list\n\n/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:751 UserWarning: Config scheduler.max_tis_per_query (value: 512) should NOT be greater than core.parallelism (value: 32). Will now use core.parallelism as the max task instances per query instead of specified value.\n\nPlease confirm database upgrade (or wait 4 seconds to skip it). Are you sure? [y/N]\nNo data found"
   },
   {
     "objectID": "tutorials/DC_airflow.html#dags-view-dags",
@@ -396,7 +396,7 @@
     "href": "tutorials/DC_airflow.html#cron-syntax",
     "title": "Datacamp Airflow Course",
     "section": "cron syntax",
-    "text": "cron syntax\nThe cron syntax is the same as the format for scheduling jobs using the Unix cron tool.\n\nIt consists of five fields separated by a space, starting with the minute value (0 through 59), the hour (0 through 23), the day of the month (1 through 31), the month (1 through 12), and the day of week (0 through 6). An asterisk in any of the fields represents running for every interval (for example, an asterisk in the minute field means run every minute) A list of values can be given on a field via comma separated values."
+    "text": "cron syntax\nThe cron syntax3 is the same as the format for scheduling jobs using the Unix cron tool.\n\nIt consists of five fields separated by a space, starting with the minute value (0 through 59), the hour (0 through 23), the day of the month (1 through 31), the month (1 through 12), and the day of week (0 through 6). An asterisk in any of the fields represents running for every interval (for example, an asterisk in the minute field means run every minute) A list of values can be given on a field via comma separated values."
   },
   {
     "objectID": "tutorials/DC_airflow.html#cron-examples",
@@ -424,7 +424,182 @@
     "href": "tutorials/DC_airflow.html#exercises-6",
     "title": "Datacamp Airflow Course",
     "section": "Exercises",
-    "text": "Exercises"
+    "text": "Exercises\n\nExercise 1: Schedule a DAG via Python\nYou’ve learned quite a bit about creating DAGs, but now you would like to schedule a specific DAG on a specific day of the week at a certain time. You’d like the code include this information in case a colleague needs to reinstall the DAG to a different server.\nThe Airflow DAG object and the appropriate datetime methods have been imported for you.\n\nSet the start date of the DAG to November 1, 2019.\nConfigure the retry_delay to 20 minutes. You will learn more about the timedelta object in Chapter 3. For now, you just need to know it expects an integer value.\nUse the cron syntax to configure a schedule of every Wednesday at 12:30pm.\n\n# Update the scheduling arguments as defined\ndefault_args = {\n  'owner': 'Engineering',\n  'start_date': datetime(2019, 11, 1),\n  'email': ['airflowresults@datacamp.com'],\n  'email_on_failure': False,\n  'email_on_retry': False,\n  'retries': 3,\n  'retry_delay': timedelta(minutes=20)\n}\n\ndag = DAG(\n    'update_dataflows', \n    default_args=default_args, \n    schedule_interval = '30 12 * * 3',\n)\n\n\nExercise 2: Deciphering Airflow schedules\nGiven the various options for Airflow’s schedule_interval, you’d like to verify that you understand exactly how intervals relate to each other, whether it’s a cron format, timedelta object, or a preset.\n\nOrder the schedule intervals from least to greatest amount of time.\n\n\n\n\nExercise 3: Troubleshooting DAG runs\nYou’ve scheduled a DAG called process_sales which is set to run on the first day of the month and email your manager a copy of the report generated in the workflow. The start_date for the DAG is set to February 15, 2020. Unfortunately it’s now March 2nd and your manager did not receive the report and would like to know what happened.\nUse the information you’ve learned about Airflow scheduling to determine what the issue is.\n\n\nThe schedule_interval has not yet passed since the start_date.\nThe email_manager_task is not downstream of the other tasks.\nThe DAG run has an error.\nThe op_kwargs are incorrect for the EmailOperator."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#sensor-details",
+    "href": "tutorials/DC_airflow.html#sensor-details",
+    "title": "Datacamp Airflow Course",
+    "section": "Sensor details",
+    "text": "Sensor details\nAll sensors are derived from the airflow.sensors.base_ underscore _sensor_ underscore _operator class. There are some default arguments available to all sensors, including mode, poke_interval, and timeout. The mode tells the sensor how to check for the condition and has two options, poke or reschedule.\n\npoke: The default is poke, and means to continue checking until complete without giving up a worker slot.\nreschedule: Reschedule means to give up the worker slot and wait for another slot to become available.\n\nWe’ll discuss worker slots in the next lesson, but for now consider a worker slot to be the capability to run a task.\n\npoke_interval: The poke_interval is used in the poke mode, and tells Airflow how often to check for the condition. This is should be at least 1 minute to keep from overloading the Airflow scheduler.\ntimeout: The timeout field is how long to wait (in seconds) before marking the sensor task as failed. To avoid issues, make sure your timeout is significantly shorter than your schedule interval.\n\n\n\n\n\n\n\nNote that as sensors are operators, they also include normal operator attributes such as task_id and dag."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#file-sensor",
+    "href": "tutorials/DC_airflow.html#file-sensor",
+    "title": "Datacamp Airflow Course",
+    "section": "File sensor",
+    "text": "File sensor\nA useful sensor is the FileSensor, found in the airflow.contrib.sensors library. The FileSensor checks for the existence of a file at a certain location in the file system. It can also check for any files within a given directory. A quick example is importing the FileSensor object, then defining a task called file underscore sensor underscore task. We set the task_id and dag entries as usual.\nfrom airflow.contrib.sensors.file_sensor import FileSensor\n\nfile_sensor_task = FileSensor(\n    task_id='file_sense',\n    filepath='salesdata.csv',\n    poke_interval=300,\n    dag=sales_report_dag,\n)\n    \ninit_sales_cleanup >> file_sensor_task >> generate_report\nThe filepath argument is set to salesdata.csv, looking for a file with this filename to exist before continuing. We set the poke_interval to 300 seconds, or to repeat the check every 5 minutes until true.\nFinally, we use the bitshift operators to define the sensor’s dependencies within our DAG. In this case, we must run init_sales_cleanup, then wait for the file_sensor_task to finish, then we run generate_report."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#other-sensors",
+    "href": "tutorials/DC_airflow.html#other-sensors",
+    "title": "Datacamp Airflow Course",
+    "section": "Other sensors",
+    "text": "Other sensors\nThere are many types of sensors available within Airflow.\n\nExternalTaskSensor: The ExternalTaskSensor waits for a task in a separate DAG to complete. This allows a loose connection to other workflow tasks without making any one workflow too complex.\nHttpSensor: The HttpSensor will request a web URL and allow you define the content to check for.\nSqlSensor: The SqlSensor runs a SQL query to check for content.\n\nMany other sensors are available in the airflow.sensors and airflow.contrib.sensors libraries."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#why-sensors",
+    "href": "tutorials/DC_airflow.html#why-sensors",
+    "title": "Datacamp Airflow Course",
+    "section": "Why sensors?",
+    "text": "Why sensors?\nYou may be wondering when to use a sensor vs an operator.\nFor the most part, you’ll want to use a normal operator unless you have any of the following requirements:\n\nYou’re uncertain when a condition will be true.\nIf you know something will complete that day but it might vary by an hour or so, you can use a sensor to check until it is.\nIf you want to continue to check for a condition but not necessarily fail the entire DAG immediately. This provides some flexibility in defining your DAG.\nFinally, if you want to repeatedly run a check without adding cycles to your DAG, sensors are a good choice."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#exercises-7",
+    "href": "tutorials/DC_airflow.html#exercises-7",
+    "title": "Datacamp Airflow Course",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1: Sensors vs operators\nAs you’ve just learned about sensors, you want to verify you understand what they have in common with normal operators and where they differ.\nMove each entry into the Sensors, Operators, or Both bucket.\n\n\n\nExercise 2: Sensory deprivation\nYou’ve recently taken over for another Airflow developer and are trying to learn about the various workflows defined within the system. You come across a DAG that you can’t seem to make run properly using any of the normal tools.\nTry exploring the DAG for any information about what it might be looking for before continuing.\n\nThe DAG is waiting for the file salesdata_ready.csv to be present.\nThe DAG expects a response from the SimpleHttpOperator before starting.\npart1 needs a dependency added."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#what-is-an-executor",
+    "href": "tutorials/DC_airflow.html#what-is-an-executor",
+    "title": "Datacamp Airflow Course",
+    "section": "What is an executor?",
+    "text": "What is an executor?\nIn Airflow, an executor is the component that actually runs the tasks defined within your workflows. Each executor has different capabilities and behaviors for running the set of tasks. Some may run a single task at a time on a local system, while others might split individual tasks among all the systems in a cluster. As mentioned in the previous lesson, this is often referred to as the number of worker slots available. We’ll discuss some of these in more detail soon, but a few examples of executors are: - SequentialExecutor - LocalExecutor - CeleryExecutor\nThis is not an exhaustive list, and you can also create your own executor if required (though we won’t cover that in this course)."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#sequentialexecutor",
+    "href": "tutorials/DC_airflow.html#sequentialexecutor",
+    "title": "Datacamp Airflow Course",
+    "section": "SequentialExecutor",
+    "text": "SequentialExecutor\nThe SequentialExecutor is the default execution engine for Airflow. It runs only a single task at a time. This means having multiple workflows scheduled around the same timeframe may cause things to take longer than expected. The SequentialExecutor is useful for debugging as it’s fairly simple to follow the flow of tasks and it can also be used with some integrated development environments (though we won’t cover that here).\nThe most important aspect of the SequentialExecutor is that while it’s very functional for learning and testing, it’s not really recommended for production due to the limitations of task resources."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#localexecutor",
+    "href": "tutorials/DC_airflow.html#localexecutor",
+    "title": "Datacamp Airflow Course",
+    "section": "LocalExecutor",
+    "text": "LocalExecutor\nThe LocalExecutor is another option for Airflow that runs entirely on a single system. It basically treats each task as a process on the local system, and is able to start as many concurrent tasks as desired / requested / and permitted by the system resources (ie, CPU cores, memory, etc). This concurrency is the parallelism of the system, and it is defined by the user in one of two ways - either unlimited, or limited to a certain number of simultaneous tasks.\nDefined intelligently, the LocalExecutor is a good choice for a single production Airflow system and can utilize all the resources of a given host system."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#celeryexecutor",
+    "href": "tutorials/DC_airflow.html#celeryexecutor",
+    "title": "Datacamp Airflow Course",
+    "section": "CeleryExecutor",
+    "text": "CeleryExecutor\nThe last executor we’ll look at is the Celery executor. If you’re not familiar with Celery, it’s a general queuing system written in Python that allows multiple systems to communicate as a basic cluster. Using a CeleryExecutor, multiple Airflow systems can be configured as workers for a given set of workflows / tasks. You can add extra systems at any time to better balance workflows. The power of the CeleryExecutor is significantly more difficult to setup and configure. It requires a working Celery configuration prior to configuring Airflow, not to mention some method to share DAGs between the systems (ie, a git server, Network File System, etc). While it is more difficult to configure, the CeleryExecutor is a powerful choice for anyone working with a large number of DAGs and / or expects their processing needs to grow."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#determine-your-executor",
+    "href": "tutorials/DC_airflow.html#determine-your-executor",
+    "title": "Datacamp Airflow Course",
+    "section": "Determine your executor",
+    "text": "Determine your executor\nSometimes when developing Airflow workflows, you may want to know the executor being used. If you have access to the command line, you can determine this by: Looking at the appropriate airflow.cfg file. Search for the executor equal line, and it will specify the executor in use.\n\n\n\n\n\n\nNote that we haven’t discussed the airflow.cfg file in depth as we assume a configured Airflow instance in this course. The airflow.cfg file is where most of the configuration and settings for the Airflow instance are defined, including the type of executor."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#determine-your-executor-2",
+    "href": "tutorials/DC_airflow.html#determine-your-executor-2",
+    "title": "Datacamp Airflow Course",
+    "section": "Determine your executor #2",
+    "text": "Determine your executor #2\nYou can also determine the executor by running airflow list_dags from the command line. Within the first few lines, you should see an entry for which executor is in use (In this case, it’s the SequentialExecutor).\n\n! cat ~/airflow/airflow.cfg | grep \"executor = \"\n\nexecutor = SequentialExecutor"
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#exercises-8",
+    "href": "tutorials/DC_airflow.html#exercises-8",
+    "title": "Datacamp Airflow Course",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1: Determining the executor\nWhile developing your DAGs in Airflow, you realize you’re not certain the configuration of the system. Using the commands you’ve learned, determine which of the following statements is true.\n\nThis system can run 12 tasks at the same time.\nThis system can run one task at a time.\nThis system can run as many tasks as needed at a time.\n\n\n! cat ~/airflow/airflow.cfg | grep \"executor = \"\n\nexecutor = SequentialExecutor\n\n\nThe airflow.cfg file is configured to use the SequentialExecutor -> one per time\n\n\nExercise 2: Executor implications\nYou’re learning quite a bit about running Airflow DAGs and are gaining some confidence at developing new workflows. That said, your manager has mentioned that on some days, the workflows are taking a lot longer to finish and asks you to investigate. She also mentions that the salesdata_ready.csv file is taking longer to generate these days and the time of day it is completed is variable.\nThis exercise requires information from the previous two lessons - remember the implications of the available arguments and modify the workflow accordingly.\n\n\n\n\n\n\nNote that for this exercise, you’re expected to modify one line of code, not add any extra code.\n\n\n\n\nDetermine the level of parallelism available on this system. You can do this by listing dags (airflow list_dags).\nLook at the source for the DAG file and fix which entry is causing the problem.\n\nairflow dags list\n\nfrom airflow.models import DAG\nfrom airflow.operators.bash_operator import BashOperator\nfrom airflow.contrib.sensors.file_sensor import FileSensor\nfrom datetime import datetime\n\nreport_dag = DAG(\n    dag_id = 'execute_report',\n    schedule_interval = \"0 0 * * *\"\n)\n\nprecheck = FileSensor(\n    task_id='check_for_datafile',\n    filepath='salesdata_ready.csv',\n    start_date=datetime(2020,2,20),\n    mode='poke',\n    dag=report_dag\n)\n\ngenerate_report_task = BashOperator(\n    task_id='generate_report',\n    bash_command='generate_report.sh',\n    start_date=datetime(2020,2,20),\n    dag=report_dag\n)\n\nprecheck >> generate_report_task\nuse FileSensor with mode=‘reschedule’ instead of ‘poke’\nfrom airflow.models import DAG\nfrom airflow.operators.bash_operator import BashOperator\nfrom airflow.contrib.sensors.file_sensor import FileSensor\nfrom datetime import datetime\n\nreport_dag = DAG(\n    dag_id = 'execute_report',\n    schedule_interval = \"0 0 * * *\"\n)\n\nprecheck = FileSensor(\n    task_id='check_for_datafile',\n    filepath='salesdata_ready.csv',\n    start_date=datetime(2020,2,20),\n    mode='reschedule',\n    dag=report_dag\n)\n\ngenerate_report_task = BashOperator(\n    task_id='generate_report',\n    bash_command='generate_report.sh',\n    start_date=datetime(2020,2,20),\n    dag=report_dag\n)\n\nprecheck >> generate_report_task"
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#typical-issues",
+    "href": "tutorials/DC_airflow.html#typical-issues",
+    "title": "Datacamp Airflow Course",
+    "section": "Typical issues…",
+    "text": "Typical issues…\nThere are several common issues you may run across while working with Airflow - it helps to have an idea of what these might be and how best handle them. - The first common issue is a DAG or DAGs that won’t run on schedule. - The next is a DAG that simply won’t load into the system. - The last common scenario involves syntax errors.\nLet’s look at these more closely."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#dag-wont-run-on-schedule",
+    "href": "tutorials/DC_airflow.html#dag-wont-run-on-schedule",
+    "title": "Datacamp Airflow Course",
+    "section": "DAG won’t run on schedule",
+    "text": "DAG won’t run on schedule\nThe most common reason why a DAG won’t run on schedule is the scheduler is not running. Airflow contains several components that accomplish various aspects of the system. The Airflow scheduler handles DAG run and task scheduling. If it is not running, no new tasks can run. You’ll often see this error within the web UI if the scheduler component is not running.\n\nYou can easily fix this issue by running airflow scheduler from the command-line."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#dag-wont-run-on-schedule-1",
+    "href": "tutorials/DC_airflow.html#dag-wont-run-on-schedule-1",
+    "title": "Datacamp Airflow Course",
+    "section": "DAG won’t run on schedule",
+    "text": "DAG won’t run on schedule\n\nAs we’ve covered before, another common issue with scheduling is the scenario where at least one schedule interval period has not passed since either the start date or the last DAG run. There isn’t a specific fix for this, but you might want to modify the start date or schedule interval to meet your requirements.\nThe last scheduling issue you’ll often see is related to what we covered in the previous lesson - the executor does not have enough free slots to run tasks. There are basically three ways to alleviate this problem - by changing the executor type to something capable of more tasks (LocalExecutor or CeleryExecutor), by adding systems or system resources (RAM, CPUs), or finally by changing the scheduling of your DAGs."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#dag-wont-load",
+    "href": "tutorials/DC_airflow.html#dag-wont-load",
+    "title": "Datacamp Airflow Course",
+    "section": "DAG won’t load",
+    "text": "DAG won’t load\nYou’ll often see an issue where a new DAG will not appear in your DAG view of the web UI or in the airflow list_dags output. The first thing to check is that the python file is in the expected DAGs folder or directory. You can determine the current DAGs folder setting by examining the airflow.cfg file. The line dags underscore folder will indicate where Airflow expects to find your Python DAG files.\n\n\n\n\n\n\n\nNote that the folder path must be an absolute path."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#syntax-errors",
+    "href": "tutorials/DC_airflow.html#syntax-errors",
+    "title": "Datacamp Airflow Course",
+    "section": "Syntax errors",
+    "text": "Syntax errors\nProbably the most common reason a DAG workflow won’t appear in your DAG list is one or more syntax errors in your python code. These are sometimes difficult to find, especially in an editor not setup for Python / Airflow (such as a base Vim install). I tend to prefer using Vim with some Python tools loaded, or VSCode but it’s really up to your preference. There are two quick methods to check for these issues - airflow list_dags, and running your DAG script with python."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#airflow-list_dags",
+    "href": "tutorials/DC_airflow.html#airflow-list_dags",
+    "title": "Datacamp Airflow Course",
+    "section": "airflow list_dags",
+    "text": "airflow list_dags\nThe first is to run airflow space list underscore dags.\n\nAs we’ve seen before, Airflow will output some debugging information and the list of DAGs it’s processed. If there are any errors, those will appear in the output, helping you to troubleshoot further."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#running-the-python-interpreter",
+    "href": "tutorials/DC_airflow.html#running-the-python-interpreter",
+    "title": "Datacamp Airflow Course",
+    "section": "Running the Python interpreter",
+    "text": "Running the Python interpreter\nAnother method to verify Python syntax is to run the actual python3 interpreter against the file. You won’t see any output normally as there’s nothing for the interpreter to do, but it can check for any syntax errors in your code. If there are errors, you’ll get an appropriate error message. If there are no errors, you’ll be returned to the command prompt."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#exercises-9",
+    "href": "tutorials/DC_airflow.html#exercises-9",
+    "title": "Datacamp Airflow Course",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1: DAGs in the bag\nYou’ve taken over managing an Airflow cluster that you did not setup and are trying to learn a bit more about the system. Which of the following is true?\n\n\nThe DAG is scheduled for hourly processing.\nThe Airflow user does not have proper permissions.\nThe dags_folder is set to /home/repl/workspace/dags.\n\n\n\nExercise 2: Missing DAG\nYour manager calls you before you’re about to leave for the evening and wants to know why a new DAG workflow she’s created isn’t showing up in the system. She needs this DAG called execute_report to appear in the system so she can properly schedule it for some tests before she leaves on a trip.\nAirflow is configured using the ~/airflow/airflow.cfg file.\n\nExamine the DAG for any errors and fix those.\nDetermine if the DAG has loaded after fixing the errors.\nIf not, determine why the DAG has not loaded and fix the final issue.\n\nfrom airflow.models import DAG\n# from airflow.operators.bash_operator import BashOperator\nfrom airflow.contrib.sensors.file_sensor import FileSensor\nfrom datetime import datetime\n\nreport_dag = DAG(\n    dag_id = 'execute_report',\n    schedule_interval = \"0 0 * * *\"\n)\n\nprecheck = FileSensor(\n    task_id='check_for_datafile',\n    filepath='salesdata_ready.csv',\n    start_date=datetime(2020,2,20),\n    mode='poke',\n    dag=report_dag)\n\ngenerate_report_task = BashOperator(\n    task_id='generate_report',\n    bash_command='generate_report.sh',\n    start_date=datetime(2020,2,20),\n    dag=report_dag\n)\n\nprecheck >> generate_report_task\nremove the comment from the line 1\nfrom airflow.models import DAG\nfrom airflow.operators.bash_operator import BashOperator\nfrom airflow.contrib.sensors.file_sensor import FileSensor\nfrom datetime import datetime\n\nreport_dag = DAG(\n    dag_id = 'execute_report',\n    schedule_interval = \"0 0 * * *\"\n)\n\nprecheck = FileSensor(\n    task_id='check_for_datafile',\n    filepath='salesdata_ready.csv',\n    start_date=datetime(2020,2,20),\n    mode='poke',\n    dag=report_dag)\n\ngenerate_report_task = BashOperator(\n    task_id='generate_report',\n    bash_command='generate_report.sh',\n    start_date=datetime(2020,2,20),\n    dag=report_dag\n)\n\nprecheck >> generate_report_task"
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#sla-misses",
+    "href": "tutorials/DC_airflow.html#sla-misses",
+    "title": "Datacamp Airflow Course",
+    "section": "SLA Misses",
+    "text": "SLA Misses\nTo view any given SLA miss, you can access it in the web UI, via the Browse: SLA Misses link. It provides you general information about what task missed the SLA and when it failed. It also indicates if an email has been sent when the SLA failed."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#defining-slas",
+    "href": "tutorials/DC_airflow.html#defining-slas",
+    "title": "Datacamp Airflow Course",
+    "section": "Defining SLAs",
+    "text": "Defining SLAs\nThere are several ways to define an SLA but we’ll only look at two for this course. The first is via an sla argument on the task itself. This takes a timedelta object with the amount of time to pass.\ntask1 = BashOperator(\n    task_id = 'sla_task',\n    bash_command = 'runcode.sh',\n    sla = timedelta(seconds = 30),\n    dag = dag,\n)\nThe second way is using the default_args dictionary and defining an sla key.\ndefault_args = {\n    'sla': timedelta(minutes=20),\n    'start_date': datetime(2020,2,20)\n},\n\ndag = DAG(\n    'sla_dag', \n    default_args = default_args\n)\nThe dictionary is then passed into the default_args argument of the DAG and applies to any tasks internally."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#timedelta-object",
+    "href": "tutorials/DC_airflow.html#timedelta-object",
+    "title": "Datacamp Airflow Course",
+    "section": "timedelta object",
+    "text": "timedelta object\nWe haven’t covered the timedelta object yet so let’s look at some of the details. It’s found in the datetime library, along with the datetime object. Most easily accessed with an import statement of from datetime import timedelta. Takes arguments of days, seconds, minutes, hours, and weeks.\ntimedelta(seconds=30)\ntimedelta(weeks=2)\ntimedelta(days=4, hours=10, minutes=20, seconds=30)\nIt also has milliseconds and microseconds available, but those wouldn’t apply to Airflow. To create the object, you simply call timedelta with the argument or arguments you wish to reference. To create a 30 second time delta, call it with seconds equals 30. Or weeks equals 2. Or you can combine it into a longer mix of any of the arguments you wish (in this case, 4 days, 10 hours, 20 minutes, and 30 seconds)."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#general-reporting",
+    "href": "tutorials/DC_airflow.html#general-reporting",
+    "title": "Datacamp Airflow Course",
+    "section": "General reporting",
+    "text": "General reporting\nFor reporting purposes you can use email alerting built into Airflow. There are a couple ways to do this. Airflow has built-in options for sending messages:\n\nsuccess\nfailure\nerror\nretry\n\nThese are handled via keys in the default_args dictionary that gets passed on DAG creation. The required component is the list of emails assigned to the email key. Then there are boolean options for email underscore on underscore failure, email underscore on underscore retry, and email underscore on underscore success.\ndefault_args = {\n    'email': ['address@domain.com'],\n    'email_on_failure': True,\n    'email_on_retry': False,\n    'email_on_success': True,\n    ...\n}\nIn addition, we’ve already looked at the EmailOperator earlier but this is useful for sending emails outside of one of the defined Airflow options. Note that sending an email does require configuration within Airflow that is outside the scope of this course. The Airflow documentation provides information on how to set up the global email configuration."
+  },
+  {
+    "objectID": "tutorials/DC_airflow.html#exercises-10",
+    "href": "tutorials/DC_airflow.html#exercises-10",
+    "title": "Datacamp Airflow Course",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1: Defining an SLA\nYou’ve successfully implemented several Airflow workflows into production, but you don’t currently have any method of determining if a workflow takes too long to run. After consulting with your manager and your team, you decide to implement an SLA at the DAG level on a test workflow.\nAll appropriate Airflow libraries have been imported for you.\n\nImport the timedelta object.\nDefine an SLA of 30 minutes.\nAdd the SLA to the DAG.\n\n# Import the timedelta object\nfrom datetime import timedelta\n\n# Create the dictionary entry\ndefault_args = {\n  'start_date': datetime(2020, 2, 20),\n  'sla': timedelta(minutes=30),\n}\n\n# Add to the DAG\ntest_dag = DAG(\n  'test_workflow',\n  default_args=default_args,\n  schedule_interval='@None',\n)\n\n\nExercise 2: Defining a task SLA\nAfter completing the SLA on the entire workflow, you realize you really only need the SLA timing on a specific task instead of the full workflow.\nThe appropriate Airflow libraries are imported for you.\n\nImport the timedelta object.\nAdd a 3 hour SLA to the task object\n\n# Import the timedelta object\nfrom datetime import timedelta\n\ntest_dag = DAG(\n    'test_workflow', \n    start_date=datetime(2020,2,20), \n    schedule_interval='@None'\n)\n\n# Create the task with the SLA\ntask1 = BashOperator(\n    task_id = 'first_task',\n    sla = timedelta(hours = 3),\n    bash_command = 'initialize_data.sh',\n    dag = test_dag\n)\n\n\nExercise 3: Generate and email a report\nAirflow provides the ability to automate almost any style of workflow. You would like to receive a report from Airflow when tasks complete without requiring constant monitoring of the UI or log files. You decide to use the email functionality within Airflow to provide this message.\nAll the typical Airflow components have been imported for you, and a DAG is already defined as dag.\n\nDefine the proper operator for the email_report task.\nFill the missing details for the Operator. Use the file named monthly_report.pdf.\nSet the email_report task to occur after the generate_report task.\n\n# Define the email task\nemail_report = EmailOperator(\n        task_id = 'email_report',\n        to = 'airflow@datacamp.com',\n        subject = 'Airflow Monthly Report',\n        html_content = \"\"\"\n        Attached is your monthly workflow report - please refer to it for more detail\n        \"\"\",\n        files = ['monthly_report.pdf'],\n        dag = report_dag,\n)\n\n# Set the email task to run after the report is generated\nemail_report << generate_report\n\n\nExercise 4: Adding status emails\nYou’ve worked through most of the Airflow configuration for setting up your workflows, but you realize you’re not getting any notifications when DAG runs complete or fail. You’d like to setup email alerting for the success and failure cases, but you want to send it to two addresses.\n\nEdit the execute_report_dag.py workflow.\nAdd the emails airflowalerts@datacamp.com and airflowadmin@datacamp.com to the appropriate key in default_args.\nSet the failure email option to True.\nConfigure the success email to send you messages as well.\n\nfrom airflow.models import DAG\nfrom airflow.operators.bash_operator import BashOperator\nfrom airflow.contrib.sensors.file_sensor import FileSensor\nfrom datetime import datetime\n\ndefault_args={\n    'email': [\n        'airflowalerts@datacamp.com',\n        'airflowadmin@datacamp.com',\n        ...\n    ],\n    'email_on_failure': True,\n    'email_on_success': True,\n}\n\nreport_dag = DAG(\n    dag_id = 'execute_report',\n    schedule_interval = \"0 0 * * *\",\n    default_args = default_args\n)\n\nprecheck = FileSensor(\n    task_id = 'check_for_datafile',\n    filepath = 'salesdata_ready.csv',\n    start_date = datetime(2020,2,20),\n    mode = 'reschedule',\n    dag = report_dag\n)\n\ngenerate_report_task = BashOperator(\n    task_id = 'generate_report',\n    bash_command = 'generate_report.sh',\n    start_date = datetime(2020,2,20),\n    dag = report_dag,\n)\n\nprecheck >> generate_report_task"
   },
   {
     "objectID": "data/SwissParliamentAPI.html",
