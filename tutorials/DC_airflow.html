@@ -331,7 +331,7 @@ cookieconsent.run({
   <li><a href="#exercise-2-missing-dag" id="toc-exercise-2-missing-dag" class="nav-link" data-scroll-target="#exercise-2-missing-dag">Exercise 2: Missing DAG</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#section-10-slas" id="toc-section-10-slas" class="nav-link" data-scroll-target="#section-10-slas">Section 10: SLAs</a>
+  <li><a href="#section-11-slas" id="toc-section-11-slas" class="nav-link" data-scroll-target="#section-11-slas">Section 11: SLAs</a>
   <ul class="collapse">
   <li><a href="#sla-misses" id="toc-sla-misses" class="nav-link" data-scroll-target="#sla-misses">SLA Misses</a></li>
   <li><a href="#defining-slas" id="toc-defining-slas" class="nav-link" data-scroll-target="#defining-slas">Defining SLAs</a></li>
@@ -344,6 +344,26 @@ cookieconsent.run({
   <li><a href="#exercise-3-generate-and-email-a-report" id="toc-exercise-3-generate-and-email-a-report" class="nav-link" data-scroll-target="#exercise-3-generate-and-email-a-report">Exercise 3: Generate and email a report</a></li>
   <li><a href="#exercise-4-adding-status-emails" id="toc-exercise-4-adding-status-emails" class="nav-link" data-scroll-target="#exercise-4-adding-status-emails">Exercise 4: Adding status emails</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#section-12-working-with-templates" id="toc-section-12-working-with-templates" class="nav-link" data-scroll-target="#section-12-working-with-templates">Section 12: Working with templates</a>
+  <ul class="collapse">
+  <li><a href="#what-are-templates" id="toc-what-are-templates" class="nav-link" data-scroll-target="#what-are-templates">What are templates?</a></li>
+  <li><a href="#non-templated-bashoperator-example" id="toc-non-templated-bashoperator-example" class="nav-link" data-scroll-target="#non-templated-bashoperator-example">Non-Templated BashOperator example</a></li>
+  <li><a href="#templated-bashoperator-example" id="toc-templated-bashoperator-example" class="nav-link" data-scroll-target="#templated-bashoperator-example">Templated BashOperator example</a></li>
+  <li><a href="#templated-bashoperator-example-continued" id="toc-templated-bashoperator-example-continued" class="nav-link" data-scroll-target="#templated-bashoperator-example-continued">Templated BashOperator example (continued)</a></li>
+  <li><a href="#exercises-11" id="toc-exercises-11" class="nav-link" data-scroll-target="#exercises-11">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-creating-a-templated-bashoperator" id="toc-exercise-1-creating-a-templated-bashoperator" class="nav-link" data-scroll-target="#exercise-1-creating-a-templated-bashoperator">Exercise 1: Creating a templated BashOperator</a></li>
+  <li><a href="#exercise-2-templates-with-multiple-arguments" id="toc-exercise-2-templates-with-multiple-arguments" class="nav-link" data-scroll-target="#exercise-2-templates-with-multiple-arguments">Exercise 2: Templates with multiple arguments</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-13-more-templates" id="toc-section-13-more-templates" class="nav-link" data-scroll-target="#section-13-more-templates">Section 13: More Templates</a>
+  <ul class="collapse">
+  <li><a href="#more-templates" id="toc-more-templates" class="nav-link" data-scroll-target="#more-templates">More templates</a></li>
+  <li><a href="#quick-task-reminder" id="toc-quick-task-reminder" class="nav-link" data-scroll-target="#quick-task-reminder">Quick task reminder</a></li>
+  <li><a href="#more-advanced-template" id="toc-more-advanced-template" class="nav-link" data-scroll-target="#more-advanced-template">More advanced template</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#macros" id="toc-macros" class="nav-link" data-scroll-target="#macros">Macros</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1630,8 +1650,8 @@ No data found</code></pre>
 </section>
 </section>
 </section>
-<section id="section-10-slas" class="level1">
-<h1>Section 10: SLAs</h1>
+<section id="section-11-slas" class="level1">
+<h1>Section 11: SLAs</h1>
 <p>You may be wondering, what is an SLA? SLA stands for Service Level Agreement. Within the business world, this is often an uptime or availability guarantee. Airflow treats it a bit differently - it’s considered the amount of time a task or a DAG should require to run. An SLA miss is any situation where a task or DAG does not meet the expected timing for the SLA. If an SLA is missed, an email alert is sent out per the system configuration and a note is made in the log. Any SLA miss can be viewed in the Browse, SLA Misses menu item of the web UI.</p>
 <section id="sla-misses" class="level2">
 <h2 class="anchored" data-anchor-id="sla-misses">SLA Misses</h2>
@@ -1808,9 +1828,272 @@ No data found</code></pre>
 <span id="cb46-35"><a href="#cb46-35"></a>)</span>
 <span id="cb46-36"><a href="#cb46-36"></a></span>
 <span id="cb46-37"><a href="#cb46-37"></a>precheck <span class="op">&gt;&gt;</span> generate_report_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+</section>
+</section>
+<section id="section-12-working-with-templates" class="level1">
+<h1>Section 12: Working with templates</h1>
+<section id="what-are-templates" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-templates">What are templates?</h2>
+<p>You may be wondering what templates are and what they do in the case of Airflow.</p>
+<ul>
+<li>Templates allow substitution of information during a DAG run. In other words, every time a DAG with templated information is executed, information is interpreted and included with the DAG run.</li>
+<li>Templates provide added flexibility when defining tasks. We’ll see examples of this shortly.</li>
+<li>Templates are created using the Jinja templating language. A full explanation of <code>Jinja</code> is out of scope for this course, but we’ll cover some basics in the coming slides.</li>
+</ul>
+</section>
+<section id="non-templated-bashoperator-example" class="level2">
+<h2 class="anchored" data-anchor-id="non-templated-bashoperator-example">Non-Templated BashOperator example</h2>
+<p>Before we get specifically into a templated example, let’s consider what we would do for the following requirement. Your manager has asked you to simply echo the word “Reading” and a list of files to a log / output / etc. If we were to do this with what we currently know about Airflow, we would likely create multiple tasks using the BashOperator. Our first task would setup the task with the intended bash command - in this case echo Reading file1 dot txt, as an argument to the BashOperator.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>t1 <span class="op">=</span> BashOperator(</span>
+<span id="cb47-2"><a href="#cb47-2"></a>    task_id <span class="op">=</span> <span class="st">'first_task'</span>,</span>
+<span id="cb47-3"><a href="#cb47-3"></a>    bash_command <span class="op">=</span> <span class="st">'echo "Reading file1.txt"'</span>,</span>
+<span id="cb47-4"><a href="#cb47-4"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb47-5"><a href="#cb47-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If we had a second file, we would create a second task using the bash command echo Reading file2 dot txt.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>t2 <span class="op">=</span> BashOperator(</span>
+<span id="cb48-2"><a href="#cb48-2"></a>    task_id <span class="op">=</span> <span class="st">'second_task'</span>,</span>
+<span id="cb48-3"><a href="#cb48-3"></a>    bash_command <span class="op">=</span> <span class="st">'echo "Reading file2.txt"'</span>,</span>
+<span id="cb48-4"><a href="#cb48-4"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb48-5"><a href="#cb48-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This type of code would continue for the entire list of files. Consider what this would look like if we had 5, 10, or even 100+ files we needed to process. There would be a lot of repetitive code. Not to mention what if you needed to change the command being used / etc.</p>
+</section>
+<section id="templated-bashoperator-example" class="level2">
+<h2 class="anchored" data-anchor-id="templated-bashoperator-example">Templated BashOperator example</h2>
+<p>Let’s take a look at how we would accomplish the same behavior with templates. First, we need to create a variable containing our template - which is really just a string with some specialized formatting.</p>
+<p>Our string is the actual bash command echo and instead of the file name, we’re using two open curly braces, the term params dot filename, and then two closing curly braces. The curly braces when used in this manner represent information to be substituted. This will make more sense in a moment. If you’ve done any web development or worked with any reporting tools, you’ve likely worked with something similar. Next, we create our Airflow task as we have previously. We assign a task_id and dag argument as usual, but our bashcommand looks a little different. We set the bashcommand to use the templated command string we defined earlier. We also have an additional argument called params. In this case, params is a dictionary containing a single key filename with the value file1 dot txt. Now, if you look back at the templated command, you’ll notice that the term in the curly braces is params.filename.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>templated_command <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="st">    echo "Reading </span><span class="sc">{{</span><span class="st"> params.filename </span><span class="sc">}}</span><span class="st">"</span></span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="st">"""</span></span>
+<span id="cb49-4"><a href="#cb49-4"></a>t_i <span class="op">=</span> BashOperator(</span>
+<span id="cb49-5"><a href="#cb49-5"></a>    task_id <span class="op">=</span> <span class="st">'templated_task'</span>,</span>
+<span id="cb49-6"><a href="#cb49-6"></a>    bash_command <span class="op">=</span> templated_command,</span>
+<span id="cb49-7"><a href="#cb49-7"></a>    params <span class="op">=</span> {</span>
+<span id="cb49-8"><a href="#cb49-8"></a>        <span class="st">'filename'</span>: <span class="st">'file1.txt'</span>,</span>
+<span id="cb49-9"><a href="#cb49-9"></a>    },</span>
+<span id="cb49-10"><a href="#cb49-10"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb49-11"><a href="#cb49-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>At runtime, Airflow will execute the BashOperator by reading the templated command and replacing params dot filename with the value stored in the params dictionary for the filename key. In other words, it would pass the BashOperator echo Reading file1 dot txt. The actual log output would be Reading file1 dot txt (after the BashOperator executed the command).</p>
+</section>
+<section id="templated-bashoperator-example-continued" class="level2">
+<h2 class="anchored" data-anchor-id="templated-bashoperator-example-continued">Templated BashOperator example (continued)</h2>
+<p>Now, let’s consider one way to use templates for our earlier task of outputting Reading file1 dot txt and Reading file2 dot txt.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>templated_command<span class="op">=</span><span class="st">"""  </span></span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="st">    echo "Reading </span><span class="sc">{{</span><span class="st"> params.filename </span><span class="sc">}}</span><span class="st">"</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="st">"""</span></span>
+<span id="cb50-4"><a href="#cb50-4"></a>t1 <span class="op">=</span> BashOperator(</span>
+<span id="cb50-5"><a href="#cb50-5"></a>    task_id<span class="op">=</span><span class="st">'template_task'</span>,</span>
+<span id="cb50-6"><a href="#cb50-6"></a>    bash_command<span class="op">=</span>templated_command,</span>
+<span id="cb50-7"><a href="#cb50-7"></a>    params<span class="op">=</span>{<span class="st">'filename'</span>: <span class="st">'file1.txt'</span>}</span>
+<span id="cb50-8"><a href="#cb50-8"></a>    dag<span class="op">=</span>example_dag</span>
+<span id="cb50-9"><a href="#cb50-9"></a>)</span>
+<span id="cb50-10"><a href="#cb50-10"></a></span>
+<span id="cb50-11"><a href="#cb50-11"></a>t2 <span class="op">=</span> BashOperator(</span>
+<span id="cb50-12"><a href="#cb50-12"></a>    task_id<span class="op">=</span><span class="st">'template_task'</span>,</span>
+<span id="cb50-13"><a href="#cb50-13"></a>    bash_command<span class="op">=</span>templated_command,</span>
+<span id="cb50-14"><a href="#cb50-14"></a>    params<span class="op">=</span>{<span class="st">'filename'</span>: <span class="st">'file2.txt'</span>}</span>
+<span id="cb50-15"><a href="#cb50-15"></a>    dag<span class="op">=</span>example_dag</span>
+<span id="cb50-16"><a href="#cb50-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>First, we create our templated command as before. Next, create the first task and pass the params dict with a filename key and the value file1 dot txt. To pass another entry, we can create a second task and modify the params dict accordingly. This time the filename would contain file2 dot txt and Airflow would substitute that value instead. The resulting output would be as expected.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note, you may be wondering what templates do for you here. You’ll see more in the coming exercises and lessons.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises-11" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-11">Exercises</h2>
+<section id="exercise-1-creating-a-templated-bashoperator" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-creating-a-templated-bashoperator">Exercise 1: Creating a templated BashOperator</h3>
+<p>You’ve successfully created a BashOperator that cleans a given data file by executing a script called <code>cleandata.sh</code>. This works, but unfortunately requires the script to be run only for the current day. Some of your data sources are occasionally behind by a couple of days and need to be run manually.</p>
+<p>You successfully modify the <code>cleandata.sh</code> script to take one argument - the date in YYYYMMDD format. Your testing works at the command-line, but you now need to implement this into your Airflow DAG. For now, use the term <code>{{ ds_nodash }}</code> in your template - you’ll see exactly what this is means later on.</p>
+<ul>
+<li>Create a templated command to execute the <code>cleandata.sh</code> script with the current execution date given by Airflow. Assign this command to a variable called <code>templated_command</code>.</li>
+<li>Modify the BashOperator to use the templated command.</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb51-3"><a href="#cb51-3"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb51-4"><a href="#cb51-4"></a></span>
+<span id="cb51-5"><a href="#cb51-5"></a>default_args <span class="op">=</span> {</span>
+<span id="cb51-6"><a href="#cb51-6"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2020</span>, <span class="dv">4</span>, <span class="dv">15</span>),</span>
+<span id="cb51-7"><a href="#cb51-7"></a>}</span>
+<span id="cb51-8"><a href="#cb51-8"></a></span>
+<span id="cb51-9"><a href="#cb51-9"></a>cleandata_dag <span class="op">=</span> DAG(</span>
+<span id="cb51-10"><a href="#cb51-10"></a>    <span class="st">'cleandata'</span>,</span>
+<span id="cb51-11"><a href="#cb51-11"></a>    default_args <span class="op">=</span> default_args,</span>
+<span id="cb51-12"><a href="#cb51-12"></a>    schedule_interval <span class="op">=</span> <span class="st">'@daily'</span></span>
+<span id="cb51-13"><a href="#cb51-13"></a>)</span>
+<span id="cb51-14"><a href="#cb51-14"></a></span>
+<span id="cb51-15"><a href="#cb51-15"></a><span class="co"># Create a templated command to execute</span></span>
+<span id="cb51-16"><a href="#cb51-16"></a>templated_command <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb51-17"><a href="#cb51-17"></a><span class="st">    bash </span><span class="sc">{{</span><span class="st"> params.filename </span><span class="sc">}}</span><span class="st"> </span><span class="sc">{{</span><span class="st"> ds_nodash </span><span class="sc">}}</span></span>
+<span id="cb51-18"><a href="#cb51-18"></a><span class="st">"""</span></span>
+<span id="cb51-19"><a href="#cb51-19"></a></span>
+<span id="cb51-20"><a href="#cb51-20"></a><span class="co"># Modify clean_task to use the templated command</span></span>
+<span id="cb51-21"><a href="#cb51-21"></a>clean_task <span class="op">=</span> BashOperator(</span>
+<span id="cb51-22"><a href="#cb51-22"></a>    task_id <span class="op">=</span> <span class="st">'cleandata_task'</span>,</span>
+<span id="cb51-23"><a href="#cb51-23"></a>    bash_command <span class="op">=</span> templated_command,</span>
+<span id="cb51-24"><a href="#cb51-24"></a>    params <span class="op">=</span> {</span>
+<span id="cb51-25"><a href="#cb51-25"></a>        <span class="st">'filename'</span>: <span class="st">'cleandata.sh'</span>, </span>
+<span id="cb51-26"><a href="#cb51-26"></a>    },</span>
+<span id="cb51-27"><a href="#cb51-27"></a>    dag <span class="op">=</span> cleandata_dag,</span>
+<span id="cb51-28"><a href="#cb51-28"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-2-templates-with-multiple-arguments" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-templates-with-multiple-arguments">Exercise 2: Templates with multiple arguments</h3>
+<p>You wish to build upon your previous DAG and modify the code to support two arguments - the date in YYYYMMDD format, and a file name passed to the cleandata.sh script.</p>
+<ul>
+<li>Modify the templated command to handle a second argument called filename.</li>
+<li>Change the first BashOperator to pass the filename salesdata.txt to the command.</li>
+<li>Add a new BashOperator called clean_task2 to use a second filename supportdata.txt.</li>
+<li>Set clean_task2 downstream of clean_task.</li>
+</ul>
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb52-3"><a href="#cb52-3"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb52-4"><a href="#cb52-4"></a></span>
+<span id="cb52-5"><a href="#cb52-5"></a>default_args  <span class="op">=</span>  {</span>
+<span id="cb52-6"><a href="#cb52-6"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2020</span>, <span class="dv">4</span>, <span class="dv">15</span>),</span>
+<span id="cb52-7"><a href="#cb52-7"></a>}</span>
+<span id="cb52-8"><a href="#cb52-8"></a></span>
+<span id="cb52-9"><a href="#cb52-9"></a>cleandata_dag <span class="op">=</span> DAG(</span>
+<span id="cb52-10"><a href="#cb52-10"></a>    <span class="st">'cleandata'</span>,</span>
+<span id="cb52-11"><a href="#cb52-11"></a>    default_args <span class="op">=</span> default_args,</span>
+<span id="cb52-12"><a href="#cb52-12"></a>    schedule_interval <span class="op">=</span> <span class="st">'@daily'</span>)</span>
+<span id="cb52-13"><a href="#cb52-13"></a></span>
+<span id="cb52-14"><a href="#cb52-14"></a><span class="co"># Modify the templated command to handle a</span></span>
+<span id="cb52-15"><a href="#cb52-15"></a><span class="co"># second argument called filename.</span></span>
+<span id="cb52-16"><a href="#cb52-16"></a>templated_command <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb52-17"><a href="#cb52-17"></a><span class="st">  bash cleandata.sh </span><span class="sc">{{</span><span class="st"> ds_nodash </span><span class="sc">}}</span><span class="st"> </span><span class="sc">{{</span><span class="st"> params.filename </span><span class="sc">}}</span></span>
+<span id="cb52-18"><a href="#cb52-18"></a><span class="st">"""</span></span>
+<span id="cb52-19"><a href="#cb52-19"></a></span>
+<span id="cb52-20"><a href="#cb52-20"></a><span class="co"># Modify clean_task to pass the new argument</span></span>
+<span id="cb52-21"><a href="#cb52-21"></a>clean_task <span class="op">=</span> BashOperator(</span>
+<span id="cb52-22"><a href="#cb52-22"></a>    task_id <span class="op">=</span> <span class="st">'cleandata_task'</span>,                      </span>
+<span id="cb52-23"><a href="#cb52-23"></a>    bash_command <span class="op">=</span> templated_command,                         </span>
+<span id="cb52-24"><a href="#cb52-24"></a>    params <span class="op">=</span> {</span>
+<span id="cb52-25"><a href="#cb52-25"></a>        <span class="st">'filename'</span>: <span class="st">'salesdata.txt'</span>,</span>
+<span id="cb52-26"><a href="#cb52-26"></a>    },                      </span>
+<span id="cb52-27"><a href="#cb52-27"></a>    dag <span class="op">=</span> cleandata_dag</span>
+<span id="cb52-28"><a href="#cb52-28"></a>)</span>
+<span id="cb52-29"><a href="#cb52-29"></a></span>
+<span id="cb52-30"><a href="#cb52-30"></a><span class="co"># Create a new BashOperator clean_task2</span></span>
+<span id="cb52-31"><a href="#cb52-31"></a>clean_task2 <span class="op">=</span> BashOperator(</span>
+<span id="cb52-32"><a href="#cb52-32"></a>    task_id <span class="op">=</span> <span class="st">'cleandata_task2'</span>,</span>
+<span id="cb52-33"><a href="#cb52-33"></a>    bash_command <span class="op">=</span> templated_command,</span>
+<span id="cb52-34"><a href="#cb52-34"></a>    params <span class="op">=</span> {</span>
+<span id="cb52-35"><a href="#cb52-35"></a>        <span class="st">'filename'</span>: <span class="st">'supportdata.txt'</span>,</span>
+<span id="cb52-36"><a href="#cb52-36"></a>    },</span>
+<span id="cb52-37"><a href="#cb52-37"></a>    dag <span class="op">=</span> cleandata_dag,</span>
+<span id="cb52-38"><a href="#cb52-38"></a>)</span>
+<span id="cb52-39"><a href="#cb52-39"></a>                           </span>
+<span id="cb52-40"><a href="#cb52-40"></a><span class="co"># Set the operator dependencies</span></span>
+<span id="cb52-41"><a href="#cb52-41"></a>clean_task <span class="op">&gt;&gt;</span> clean_task2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="section-13-more-templates" class="level1">
+<h1>Section 13: More Templates</h1>
+<section id="more-templates" class="level2">
+<h2 class="anchored" data-anchor-id="more-templates">More templates</h2>
+<p>Welcome back! Hopefully you’ve cemented the basics of templates in your mind. Now let’s look at some of the more powerful options they provide.</p>
+</section>
+<section id="quick-task-reminder" class="level2">
+<h2 class="anchored" data-anchor-id="quick-task-reminder">Quick task reminder</h2>
+<p>In our last lesson we were given the task of taking a list of filenames and printing “Reading filename” to the log or output. In our templated version, we created a templated command that substituted the filename value in place of params dot filename. We also used two tasks with different filename values to demonstrate one way to use templates without changing the actual bash command.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>templated_command <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="st">    echo "Reading </span><span class="sc">{{</span><span class="st"> params.filename </span><span class="sc">}}</span><span class="st">"</span></span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="st">"""</span></span>
+<span id="cb53-4"><a href="#cb53-4"></a></span>
+<span id="cb53-5"><a href="#cb53-5"></a>t1 <span class="op">=</span> BashOperator(</span>
+<span id="cb53-6"><a href="#cb53-6"></a>    task_id <span class="op">=</span> <span class="st">'template_task'</span>,</span>
+<span id="cb53-7"><a href="#cb53-7"></a>    bash_command <span class="op">=</span> templated_command,</span>
+<span id="cb53-8"><a href="#cb53-8"></a>    params <span class="op">=</span> {</span>
+<span id="cb53-9"><a href="#cb53-9"></a>        <span class="st">'filename'</span>: <span class="st">'file1.txt'</span>,</span>
+<span id="cb53-10"><a href="#cb53-10"></a>    },</span>
+<span id="cb53-11"><a href="#cb53-11"></a>    dag <span class="op">=</span> example_dag,</span>
+<span id="cb53-12"><a href="#cb53-12"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, let’s consider another way to perform the substitution.</p>
+</section>
+<section id="more-advanced-template" class="level2">
+<h2 class="anchored" data-anchor-id="more-advanced-template">More advanced template</h2>
+<p>Jinja templates can be considerably more powerful than we’ve used so far. It is possible to use a for construct to allow us to iterate over a list and output content accordingly. Let’s change our templated command to the following. We start with an open curly brace and the percent symbol, then use a normal python command of for filename in params dot filenames then percent close brace. Then we modify our output line to be echo Reading open curly braces filename close curly braces. We then use a Jinja entry to represent the end of the for loop, open curly brace percent endfor percent close curly brace.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>templated_command<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="st">{</span><span class="sc">% f</span><span class="st">or filename in params.filenames %}  </span></span>
+<span id="cb54-3"><a href="#cb54-3"></a><span class="st">    echo "Reading </span><span class="sc">{{</span><span class="st"> filename </span><span class="sc">}}</span><span class="st">"</span></span>
+<span id="cb54-4"><a href="#cb54-4"></a><span class="st">{</span><span class="sc">% e</span><span class="st">ndfor %}</span></span>
+<span id="cb54-5"><a href="#cb54-5"></a><span class="st">"""</span></span>
+<span id="cb54-6"><a href="#cb54-6"></a>t1 <span class="op">=</span> BashOperator(</span>
+<span id="cb54-7"><a href="#cb54-7"></a>    task_id <span class="op">=</span> <span class="st">'template_task'</span>,</span>
+<span id="cb54-8"><a href="#cb54-8"></a>    bash_command <span class="op">=</span> templated_command,</span>
+<span id="cb54-9"><a href="#cb54-9"></a>    params <span class="op">=</span> {<span class="st">'filenames'</span>: [<span class="st">'file1.txt'</span>, <span class="st">'file2.txt'</span>]}</span>
+<span id="cb54-10"><a href="#cb54-10"></a>    dag <span class="op">=</span> example_dag,</span>
+<span id="cb54-11"><a href="#cb54-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that this is required to define the end of the loop, as opposed to Python’s typical whitespace indention. Now let’s look at our BashOperator task. It looks similar except we’ve modified the params key to be filenames, and the value is now a list with two strings, file1 dot txt and file2 dot txt. When Airflow executes the BashOperator, it will iterate over the entries in the filenames list and substitute them in accordingly. Our output is the same as before, with a single task instead of two. Consider too the difference in code if you had 100 files in the list?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="variables" class="level2">
+<h2 class="anchored" data-anchor-id="variables">Variables<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></h2>
+<p>As part of the templating system, Airflow provides a set of built-in runtime variables. These provide assorted information about DAG runs, individual tasks, and even the system configuration. Template examples include the execution date, which is ds in the double curly brace pairs.</p>
+<table class="table">
+<colgroup>
+<col style="width: 49%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>&nbsp;Description</th>
+<th>What does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exe. date: {{ ds }}</td>
+<td>YYYY-MM-DD</td>
+</tr>
+<tr class="even">
+<td>Exe. date, no dashes: {{ ds_nodash }}</td>
+<td>&nbsp;YYYYMMDD</td>
+</tr>
+<tr class="odd">
+<td>Previous exe. date: {{ prev_ds }}</td>
+<td>YYYY-MM-DD</td>
+</tr>
+<tr class="even">
+<td>Previous exe. date, no dashes: {{ prev_ds_nodash }}</td>
+<td>YYYYMMDD</td>
+</tr>
+<tr class="odd">
+<td>DAG object: {{ dag }}</td>
+<td>DAG(‘example_dag’)</td>
+</tr>
+<tr class="even">
+<td>Airflow configuration: {{ conf }}</td>
+<td>{‘core’: {‘task_log_reader’: ’file.task_runner…}}</td>
+</tr>
+</tbody>
+</table>
+<p>It returns the date in a 4 digit year dash 2 digit month dash 2 digit day format. There’s also a ds underscore nodash variety to get the same info without dashes. Note that this is a string, not a python datetime object. Another variable available is the prev underscore ds, which gives the date of the previous DAG run in the same format as ds. The nodash variety is here as well. You can also access the full DAG object using the dag variable. Or you can use the conf object to access the current Airflow configuration within code. There are many more variables available - you can refer to the documentation for more information<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+</section>
+<section id="macros" class="level2">
+<h2 class="anchored" data-anchor-id="macros">Macros</h2>
+<p>In addition to the other Airflow variables, there is also a macros variable. The macros package provides a reference to various useful objects or methods for Airflow templates. Some examples of these include the macros dot datetime, which is the Python datetime dot datetime object. The macros dot timedelta template references the timedelta object. A macros dot uuid is the same as Python’s uuid object. Finally, there are also some added functions available, such as macros dot ds underscore add. It provides an easy way to perform date math within a template. It takes two arguments, a YYYYMMDD datestring and an integer representing the number of days to add (or subtract if the number is negative). Our example here would return April 20, 2020. These are not all the available macros objects - refer to the Airflow documentation for more info.</p>
+
+
 </section>
 </section>
 
@@ -1821,6 +2104,8 @@ No data found</code></pre>
 <li id="fn1"><p>https://en.m.wikipedia.org/wiki/Directed_acyclic_graph<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>https://airflow.apache.org/docs/stable/scheduler.html<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>https://bradymholt.github.io/cron-expression-descriptor/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"></li>
+<li id="fn5"><p>https://airflow.apache.org/docs/stable/macros-ref.html<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
