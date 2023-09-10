@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernardo Freire">
-<meta name="dcterms.date" content="2023-09-04">
+<meta name="dcterms.date" content="2023-09-10">
 
 <title>Bernardo Cruz - Datacamp Airflow Course</title>
 <style>
@@ -143,9 +143,6 @@ cookieconsent.run({
 });
 </script> 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -359,11 +356,47 @@ cookieconsent.run({
   </ul></li>
   <li><a href="#section-13-more-templates" id="toc-section-13-more-templates" class="nav-link" data-scroll-target="#section-13-more-templates">Section 13: More Templates</a>
   <ul class="collapse">
-  <li><a href="#more-templates" id="toc-more-templates" class="nav-link" data-scroll-target="#more-templates">More templates</a></li>
-  <li><a href="#quick-task-reminder" id="toc-quick-task-reminder" class="nav-link" data-scroll-target="#quick-task-reminder">Quick task reminder</a></li>
   <li><a href="#more-advanced-template" id="toc-more-advanced-template" class="nav-link" data-scroll-target="#more-advanced-template">More advanced template</a></li>
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
   <li><a href="#macros" id="toc-macros" class="nav-link" data-scroll-target="#macros">Macros</a></li>
+  <li><a href="#exercises-12" id="toc-exercises-12" class="nav-link" data-scroll-target="#exercises-12">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-using-lists-with-templates" id="toc-exercise-1-using-lists-with-templates" class="nav-link" data-scroll-target="#exercise-1-using-lists-with-templates">Exercise 1: Using lists with templates</a></li>
+  <li><a href="#exercise-2-understanding-parameter-options" id="toc-exercise-2-understanding-parameter-options" class="nav-link" data-scroll-target="#exercise-2-understanding-parameter-options">Exercise 2: Understanding parameter options</a></li>
+  <li><a href="#exercise-3-sending-templated-emails" id="toc-exercise-3-sending-templated-emails" class="nav-link" data-scroll-target="#exercise-3-sending-templated-emails">Exercise 3: Sending templated emails</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-14-branching" id="toc-section-14-branching" class="nav-link" data-scroll-target="#section-14-branching">Section 14: Branching</a>
+  <ul class="collapse">
+  <li><a href="#branching-example" id="toc-branching-example" class="nav-link" data-scroll-target="#branching-example">Branching example</a></li>
+  <li><a href="#branching-example-1" id="toc-branching-example-1" class="nav-link" data-scroll-target="#branching-example-1">Branching example</a></li>
+  <li><a href="#branching-graph-view" id="toc-branching-graph-view" class="nav-link" data-scroll-target="#branching-graph-view">Branching graph view</a></li>
+  <li><a href="#branching-even-days" id="toc-branching-even-days" class="nav-link" data-scroll-target="#branching-even-days">Branching even days</a></li>
+  <li><a href="#branching-odd-days" id="toc-branching-odd-days" class="nav-link" data-scroll-target="#branching-odd-days">Branching odd days</a></li>
+  <li><a href="#exercises-13" id="toc-exercises-13" class="nav-link" data-scroll-target="#exercises-13">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-define-a-branchpythonoperator" id="toc-exercise-1-define-a-branchpythonoperator" class="nav-link" data-scroll-target="#exercise-1-define-a-branchpythonoperator">Exercise 1: Define a BranchPythonOperator</a></li>
+  <li><a href="#exercise-2-branch-troubleshooting" id="toc-exercise-2-branch-troubleshooting" class="nav-link" data-scroll-target="#exercise-2-branch-troubleshooting">Exercise 2: Branch troubleshooting</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-15-creating-a-production-pipeline" id="toc-section-15-creating-a-production-pipeline" class="nav-link" data-scroll-target="#section-15-creating-a-production-pipeline">Section 15: Creating a production pipeline</a>
+  <ul class="collapse">
+  <li><a href="#running-dags-tasks" id="toc-running-dags-tasks" class="nav-link" data-scroll-target="#running-dags-tasks">Running DAGs &amp; Tasks</a></li>
+  <li><a href="#operators-reminder" id="toc-operators-reminder" class="nav-link" data-scroll-target="#operators-reminder">Operators reminder</a></li>
+  <li><a href="#template-reminders" id="toc-template-reminders" class="nav-link" data-scroll-target="#template-reminders">Template reminders</a></li>
+  <li><a href="#template-documentation-example" id="toc-template-documentation-example" class="nav-link" data-scroll-target="#template-documentation-example">Template documentation example</a></li>
+  <li><a href="#exercises-14" id="toc-exercises-14" class="nav-link" data-scroll-target="#exercises-14">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-creating-a-production-pipeline-1" id="toc-exercise-1-creating-a-production-pipeline-1" class="nav-link" data-scroll-target="#exercise-1-creating-a-production-pipeline-1">Exercise 1: Creating a production pipeline #1</a></li>
+  <li><a href="#exercise-2-creating-a-production-pipeline-2" id="toc-exercise-2-creating-a-production-pipeline-2" class="nav-link" data-scroll-target="#exercise-2-creating-a-production-pipeline-2">Exercise 2: Creating a production pipeline #2</a></li>
+  <li><a href="#exercise-3-adding-the-final-changes-to-your-pipeline" id="toc-exercise-3-adding-the-final-changes-to-your-pipeline" class="nav-link" data-scroll-target="#exercise-3-adding-the-final-changes-to-your-pipeline">Exercise 3: Adding the final changes to your pipeline</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#congratulations" id="toc-congratulations" class="nav-link" data-scroll-target="#congratulations">Congratulations!</a>
+  <ul class="collapse">
+  <li><a href="#what-weve-learned" id="toc-what-weve-learned" class="nav-link" data-scroll-target="#what-weve-learned">What we’ve learned</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  <li><a href="#thank-you" id="toc-thank-you" class="nav-link" data-scroll-target="#thank-you">Thank you!</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -398,7 +431,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 4, 2023</p>
+      <p class="date">September 10, 2023</p>
     </div>
   </div>
   
@@ -590,7 +623,7 @@ cookieconsent.run({
 <li>Define the default_args dictionary with a key owner and a value of ‘dsmith’. Add a start_date of January 14, 2020 to default_args using the value 1 for the month of January. Add a retries count of 2 to default_args.</li>
 <li>Instantiate the DAG object to a variable called etl_dag with a DAG named example_etl. Add the default_args dictionary to the appropriate argument.</li>
 </ol>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Import the DAG object</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
@@ -607,21 +640,16 @@ cookieconsent.run({
 <span id="cb6-14"><a href="#cb6-14"></a>    <span class="st">'example_etl'</span>, </span>
 <span id="cb6-15"><a href="#cb6-15"></a>    default_args<span class="op">=</span>default_args</span>
 <span id="cb6-16"><a href="#cb6-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:</span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">751</span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold"> UserWarning</span><span style="color: #808000; text-decoration-color: #808000">: Config scheduler.max_tis_per_query </span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">(</span><span style="color: #808000; text-decoration-color: #808000">value: </span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">512</span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">)</span><span style="color: #808000; text-decoration-color: #808000"> should NOT be greater than core.parallelism </span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">(</span><span style="color: #808000; text-decoration-color: #808000">value: </span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">32</span><span style="color: #808000; text-decoration-color: #808000; font-weight: bold">)</span><span style="color: #808000; text-decoration-color: #808000">. Will now use core.parallelism as the max task instances per query instead of specified value.</span>
-</pre>
-</div>
 </div>
 </section>
 <section id="exercise-2-working-with-dags-and-the-airflow-shell" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-2-working-with-dags-and-the-airflow-shell">Exercise 2: Working with DAGs and the Airflow shell</h3>
 <p>While working with Airflow, sometimes it can be tricky to remember what DAGs are defined and what they do. You want to gain some further knowledge of the Airflow shell command so you’d like to see what options are available.</p>
 <p>Multiple DAGs are already defined for you. How many DAGs are present in the Airflow system from the command-line?</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">!</span>airflow dags <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>/Users/bernardo/miniforge3/envs/blog/lib/python3.11/site-packages/airflow/configuration.py:751 UserWarning: Config scheduler.max_tis_per_query (value: 512) should NOT be greater than core.parallelism (value: 32). Will now use core.parallelism as the max task instances per query instead of specified value.
-
+<pre><code>
 Please confirm database upgrade (or wait 4 seconds to skip it). Are you sure? [y/N]
 No data found</code></pre>
 </div>
@@ -1307,7 +1335,7 @@ No data found</code></pre>
 <p>A sensor is a special kind of operator that waits for a certain condition to be true. Some examples of conditions include waiting for the creation of a file, uploading a database record, or a specific response from a web request. With sensors, you can define how often to check for the condition(s) to be true. Since sensors are a type of operator, they are assigned to tasks just like normal operators. This means you can apply the bitshift dependencies to them as well.</p>
 <section id="sensor-details" class="level2">
 <h2 class="anchored" data-anchor-id="sensor-details">Sensor details</h2>
-<p>All sensors are derived from the <code>airflow.sensors.base_ underscore _sensor_ underscore _operator</code> class. There are some default arguments available to all sensors, including mode, poke_interval, and timeout. The mode tells the sensor how to check for the condition and has two options, poke or reschedule.</p>
+<p>All sensors are derived from the <code>airflow.sensors.base_sensor_operator</code> class. There are some default arguments available to all sensors, including mode, poke_interval, and timeout. The mode tells the sensor how to check for the condition and has two options, poke or reschedule.</p>
 <ul>
 <li><code>poke</code>: The default is poke, and means to continue checking until complete without giving up a worker slot.</li>
 <li><code>reschedule</code>: Reschedule means to give up the worker slot and wait for another slot to become available.</li>
@@ -1424,7 +1452,7 @@ No data found</code></pre>
 <section id="determine-your-executor-2" class="level2">
 <h2 class="anchored" data-anchor-id="determine-your-executor-2">Determine your executor #2</h2>
 <p>You can also determine the executor by running airflow list_dags from the command line. Within the first few lines, you should see an entry for which executor is in use (In this case, it’s the SequentialExecutor).</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">!</span> cat <span class="op">~/</span>airflow<span class="op">/</span>airflow.cfg <span class="op">|</span> grep <span class="st">"executor = "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>executor = SequentialExecutor</code></pre>
@@ -1441,7 +1469,7 @@ No data found</code></pre>
 <li><input type="checkbox" disabled="">This system can run one task at a time.</li>
 <li><input type="checkbox" disabled="">This system can run as many tasks as needed at a time.</li>
 </ul>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">!</span> cat <span class="op">~/</span>airflow<span class="op">/</span>airflow.cfg <span class="op">|</span> grep <span class="st">"executor = "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>executor = SequentialExecutor</code></pre>
@@ -1621,7 +1649,7 @@ No data found</code></pre>
 <span id="cb37-23"><a href="#cb37-23"></a>)</span>
 <span id="cb37-24"><a href="#cb37-24"></a></span>
 <span id="cb37-25"><a href="#cb37-25"></a>precheck <span class="op">&gt;&gt;</span> generate_report_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>remove the comment from the line 1</p>
+<p>remove the comment from the line 2</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
 <span id="cb38-2"><a href="#cb38-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
 <span id="cb38-3"><a href="#cb38-3"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
@@ -2000,12 +2028,6 @@ No data found</code></pre>
 </section>
 <section id="section-13-more-templates" class="level1">
 <h1>Section 13: More Templates</h1>
-<section id="more-templates" class="level2">
-<h2 class="anchored" data-anchor-id="more-templates">More templates</h2>
-<p>Welcome back! Hopefully you’ve cemented the basics of templates in your mind. Now let’s look at some of the more powerful options they provide.</p>
-</section>
-<section id="quick-task-reminder" class="level2">
-<h2 class="anchored" data-anchor-id="quick-task-reminder">Quick task reminder</h2>
 <p>In our last lesson we were given the task of taking a list of filenames and printing “Reading filename” to the log or output. In our templated version, we created a templated command that substituted the filename value in place of params dot filename. We also used two tasks with different filename values to demonstrate one way to use templates without changing the actual bash command.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>templated_command <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb53-2"><a href="#cb53-2"></a><span class="st">    echo "Reading </span><span class="sc">{{</span><span class="st"> params.filename </span><span class="sc">}}</span><span class="st">"</span></span>
@@ -2020,7 +2042,6 @@ No data found</code></pre>
 <span id="cb53-11"><a href="#cb53-11"></a>    dag <span class="op">=</span> example_dag,</span>
 <span id="cb53-12"><a href="#cb53-12"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now, let’s consider another way to perform the substitution.</p>
-</section>
 <section id="more-advanced-template" class="level2">
 <h2 class="anchored" data-anchor-id="more-advanced-template">More advanced template</h2>
 <p>Jinja templates can be considerably more powerful than we’ve used so far. It is possible to use a for construct to allow us to iterate over a list and output content accordingly. Let’s change our templated command to the following. We start with an open curly brace and the percent symbol, then use a normal python command of for filename in params dot filenames then percent close brace. Then we modify our output line to be echo Reading open curly braces filename close curly braces. We then use a Jinja entry to represent the end of the for loop, open curly brace percent endfor percent close curly brace.</p>
@@ -2047,8 +2068,8 @@ No data found</code></pre>
 </div>
 </section>
 <section id="variables" class="level2">
-<h2 class="anchored" data-anchor-id="variables">Variables<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></h2>
-<p>As part of the templating system, Airflow provides a set of built-in runtime variables. These provide assorted information about DAG runs, individual tasks, and even the system configuration. Template examples include the execution date, which is ds in the double curly brace pairs.</p>
+<h2 class="anchored" data-anchor-id="variables">Variables</h2>
+<p>As part of the templating system, Airflow provides a set of built-in runtime variables. These provide assorted information about DAG runs, individual tasks, and even the system configuration.</p>
 <table class="table">
 <colgroup>
 <col style="width: 49%">
@@ -2087,11 +2108,720 @@ No data found</code></pre>
 </tr>
 </tbody>
 </table>
-<p>It returns the date in a 4 digit year dash 2 digit month dash 2 digit day format. There’s also a ds underscore nodash variety to get the same info without dashes. Note that this is a string, not a python datetime object. Another variable available is the prev underscore ds, which gives the date of the previous DAG run in the same format as ds. The nodash variety is here as well. You can also access the full DAG object using the dag variable. Or you can use the conf object to access the current Airflow configuration within code. There are many more variables available - you can refer to the documentation for more information<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<p>Template examples include the execution date, which is ds in the double curly brace pairs. It returns the date in a 4 digit year dash 2 digit month dash 2 digit day format. There’s also a ds underscore nodash variety to get the same info without dashes.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that this is a string, not a python datetime object.</p>
+</div>
+</div>
+</div>
+<p>Another variable available is the prev underscore ds, which gives the date of the previous DAG run in the same format as ds. The nodash variety is here as well. You can also access the full DAG object using the dag variable. Or you can use the conf object to access the current Airflow configuration within code. There are many more variables available - you can refer to the documentation for more information<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<div class="cell" data-execution_count="15">
+<div id="airflow_templates_variables" class="cell-output cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 12%">
+<col style="width: 69%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">{{ data_interval_start }}</td>
+<td style="text-align: left;">pendulum.DateTime</td>
+<td style="text-align: left;">Start of the data interval. Added in version 2.2.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ data_interval_end }}</td>
+<td style="text-align: left;">pendulum.DateTime</td>
+<td style="text-align: left;">End of the data interval. Added in version 2.2.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ ds }}</td>
+<td style="text-align: left;">str</td>
+<td style="text-align: left;">The DAG run’s logical date as YYYY-MM-DD. Same as {{ dag_run.logical_date</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ ds_nodash }}</td>
+<td style="text-align: left;">str</td>
+<td style="text-align: left;">Same as {{ dag_run.logical_date</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ ts }}</td>
+<td style="text-align: left;">str</td>
+<td style="text-align: left;">Same as {{ dag_run.logical_date</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ ts_nodash_with_tz }}</td>
+<td style="text-align: left;">str</td>
+<td style="text-align: left;">Same as {{ dag_run.logical_date</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ ts_nodash }}</td>
+<td style="text-align: left;">str</td>
+<td style="text-align: left;">Same as {{ dag_run.logical_date</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ prev_data_interval_start_success }}</td>
+<td style="text-align: left;">pendulum.DateTime</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ prev_data_interval_end_success }}</td>
+<td style="text-align: left;">pendulum.DateTime</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ prev_start_date_success }}</td>
+<td style="text-align: left;">pendulum.DateTime</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ dag }}</td>
+<td style="text-align: left;">DAG</td>
+<td style="text-align: left;">The currently running DAG. You can read more about DAGs in DAGs.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ task }}</td>
+<td style="text-align: left;">BaseOperator</td>
+<td style="text-align: left;">The currently running BaseOperator. You can read more about Tasks in Operators</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ macros }}</td>
+<td style="text-align: left;">nan</td>
+<td style="text-align: left;">A reference to the macros package. See Macros below.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ task_instance }}</td>
+<td style="text-align: left;">TaskInstance</td>
+<td style="text-align: left;">The currently running TaskInstance.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ ti }}</td>
+<td style="text-align: left;">TaskInstance</td>
+<td style="text-align: left;">Same as {{ task_instance }}.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ params }}</td>
+<td style="text-align: left;">dict[str, Any]</td>
+<td style="text-align: left;">The user-defined params. This can be overridden by the mapping passed to trigger_dag -c if dag_run_conf_overrides_params is enabled in airflow.cfg.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ var.value }}</td>
+<td style="text-align: left;">nan</td>
+<td style="text-align: left;">Airflow variables. See Airflow Variables in Templates below.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ var.json }}</td>
+<td style="text-align: left;">nan</td>
+<td style="text-align: left;">Airflow variables. See Airflow Variables in Templates below.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ conn }}</td>
+<td style="text-align: left;">nan</td>
+<td style="text-align: left;">Airflow connections. See Airflow Connections in Templates below.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ task_instance_key_str }}</td>
+<td style="text-align: left;">str</td>
+<td style="text-align: left;">A unique, human-readable key to the task instance. The format is {dag_id}<strong>{task_id}</strong>{ds_nodash}.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ conf }}</td>
+<td style="text-align: left;">AirflowConfigParser</td>
+<td style="text-align: left;">The full configuration object representing the content of your airflow.cfg. See airflow.configuration.conf.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ run_id }}</td>
+<td style="text-align: left;">str</td>
+<td style="text-align: left;">The currently running DagRun run ID.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ dag_run }}</td>
+<td style="text-align: left;">DagRun</td>
+<td style="text-align: left;">The currently running DagRun.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">{{ test_mode }}</td>
+<td style="text-align: left;">bool</td>
+<td style="text-align: left;">Whether the task instance was run by the airflow test CLI.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{{ expanded_ti_count }}</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="macros" class="level2">
 <h2 class="anchored" data-anchor-id="macros">Macros</h2>
-<p>In addition to the other Airflow variables, there is also a macros variable. The macros package provides a reference to various useful objects or methods for Airflow templates. Some examples of these include the macros dot datetime, which is the Python datetime dot datetime object. The macros dot timedelta template references the timedelta object. A macros dot uuid is the same as Python’s uuid object. Finally, there are also some added functions available, such as macros dot ds underscore add. It provides an easy way to perform date math within a template. It takes two arguments, a YYYYMMDD datestring and an integer representing the number of days to add (or subtract if the number is negative). Our example here would return April 20, 2020. These are not all the available macros objects - refer to the Airflow documentation for more info.</p>
+<p>In addition to the other Airflow variables, there is also a macros variable. The macros package provides a reference to various useful objects or methods for Airflow templates.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Macros object</th>
+<th>Python object</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>{{ macros.datetime}}</td>
+<td>&nbsp;datetime.datetime</td>
+</tr>
+<tr class="even">
+<td>{{ macros.timedelta}}</td>
+<td>datetime.timedelta</td>
+</tr>
+<tr class="odd">
+<td>{{ macros.uuid}}</td>
+<td>uuid.UUID</td>
+</tr>
+<tr class="even">
+<td>{{ macros.ds_add(ds, days)}}</td>
+<td>&nbsp;datetime</td>
+</tr>
+</tbody>
+</table>
+<p>Some examples of these include the macros dot datetime, which is the Python datetime dot datetime object. The macros dot timedelta template references the timedelta object. A macros dot uuid is the same as Python’s uuid object. Finally, there are also some added functions available, such as macros dot ds underscore add. It provides an easy way to perform date math within a template. It takes two arguments, a YYYYMMDD datestring and an integer representing the number of days to add (or subtract if the number is negative). Our example here would return April 20, 2020. These are not all the available macros objects - refer to the Airflow documentation for more info.</p>
+</section>
+<section id="exercises-12" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-12">Exercises</h2>
+<section id="exercise-1-using-lists-with-templates" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-using-lists-with-templates">Exercise 1: Using lists with templates</h3>
+<p>Once again, you decide to make some modifications to the design of your <code>cleandata</code> workflow. This time, you realize that you need to run the command <code>cleandata.sh</code> with the date argument and the file argument as before, except now you have a list of 30 files. You do not want to create 30 tasks, so your job is to modify the code to support running the argument for 30 or more files.</p>
+<p>The Python list of files is already created for you, simply called filelist.</p>
+<ul>
+<li>Modify the templated command to iterate over a list of filenames.</li>
+<li>Pass the filelist to the templated command in the operator.</li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb55-3"><a href="#cb55-3"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb55-4"><a href="#cb55-4"></a></span>
+<span id="cb55-5"><a href="#cb55-5"></a>filelist <span class="op">=</span> [<span class="ss">f'file</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">.txt'</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>)]</span>
+<span id="cb55-6"><a href="#cb55-6"></a></span>
+<span id="cb55-7"><a href="#cb55-7"></a>default_args <span class="op">=</span> {</span>
+<span id="cb55-8"><a href="#cb55-8"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2020</span>, <span class="dv">4</span>, <span class="dv">15</span>),</span>
+<span id="cb55-9"><a href="#cb55-9"></a>}</span>
+<span id="cb55-10"><a href="#cb55-10"></a></span>
+<span id="cb55-11"><a href="#cb55-11"></a>cleandata_dag <span class="op">=</span> DAG(<span class="st">'cleandata'</span>,</span>
+<span id="cb55-12"><a href="#cb55-12"></a>                    default_args<span class="op">=</span>default_args,</span>
+<span id="cb55-13"><a href="#cb55-13"></a>                    schedule_interval<span class="op">=</span><span class="st">'@daily'</span>)</span>
+<span id="cb55-14"><a href="#cb55-14"></a></span>
+<span id="cb55-15"><a href="#cb55-15"></a><span class="co"># Modify the template to handle multiple files in a </span></span>
+<span id="cb55-16"><a href="#cb55-16"></a><span class="co"># single run.</span></span>
+<span id="cb55-17"><a href="#cb55-17"></a>templated_command <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb55-18"><a href="#cb55-18"></a><span class="st">  &lt;</span><span class="sc">% f</span><span class="st">or filename in params.filenames %&gt;</span></span>
+<span id="cb55-19"><a href="#cb55-19"></a><span class="st">  bash cleandata.sh </span><span class="sc">{{</span><span class="st"> ds_nodash </span><span class="sc">}}</span><span class="st"> </span><span class="sc">{{</span><span class="st"> filename </span><span class="sc">}}</span><span class="st">;</span></span>
+<span id="cb55-20"><a href="#cb55-20"></a><span class="st">  &lt;</span><span class="sc">% e</span><span class="st">ndfor %&gt;</span></span>
+<span id="cb55-21"><a href="#cb55-21"></a><span class="st">"""</span></span>
+<span id="cb55-22"><a href="#cb55-22"></a></span>
+<span id="cb55-23"><a href="#cb55-23"></a><span class="co"># Modify clean_task to use the templated command</span></span>
+<span id="cb55-24"><a href="#cb55-24"></a>clean_task <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">'cleandata_task'</span>,</span>
+<span id="cb55-25"><a href="#cb55-25"></a>                          bash_command<span class="op">=</span>templated_command,</span>
+<span id="cb55-26"><a href="#cb55-26"></a>                          params<span class="op">=</span>{<span class="st">'filenames'</span>: filelist},</span>
+<span id="cb55-27"><a href="#cb55-27"></a>                          dag<span class="op">=</span>cleandata_dag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-2-understanding-parameter-options" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-understanding-parameter-options">Exercise 2: Understanding parameter options</h3>
+<p>You’ve used a few different methods to add templates to your workflows. Considering the differences between options, why would you want to create individual tasks (ie, BashOperators) with specific parameters vs a list of files?</p>
+<p>For example, why would you choose</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>t1 <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">'task1'</span>, bash_command<span class="op">=</span>templated_command, params<span class="op">=</span>{<span class="st">'filename'</span>: <span class="st">'file1.txt'</span>}, dag<span class="op">=</span>dag)</span>
+<span id="cb56-2"><a href="#cb56-2"></a>t2 <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">'task2'</span>, bash_command<span class="op">=</span>templated_command, params<span class="op">=</span>{<span class="st">'filename'</span>: <span class="st">'file2.txt'</span>}, dag<span class="op">=</span>dag)</span>
+<span id="cb56-3"><a href="#cb56-3"></a>t3 <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">'task3'</span>, bash_command<span class="op">=</span>templated_command, params<span class="op">=</span>{<span class="st">'filename'</span>: <span class="st">'file3.txt'</span>}, dag<span class="op">=</span>dag)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>over using a loop form such as</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>t1 <span class="op">=</span> BashOperator(</span>
+<span id="cb57-2"><a href="#cb57-2"></a>    task_id <span class="op">=</span> <span class="st">'task1'</span>,                   </span>
+<span id="cb57-3"><a href="#cb57-3"></a>    bash_command <span class="op">=</span> templated_command,                   </span>
+<span id="cb57-4"><a href="#cb57-4"></a>    params <span class="op">=</span> {<span class="st">'filenames'</span>: [<span class="st">'file1.txt'</span>, <span class="st">'file2.txt'</span>, <span class="st">'file3.txt'</span>]},                  </span>
+<span id="cb57-5"><a href="#cb57-5"></a>    dag <span class="op">=</span> dag</span>
+<span id="cb57-6"><a href="#cb57-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Possible Answers</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">Using a loop form is slower.</li>
+<li><input type="checkbox" disabled="" checked="">Using specific tasks allows better monitoring of task state and possible parallel execution.</li>
+<li><input type="checkbox" disabled="">The params object can only handle lists of a few items.</li>
+</ul>
+</section>
+<section id="exercise-3-sending-templated-emails" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-sending-templated-emails">Exercise 3: Sending templated emails</h3>
+<p>While reading through the Airflow documentation, you realize that various operations can use templated fields to provide added flexibility. You come across the docs for the EmailOperator and see that the content can be set to a template. You want to make use of this functionality to provide more detailed information regarding the output of a DAG run.</p>
+<ul>
+<li>Create a Python string that represents the email content you wish to send. Use the substitutions for the current date string (with dashes) and a variable called username.</li>
+<li>Create the EmailOperator task using the template string for the html_content.</li>
+<li>Set the subject field to a macro call using macros.uuid.uuid4(). This simply provides a string of a universally unique identifier as the subject field.</li>
+<li>Assign the params dictionary as appropriate with the username of testemailuser.</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb58-2"><a href="#cb58-2"></a><span class="im">from</span> airflow.operators.email_operator <span class="im">import</span> EmailOperator</span>
+<span id="cb58-3"><a href="#cb58-3"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb58-4"><a href="#cb58-4"></a></span>
+<span id="cb58-5"><a href="#cb58-5"></a><span class="co"># Create the string representing the html email content</span></span>
+<span id="cb58-6"><a href="#cb58-6"></a>html_email_str <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb58-7"><a href="#cb58-7"></a><span class="st">Date: </span><span class="sc">{{</span><span class="st"> ds </span><span class="sc">}}</span></span>
+<span id="cb58-8"><a href="#cb58-8"></a><span class="st">Username: </span><span class="sc">{{</span><span class="st"> params.username </span><span class="sc">}}</span></span>
+<span id="cb58-9"><a href="#cb58-9"></a><span class="st">"""</span></span>
+<span id="cb58-10"><a href="#cb58-10"></a></span>
+<span id="cb58-11"><a href="#cb58-11"></a>email_dag <span class="op">=</span> DAG(</span>
+<span id="cb58-12"><a href="#cb58-12"></a>    <span class="st">'template_email_test'</span>,                </span>
+<span id="cb58-13"><a href="#cb58-13"></a>    default_args <span class="op">=</span> {</span>
+<span id="cb58-14"><a href="#cb58-14"></a>        <span class="st">'start_date'</span>: datetime(<span class="dv">2020</span>, <span class="dv">4</span>, <span class="dv">15</span>),</span>
+<span id="cb58-15"><a href="#cb58-15"></a>    },</span>
+<span id="cb58-16"><a href="#cb58-16"></a>    schedule_interval <span class="op">=</span> <span class="st">'@weekly'</span>,</span>
+<span id="cb58-17"><a href="#cb58-17"></a>)</span>
+<span id="cb58-18"><a href="#cb58-18"></a></span>
+<span id="cb58-19"><a href="#cb58-19"></a>email_task <span class="op">=</span> EmailOperator(</span>
+<span id="cb58-20"><a href="#cb58-20"></a>    task_id <span class="op">=</span> <span class="st">'email_task'</span>,</span>
+<span id="cb58-21"><a href="#cb58-21"></a>    to <span class="op">=</span> <span class="st">'testuser@datacamp.com'</span>,</span>
+<span id="cb58-22"><a href="#cb58-22"></a>    subject <span class="op">=</span> <span class="st">"</span><span class="sc">{{</span><span class="st"> macros.uuid.uuid4() </span><span class="sc">}}</span><span class="st">"</span>,</span>
+<span id="cb58-23"><a href="#cb58-23"></a>    html_content <span class="op">=</span> html_email_str,</span>
+<span id="cb58-24"><a href="#cb58-24"></a>    params <span class="op">=</span> {</span>
+<span id="cb58-25"><a href="#cb58-25"></a>        <span class="st">'username'</span>: <span class="st">'testemailuser'</span>,</span>
+<span id="cb58-26"><a href="#cb58-26"></a>    },</span>
+<span id="cb58-27"><a href="#cb58-27"></a>    dag <span class="op">=</span> email_dag</span>
+<span id="cb58-28"><a href="#cb58-28"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="section-14-branching" class="level1">
+<h1>Section 14: Branching</h1>
+<p>Branching provides the ability for conditional logic within Airflow. Basically, this means that tasks can be selectively executed or skipped depending on the result of an Operator. By default, we’re using the BranchPythonOperator. There are other branching operators available and as with everything else in Airflow, you can write your own if needed. This is however outside the scope of this course.</p>
+<p>We import the BranchPythonOperator <code>from airflow.operators.python_operator import BranchPythonOperator</code>. The BranchPythonOperator works by running a function (the python underscore callable as with the normal PythonOperator). The function returns the name (or names) of the task_ids to run. This is best seen with an example.</p>
+<section id="branching-example" class="level2">
+<h2 class="anchored" data-anchor-id="branching-example">Branching example</h2>
+<p>For our branching example, let’s assume we’ve already defined our DAG and imported all the necessary libraries. Our first task is to create the function used with the python_callable for the BranchPythonOperator.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a><span class="kw">def</span> branch_test(<span class="op">**</span>kwargs):</span>
+<span id="cb59-2"><a href="#cb59-2"></a>    <span class="cf">if</span> <span class="bu">int</span>(kwargs[<span class="st">'ds_nodash'</span>]) <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb59-3"><a href="#cb59-3"></a>        <span class="cf">return</span> <span class="st">'even_day_task'</span></span>
+<span id="cb59-4"><a href="#cb59-4"></a>    <span class="cf">else</span>:</span>
+<span id="cb59-5"><a href="#cb59-5"></a>        <span class="cf">return</span> <span class="st">'odd_day_task'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll note that the asterisk asterisk kwargs argument is the only component passed in. Remember that this is a reference to a keyword dictionary passed into the function. In the function we first access the ds underscore nodash key from the kwargs dictionary. If you remember from our previous lesson, this is the template variable used to return the date in YYYYMMDD format. We take this value, convert it to an integer, and then run a check if modulus 2 equals 0. Basically, we’re checking if a number is fully divisible by 2. If so, it’s even, otherwise, it’s odd. As such, we return either even underscore day underscore task, or odd underscore day underscore task.</p>
+</section>
+<section id="branching-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="branching-example-1">Branching example</h2>
+<p>The next part of our code creates the BranchPythonOperator. This is like the normal PythonOperator, except we pass in the provide underscore context argument and set it to True. This is the component that tells Airflow to provide access to the runtime variables and macros to the function. This is what gets referenced via the kwargs dictionary object in the function definition.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>branch_task <span class="op">=</span> BranchPythonOperator(</span>
+<span id="cb60-2"><a href="#cb60-2"></a>    task_id <span class="op">=</span> <span class="st">'branch_task'</span>,</span>
+<span id="cb60-3"><a href="#cb60-3"></a>    python_callable <span class="op">=</span> branch_test,</span>
+<span id="cb60-4"><a href="#cb60-4"></a>    provide_context <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb60-5"><a href="#cb60-5"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb60-6"><a href="#cb60-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we don’t show the code here, but let’s assume we’ve created two tasks for even days, and two tasks for odd numbered days.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>task_even <span class="op">=</span> PythonOperator(...)</span>
+<span id="cb61-2"><a href="#cb61-2"></a>task_uneven <span class="op">=</span> PythonOperator(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, we need to set the dependencies. We want the branch task to run first, then the even day task or the odd day task depending on the result of the branch task. We need to set the dependencies using the bitshift operators.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>start_task <span class="op">&gt;&gt;</span> branch_task <span class="op">&gt;&gt;</span> even_day_task <span class="op">&gt;&gt;</span> even_day_task2branch_task <span class="op">&gt;&gt;</span> odd_day_task <span class="op">&gt;&gt;</span> odd_day_task2</span>
+<span id="cb62-2"><a href="#cb62-2"></a>branch_task <span class="op">&gt;&gt;</span> odd_day_task <span class="op">&gt;&gt;</span> odd_day_task2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>First, we configure the dependency order for start task, branch task, then even day task and even day task2. Now we need to set the dependency order for the odd day tasks. As we’ve already defined the dependency for the start and branch tasks, we can set odd day task to follow the branch task, and the odd day task2 to follow that. You may be wondering why you’d set these dependencies if one set is not going to run. If you didn’t set these dependencies, all the tasks would run as normal, regardless of what the branch operator returned.</p>
+</section>
+<section id="branching-graph-view" class="level2">
+<h2 class="anchored" data-anchor-id="branching-graph-view">Branching graph view</h2>
+<p>Let’s look at the DAG in the graph view of the Airflow UI.</p>
+<p><img src="../imgs/chapter4/0X93.png" class="img-fluid"></p>
+<p>You’ll notice that we have a start task upstream of the branch task. The branch task then shows two paths, one to the odd day tasks, and the other to the even day tasks.</p>
+</section>
+<section id="branching-even-days" class="level2">
+<h2 class="anchored" data-anchor-id="branching-even-days">Branching even days</h2>
+<p>Let’s look first at what happens if we run on an even numbered day.</p>
+<p><img src="../imgs/chapter4/0X99.png" class="img-fluid"></p>
+<p>The start task executes as normal, then the branch task checks the ds_nodash value and determines this is an even day. It returns the value even underscore day underscore task, which is then executed by Airflow followed by the even day task2.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that the odd day tasks are marked in light pink, which refers to them being skipped.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="branching-odd-days" class="level2">
+<h2 class="anchored" data-anchor-id="branching-odd-days">Branching odd days</h2>
+<p>For completeness, let’s look at the output from a run on an odd day.</p>
+<p><img src="../imgs/chapter4/0X105.png" class="img-fluid"></p>
+<p>The process is the same, except that the branch task selects odd day task instead and the even branch is marked skipped.</p>
+</section>
+<section id="exercises-13" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-13">Exercises</h2>
+<section id="exercise-1-define-a-branchpythonoperator" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-define-a-branchpythonoperator">Exercise 1: Define a BranchPythonOperator</h3>
+<p>After learning about the power of conditional logic within Airflow, you wish to test out the BranchPythonOperator. You’d like to run a different code path if the current execution date represents a new year (ie, 2020 vs 2019).</p>
+<p>The DAG is defined for you, along with the tasks in question. Your current task is to implement the BranchPythonOperator.</p>
+<ul>
+<li>In the function year_check, configure the code to determine if the year of the current execution date is different than the previous execution date (ie, is the year different between the appropriate Airflow template variables.)</li>
+<li>Finish the BranchPythonOperator by adding the appropriate arguments.</li>
+<li>Set the dependencies on current_year_task and new_year_task.</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Create a function to determine if years are different</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="kw">def</span> year_check(<span class="op">**</span>kwargs):</span>
+<span id="cb63-3"><a href="#cb63-3"></a>    current_year <span class="op">=</span> <span class="bu">int</span>(kwargs[<span class="st">'ds_nodash'</span>][<span class="dv">0</span>:<span class="dv">4</span>])</span>
+<span id="cb63-4"><a href="#cb63-4"></a>    previous_year <span class="op">=</span> <span class="bu">int</span>(kwargs[<span class="st">'prev_ds_nodash'</span>][<span class="dv">0</span>:<span class="dv">4</span>])</span>
+<span id="cb63-5"><a href="#cb63-5"></a>    <span class="cf">if</span> current_year <span class="op">==</span> previous_year:</span>
+<span id="cb63-6"><a href="#cb63-6"></a>        <span class="cf">return</span> <span class="st">'current_year_task'</span></span>
+<span id="cb63-7"><a href="#cb63-7"></a>    <span class="cf">else</span>:</span>
+<span id="cb63-8"><a href="#cb63-8"></a>        <span class="cf">return</span> <span class="st">'new_year_task'</span></span>
+<span id="cb63-9"><a href="#cb63-9"></a></span>
+<span id="cb63-10"><a href="#cb63-10"></a><span class="co"># Define the BranchPythonOperator</span></span>
+<span id="cb63-11"><a href="#cb63-11"></a>branch_task <span class="op">=</span> BranchPythonOperator(task_id<span class="op">=</span><span class="st">'branch_task'</span>, dag<span class="op">=</span>branch_dag,</span>
+<span id="cb63-12"><a href="#cb63-12"></a>                                   python_callable<span class="op">=</span>year_check, provide_context<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb63-13"><a href="#cb63-13"></a><span class="co"># Define the dependencies</span></span>
+<span id="cb63-14"><a href="#cb63-14"></a>branch_dag <span class="op">&gt;&gt;</span> current_year_task</span>
+<span id="cb63-15"><a href="#cb63-15"></a>branch_dag <span class="op">&gt;&gt;</span> new_year_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-2-branch-troubleshooting" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-branch-troubleshooting">Exercise 2: Branch troubleshooting</h3>
+<p>While working with a workflow defined by a colleague, you notice that a branching operator executes, but there’s never any change in the DAG results. You realize that regardless of the state defined by the branching operator, all other tasks complete, even as some should be skipped.</p>
+<p>Use what you’ve learned to determine the most likely reason that the branching operator is ineffective.</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="">The <code>branch_test</code> method does not return the correct value.</li>
+<li><input type="checkbox" disabled="">The DAG does not run often enough for the callable to work properly.</li>
+<li><input type="checkbox" disabled="" checked="">The dependency is missing between the <code>branch_task</code> and <code>even_day_task</code> and <code>odd_day_task</code>.</li>
+</ul>
+<p><img src="../imgs/chapter4/Exercise_14_2.png" class="img-fluid"></p>
+</section>
+</section>
+</section>
+<section id="section-15-creating-a-production-pipeline" class="level1">
+<h1>Section 15: Creating a production pipeline</h1>
+<section id="running-dags-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="running-dags-tasks">Running DAGs &amp; Tasks</h2>
+<p>You may remember way back in chapter 1, we discussed how to run a task. If not, here’s a quick reminder - use airflow run dag id task id and execution date from the command line.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1"></a><span class="ex">airflow</span> run <span class="op">&lt;</span>dag_id<span class="op">&gt;</span> <span class="op">&lt;</span>task_id<span class="op">&gt;</span> <span class="op">&lt;</span>execution_date<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will execute a specific DAG task as though it were running on the date specified.</p>
+<p>To run a full DAG, you can use the airflow trigger underscore dag dash e then the execution date and dag_id.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1"></a><span class="ex">airflow</span> trigger_dag <span class="at">-e</span> <span class="op">&lt;</span>execution_date<span class="op">&gt;</span> <span class="op">&lt;</span>dag_id<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This executes the full DAG as though it were running on the specified date.</p>
+</section>
+<section id="operators-reminder" class="level2">
+<h2 class="anchored" data-anchor-id="operators-reminder">Operators reminder</h2>
+<p>We’ve been working with operators and sensors through most of this course, but let’s take a quick look at some of the most common ones we’ve used.</p>
+<ul>
+<li>The BashOperator behaves like most operators, but expects a <code>bash_command</code> parameter which is a string of the command to be run.</li>
+<li>The PythonOperator requires a <code>python_callable</code> argument with the name of the Python function to execute.
+<ul>
+<li>The BranchPythonOperator is similar to the PythonOperator, but the <code>python_callable</code> must be a function that accepts a <code>**kwargs</code> entry. As such, the <code>provide_context = True</code> attribute must be set to true.</li>
+</ul></li>
+<li>The FileSensor requires a <code>filepath</code> argument of a string, and might need mode or <code>poke_interval</code> attributes.</li>
+</ul>
+<p>You can refer to previous chapters for further detail if required.</p>
+</section>
+<section id="template-reminders" class="level2">
+<h2 class="anchored" data-anchor-id="template-reminders">Template reminders</h2>
+<p>A quick reminder is that many objects in Airflow can use templates. Only certain fields can accept templated strings while others do not. It can be tricky to remember which ones support templates on what fields. One way to check is to use the built-in python documentation via a live python interpreter. To use this method, open a python3 interpreter at the command line.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1"></a><span class="ex">python</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Import any necessary libraries (ie, the BashOperator) At the prompt, run help with the name of the Airflow object as the lone argument.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a><span class="im">from</span> airflow.operators.bash <span class="im">import</span> BashOperator</span>
+<span id="cb67-2"><a href="#cb67-2"></a></span>
+<span id="cb67-3"><a href="#cb67-3"></a><span class="bu">help</span>(BashOperator)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Look for a line referencing template underscore fields. This line will specify if and which fields can use templated strings.</p>
+</section>
+<section id="template-documentation-example" class="level2">
+<h2 class="anchored" data-anchor-id="template-documentation-example">Template documentation example</h2>
+<p>This is an example of checking for help in the python interpreter. Notice the output with the template fields entry - in this case, the bash underscore command and the env fields can accept templated values.</p>
+<p><img src="../imgs/chapter4/1X139.png" class="img-fluid"></p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>A final note before working through our last exercises - as a data engineer, your job is not to necessarily understand every component of a workflow. You may not fully understand all of a machine learning process, or perhaps how an Apache Spark job works. Your task is to implement any of those tasks in a repeatable and reliable fashion. Let’s practice implementing workflows for the last time in this course now.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises-14" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-14">Exercises</h2>
+<section id="exercise-1-creating-a-production-pipeline-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-creating-a-production-pipeline-1">Exercise 1: Creating a production pipeline #1</h3>
+<p>You’ve learned a lot about how Airflow works - now it’s time to implement your workflow into a production pipeline consisting of many objects including sensors and operators. Your boss is interested in seeing this workflow become automated and able to provide SLA reporting as it provides some extra leverage for closing a deal the sales staff is working on. The sales prospect has indicated that once they see updates in an automated fashion, they’re willing to sign-up for the indicated data service.</p>
+<p>From what you’ve learned about the process, you know that there is sales data that will be uploaded to the system. Once the data is uploaded, a new file should be created to kick off the full processing, but something isn’t working correctly.</p>
+<p>Refer to the source code of the DAG to determine if anything extra needs to be added.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb68-3"><a href="#cb68-3"></a></span>
+<span id="cb68-4"><a href="#cb68-4"></a><span class="co"># Import the needed operators</span></span>
+<span id="cb68-5"><a href="#cb68-5"></a><span class="im">from</span> airflow.operators.____ <span class="im">import</span> ____</span>
+<span id="cb68-6"><a href="#cb68-6"></a>____</span>
+<span id="cb68-7"><a href="#cb68-7"></a><span class="im">from</span> datetime <span class="im">import</span> date, datetime</span>
+<span id="cb68-8"><a href="#cb68-8"></a></span>
+<span id="cb68-9"><a href="#cb68-9"></a><span class="kw">def</span> process_data(<span class="op">**</span>context):</span>
+<span id="cb68-10"><a href="#cb68-10"></a>  <span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'/home/repl/workspace/processed_data.tmp'</span>, <span class="st">'w'</span>)</span>
+<span id="cb68-11"><a href="#cb68-11"></a>  <span class="bu">file</span>.write(<span class="ss">f'Data processed on </span><span class="sc">{</span>date<span class="sc">.</span>today()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb68-12"><a href="#cb68-12"></a>  <span class="bu">file</span>.close()</span>
+<span id="cb68-13"><a href="#cb68-13"></a></span>
+<span id="cb68-14"><a href="#cb68-14"></a>    </span>
+<span id="cb68-15"><a href="#cb68-15"></a>dag <span class="op">=</span> DAG(dag_id<span class="op">=</span><span class="st">'etl_update'</span>, default_args<span class="op">=</span>{<span class="st">'start_date'</span>: datetime(<span class="dv">2020</span>,<span class="dv">4</span>,<span class="dv">1</span>)})</span>
+<span id="cb68-16"><a href="#cb68-16"></a></span>
+<span id="cb68-17"><a href="#cb68-17"></a>sensor <span class="op">=</span> FileSensor(task_id<span class="op">=</span><span class="st">'sense_file'</span>, </span>
+<span id="cb68-18"><a href="#cb68-18"></a>                    filepath<span class="op">=</span><span class="st">'/home/repl/workspace/startprocess.txt'</span>,</span>
+<span id="cb68-19"><a href="#cb68-19"></a>                    poke_interval<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb68-20"><a href="#cb68-20"></a>                    timeout<span class="op">=</span><span class="dv">15</span>,</span>
+<span id="cb68-21"><a href="#cb68-21"></a>                    dag<span class="op">=</span>dag)</span>
+<span id="cb68-22"><a href="#cb68-22"></a></span>
+<span id="cb68-23"><a href="#cb68-23"></a>bash_task <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">'cleanup_tempfiles'</span>, </span>
+<span id="cb68-24"><a href="#cb68-24"></a>                         bash_command<span class="op">=</span><span class="st">'rm -f /home/repl/*.tmp'</span>,</span>
+<span id="cb68-25"><a href="#cb68-25"></a>                         dag<span class="op">=</span>dag)</span>
+<span id="cb68-26"><a href="#cb68-26"></a></span>
+<span id="cb68-27"><a href="#cb68-27"></a>python_task <span class="op">=</span> PythonOperator(task_id<span class="op">=</span><span class="st">'run_processing'</span>, </span>
+<span id="cb68-28"><a href="#cb68-28"></a>                             python_callable<span class="op">=</span>process_data,</span>
+<span id="cb68-29"><a href="#cb68-29"></a>                             dag<span class="op">=</span>dag)</span>
+<span id="cb68-30"><a href="#cb68-30"></a></span>
+<span id="cb68-31"><a href="#cb68-31"></a>sensor <span class="op">&gt;&gt;</span> bash_task <span class="op">&gt;&gt;</span> python_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Update the DAG in pipeline.py to import the needed operators.</li>
+</ul>
+<p>Solution</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb69-2"><a href="#cb69-2"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb69-3"><a href="#cb69-3"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb69-4"><a href="#cb69-4"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> PythonOperator</span>
+<span id="cb69-5"><a href="#cb69-5"></a><span class="im">from</span> dags.process <span class="im">import</span> process_data</span>
+<span id="cb69-6"><a href="#cb69-6"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta, datetime</span>
+<span id="cb69-7"><a href="#cb69-7"></a></span>
+<span id="cb69-8"><a href="#cb69-8"></a><span class="co"># Update the default arguments and apply them to the DAG</span></span>
+<span id="cb69-9"><a href="#cb69-9"></a>default_args <span class="op">=</span> {</span>
+<span id="cb69-10"><a href="#cb69-10"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2019</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb69-11"><a href="#cb69-11"></a>  <span class="st">'sla'</span>: timedelta(minutes<span class="op">=</span><span class="dv">90</span>),</span>
+<span id="cb69-12"><a href="#cb69-12"></a>}</span>
+<span id="cb69-13"><a href="#cb69-13"></a></span>
+<span id="cb69-14"><a href="#cb69-14"></a>dag <span class="op">=</span> DAG(</span>
+<span id="cb69-15"><a href="#cb69-15"></a>    dag_id <span class="op">=</span> <span class="st">'etl_update'</span>, </span>
+<span id="cb69-16"><a href="#cb69-16"></a>    default_args <span class="op">=</span> default_args, </span>
+<span id="cb69-17"><a href="#cb69-17"></a>)</span>
+<span id="cb69-18"><a href="#cb69-18"></a></span>
+<span id="cb69-19"><a href="#cb69-19"></a>sensor <span class="op">=</span> FileSensor(</span>
+<span id="cb69-20"><a href="#cb69-20"></a>    task_id <span class="op">=</span> <span class="st">'sense_file'</span>, </span>
+<span id="cb69-21"><a href="#cb69-21"></a>    filepath <span class="op">=</span> <span class="st">'/home/repl/workspace/startprocess.txt'</span>,</span>
+<span id="cb69-22"><a href="#cb69-22"></a>    poke_interval <span class="op">=</span> <span class="dv">45</span>,</span>
+<span id="cb69-23"><a href="#cb69-23"></a>    dag <span class="op">=</span> dag</span>
+<span id="cb69-24"><a href="#cb69-24"></a>)</span>
+<span id="cb69-25"><a href="#cb69-25"></a></span>
+<span id="cb69-26"><a href="#cb69-26"></a>bash_task <span class="op">=</span> BashOperator(</span>
+<span id="cb69-27"><a href="#cb69-27"></a>    task_id <span class="op">=</span> <span class="st">'cleanup_tempfiles'</span>, </span>
+<span id="cb69-28"><a href="#cb69-28"></a>    bash_command <span class="op">=</span> <span class="st">'rm -f /home/repl/*.tmp'</span>,</span>
+<span id="cb69-29"><a href="#cb69-29"></a>    dag <span class="op">=</span> dag</span>
+<span id="cb69-30"><a href="#cb69-30"></a>)</span>
+<span id="cb69-31"><a href="#cb69-31"></a></span>
+<span id="cb69-32"><a href="#cb69-32"></a>python_task <span class="op">=</span> PythonOperator(</span>
+<span id="cb69-33"><a href="#cb69-33"></a>    task_id <span class="op">=</span> <span class="st">'run_processing'</span>, </span>
+<span id="cb69-34"><a href="#cb69-34"></a>    python_callable <span class="op">=</span> process_data,</span>
+<span id="cb69-35"><a href="#cb69-35"></a>    provide_context <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb69-36"><a href="#cb69-36"></a>    dag <span class="op">=</span> dag,</span>
+<span id="cb69-37"><a href="#cb69-37"></a>)</span>
+<span id="cb69-38"><a href="#cb69-38"></a></span>
+<span id="cb69-39"><a href="#cb69-39"></a>sensor <span class="op">&gt;&gt;</span> bash_task <span class="op">&gt;&gt;</span> python_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Run the <code>sense_file</code> task from the command line and look for any errors. Use the command <code>airflow test</code> and the appropriate arguments to run the command. For the last argument, use a <code>-1</code> instead of a specific date.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../imgs/chapter4/Exercise_15_1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The file is not found and timeout is triggered after 15 seconds. we have first to create the file</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>Determine why the sense_file task does not complete and remedy this using the editor.</li>
+<li>Re-test the sense_file task and verify the problem is fixed.</li>
+</ul>
+</section>
+<section id="exercise-2-creating-a-production-pipeline-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-creating-a-production-pipeline-2">Exercise 2: Creating a production pipeline #2</h3>
+<p>Continuing on your last workflow, you’d like to add some additional functionality, specifically adding some SLAs to the code and modifying the sensor components.</p>
+<p>Refer to the source code of the DAG to determine if anything extra needs to be added. The default_args dictionary has been defined for you, though it may require further modification.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb70-3"><a href="#cb70-3"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb70-4"><a href="#cb70-4"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> PythonOperator</span>
+<span id="cb70-5"><a href="#cb70-5"></a><span class="im">from</span> dags.process <span class="im">import</span> process_data</span>
+<span id="cb70-6"><a href="#cb70-6"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta, datetime</span>
+<span id="cb70-7"><a href="#cb70-7"></a></span>
+<span id="cb70-8"><a href="#cb70-8"></a><span class="co"># Update the default arguments and apply them to the DAG</span></span>
+<span id="cb70-9"><a href="#cb70-9"></a>default_args <span class="op">=</span> {</span>
+<span id="cb70-10"><a href="#cb70-10"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2019</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb70-11"><a href="#cb70-11"></a>  ____</span>
+<span id="cb70-12"><a href="#cb70-12"></a>}</span>
+<span id="cb70-13"><a href="#cb70-13"></a></span>
+<span id="cb70-14"><a href="#cb70-14"></a>dag <span class="op">=</span> DAG(dag_id<span class="op">=</span><span class="st">'etl_update'</span>, default_args<span class="op">=</span>default_args)</span>
+<span id="cb70-15"><a href="#cb70-15"></a></span>
+<span id="cb70-16"><a href="#cb70-16"></a>sensor <span class="op">=</span> FileSensor(task_id<span class="op">=</span><span class="st">'sense_file'</span>, </span>
+<span id="cb70-17"><a href="#cb70-17"></a>                    filepath<span class="op">=</span><span class="st">'/home/repl/workspace/startprocess.txt'</span>,</span>
+<span id="cb70-18"><a href="#cb70-18"></a>                    ____,</span>
+<span id="cb70-19"><a href="#cb70-19"></a>                    dag<span class="op">=</span>dag)</span>
+<span id="cb70-20"><a href="#cb70-20"></a></span>
+<span id="cb70-21"><a href="#cb70-21"></a>bash_task <span class="op">=</span> BashOperator(task_id<span class="op">=</span><span class="st">'cleanup_tempfiles'</span>, </span>
+<span id="cb70-22"><a href="#cb70-22"></a>                         bash_command<span class="op">=</span><span class="st">'rm -f /home/repl/*.tmp'</span>,</span>
+<span id="cb70-23"><a href="#cb70-23"></a>                         dag<span class="op">=</span>dag)</span>
+<span id="cb70-24"><a href="#cb70-24"></a></span>
+<span id="cb70-25"><a href="#cb70-25"></a>python_task <span class="op">=</span> PythonOperator(task_id<span class="op">=</span><span class="st">'run_processing'</span>, </span>
+<span id="cb70-26"><a href="#cb70-26"></a>                             python_callable<span class="op">=</span>process_data,</span>
+<span id="cb70-27"><a href="#cb70-27"></a>                             ____</span>
+<span id="cb70-28"><a href="#cb70-28"></a>                             dag<span class="op">=</span>dag)</span>
+<span id="cb70-29"><a href="#cb70-29"></a></span>
+<span id="cb70-30"><a href="#cb70-30"></a>sensor <span class="op">&gt;&gt;</span> bash_task <span class="op">&gt;&gt;</span> python_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Add an SLA of 90 minutes to the DAG.</li>
+<li>Update the FileSensor object to check for files every 45 seconds.</li>
+<li>Modify the python_task to send Airflow variables to the callable. Note that the callable is configured to accept the variables using the provide_context argument.</li>
+</ul>
+<div class="sourceCode" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb71-2"><a href="#cb71-2"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb71-3"><a href="#cb71-3"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb71-4"><a href="#cb71-4"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> PythonOperator</span>
+<span id="cb71-5"><a href="#cb71-5"></a><span class="im">from</span> dags.process <span class="im">import</span> process_data</span>
+<span id="cb71-6"><a href="#cb71-6"></a><span class="im">from</span> datetime <span class="im">import</span> timedelta, datetime</span>
+<span id="cb71-7"><a href="#cb71-7"></a></span>
+<span id="cb71-8"><a href="#cb71-8"></a><span class="co"># Update the default arguments and apply them to the DAG</span></span>
+<span id="cb71-9"><a href="#cb71-9"></a>default_args <span class="op">=</span> {</span>
+<span id="cb71-10"><a href="#cb71-10"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2019</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb71-11"><a href="#cb71-11"></a>  <span class="st">'sla'</span>: timedelta(minutes<span class="op">=</span><span class="dv">90</span>),</span>
+<span id="cb71-12"><a href="#cb71-12"></a>}</span>
+<span id="cb71-13"><a href="#cb71-13"></a></span>
+<span id="cb71-14"><a href="#cb71-14"></a>dag <span class="op">=</span> DAG(</span>
+<span id="cb71-15"><a href="#cb71-15"></a>    dag_id<span class="op">=</span><span class="st">'etl_update'</span>, </span>
+<span id="cb71-16"><a href="#cb71-16"></a>    default_args<span class="op">=</span>default_args, </span>
+<span id="cb71-17"><a href="#cb71-17"></a>)</span>
+<span id="cb71-18"><a href="#cb71-18"></a></span>
+<span id="cb71-19"><a href="#cb71-19"></a>sensor <span class="op">=</span> FileSensor(</span>
+<span id="cb71-20"><a href="#cb71-20"></a>    task_id<span class="op">=</span><span class="st">'sense_file'</span>, </span>
+<span id="cb71-21"><a href="#cb71-21"></a>    filepath<span class="op">=</span><span class="st">'/home/repl/workspace/startprocess.txt'</span>,</span>
+<span id="cb71-22"><a href="#cb71-22"></a>    poke_interval<span class="op">=</span><span class="dv">45</span>,</span>
+<span id="cb71-23"><a href="#cb71-23"></a>    dag<span class="op">=</span>dag</span>
+<span id="cb71-24"><a href="#cb71-24"></a>)</span>
+<span id="cb71-25"><a href="#cb71-25"></a></span>
+<span id="cb71-26"><a href="#cb71-26"></a>bash_task <span class="op">=</span> BashOperator(</span>
+<span id="cb71-27"><a href="#cb71-27"></a>    task_id<span class="op">=</span><span class="st">'cleanup_tempfiles'</span>, </span>
+<span id="cb71-28"><a href="#cb71-28"></a>    bash_command<span class="op">=</span><span class="st">'rm -f /home/repl/*.tmp'</span>,</span>
+<span id="cb71-29"><a href="#cb71-29"></a>    dag<span class="op">=</span>dag</span>
+<span id="cb71-30"><a href="#cb71-30"></a>)</span>
+<span id="cb71-31"><a href="#cb71-31"></a></span>
+<span id="cb71-32"><a href="#cb71-32"></a>python_task <span class="op">=</span> PythonOperator(</span>
+<span id="cb71-33"><a href="#cb71-33"></a>    task_id<span class="op">=</span><span class="st">'run_processing'</span>, </span>
+<span id="cb71-34"><a href="#cb71-34"></a>    python_callable<span class="op">=</span>process_data,</span>
+<span id="cb71-35"><a href="#cb71-35"></a>    provide_context <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb71-36"><a href="#cb71-36"></a>    dag<span class="op">=</span>dag</span>
+<span id="cb71-37"><a href="#cb71-37"></a>)</span>
+<span id="cb71-38"><a href="#cb71-38"></a></span>
+<span id="cb71-39"><a href="#cb71-39"></a>sensor <span class="op">&gt;&gt;</span> bash_task <span class="op">&gt;&gt;</span> python_task</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exercise-3-adding-the-final-changes-to-your-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-adding-the-final-changes-to-your-pipeline">Exercise 3: Adding the final changes to your pipeline</h3>
+<p>To finish up your workflow, your manager asks that you add a conditional logic check to send a sales report via email, only if the day is a weekday. Otherwise, no email should be sent. In addition, the email task should be templated to include the date and a project name in the content.</p>
+<p>The branch callable is already defined for you.</p>
+<ul>
+<li>Import the necessary operators.</li>
+<li>Configure the EmailOperator to provide the specific data to the callable.</li>
+<li>Complete the branch callable as necessary to point to the email_report_task or no_email_task.</li>
+<li>Configure the branch operator to properly check for the condition.</li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
+<span id="cb72-2"><a href="#cb72-2"></a><span class="im">from</span> airflow.contrib.sensors.file_sensor <span class="im">import</span> FileSensor</span>
+<span id="cb72-3"><a href="#cb72-3"></a><span class="im">from</span> airflow.operators.bash_operator <span class="im">import</span> BashOperator</span>
+<span id="cb72-4"><a href="#cb72-4"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> PythonOperator</span>
+<span id="cb72-5"><a href="#cb72-5"></a><span class="im">from</span> airflow.operators.python_operator <span class="im">import</span> BranchPythonOperator</span>
+<span id="cb72-6"><a href="#cb72-6"></a><span class="im">from</span> airflow.operators.dummy_operator <span class="im">import</span> DummyOperator</span>
+<span id="cb72-7"><a href="#cb72-7"></a><span class="im">from</span> airflow.operators.email_operator <span class="im">import</span> EmailOperator</span>
+<span id="cb72-8"><a href="#cb72-8"></a><span class="im">from</span> dags.process <span class="im">import</span> process_data</span>
+<span id="cb72-9"><a href="#cb72-9"></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
+<span id="cb72-10"><a href="#cb72-10"></a></span>
+<span id="cb72-11"><a href="#cb72-11"></a><span class="co"># Update the default arguments and apply them to the DAG.</span></span>
+<span id="cb72-12"><a href="#cb72-12"></a></span>
+<span id="cb72-13"><a href="#cb72-13"></a>default_args <span class="op">=</span> {</span>
+<span id="cb72-14"><a href="#cb72-14"></a>  <span class="st">'start_date'</span>: datetime(<span class="dv">2019</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb72-15"><a href="#cb72-15"></a>  <span class="st">'sla'</span>: timedelta(minutes<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb72-16"><a href="#cb72-16"></a>}</span>
+<span id="cb72-17"><a href="#cb72-17"></a>    </span>
+<span id="cb72-18"><a href="#cb72-18"></a>dag <span class="op">=</span> DAG(dag_id<span class="op">=</span><span class="st">'etl_update'</span>, default_args<span class="op">=</span>default_args)</span>
+<span id="cb72-19"><a href="#cb72-19"></a></span>
+<span id="cb72-20"><a href="#cb72-20"></a>sensor <span class="op">=</span> FileSensor(</span>
+<span id="cb72-21"><a href="#cb72-21"></a>  task_id<span class="op">=</span><span class="st">'sense_file'</span>, </span>
+<span id="cb72-22"><a href="#cb72-22"></a>  filepath<span class="op">=</span><span class="st">'/home/repl/workspace/startprocess.txt'</span>,</span>
+<span id="cb72-23"><a href="#cb72-23"></a>  poke_interval<span class="op">=</span><span class="dv">45</span>,</span>
+<span id="cb72-24"><a href="#cb72-24"></a>  dag<span class="op">=</span>dag</span>
+<span id="cb72-25"><a href="#cb72-25"></a>)</span>
+<span id="cb72-26"><a href="#cb72-26"></a></span>
+<span id="cb72-27"><a href="#cb72-27"></a>bash_task <span class="op">=</span> BashOperator(</span>
+<span id="cb72-28"><a href="#cb72-28"></a>  task_id<span class="op">=</span><span class="st">'cleanup_tempfiles'</span>, </span>
+<span id="cb72-29"><a href="#cb72-29"></a>  bash_command<span class="op">=</span><span class="st">'rm -f /home/repl/*.tmp'</span>,</span>
+<span id="cb72-30"><a href="#cb72-30"></a>  dag<span class="op">=</span>dag</span>
+<span id="cb72-31"><a href="#cb72-31"></a>)</span>
+<span id="cb72-32"><a href="#cb72-32"></a></span>
+<span id="cb72-33"><a href="#cb72-33"></a>python_task <span class="op">=</span> PythonOperator(</span>
+<span id="cb72-34"><a href="#cb72-34"></a>  task_id<span class="op">=</span><span class="st">'run_processing'</span>, </span>
+<span id="cb72-35"><a href="#cb72-35"></a>  python_callable<span class="op">=</span>process_data,</span>
+<span id="cb72-36"><a href="#cb72-36"></a>  provide_context<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb72-37"><a href="#cb72-37"></a>  dag<span class="op">=</span>dag</span>
+<span id="cb72-38"><a href="#cb72-38"></a>)</span>
+<span id="cb72-39"><a href="#cb72-39"></a></span>
+<span id="cb72-40"><a href="#cb72-40"></a></span>
+<span id="cb72-41"><a href="#cb72-41"></a>email_subject<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb72-42"><a href="#cb72-42"></a><span class="st">  Email report for </span><span class="sc">{{</span><span class="st"> params.department </span><span class="sc">}}</span><span class="st"> on </span><span class="sc">{{</span><span class="st"> ds_nodash </span><span class="sc">}}</span></span>
+<span id="cb72-43"><a href="#cb72-43"></a><span class="st">"""</span></span>
+<span id="cb72-44"><a href="#cb72-44"></a></span>
+<span id="cb72-45"><a href="#cb72-45"></a></span>
+<span id="cb72-46"><a href="#cb72-46"></a>email_report_task <span class="op">=</span> EmailOperator(</span>
+<span id="cb72-47"><a href="#cb72-47"></a>  task_id<span class="op">=</span><span class="st">'email_report_task'</span>,</span>
+<span id="cb72-48"><a href="#cb72-48"></a>  to<span class="op">=</span><span class="st">'sales@mycompany.com'</span>,</span>
+<span id="cb72-49"><a href="#cb72-49"></a>  subject<span class="op">=</span>email_subject,</span>
+<span id="cb72-50"><a href="#cb72-50"></a>  html_content<span class="op">=</span><span class="st">''</span>,</span>
+<span id="cb72-51"><a href="#cb72-51"></a>  params<span class="op">=</span>{<span class="st">'department'</span>: <span class="st">'Data subscription services'</span>},</span>
+<span id="cb72-52"><a href="#cb72-52"></a>  dag<span class="op">=</span>dag</span>
+<span id="cb72-53"><a href="#cb72-53"></a>)</span>
+<span id="cb72-54"><a href="#cb72-54"></a></span>
+<span id="cb72-55"><a href="#cb72-55"></a></span>
+<span id="cb72-56"><a href="#cb72-56"></a>no_email_task <span class="op">=</span> DummyOperator(task_id<span class="op">=</span><span class="st">'no_email_task'</span>, dag<span class="op">=</span>dag)</span>
+<span id="cb72-57"><a href="#cb72-57"></a></span>
+<span id="cb72-58"><a href="#cb72-58"></a></span>
+<span id="cb72-59"><a href="#cb72-59"></a><span class="kw">def</span> check_weekend(<span class="op">**</span>kwargs):</span>
+<span id="cb72-60"><a href="#cb72-60"></a>    dt <span class="op">=</span> datetime.strptime(kwargs[<span class="st">'execution_date'</span>],<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
+<span id="cb72-61"><a href="#cb72-61"></a>    <span class="co"># If dt.weekday() is 0-4, it's Monday - Friday. If 5 or 6, it's Sat / Sun.</span></span>
+<span id="cb72-62"><a href="#cb72-62"></a>    <span class="cf">if</span> (dt.weekday() <span class="op">&lt;</span> <span class="dv">5</span>):</span>
+<span id="cb72-63"><a href="#cb72-63"></a>        <span class="cf">return</span> <span class="st">'email_report_task'</span></span>
+<span id="cb72-64"><a href="#cb72-64"></a>    <span class="cf">else</span>:</span>
+<span id="cb72-65"><a href="#cb72-65"></a>        <span class="cf">return</span> <span class="st">'no_email_task'</span></span>
+<span id="cb72-66"><a href="#cb72-66"></a>    </span>
+<span id="cb72-67"><a href="#cb72-67"></a>    </span>
+<span id="cb72-68"><a href="#cb72-68"></a>branch_task <span class="op">=</span> BranchPythonOperator(</span>
+<span id="cb72-69"><a href="#cb72-69"></a>  task_id<span class="op">=</span><span class="st">'check_if_weekend'</span>,</span>
+<span id="cb72-70"><a href="#cb72-70"></a>  python_callable <span class="op">=</span> check_weekend,</span>
+<span id="cb72-71"><a href="#cb72-71"></a>  provide_context<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb72-72"><a href="#cb72-72"></a>  dag<span class="op">=</span>dag</span>
+<span id="cb72-73"><a href="#cb72-73"></a>)</span>
+<span id="cb72-74"><a href="#cb72-74"></a>    </span>
+<span id="cb72-75"><a href="#cb72-75"></a>sensor <span class="op">&gt;&gt;</span> bash_task <span class="op">&gt;&gt;</span> python_task</span>
+<span id="cb72-76"><a href="#cb72-76"></a></span>
+<span id="cb72-77"><a href="#cb72-77"></a>python_task <span class="op">&gt;&gt;</span> branch_task <span class="op">&gt;&gt;</span> [email_report_task, no_email_task]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="congratulations" class="level1">
+<h1>Congratulations!</h1>
+<p>Congratulations on successfully completing this introduction to Airflow. We’ve covered a lot of ground since the first chapter and you should be pleased to have come this far. Let’s take a moment to review what we’ve learned and cover some next steps.</p>
+<section id="what-weve-learned" class="level2">
+<h2 class="anchored" data-anchor-id="what-weve-learned">What we’ve learned</h2>
+<p>Let’s review everything we’ve worked with during this course. We started with learning about workflows and DAGs in Airflow. We’ve learned what an operator is and how to use several of the available ones. We learned about tasks and how they are defined by various types of operators. In addition, we learned about dependencies between tasks and how to set them with bitshift operators. We’ve used sensors to react to workflow conditions and state. We’ve scheduled DAGs in various ways. We used SLAs and alerting to maintain visibility on our workflows. We learned about the power of templating in our workflows for maximum flexibility when defining tasks. We’ve learned how to use branching to add conditional logic to our DAGs. Finally, we’ve learned about the Airflow interfaces (command line and UI), about Airflow executors, and a bit about how to debug and troubleshoot various issues with Airflow and our own workflows.</p>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
+<p>A few suggestions for next steps include setting up your own environment for practice. You can follow the installation instructions in the Airflow documentation or use a cloud-based Airflow service. Look into other operators or sensors - there are operators available for Amazon’s S3, Postgresql operators, HDFS sensors, and so forth. Experiment with dependencies with a large number of tasks. Consider how you expect the workflow to progress and always try to leave as much up to the scheduler as possible to achieve the best performance. Given the length of the course, there is only so much we could cover and we left out some important parts of Airflow such as XCom, connections, and managing the UI further. Refer to the documentation for more ideas. Finally and most importantly, keep building workflows. When you’re uncertain how something works, try to build an example that covers what you’d like to accomplish. Look at the views within the Airflow UI to better understand how the system interprets your DAG code. The more you experiment, the better your understanding will grow.</p>
+</section>
+<section id="thank-you" class="level2">
+<h2 class="anchored" data-anchor-id="thank-you">Thank you!</h2>
+<p>Finally, thank you for taking this course and giving me the opportunity to introduce you to Airflow. Good luck on your future learning opportunities!</p>
 
 
 </section>
@@ -2104,8 +2834,7 @@ No data found</code></pre>
 <li id="fn1"><p>https://en.m.wikipedia.org/wiki/Directed_acyclic_graph<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>https://airflow.apache.org/docs/stable/scheduler.html<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>https://bradymholt.github.io/cron-expression-descriptor/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"></li>
-<li id="fn5"><p>https://airflow.apache.org/docs/stable/macros-ref.html<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>https://airflow.apache.org/docs/stable/macros-ref.html<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
