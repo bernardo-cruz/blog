@@ -817,5 +817,124 @@
     "title": "My Blog",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\n\nMy first post about statmodels - so be nice! :)\n\n\n\n\n\n\n\nstatmodels\n\n\nSeaborn\n\n\nPandas\n\n\nPython vs. R\n\n\nFormula API\n\n\nRDatasets in Python\n\n\nPatsy in Python\n\n\n\n\n\n\n\n\n\n\n\nAug 1, 2023\n\n\n5 min\n\n\n\n\n\n\n\n\nPandas Method Chaining\n\n\n\n\n\n\n\nPandas\n\n\nReadability\n\n\nMethod Chaining\n\n\n\n\n\n\n\n\n\n\n\nAug 13, 2023\n\n\n3 min\n\n\n\n\n\n\n\n\nFastAPI\n\n\n\n\n\n\n\nAPI Development\n\n\nFastAPI\n\n\nPython\n\n\nSQL\n\n\nCRUD Operations\n\n\nSQLAlchemy\n\n\n\n\n\n\n\n\n\n\n\nAug 19, 2023\n\n\n12 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html",
+    "href": "WorkInProgress/DC_docker.html",
+    "title": "Datacamp Docker Course",
+    "section": "",
+    "text": "Before taking Introduction to Docker, we advise completing the prerequisite course. A basic understanding of how to work with Shell is needed in this course. We’ll use nano extensively to edit files, together with several commands to find our way around the file system.\n\n\n\nIn this first chapter, we’ll give an introduction to containers, Docker, and give insight into the differences between containers and virtual machines. A container is a portable computing environment. It contains everything needed to run a workflow or application, including dependencies, code, and configuration.\n\n\n\n\nWe can think of a container like a new computer on which we copy our code or workflow and install all needed dependencies. Once everything is installed and configured, we make backups of that computer. Imagine we could now use that backup on another computer, and everything we installed and configured would work just like it did originally. This backup is similar to a container; both are a packaging of code together with its dependencies (including the operating system) and configuration. That’s where the analogy ends since a container has many advantages over something like a backup.\n \n\n\n\nOne of the main benefits of containers is that whenever a container is run, the workflow or application it contains will behave identically. That is to say; containers provide reproducibility. Reproducible means we have a container X that gives an output Y; every time it is run, now, in five minutes or two months, for the same input, it will give identical output.\n\n\n\n\nThe second main benefit of containers is that wherever a container is run, it will behave identically, containers provide portability. Portable means the container will run the same on our computer, your colleague’s computer, and the cloud. No risk of removed dependencies, lost configuration files, or other changes that break our application.\n\n\n\n\nThis is possible because of isolation between the container and the rest of the environment; running a container will have no impact outside of the container and vice versa. Anything happening outside the container will not affect the result of a container. A container has limited resource access to the operating system it is running on; everything else is kept separate.\n\n\n\n\nBecause containers are completely isolated from each other, even if the security of one container is compromised, the other containers on the same host, and the host itself remain secure since there is no direct communication between containers. The compromised container still only has access to limited resources on the host and nothing more. This makes containers not only great for safely deploying applications but also for quickly prototyping workflows. You can be sure that whatever you do in the container won’t affect anything outside of it and that you can start with a clean slate at any point.\n\n\n\n\nContainers not only provide security, portability, and reproducibility. An additional advantage of containers is that they are lightweight, or in other words, use few extra resources in comparison to running an application outside of a container. Containers have little overhead compared to alternatives that also provide isolation. This is especially relevant when comparing containers to virtual machines, which we will do in detail later on.\n\n\n\nAll these advantages make containers relevant for data science; containers make any task or workflow automatically reproducible not only on our own machine but also everywhere else. Containers help us avoid many issues when sharing our work; dependencies are automatically included, and so are datasets. Most importantly, we can be sure our code will work on our colleague’s machine. Additionally, the lightweight nature of containers makes them easier to share than alternatives.\n\n\n\n\n\nA container is a portable computing environment, but what is included exactly?\n\nA container contains dependencies and code needed to run a workflow or application, but you have to configure your application from outside the container.\nA container contains the configuration and code needed to run a workflow or application, but you have to install dependencies separately.\nA container contains dependencies and configuration needed to run a workflow or application, but you can not put your code into a container.\nA container contains everything needed to run a workflow or application; dependencies, code, and configuration.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nA container contains everything needed to run a workflow or application; dependencies, code, and configuration.\n\n\n\n\n\n\nWe saw a lot of advantages of containers. Can you remember what they were exactly?"
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#prerequisites",
+    "href": "WorkInProgress/DC_docker.html#prerequisites",
+    "title": "Datacamp Docker Course",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nBefore taking Introduction to Docker, we advise completing the prerequisite course. A basic understanding of how to work with Shell is needed in this course. We’ll use nano extensively to edit files, together with several commands to find our way around the file system."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers",
+    "href": "WorkInProgress/DC_docker.html#containers",
+    "title": "Datacamp Docker Course",
+    "section": "Containers",
+    "text": "Containers\nIn this first chapter, we’ll give an introduction to containers, Docker, and give insight into the differences between containers and virtual machines. A container is a portable computing environment. It contains everything needed to run a workflow or application, including dependencies, code, and configuration."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#making-it-less-abstract",
+    "href": "WorkInProgress/DC_docker.html#making-it-less-abstract",
+    "title": "Datacamp Docker Course",
+    "section": "Making it less abstract",
+    "text": "Making it less abstract\nWe can think of a container like a new computer on which we copy our code or workflow and install all needed dependencies. Once everything is installed and configured, we make backups of that computer. Imagine we could now use that backup on another computer, and everything we installed and configured would work just like it did originally. This backup is similar to a container; both are a packaging of code together with its dependencies (including the operating system) and configuration. That’s where the analogy ends since a container has many advantages over something like a backup."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-run-identically-every-time",
+    "href": "WorkInProgress/DC_docker.html#containers-run-identically-every-time",
+    "title": "Datacamp Docker Course",
+    "section": "Containers run identically every time",
+    "text": "Containers run identically every time\nOne of the main benefits of containers is that whenever a container is run, the workflow or application it contains will behave identically. That is to say; containers provide reproducibility. Reproducible means we have a container X that gives an output Y; every time it is run, now, in five minutes or two months, for the same input, it will give identical output."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-run-identically-everywhere",
+    "href": "WorkInProgress/DC_docker.html#containers-run-identically-everywhere",
+    "title": "Datacamp Docker Course",
+    "section": "Containers run identically everywhere",
+    "text": "Containers run identically everywhere\nThe second main benefit of containers is that wherever a container is run, it will behave identically, containers provide portability. Portable means the container will run the same on our computer, your colleague’s computer, and the cloud. No risk of removed dependencies, lost configuration files, or other changes that break our application."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#isolation",
+    "href": "WorkInProgress/DC_docker.html#isolation",
+    "title": "Datacamp Docker Course",
+    "section": "Isolation",
+    "text": "Isolation\nThis is possible because of isolation between the container and the rest of the environment; running a container will have no impact outside of the container and vice versa. Anything happening outside the container will not affect the result of a container. A container has limited resource access to the operating system it is running on; everything else is kept separate."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-provide-security",
+    "href": "WorkInProgress/DC_docker.html#containers-provide-security",
+    "title": "Datacamp Docker Course",
+    "section": "Containers provide security",
+    "text": "Containers provide security\nBecause containers are completely isolated from each other, even if the security of one container is compromised, the other containers on the same host, and the host itself remain secure since there is no direct communication between containers. The compromised container still only has access to limited resources on the host and nothing more. This makes containers not only great for safely deploying applications but also for quickly prototyping workflows. You can be sure that whatever you do in the container won’t affect anything outside of it and that you can start with a clean slate at any point."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-are-lightweight",
+    "href": "WorkInProgress/DC_docker.html#containers-are-lightweight",
+    "title": "Datacamp Docker Course",
+    "section": "Containers are lightweight",
+    "text": "Containers are lightweight\nContainers not only provide security, portability, and reproducibility. An additional advantage of containers is that they are lightweight, or in other words, use few extra resources in comparison to running an application outside of a container. Containers have little overhead compared to alternatives that also provide isolation. This is especially relevant when comparing containers to virtual machines, which we will do in detail later on."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-and-data-science",
+    "href": "WorkInProgress/DC_docker.html#containers-and-data-science",
+    "title": "Datacamp Docker Course",
+    "section": "Containers and data science",
+    "text": "Containers and data science\nAll these advantages make containers relevant for data science; containers make any task or workflow automatically reproducible not only on our own machine but also everywhere else. Containers help us avoid many issues when sharing our work; dependencies are automatically included, and so are datasets. Most importantly, we can be sure our code will work on our colleague’s machine. Additionally, the lightweight nature of containers makes them easier to share than alternatives."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#docker-ecosystem",
+    "href": "WorkInProgress/DC_docker.html#docker-ecosystem",
+    "title": "Datacamp Docker Course",
+    "section": "Docker ecosystem",
+    "text": "Docker ecosystem\nOver time, Docker has grown to be part of a large ecosystem of tools around containers; we will focus on Docker Engine, which is everything you need to create, run and manage containers. Other parts of this ecosystem are, for example, Docker Compose, a tool for defining and running multi-container Docker applications, and Kubernetes, a system for container scheduling and management."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#docker-engine",
+    "href": "WorkInProgress/DC_docker.html#docker-engine",
+    "title": "Datacamp Docker Course",
+    "section": "Docker Engine",
+    "text": "Docker Engine\nDocker Engine1 has two main parts: server and client. The client, called Docker client, is a command line interface used to talk to the server. The server is a background process that requires no user interaction, which is called a daemon, a term we will encounter repeatedly to reference the Docker server. In addition to the Docker client and daemon, Docker Engine also includes so-called API specifications, which define how you can interact with the Docker Daemon. These APIs are not only used by the Docker client to talk to the daemon but also specify how other applications can work with the daemon."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#the-docker-daemon",
+    "href": "WorkInProgress/DC_docker.html#the-docker-daemon",
+    "title": "Datacamp Docker Course",
+    "section": "The Docker daemon",
+    "text": "The Docker daemon\nThe Docker daemon2 is responsible for managing all Docker objects, such as images, containers, and more. However, we can’t directly tell the daemon what to do; we need a client to give us a human-usable interface to it. Here the Docker command line interface is the default option, but there are others, like Docker Desktop, which gives us a Graphical User Interface to manage our containers."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-are-processes",
+    "href": "WorkInProgress/DC_docker.html#containers-are-processes",
+    "title": "Datacamp Docker Course",
+    "section": "Containers are processes",
+    "text": "Containers are processes\nUp until now, we talked about containers abstractly. To better understand containers, we can think of them as processes. When we start a container, a process is started, just as when we start a text editor, Spotify, or any other application. What makes a container process different is its permissions to resources like the file system, memory, and network."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-are-isolated-processes",
+    "href": "WorkInProgress/DC_docker.html#containers-are-isolated-processes",
+    "title": "Datacamp Docker Course",
+    "section": "Containers are isolated processes",
+    "text": "Containers are isolated processes\nNot only blocking access to but also hiding resources may seem like a small difference, but it allows running a process that is isolated from the rest of the machine. This lets an entirely separate operating system run inside the process. A container runs its own operating system instead of using the host operating system. The Docker daemon ensures that the OS running in the container is unaware of other containers and the host OS. The operating system inside the container can start and manage it’s own processes without interfering with any processes running on the host OS. In other words the operating system in the container is separated and kept unaware of anything happening outside itself, isolated from anything on the host and other containers."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#images-and-containers",
+    "href": "WorkInProgress/DC_docker.html#images-and-containers",
+    "title": "Datacamp Docker Course",
+    "section": "Images and Containers",
+    "text": "Images and Containers\nThe daemon manages both images and containers, but there is a difference between them. While an image is a blueprint or recipe, like an idle copy of a hard drive with all the software we want to run, a container is a running image, like a copy of that same hard drive plugged into a running computer. We could create an image with Ubuntu and python3 point 9 installed. Once we start this image, we’ll have a running container with Ubuntu and python3 point 9 where we can execute our code."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-are-processes-1",
+    "href": "WorkInProgress/DC_docker.html#containers-are-processes-1",
+    "title": "Datacamp Docker Course",
+    "section": "Containers are processes",
+    "text": "Containers are processes\nFor many resources of a container process, not only is access restricted, but they are also undetectable to the process. For example, instead of seeing all the files on your hard drive, the process is given access to only a single folder and cannot see files outside of that folder."
   }
 ]

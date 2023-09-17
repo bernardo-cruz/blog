@@ -55,5 +55,8 @@
   },
   "tutorials.qmd": {
     "tutorials.html": "93ea3dad"
+  },
+  "WorkInProgress/DC_docker.ipynb": {
+    "DC_docker.html": "8529d34f"
   }
 }
