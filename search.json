@@ -936,5 +936,12 @@
     "title": "Datacamp Docker Course",
     "section": "Containers are processes",
     "text": "Containers are processes\nFor many resources of a container process, not only is access restricted, but they are also undetectable to the process. For example, instead of seeing all the files on your hard drive, the process is given access to only a single folder and cannot see files outside of that folder."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#exercises-1",
+    "href": "WorkInProgress/DC_docker.html#exercises-1",
+    "title": "Datacamp Docker Course",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1: Which parts does the Docker Engine consist of?\nDocker is part of a now much larger ecosystem of applications built to support containers in various ways. Starting out on our journey to understand and use containers, we’re focusing on the Docker Engine and its components. Of which parts does the Docker Engine consist?\n\nJust the Docker daemon, other applications like the Docker client can then use the Docker daemon to work with containers.\nThe Docker daemon, Docker client, and Docker Compose. The latter is used for multi-container applications.\nThe Docker daemon, Docker client, Docker Compose, and Kubernetes are everything you need to run complex container setups in production environments.\nThe Docker client and daemon together make up the Docker client-server interface of Docker Engine.\nThe Docker client, daemon, and its API specifications.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThe Docker client, daemon, and its API specifications.\n\n\n\n\n\nExercise 2: Containers and images\nGetting an intuitive understanding on Docker and the many new concepts surrounding it can be difficult, especially the difference between images and containers can seem blurry because they are closely related. Did you fully grasp the difference?\n\nAn image is just a different name for a container, but they really mean the same thing.\nContainers are what you use in the Docker ecosystem; images are just the more general name.\nImages are blueprints, while a container is a running image, the image is just the template it got started from.\nContainers are blueprints; while an image is a running container, the container is just the template it got started from.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nImages are blueprints, while a container is a running image, the image is just the template it got started from."
   }
 ]

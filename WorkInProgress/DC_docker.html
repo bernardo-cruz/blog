@@ -157,6 +157,11 @@ cookieconsent.run({
   <li><a href="#containers-are-processes" id="toc-containers-are-processes" class="nav-link" data-scroll-target="#containers-are-processes">Containers are processes</a></li>
   <li><a href="#containers-are-processes-1" id="toc-containers-are-processes-1" class="nav-link" data-scroll-target="#containers-are-processes-1">Containers are processes</a></li>
   <li><a href="#containers-are-isolated-processes" id="toc-containers-are-isolated-processes" class="nav-link" data-scroll-target="#containers-are-isolated-processes">Containers are isolated processes</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-which-parts-does-the-docker-engine-consist-of" id="toc-exercise-1-which-parts-does-the-docker-engine-consist-of" class="nav-link" data-scroll-target="#exercise-1-which-parts-does-the-docker-engine-consist-of">Exercise 1: Which parts does the Docker Engine consist of?</a></li>
+  <li><a href="#exercise-2-containers-and-images" id="toc-exercise-2-containers-and-images" class="nav-link" data-scroll-target="#exercise-2-containers-and-images">Exercise 2: Containers and images</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -283,32 +288,95 @@ Solution
 <section id="docker-ecosystem" class="level2">
 <h2 class="anchored" data-anchor-id="docker-ecosystem">Docker ecosystem</h2>
 <p>Over time, Docker has grown to be part of a large ecosystem of tools around containers; we will focus on Docker Engine, which is everything you need to create, run and manage containers. Other parts of this ecosystem are, for example, Docker Compose, a tool for defining and running multi-container Docker applications, and Kubernetes, a system for container scheduling and management.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X82.png" class="img-fluid"></p>
 </section>
 <section id="docker-engine" class="level2">
 <h2 class="anchored" data-anchor-id="docker-engine">Docker Engine</h2>
 <p>Docker Engine<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> has two main parts: server and client. The client, called Docker client, is a command line interface used to talk to the server. The server is a background process that requires no user interaction, which is called a daemon, a term we will encounter repeatedly to reference the Docker server. In addition to the Docker client and daemon, Docker Engine also includes so-called API specifications, which define how you can interact with the Docker Daemon. These APIs are not only used by the Docker client to talk to the daemon but also specify how other applications can work with the daemon.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X88.png" class="img-fluid"></p>
 </section>
 <section id="the-docker-daemon" class="level2">
 <h2 class="anchored" data-anchor-id="the-docker-daemon">The Docker daemon</h2>
 <p>The Docker daemon<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> is responsible for managing all Docker objects, such as images, containers, and more. However, we can’t directly tell the daemon what to do; we need a client to give us a human-usable interface to it. Here the Docker command line interface is the default option, but there are others, like Docker Desktop, which gives us a Graphical User Interface to manage our containers.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X94.png" class="img-fluid"></p>
 </section>
 <section id="images-and-containers" class="level2">
 <h2 class="anchored" data-anchor-id="images-and-containers">Images and Containers</h2>
 <p>The daemon manages both images and containers, but there is a difference between them. While an image is a blueprint or recipe, like an idle copy of a hard drive with all the software we want to run, a container is a running image, like a copy of that same hard drive plugged into a running computer. We could create an image with Ubuntu and python3 point 9 installed. Once we start this image, we’ll have a running container with Ubuntu and python3 point 9 where we can execute our code.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X100.png" class="img-fluid"></p>
 </section>
 <section id="containers-are-processes" class="level2">
 <h2 class="anchored" data-anchor-id="containers-are-processes">Containers are processes</h2>
 <p>Up until now, we talked about containers abstractly. To better understand containers, we can think of them as processes. When we start a container, a process is started, just as when we start a text editor, Spotify, or any other application. What makes a container process different is its permissions to resources like the file system, memory, and network.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X106.png" class="img-fluid"></p>
 </section>
 <section id="containers-are-processes-1" class="level2">
 <h2 class="anchored" data-anchor-id="containers-are-processes-1">Containers are processes</h2>
 <p>For many resources of a container process, not only is access restricted, but they are also undetectable to the process. For example, instead of seeing all the files on your hard drive, the process is given access to only a single folder and cannot see files outside of that folder.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X112.png" class="img-fluid"></p>
 </section>
 <section id="containers-are-isolated-processes" class="level2">
 <h2 class="anchored" data-anchor-id="containers-are-isolated-processes">Containers are isolated processes</h2>
 <p>Not only blocking access to but also hiding resources may seem like a small difference, but it allows running a process that is isolated from the rest of the machine. This lets an entirely separate operating system run inside the process. A container runs its own operating system instead of using the host operating system. The Docker daemon ensures that the OS running in the container is unaware of other containers and the host OS. The operating system inside the container can start and manage it’s own processes without interfering with any processes running on the host OS. In other words the operating system in the container is separated and kept unaware of anything happening outside itself, isolated from anything on the host and other containers.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X118.png" class="img-fluid"></p>
+</section>
+<section id="exercises-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-1">Exercises</h2>
+<section id="exercise-1-which-parts-does-the-docker-engine-consist-of" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-which-parts-does-the-docker-engine-consist-of">Exercise 1: Which parts does the Docker Engine consist of?</h3>
+<p>Docker is part of a now much larger ecosystem of applications built to support containers in various ways. Starting out on our journey to understand and use containers, we’re focusing on the Docker Engine and its components. Of which parts does the Docker Engine consist?</p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled="">Just the Docker daemon, other applications like the Docker client can then use the Docker daemon to work with containers.</p></li>
+<li><p><input type="checkbox" disabled="">The Docker daemon, Docker client, and Docker Compose. The latter is used for multi-container applications.</p></li>
+<li><p><input type="checkbox" disabled="">The Docker daemon, Docker client, Docker Compose, and Kubernetes are everything you need to run complex container setups in production environments.</p></li>
+<li><p><input type="checkbox" disabled="">The Docker client and daemon together make up the Docker client-server interface of Docker Engine.</p></li>
+<li><p><input type="checkbox" disabled="">The Docker client, daemon, and its API specifications.</p></li>
+</ul>
+<div class="callout-tip callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The Docker client, daemon, and its API specifications.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-containers-and-images" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-containers-and-images">Exercise 2: Containers and images</h3>
+<p>Getting an intuitive understanding on Docker and the many new concepts surrounding it can be difficult, especially the difference between images and containers can seem blurry because they are closely related. Did you fully grasp the difference?</p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled="">An image is just a different name for a container, but they really mean the same thing.</p></li>
+<li><p><input type="checkbox" disabled="">Containers are what you use in the Docker ecosystem; images are just the more general name.</p></li>
+<li><p><input type="checkbox" disabled="">Images are blueprints, while a container is a running image, the image is just the template it got started from.</p></li>
+<li><p><input type="checkbox" disabled="">Containers are blueprints; while an image is a running container, the container is just the template it got started from.</p></li>
+</ul>
+<div class="callout-tip callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Images are blueprints, while a container is a running image, the image is just the template it got started from.</p>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 
@@ -316,8 +384,8 @@ Solution
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>https://docs.docker.com/engine/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>https://docs.docker.com/get-started/overview/#docker-architecture<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://docs.docker.com/engine/" class="uri">https://docs.docker.com/engine/</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://docs.docker.com/get-started/overview/#docker-architecture" class="uri">https://docs.docker.com/get-started/overview/#docker-architecture</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
