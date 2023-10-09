@@ -58,5 +58,11 @@
   },
   "WorkInProgress/DC_docker.ipynb": {
     "DC_docker.html": "8529d34f"
+  },
+  "WorkInProgress/ConfluentKafka.ipynb": {
+    "ConfluentKafka.html": "5888769d"
+  },
+  "WorkInProgress/ExtractTextPDF2.ipynb": {
+    "ExtractTextPDF2.html": "3852796a"
   }
 }

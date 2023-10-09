@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Bernardo Freire">
+<meta name="dcterms.date" content="2023-10-05">
 
-<title>Bernardo Cruz - Bernardo Freire Barboza da Cruz</title>
+<title>Bernardo Cruz - What is Kafka?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,17 +82,17 @@ cookieconsent.run({
   
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Bernardo Cruz</span>
     </a>
   </div>
@@ -99,15 +102,15 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link" href="../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html">
+    <a class="nav-link" href="../blog.html">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html">
+    <a class="nav-link" href="../cv.html">
  <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -123,81 +126,94 @@ cookieconsent.run({
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-marquee page-columns page-full">
-  <div class="about-image-container">
-  </div>
-  <div class="about-contents page-columns page-full">
-    <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Bernardo Freire Barboza da Cruz</h1>
-</div>
+<h1 class="title">What is Kafka?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Confluent</div>
+    <div class="quarto-category">Kafka</div>
+    <div class="quarto-category">Data Engineering</div>
+    <div class="quarto-category">Data Streaming</div>
+  </div>
+  </div>
+
+
+
 <div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Bernardo Freire </p>
+          </div>
   </div>
-</header> <main class="content page-columns page-full" id="quarto-document-content">
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HVQQBHLK7D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HVQQBHLK7D');
-</script>
-<div class="column-page">
-<p><img src="quarto_builder/imgs/profile.jpeg" class="img-fluid"></p>
-</div>
-<section id="hi-there" class="level2">
-<h2 data-anchor-id="hi-there">👋 Hi there</h2>
-<p>I am Bernardo, an aeronautical engineer with a BSc in Aeronautical Engineering and a MSc in Data Science. My passion lies in both coding and engineering. I am from Zurich 🇨🇭 and have over seven years of experience working as an aeronautical engineer and about three years as a data scientist.</p>
-<p>I would like to invite you go through my <a href="./cv.html">CV</a> and <a href="./blog.html">blog</a> to learn more about me 🤓. Please don’t hesitate to contact me if you have any questions or would like to collaborate on a project 🤝.</p>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 5, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Kafka can refer to two different things: a writer and a software platform. If you think about Franz Kafka, a German-speaking Bohemian novelist and short-story writer based in Prague this article may not be the right fit for you. However, if you are interested in Kafka, the writer, you can read more about him <a href="https://en.wikipedia.org/wiki/Franz_Kafka">here</a>. We are going to talk about Kafka, the software platform.</p>
+<p>Apache Kafka, is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>Why is it important? It is important because it allows you to publish and subscribe to streams of records. In this way, you can store streams of records in a fault-tolerant durable way. It is also fast, scalable, and distributed by design<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. In my current work Kafka is used to store data from different sources and then process it.</p>
+<p>Yes, I am talking about 🚂. A modern train in a complex system consisting of many different components (e.g.&nbsp;bogies; doors; heating and ventilation; air compressors; toilets; entertainment and information system; any many more). The data of this components are processed by control units and send landside to servers where they are stored.</p>
+<p>In this tutorial we are going to review and reproduce the steps of the <a href="https://docs.confluent.io/platform/current/platform-quickstart.html">Confluent Kafka Tutorial</a>. Confluent is a company founded by the creators of Apache Kafka. It offers a comprehensive platform built around Kafka, facilitating real-time data integration, processing, and streaming. Confluent’s solutions serve businesses by making it easier to build and manage event-driven architectures at scale.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The tutorial contains the following steps:</p>
+<ol type="1">
+<li>Install and run Confluent Platform and Apache Kafka®.<br>
+</li>
+<li>Generate real-time mock data.<br>
+</li>
+<li>Create topics to store your data.<br>
+</li>
+<li>Create real-time streams on your data.<br>
+</li>
+<li>Query and join streams with SQL statements.<br>
+</li>
+<li>Build a view that updates as new events arrive.<br>
+</li>
+<li>Visualize the topology of your streaming app.</li>
+</ol>
+<p>The aim of reproducing these steps is to get a better understanding of Kafka, its components and how to get started with it.</p>
 </section>
-<section id="experience" class="level2">
-<h2 data-anchor-id="experience">👨🏽‍💻 Experience</h2>
-<p>Explore my journey through various industries and roles in the world of data science and beyond! From predictive maintenance in the railway sector 🚂🚂🚂, to crafting models for turnover prediction in the food industry 🍔🍕🍝 and upsell models banking 💵💰💳, my experiences have been diverse and impactful. Delve into my work with Gaussian Mixture Models, Multi-Output Regression, OCR tools, and more. For a detailed account of my professional voyage, head to Section <a href="./cv.html">CV</a>.</p>
-</section>
-<section id="hobbies" class="level2">
-<h2 data-anchor-id="hobbies">🏝️ 🏙️ 💻 📺 Hobbies</h2>
-<p>I love to travel 🛩️ 🚂 ⛰️ 🏝️ 🏙️ to code 💻 and binge watch 📺 in my free time. In particular I discovered a passion for web development and this blog 🤓😎.</p>
-</section>
-<section id="tech-stack" class="level2">
-<h2 data-anchor-id="tech-stack">💻 Tech Stack:</h2>
-<!-- badges: https://ileriayo.github.io/markdown-badges/ -->
-<p><img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&amp;logo=python&amp;logoColor=ffdd54.png" class="img-fluid" alt="Python"> <img src="https://img.shields.io/badge/r-%23276DC3.svg?style=for-the-badge&amp;logo=r&amp;logoColor=white" class="img-fluid" alt="R"> <img src="https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&amp;logo=scikit-learn&amp;logoColor=white" class="img-fluid" alt="scikit-learn"> <img src="https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&amp;logo=flask&amp;logoColor=white" class="img-fluid" alt="Flask"> <img src="https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&amp;logo=Apache%20Airflow&amp;logoColor=white.png" class="img-fluid" alt="Apache Airflow"> <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&amp;logo=mongodb&amp;logoColor=white" class="img-fluid" alt="MongoDB"> <img src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&amp;logo=mysql&amp;logoColor=white" class="img-fluid" alt="MySQL"> <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&amp;logo=postgresql&amp;logoColor=white" class="img-fluid" alt="Postgres"> <img src="https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&amp;logo=sqlite&amp;logoColor=white" class="img-fluid" alt="SQLite"> <img src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&amp;logo=numpy&amp;logoColor=white" class="img-fluid" alt="NumPy"> <img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&amp;logo=pandas&amp;logoColor=white" class="img-fluid" alt="Pandas"> <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&amp;logo=linux&amp;logoColor=black.png" class="img-fluid" alt="LINUX"> <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&amp;logo=macos&amp;logoColor=F0F0F0.png" class="img-fluid" alt="macOS"> <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&amp;logo=FastAPI&amp;logoColor=white.png" class="img-fluid" alt="FastAPI"></p>
-</section>
-<section id="github-trophies" class="level2">
-<h2 data-anchor-id="github-trophies">🏆 GitHub Trophies</h2>
-<p><img src="https://github-profile-trophy.vercel.app/?username=bernardo-cruz&amp;theme=chalk&amp;no-frame=false&amp;no-bg=true&amp;margin-w=4.png" class="img-fluid"></p>
-</section>
-<section id="wisdom-of-the-day" class="level2">
-<h2 data-anchor-id="wisdom-of-the-day">🧐 Wisdom of the Day</h2>
-<p><img src="quarto_builder/imgs/wisdom.png" class="img-fluid"></p>
-</section>
-<section id="farewell-message" class="level2">
-<h2 data-anchor-id="farewell-message">🙌🏽 Farewell message</h2>
-<p>see you soon <img src="https://imgur.com/LnmMX1F.png" class="img-fluid"></p>
+<section id="installation" class="level1">
+<h1>Installation</h1>
+<p>For the setup of our environment we use docker. In particular there is a docker-compose file from the Confluent Platform.</p>
 
 
 </section>
-</main> 
-    <div class="about-footer"><div class="about-links">
-  <a href="https://www.linkedin.com/in/bernardo-freire-barboza-da-cruz/" class="about-link">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">Linkedin</span>
-  </a>
-  <a href="https://github.com/bernardo-cruz" class="about-link">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-  <a href="mailto:berni.dacruz@gmail.com" class="about-link">
-    <i class="bi bi-Email"></i>
-     <span class="about-link-text">Contact me!</span>
-  </a>
-</div>
-</div>
-  </div>
-</div>
- <!-- /main -->
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>https://kafka.apache.org/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://kafka.apache.org/intro<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://developer.confluent.io/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -333,6 +349,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;

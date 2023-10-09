@@ -2,8 +2,6 @@
 title: "Bernardo Freire Barboza da Cruz"
 about:
   template: marquee
-#  image-shape: rounded
-#  image: imgs/profile.jpeg
   links:
     - icon: linkedin
       text: Linkedin
@@ -64,23 +62,6 @@ I love to travel 🛩️ 🚂 ⛰️ 🏝️ 🏙️  to code  💻  and binge w
 ## 🏆 GitHub Trophies
 
 ![](https://github-profile-trophy.vercel.app/?username=bernardo-cruz&theme=chalk&no-frame=false&no-bg=true&margin-w=4)
-
-<!--
-**bernardo-cruz/bernardo-cruz** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
-
-<!-- [![](https://visitcount.itsvg.in/api?id=Blog&label=Profile%20Views&color=0&icon=5&pretty=false)](https://visitcount.itsvg.in) -->
 
 ## 🧐 Wisdom of the Day
 ![](quarto_builder/imgs/wisdom.png)

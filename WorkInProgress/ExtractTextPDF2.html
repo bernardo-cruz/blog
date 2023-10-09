@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bernardo Cruz – extracttextpdf2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Bernardo Cruz</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html">
+ <span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<div class="cell" data-execution_count="18">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> PyPDF2</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="9">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_text_page_by_page(pdf_path):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(pdf_path, <span class="st">'rb'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize PDF reader</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        pdf_reader <span class="op">=</span> PyPDF2.PdfReader(<span class="bu">file</span>, strict<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Iterate over all the pages and extract text</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> page_num <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(pdf_reader.pages)):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            page <span class="op">=</span> pdf_reader.pages[page_num]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">yield</span> page.extract_text()</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>pdf_path <span class="op">=</span> <span class="st">'../data/CS25Amendment27.pdf'</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the extracted text to text.txt</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>out_file <span class="op">=</span> <span class="st">'../data/CS25Amendment27.txt'</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(out_file, <span class="st">'w'</span>) <span class="im">as</span> file_obj:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> page_text <span class="kw">in</span> extract_text_page_by_page(pdf_path):</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        file_obj.write(page_text)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Text saved to </span><span class="sc">{</span>out_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Text saved to ../data/CS25Amendment27.txt</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(out_file, <span class="st">'r'</span>) <span class="im">as</span> file_obj:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> [line.strip() <span class="cf">for</span> line <span class="kw">in</span> file_obj.readlines()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-execution_count="32">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>text[:<span class="dv">200</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>['',
+ 'Annex to ED Decision 2021/015/R   Page 1 of 1389',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ 'Certification Specifications and Acceptable',
+ 'Means of Compliance for Large Aeroplanes',
+ '(CS-25)',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ 'Amendment  27',
+ '',
+ '24 November  20211',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '',
+ '1 For the date of entry into force of Amendment  27, please refer to ED Decision 20 21/015/R in the  Official Publication  of EASA .  CS-25 Am endment  27',
+ 'Table of c ontents',
+ '',
+ 'Annex to ED Decision 2021/015/R   Page 2 of 1389',
+ 'TABLE OF CONTENTS',
+ 'Table of contents  ................................ ................................ ...........  2',
+ 'Preamb le  ................................ ................................ .....................  28',
+ 'SUBPART A – GENERAL  ................................ ................................ . 51',
+ 'CS 25.1 Applicability  ................................ ................................ ................................ .........  51',
+ 'SUBPART B – FLIGHT  ................................ ................................ .... 52',
+ 'GENERAL  ................................ ................................ ................................ ..........................  52',
+ 'CS 25.20 Scope  ................................ ................................ ................................ .................  52',
+ 'CS 25.21 Proof of compliance ................................ ................................ ...........................  52',
+ 'AMC 25.21(d) Proof of compliance  ................................ ................................ ........  53',
+ 'AMC 25.21(g) Performance and handling characteristics in icing conditions  .......  54',
+ 'Appendix 1 – Airframe Ice Accretion  ................................ ................................ .....................  79',
+ 'Appendix 2 – Artificial Ice Shapes  ................................ ................................ ..........................  89',
+ 'Appendix 3 – Design Features  ................................ ................................ ................................  90',
+ 'Appendix 4 – Examples of Aeroplane Flight Manual Limitations and Operating Procedures for',
+ 'Operations in Supercooled Large Drop Icing Conditions  ................................ ........................  91',
+ 'Appendix 5 – Related Acceptable Means of Compliance (AMC) and FAA Advisory Circulars (AC)',
+ '................................ ................................ ................................ ................................ ...............  95',
+ 'Appendix 6 – Acronyms and definitions ................................ ................................ .................  95',
+ 'CS 25.23 Load distribution limits  ................................ ................................ ......................  96',
+ 'CS 25.25 Weight Limits  ................................ ................................ ................................ ..... 96',
+ 'CS 25.27 Centre of gravity limits  ................................ ................................ ......................  96',
+ 'CS 25.29 Emp ty weight and corresponding centre of gravity  ................................ ..........  97',
+ 'CS 25.31 Removable ballast  ................................ ................................ .............................  97',
+ 'CS 25.33 Propeller speed and pitch limits  ................................ ................................ ........  97',
+ 'PERFORMANCE  ................................ ................................ ................................ ................  97',
+ 'CS 25.101 General  ................................ ................................ ................................ ............  97',
+ 'AMC 25.101 General  ................................ ................................ ..............................  98',
+ 'AMC No. 1 to CS 25.101(c) Extrapolation of Performance with Weight  ...............  98',
+ 'AMC No. 2 to CS 25.101(c) General  ................................ ................................ .......  99',
+ 'AMC 25.101(g) Go -around  ................................ ................................ ...................  101',
+ 'AMC 25.101(h)(3) General  ................................ ................................ ...................  104',
+ 'AMC 25.101(i) Performance determination with worn brakes  ...........................  105',
+ 'CS 25.103 Stall speed ................................ ................................ ................................ ...... 105',
+ 'AMC 25.103 (b) Stalling speed  ................................ ................................ ..............  106',
+ 'AMC 25.103(c) Stall speed  ................................ ................................ ...................  106',
+ 'AMC 25.103(d) Stall speed  ................................ ................................ ...................  106',
+ 'CS 25.105 Take -off ................................ ................................ ................................ ..........  106  CS-25 Am endment  27',
+ 'Table of contents',
+ '',
+ 'Annex to ED Decision 2021/015/R   Page 3 of 1389',
+ 'CS 25.107 Take -off speeds  ................................ ................................ .............................  107',
+ 'AMC 25.107(d) Take -off speeds  ................................ ................................ ...........  109',
+ 'AMC 25.107(e)(1)(iv) Take -off speeds  ................................ ................................ . 109',
+ 'AMC 25.107(e)(3) Take -off speeds  ................................ ................................ ...... 110',
+ 'AMC No. 1 to CS 25.107(e)(4) Take -off speeds  ................................ ....................  110',
+ 'AMC No. 2 to CS 25.107(e)(4) Take -off speeds  ................................ ....................  110',
+ 'CS 25.109 Accelerate -stop distance  ................................ ................................ ...............  110',
+ 'AMC 25.109(a) and (b) Accelerate -stop distance  ................................ ................  113',
+ 'AMC 25.109(c)(2) Accelerate -stop distance: anti -skid sys tem efficiency  ............  113',
+ 'AMC 25.109(d)(2) Accelerate -stop distance: anti -skid efficiency on grooved and',
+ 'porous friction course (PFC) runways.  ................................ ................................ . 124',
+ 'AMC 25.109(f) Accelerate -stop distance: credit for reverse thrust.  ....................  125',
+ 'CS 25.111 Take -off path  ................................ ................................ ................................ . 126',
+ 'AMC 25.111 Take -off path  ................................ ................................ ...................  128',
+ 'AMC 25.111(b) Take -off path  ................................ ................................ ...............  128',
+ 'CS 25.113 Take -off distance and take -off run  ................................ ................................  128',
+ 'AMC 25.113(a)(2), (b)(2) and (c)(2) Take -off distance and take -off run  ..............  129',
+ 'CS 25.115 Take -off flight path  ................................ ................................ ........................  129',
+ 'CS 25.117 Climb: general  ................................ ................................ ................................  129',
+ 'CS 25.119 Landing climb: all engines operating  ................................ .............................  129',
+ 'AMC 25.119 Landing climb: all -engines -operating  ................................ ..............  130',
+ 'CS 25.121 Climb: one -engine -inoperative  ................................ ................................ ...... 130',
+ 'AMC 25.121 Climb: One -engine -inoperative  ................................ .......................  132',
+ 'AMC 25.121(a) Climb: One -engine -inoperative  ................................ ...................  132',
+ 'AMC 25.121(a)(1) Climb: One -engine -inoperative  ................................ ..............  133',
+ 'AMC 25.121(b)(1)(i) Climb: One -engine -inoperative  ................................ ...........  133',
+ 'CS 25.123 En -route flight paths  ................................ ................................ ......................  133',
+ 'AMC 25.123 En -route flight paths ................................ ................................ ........  134',
+ 'CS 25.125 Landing  ................................ ................................ ................................ ..........  134',
+ 'AMC 25.125(b)(3) Change of Configuration ................................ .........................  135',
+ 'AMC 25.125(c) Landing  ................................ ................................ ........................  135',
+ 'AMC 25.125(c)(2) Landing  ................................ ................................ ....................  135',
+ 'CONTROLLABILITY AND MANOEUVRABILITY  ................................ ................................ ... 135',
+ 'CS 25.143 General  ................................ ................................ ................................ ..........  135',
+ 'AMC 25.143(a) and (b) Controllability and Manoeuvrability  ...............................  139',
+ 'AMC 25.143(b)(1) Control Following Engine Failure  ................................ ............  139',
+ 'AMC 25.143(b)(4) Go -around Manoeuvres  ................................ .........................  139',
+ 'AMC 25.143(d) Controllability and Manoeuvrability  ................................ ...........  143',
+ 'AMC No. 1 to CS 25.143(g) Controllability and Manoeuvrability  ........................  143',
+ 'AMC No. 2 to CS 25.143(g) Controllability and Manoeuvrability  ........................  143',
+ 'AMC 25.143(h) Manoeuvre Capability  ................................ ................................ . 145',
+ 'CS 25.145 Longitudinal control ................................ ................................ .......................  145',
+ 'AMC 25.145(a) Longitudinal control - Control near the stall  ...............................  147',
+ 'AMC 25.145(b)(2) Longitudinal control  ................................ ...............................  148',
+ 'AMC 25.145(b)(1), (b)(2) and (b)(3) Longitudinal control  ................................ .... 148  CS-25 Am endment  27',
+ 'Table of contents',
+ '',
+ 'Annex to ED Decision 2021/015/R   Page 4 of 1389',
+ 'AMC 25.145(e) Longitudinal control  ................................ ................................ .... 148',
+ 'AMC 25.145(f) Longitudinal control – go-around  ................................ ................  148',
+ 'CS 25.147 Directional and lateral control  ................................ ................................ .......  149',
+ 'AMC 25.147(a) Directional control; general  ................................ ........................  150',
+ 'AMC 25.147(d) Lateral control: Roll capability  ................................ ....................  150',
+ 'AMC 25.147(f) Lateral control: All engines operating  ................................ .........  151',
+ 'CS 25.149 Minimum control speed  ................................ ................................ ................  151',
+ 'AMC 25.149 Minimum control speeds  ................................ ................................  154',
+ 'AMC 25.149(e) Minimum control speed ................................ ..............................  154',
+ 'AMC 25.149(f) Minimum Control Speed during Approach and Landing (V MCL) ... 154',
+ 'AMC 25.149(g) Minimum Control Speed with Two Inoperati ve Engines during',
+ 'Approach and Landing (V MCL -2) ................................ ................................ .............  155',
+ 'AMC 25.149(h)(3) Minimum control speeds  ................................ .......................  156',
+ 'AMC 25.149(h)(4) Minimum control speeds  ................................ .......................  156',
+ 'TRIM  ................................ ................................ ................................ ..............................  156',
+ 'CS 25.161 Trim  ................................ ................................ ................................ ................  156',
+ 'STABILITY  ................................ ................................ ................................ .......................  157',
+ 'CS 25.171 General  ................................ ................................ ................................ ..........  157',
+ 'CS 25.173 Static longitudinal stability  ................................ ................................ ............  157',
+ 'AMC 25.173(c) Static longitudi nal stability  ................................ ..........................  157',
+ 'CS 25.175 Demonstration of static longitudinal stability  ................................ ...............  157',
+ 'CS 25.177 Static directional and lateral stability  ................................ ............................  159',
+ 'AMC 25.177(c) Steady, Straight Sideslips  ................................ ............................  160',
+ 'AMC 25.177(d) Full Rudder Sideslips  ................................ ................................ ... 161',
+ 'CS 25.181 Dynamic stability  ................................ ................................ ...........................  163',
+ 'AMC 25.181 Dynamic stability  ................................ ................................ .............  163',
+ 'STAL LS ................................ ................................ ................................ ...........................  163',
+ 'CS 25.201 Stall demonstration  ................................ ................................ .......................  163',
+ 'AMC 25.201(a)(2) Stall demonstration  ................................ ................................  164',
+ 'AMC 25.201(b)(1) Stall demonstration  ................................ ................................  164',
+ 'AMC 25.201(c)(2) Turning Flight Stalls At Higher Deceleration Rates  .................  164',
+ 'AMC 25.201(d) Stall demonstration  ................................ ................................ .... 164',
+ 'AMC 25.201(d)(3) Stall dem onstration  ................................ ................................  165',
+ 'CS 25.203 Stall characteristics  ................................ ................................ ........................  165',
+ 'AMC 25.203 Stall characteristics  ................................ ................................ ..........  165',
+ 'CS 25.207 Stall warning  ................................ ................................ ................................ .. 166',
+ 'AMC 25.207(b) Stall warning  ................................ ................................ ...............  167',
+ 'AMC 25.207(c) and (d) Stall warning  ................................ ................................ ... 168',
+ 'GROUND HANDLING CHARACTERISTICS  ................................ ................................ ..........  169',
+ 'CS 25.231 Longitudinal stability and control  ................................ ................................ .. 169',
+ 'CS 25.233 Directional stability and control  ................................ ................................ .... 169',
+ 'CS 25.235 Taxying condition  ................................ ................................ ...........................  169  CS-25 Am endment  27',
+ 'Table of contents',
+ '',
+ 'Annex to ED Decision 2021/015/R   Page 5 of 1389',
+ 'CS 25.237 Wind velocities  ................................ ................................ ..............................  169',
+ 'MISCELLANEOUS FLIGHT REQUIREMENTS  ................................ ................................ .......  170',
+ 'CS 25.251 Vibration and buffeting  ................................ ................................ .................  170',
+ 'AMC 25.251(e) Vibration and Buffeting in Cruising Flight  ................................ ... 170',
+ 'CS 25.253 High -speed characteristics ................................ ................................ .............  171',
+ 'AMC 25.253(a)(4) Lateral Control: Roll Capability  ................................ ...............  172',
+ 'AMC 25.253(a)(5) High Speed Characteristics  ................................ .....................  173',
+ 'CS 25.255 Out -of-trim characteristics  ................................ ................................ ............  173',
+ 'AMC 25.255 Out -of-trim characteristics  ................................ ..............................  174',
+ 'SUBPART C – STRUCTURE  ................................ ...........................  177',
+ 'GENERAL  ................................ ................................ ................................ ........................  177',
+ 'CS 25.301 Loads  ................................ ................................ ................................ ..............  177',
+ 'AMC No. 1 to 25.301(b) Loads  ................................ ................................ .............  177',
+ 'AMC No. 2 to 25.301(b) Flight Load Validation  ................................ ...................  177',
+ 'CS 25.302 Interaction of systems and structures  ................................ ...........................  181',
+ 'CS 25.303 Factor of safety  ................................ ................................ ..............................  182',
+ 'CS 25.305 Strength and deformation  ................................ ................................ .............  182',
+ 'CS 25.307 Proof of structure  ................................ ................................ ..........................  182',
+ 'AMC 25.307 Proof of structure  ................................ ................................ ............  183',
+ 'FLIGHT LOADS  ................................ ................................ ................................ ................  187',
+ 'CS 25.321 General  ................................ ................................ ................................ ..........  187',
+ 'FLIGHT MANOEUVRE AND GUST CONDITIONS  ................................ ................................ . 187',
+ 'CS 25.331 Symmetric manoeuvring conditions  ................................ ..............................  187',
+ 'AMC 25.331(c)(1) Maximum pitch control displacement at V A ...........................  189',
+ 'AMC 25.331(c)(2) Checked manoeuvre between V A and V D................................  190',
+ 'CS 25.333 Flight manoeuvring envelope  ................................ ................................ ........  190']</code></pre>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+  </div>
+</footer>
+
+
+
+</body></html>
