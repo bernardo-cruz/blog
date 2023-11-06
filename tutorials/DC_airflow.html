@@ -146,6 +146,9 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Bernardo Cruz - Datacamp Airflow Course">
+<meta property="og:description" content="This post is about a Datacamp course on Airflow which I took recently. I share the course and personal notes. I will also share some of the code I wrote for the exercises.">
+<meta property="og:site-name" content="Bernardo Cruz">
 </head>
 
 <body class="nav-fixed">
@@ -455,7 +458,7 @@ cookieconsent.run({
 <p>Before we can really discuss Airflow, we need to talk about workflows. A workflow is a set of steps to accomplish a given data engineering task. These can include any given task, such as downloading a file, copying data, filtering information, writing to a database, and so forth. A workflow is of varying levels of complexity. Some workflows may only have 2 or 3 steps, while others consist of hundreds of components.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../tutorials/0X20.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<p><img src="../imgs/dc_airflow/0X20.png" class="img-fluid figure-img" style="width:40.0%"></p>
 <p></p><figcaption class="figure-caption">Workflow example containing 5 steps</figcaption><p></p>
 </figure>
 </div>
@@ -471,7 +474,7 @@ cookieconsent.run({
 <p>A DAG stands for a Directed Acyclic Graph. In Airflow, this represents the set of tasks that make up your workflow. It consists of the tasks and the dependencies between tasks.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../tutorials/0X48.png" class="img-fluid figure-img"></p>
+<p><img src="../imgs/dc_airflow/0X48.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Example of DAG consisting of five set of tasks</figcaption><p></p>
 </figure>
 </div>
@@ -679,37 +682,37 @@ No data found</code></pre>
 <section id="dags-view-dags" class="level2">
 <h2 class="anchored" data-anchor-id="dags-view-dags">DAGs view DAGs</h2>
 <p>It provides a quick status of the number of DAGs / workflows available.</p>
-<p><img src="../imgs/0X117.png" class="img-fluid"></p>
-<p><img src="../imgs/0X121.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X117.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X121.png" class="img-fluid"></p>
 <p>It shows us the schedule for the DAG (in date or cron format).</p>
-<p><img src="../imgs/0X125.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X125.png" class="img-fluid"></p>
 <p>We can see the owner of the DAG.</p>
-<p><img src="../imgs/0X129.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X129.png" class="img-fluid"></p>
 <p>which of the most recent tasks have run,</p>
-<p><img src="../imgs/0X133.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X133.png" class="img-fluid"></p>
 <p>when the last run started,</p>
-<p><img src="../imgs/0X137.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X137.png" class="img-fluid"></p>
 <p>and the last three DAG runs.</p>
-<p><img src="../imgs/0X141.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X141.png" class="img-fluid"></p>
 <p>The links area on the right gives us quick access to many of the DAG specific views.</p>
-<p><img src="../imgs/0X145.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X145.png" class="img-fluid"></p>
 <p>Don’t worry about those for now - instead we’ll click on the “example_dag” link which takes us to our DAG detail page.</p>
-<p><img src="../imgs/0X149.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X149.png" class="img-fluid"></p>
 </section>
 <section id="dag-detail-view" class="level2">
 <h2 class="anchored" data-anchor-id="dag-detail-view">DAG detail view</h2>
 <p>The DAG detail view gives us specific access to information about the DAG itself, including several views of information (Graph, Tree, and Code) illustrating the tasks and dependencies in the code. We also get access to the Task duration, task tries, timings, a Gantt chart view, and specific details about the DAG. We have the ability to trigger the DAG (to start), refresh our view, and delete the DAG if we desire. The detail view defaults to the Tree view, showing the specific named tasks, which operators are in use, and any dependencies between tasks. The circles in front of the words represent the state of the task / DAG. In the case of our specific DAG, we see that we have one task called generate_random_number.</p>
-<p><img src="../imgs/0X153.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X153.png" class="img-fluid"></p>
 </section>
 <section id="dag-graph-view" class="level2">
 <h2 class="anchored" data-anchor-id="dag-graph-view">DAG graph view</h2>
 <p>The DAG graph view arranges the tasks and dependencies in a chart format - this provides another view into the flow of the DAG. You can see the operators in use and the state of the tasks at any point in time. The tree and graph view provide different information depending on what you’d like to know. Try moving between them when examining a DAG to obtain further details. For this view we again see that we have a task called generate_random_number. We can also see that it is of the type BashOperator in the middle left of the image.</p>
-<p><img src="../imgs/0X159.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X159.png" class="img-fluid"></p>
 </section>
 <section id="dag-code-view" class="level2">
 <h2 class="anchored" data-anchor-id="dag-code-view">DAG code view</h2>
 <p>The DAG code view does exactly as it sounds - it provides a copy of the Python code that makes up the DAG. The code view provides easy access to exactly what defines the DAG without clicking in various portions of the UI. As you use Airflow, you’ll determine which tools work best for you. It is worth noting that the code view is read-only. Any DAG code changes must be done via the actual DAG script. In this view, we can finally see the code making up the generate_random_number task and that it runs the bash command echo $RANDOM.</p>
-<p><img src="../imgs/0X165.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X165.png" class="img-fluid"></p>
 </section>
 <section id="logs" class="level2">
 <h2 class="anchored" data-anchor-id="logs">Logs</h2>
@@ -724,7 +727,7 @@ No data found</code></pre>
 </div>
 </div>
 </div>
-<p><img src="../imgs/0X171.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X171.png" class="img-fluid"></p>
 </section>
 <section id="web-ui-vs-command-line" class="level2">
 <h2 class="anchored" data-anchor-id="web-ui-vs-command-line">Web UI vs command line</h2>
@@ -737,7 +740,7 @@ No data found</code></pre>
 <p>You’ve become familiar with the basics of an Airflow DAG and the basics of interacting with Airflow on the command-line. Your boss would like you to show others on your team how to examine any available DAGs. In this instance, she would like to know which operator is NOT in use with the DAG called update_state, as your team is trying to verify the components used in production workflows.</p>
 <p>Remember that the Airflow UI allows various methods to view the state of DAGs. The Tree View lists the tasks and any ordering between them in a tree structure, with the ability to compress / expand the nodes. The Graph View shows any tasks and their dependencies in a graph structure, along with the ability to access further details about task runs. The Code view provides full access to the Python code that makes up the DAG.</p>
 <p>Remember to select the operator NOT used in this DAG.</p>
-<p><img src="../imgs/Exercise_3_1.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/Exercise_3_1.png" class="img-fluid"></p>
 <ul class="task-list">
 <li><input type="checkbox" disabled="">BashOperator</li>
 <li><input type="checkbox" disabled="">PythonOperator</li>
@@ -914,22 +917,22 @@ No data found</code></pre>
 <section id="task-dependencies-in-the-airflow-ui" class="level2">
 <h2 class="anchored" data-anchor-id="task-dependencies-in-the-airflow-ui">Task dependencies in the Airflow UI</h2>
 <p>Let’s take a look at what the Airflow UI shows for tasks and their dependencies. In this case, we’re looking at the graph view within the Airflow web interface. ::: {.callout-caution collapse=“true” apperance=‘simple’} Note that in the task area, our two tasks, first_task and second_task, are both present, but there is no order to the task execution. This is the DAG prior to setting the task dependency using the bitshift operator. :::</p>
-<p><img src="../imgs/0X75.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X75.png" class="img-fluid"></p>
 <p>Now let’s look again at the view with a defined order via the bitshift operators. The view is similar but we can see the order of tasks indicated by the directed arrow between first underscore task and second underscore task.</p>
-<p><img src="../imgs/0X79.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X79.png" class="img-fluid"></p>
 </section>
 <section id="multiple-dependencies" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-dependencies">Multiple dependencies</h2>
 <p>Dependencies can be as complex as required to define the workflow to your needs. We can chain a dependency, in this case setting task1 upstream of task2 upstream of task3 upstream of task4. The Airflow graph view shows a dependency view indicating this order.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>task1 <span class="op">&gt;&gt;</span> task2 <span class="op">&gt;&gt;</span> task3 <span class="op">&gt;&gt;</span> task4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="../imgs/0X85.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/0X85.png" class="img-fluid"></p>
 <p>You can also mix upstream and downstream bitshift operators in the same workflow. If we define task1 upstream of task2 then downstream of task3, we get a configuration different than what we might expect.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>task1 <span class="op">&gt;&gt;</span> task2 <span class="op">&lt;&lt;</span> task3</span>
 <span id="cb18-2"><a href="#cb18-2"></a></span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="co">##&nbsp;or</span></span>
 <span id="cb18-4"><a href="#cb18-4"></a>task1 <span class="op">&gt;&gt;</span> task2</span>
 <span id="cb18-5"><a href="#cb18-5"></a>task3 <span class="op">&gt;&gt;</span> task2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="../imgs/1X86.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/1X86.png" class="img-fluid"></p>
 <p>This creates a DAG where first underscore task and third underscore task must finish prior to second underscore task. This means we could define the same dependency graph on two lines, in a possibly clearer form. task1 upstream of task2. task3 upstream of task2.</p>
 <div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
@@ -994,7 +997,7 @@ No data found</code></pre>
 <li>Use cat workspace/dags/codependent.py to view the Python code.</li>
 <li>Determine which of the following lines should be removed from the Python code. You may want to consider the last line of the file.</li>
 </ul>
-<p><img src="../imgs/Exercise_5_3.png" class="img-fluid"></p>
+<p><img src="../imgs/dc_airflow/Exercise_5_3.png" class="img-fluid"></p>
 <ul class="task-list">
 <li><input type="checkbox" disabled="">task1 &gt;&gt; task2</li>
 <li><input type="checkbox" disabled="">task2 &gt;&gt; task3</li>
@@ -1053,7 +1056,17 @@ No data found</code></pre>
 <section id="emailoperator" class="level2">
 <h2 class="anchored" data-anchor-id="emailoperator">EmailOperator</h2>
 <p>There are many other operators available within the Airflow ecosystem. The primary operators are in the <code>airflow.operators</code> or <code>airflow.contrib.operators</code> libraries.</p>
-<p>Another useful operator is the EmailOperator, which as expected sends an email from within an Airflow task. It can contain the typical components of an email, including HTML content and attachments. ::: {.callout-caution collapse=“true” apperance=‘simple’} Note that the Airflow system must be configured with the email server details to successfully send a message. :::</p>
+<p>Another useful operator is the EmailOperator, which as expected sends an email from within an Airflow task. It can contain the typical components of an email, including HTML content and attachments.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that the Airflow system must be configured with the email server details to successfully send a message.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="emailoperator-example" class="level2">
 <h2 class="anchored" data-anchor-id="emailoperator-example">EmailOperator example</h2>
@@ -1068,7 +1081,16 @@ No data found</code></pre>
 <span id="cb23-8"><a href="#cb23-8"></a>    files <span class="op">=</span> <span class="st">'latest_sales.xlsx'</span>,</span>
 <span id="cb23-9"><a href="#cb23-9"></a>    dag <span class="op">=</span> example_dag</span>
 <span id="cb23-10"><a href="#cb23-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>::: {.callout-caution collapse=“true” apperance=‘simple’} Note that in this case we assume the file latest underscore sales dot xlsx was previously generated - later in the course we’ll see how to verify that first. Finally we add it to our dag as usual.</p>
+<div class="callout-caution callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container" data-apperance="simple">
+<p>Note that in this case we assume the file latest underscore sales dot xlsx was previously generated - later in the course we’ll see how to verify that first. Finally we add it to our dag as usual.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="exercises-5" class="level2">
 <h2 class="anchored" data-anchor-id="exercises-5">Exercises</h2>

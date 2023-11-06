@@ -12,6 +12,9 @@ about:
     - icon: Email
       text: Contact me!
       href: mailto:berni.dacruz@gmail.com
+    - icon: code
+      text: written in Quarto
+      href: https://github.com/quarto-dev/quarto-cli/releases/tag/v1.2.475
 ---
 
 <!-- Google tag (gtag.js) -->

@@ -217,19 +217,19 @@ cookieconsent.run({
 <div class="cell" data-execution_count="8">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> swissparlpy</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib3</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> swissparlpy</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> requests</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> urllib3</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-execution_count="9">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>urllib3.disable_warnings()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>__location__ <span class="op">=</span> os.path.realpath(os.getcwd())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>urllib3.disable_warnings()</span>
+<span id="cb2-2"><a href="#cb2-2"></a>__location__ <span class="op">=</span> os.path.realpath(os.getcwd())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="create-client-with-custom-session" class="level2">
@@ -238,9 +238,9 @@ cookieconsent.run({
 <div class="cell" data-execution_count="10">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> requests.Session()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>session.verify <span class="op">=</span> <span class="va">False</span> <span class="co"># disable SSL verification</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> swissparlpy.SwissParlClient(session<span class="op">=</span>session)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>session <span class="op">=</span> requests.Session()</span>
+<span id="cb3-2"><a href="#cb3-2"></a>session.verify <span class="op">=</span> <span class="va">False</span> <span class="co"># disable SSL verification</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>client <span class="op">=</span> swissparlpy.SwissParlClient(session<span class="op">=</span>session)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>For most common cases, this is not necessary and you don’t even have to create your own <code>SwissParlClient</code>.</p>
@@ -248,15 +248,15 @@ cookieconsent.run({
 <div class="cell" data-execution_count="11">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> swissparlpy <span class="im">as</span> spp</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> spp.get_tables()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>glimpse_df <span class="op">=</span> (</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    pd.DataFrame(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        spp.get_glimpse(tables[<span class="dv">0</span>])</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>glimpse_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> swissparlpy <span class="im">as</span> spp</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>tables <span class="op">=</span> spp.get_tables()</span>
+<span id="cb4-4"><a href="#cb4-4"></a>glimpse_df <span class="op">=</span> (</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    pd.DataFrame(</span>
+<span id="cb4-6"><a href="#cb4-6"></a>        spp.get_glimpse(tables[<span class="dv">0</span>])</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    )</span>
+<span id="cb4-8"><a href="#cb4-8"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>glimpse_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="11">
 
@@ -367,7 +367,7 @@ cookieconsent.run({
 <div class="cell" data-execution_count="12">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>client.get_tables() <span class="co"># get list of all tables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>client.get_tables() <span class="co"># get list of all tables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>['MemberParty',
@@ -420,7 +420,7 @@ cookieconsent.run({
 <div class="cell" data-execution_count="13">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>client.get_variables(<span class="st">'Party'</span>) <span class="co"># get list of variables of a table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>client.get_variables(<span class="st">'Party'</span>) <span class="co"># get list of variables of a table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>['ID',
@@ -439,9 +439,9 @@ cookieconsent.run({
 <div class="cell" data-execution_count="14">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>parties <span class="op">=</span> client.get_data(<span class="st">'Party'</span>, Language<span class="op">=</span><span class="st">'DE'</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>parties_df <span class="op">=</span> pd.DataFrame(parties)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>parties_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>parties <span class="op">=</span> client.get_data(<span class="st">'Party'</span>, Language<span class="op">=</span><span class="st">'DE'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>parties_df <span class="op">=</span> pd.DataFrame(parties)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>parties_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="14">
 
@@ -595,8 +595,8 @@ cookieconsent.run({
 <div class="cell" data-execution_count="15">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>persons <span class="op">=</span> client.get_data(<span class="st">"Person"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, LastName__startswith<span class="op">=</span><span class="st">'Bal'</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>persons.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>persons <span class="op">=</span> client.get_data(<span class="st">"Person"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, LastName__startswith<span class="op">=</span><span class="st">'Bal'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>persons.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>12</code></pre>
@@ -605,8 +605,8 @@ cookieconsent.run({
 <div class="cell" data-execution_count="20">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>person_df <span class="op">=</span> pd.DataFrame(persons)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>person_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>person_df <span class="op">=</span> pd.DataFrame(persons)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>person_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="20">
 
@@ -937,8 +937,8 @@ cookieconsent.run({
 <div class="cell" data-execution_count="17">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>co2_business <span class="op">=</span> client.get_data(<span class="st">"Business"</span>, Title__contains<span class="op">=</span><span class="st">"CO2"</span>, Language <span class="op">=</span> <span class="st">"DE"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>co2_business.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>co2_business <span class="op">=</span> client.get_data(<span class="st">"Business"</span>, Title__contains<span class="op">=</span><span class="st">"CO2"</span>, Language <span class="op">=</span> <span class="st">"DE"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>co2_business.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>294</code></pre>
@@ -947,8 +947,8 @@ cookieconsent.run({
 <div class="cell" data-execution_count="18">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>co2_df <span class="op">=</span> pd.DataFrame(co2_business)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>co2_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>co2_df <span class="op">=</span> pd.DataFrame(co2_business)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>co2_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="18">
 
@@ -1258,13 +1258,13 @@ cookieconsent.run({
 <div class="cell" data-execution_count="21">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>business_oct19 <span class="op">=</span> client.get_data(</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Business"</span>,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    Language<span class="op">=</span><span class="st">"DE"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    SubmissionDate__gte<span class="op">=</span>datetime.fromisoformat(<span class="st">'2019-10-01'</span>),</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    SubmissionDate__lt<span class="op">=</span>datetime.fromisoformat(<span class="st">'2019-10-31'</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>business_oct19.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>business_oct19 <span class="op">=</span> client.get_data(</span>
+<span id="cb16-2"><a href="#cb16-2"></a>    <span class="st">"Business"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    Language<span class="op">=</span><span class="st">"DE"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4"></a>    SubmissionDate__gte<span class="op">=</span>datetime.fromisoformat(<span class="st">'2019-10-01'</span>),</span>
+<span id="cb16-5"><a href="#cb16-5"></a>    SubmissionDate__lt<span class="op">=</span>datetime.fromisoformat(<span class="st">'2019-10-31'</span>)</span>
+<span id="cb16-6"><a href="#cb16-6"></a>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a>business_oct19.count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
 <pre><code>PyODataModelError: Edm.DateTime accepts only UTC</code></pre>
@@ -1273,9 +1273,9 @@ cookieconsent.run({
 <div class="cell" data-execution_count="22">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>busi_oct19 <span class="op">=</span> pd.DataFrame(business_oct19)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>busi_oct19 <span class="op">=</span> busi_oct19.sort_values(by<span class="op">=</span>[<span class="st">'SubmissionDate'</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>busi_oct19[[<span class="st">'SubmissionDate'</span>, <span class="st">'Title'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>busi_oct19 <span class="op">=</span> pd.DataFrame(business_oct19)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>busi_oct19 <span class="op">=</span> busi_oct19.sort_values(by<span class="op">=</span>[<span class="st">'SubmissionDate'</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a>busi_oct19[[<span class="st">'SubmissionDate'</span>, <span class="st">'Title'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'business_oct19' is not defined</code></pre>
@@ -1289,39 +1289,39 @@ cookieconsent.run({
 <div class="cell" data-execution_count="23">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_votes_of_session(<span class="bu">id</span>):</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(path):</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        os.mkdir(path)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    pickle_path <span class="op">=</span> os.path.join(path, <span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.pks'</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(pickle_path):</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"File </span><span class="sc">{</span>pickle_path<span class="sc">}</span><span class="ss"> already exists, skipping"</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Loading votes of session </span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">..."</span>)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> client.get_data(<span class="st">"Voting"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, IdSession<span class="op">=</span><span class="bu">id</span>)</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>data<span class="sc">.</span>count<span class="sc">}</span><span class="ss"> rows loaded."</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    df.to_pickle(pickle_path)</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Saved pickle at </span><span class="sc">{</span>pickle_path<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">""</span>)</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="co"># get all session of the 50 legislative period</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>sessions50 <span class="op">=</span> client.get_data(<span class="st">"Session"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, LegislativePeriodNumber<span class="op">=</span><span class="dv">50</span>)</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>sessions50.count</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> session <span class="kw">in</span> sessions50:</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Loading session </span><span class="sc">{</span>session[<span class="st">'ID'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    save_votes_of_session(session[<span class="st">'ID'</span>])</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine to one dataframe</span></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>df_voting50 <span class="op">=</span> pd.concat([pd.read_pickle(os.path.join(path, x)) <span class="cf">for</span> x <span class="kw">in</span> os.listdir(path)])</span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>df_voting50</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="kw">def</span> save_votes_of_session(<span class="bu">id</span>):</span>
+<span id="cb20-4"><a href="#cb20-4"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(path):</span>
+<span id="cb20-5"><a href="#cb20-5"></a>        os.mkdir(path)</span>
+<span id="cb20-6"><a href="#cb20-6"></a>    pickle_path <span class="op">=</span> os.path.join(path, <span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.pks'</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    </span>
+<span id="cb20-8"><a href="#cb20-8"></a>    <span class="cf">if</span> os.path.exists(pickle_path):</span>
+<span id="cb20-9"><a href="#cb20-9"></a>        <span class="bu">print</span>(<span class="ss">f"File </span><span class="sc">{</span>pickle_path<span class="sc">}</span><span class="ss"> already exists, skipping"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10"></a>        <span class="cf">return</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>    </span>
+<span id="cb20-12"><a href="#cb20-12"></a>    <span class="bu">print</span>(<span class="ss">f"Loading votes of session </span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">..."</span>)</span>
+<span id="cb20-13"><a href="#cb20-13"></a>    data <span class="op">=</span> client.get_data(<span class="st">"Voting"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, IdSession<span class="op">=</span><span class="bu">id</span>)</span>
+<span id="cb20-14"><a href="#cb20-14"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>data<span class="sc">.</span>count<span class="sc">}</span><span class="ss"> rows loaded."</span>)</span>
+<span id="cb20-15"><a href="#cb20-15"></a>    df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb20-16"><a href="#cb20-16"></a>    </span>
+<span id="cb20-17"><a href="#cb20-17"></a>    df.to_pickle(pickle_path)</span>
+<span id="cb20-18"><a href="#cb20-18"></a>    <span class="bu">print</span>(<span class="ss">f"Saved pickle at </span><span class="sc">{</span>pickle_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-19"><a href="#cb20-19"></a>    <span class="bu">print</span>(<span class="st">""</span>)</span>
+<span id="cb20-20"><a href="#cb20-20"></a></span>
+<span id="cb20-21"><a href="#cb20-21"></a></span>
+<span id="cb20-22"><a href="#cb20-22"></a><span class="co"># get all session of the 50 legislative period</span></span>
+<span id="cb20-23"><a href="#cb20-23"></a>sessions50 <span class="op">=</span> client.get_data(<span class="st">"Session"</span>, Language<span class="op">=</span><span class="st">"DE"</span>, LegislativePeriodNumber<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb20-24"><a href="#cb20-24"></a>sessions50.count</span>
+<span id="cb20-25"><a href="#cb20-25"></a></span>
+<span id="cb20-26"><a href="#cb20-26"></a><span class="cf">for</span> session <span class="kw">in</span> sessions50:</span>
+<span id="cb20-27"><a href="#cb20-27"></a>    <span class="bu">print</span>(<span class="ss">f"Loading session </span><span class="sc">{</span>session[<span class="st">'ID'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-28"><a href="#cb20-28"></a>    save_votes_of_session(session[<span class="st">'ID'</span>])</span>
+<span id="cb20-29"><a href="#cb20-29"></a></span>
+<span id="cb20-30"><a href="#cb20-30"></a><span class="co"># Combine to one dataframe</span></span>
+<span id="cb20-31"><a href="#cb20-31"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
+<span id="cb20-32"><a href="#cb20-32"></a>df_voting50 <span class="op">=</span> pd.concat([pd.read_pickle(os.path.join(path, x)) <span class="cf">for</span> x <span class="kw">in</span> os.listdir(path)])</span>
+<span id="cb20-33"><a href="#cb20-33"></a>df_voting50</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Loading session 5001
@@ -1331,17 +1331,17 @@ Loading votes of session 5001...</code></pre>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_5005 <span class="op">=</span> pd.read_pickle(os.path.join(__location__, <span class="st">"voting50"</span>, <span class="st">'5005.pks'</span>))</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df_5005</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df_5005 <span class="op">=</span> pd.read_pickle(os.path.join(__location__, <span class="st">"voting50"</span>, <span class="st">'5005.pks'</span>))</span>
+<span id="cb22-2"><a href="#cb22-2"></a>df_5005</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine to one dataframe</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>df_voting50 <span class="op">=</span> pd.concat([pd.read_pickle(os.path.join(path, x)) <span class="cf">for</span> x <span class="kw">in</span> os.listdir(path)])</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>df_voting50</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Combine to one dataframe</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>path <span class="op">=</span> os.path.join(__location__, <span class="st">"voting50"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3"></a>df_voting50 <span class="op">=</span> pd.concat([pd.read_pickle(os.path.join(path, x)) <span class="cf">for</span> x <span class="kw">in</span> os.listdir(path)])</span>
+<span id="cb23-4"><a href="#cb23-4"></a>df_voting50</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 

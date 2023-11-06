@@ -11,6 +11,7 @@ website:
     type: express
     style: headline
     palette: dark
+  open-graph: true
   navbar:
     left:
       - href: index.qmd
@@ -28,6 +29,7 @@ format:
     highlight-style: github
     code-fold: true
     code-summary: "Show the code"
+    code-line-numbers: true
     theme: 
       light: sandstone
       dark: cyborg

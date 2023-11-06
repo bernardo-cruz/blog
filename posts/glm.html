@@ -149,6 +149,9 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Bernardo Cruz - My first post about statmodels - so be nice! :)">
+<meta property="og:description" content="During my study at HSLU I have learned to use mostly R when it comes to statistic and for some machine learning courses as well.">
+<meta property="og:site-name" content="Bernardo Cruz">
 </head>
 
 <body class="nav-fixed">
@@ -249,60 +252,60 @@ cookieconsent.run({
 <h1>Introduction: Play with GLMs</h1>
 <p>During my study at <a href="https://www.hslu.ch/en/lucerne-school-of-business/degree-programmes/master/applied-information-and-data-science/">HSLU</a> I have learned to use mostly <a href="https://www.r-project.org/"><code>R</code></a> when it comes to statistic and for some machine learning courses as well. When it comes to work, the most companies I have seen so far, use <code>Python</code> as their main programming language. My previous two employers used <code>Python</code> and <code>R</code>. <strong>This article is not going to discuss which language is better, but rather focus on how to use <code>Python</code> and the library <code>statmodels</code> which seems to produce similar outputs as it would in <code>R</code>.</strong></p>
 <p>One important and cool thing about the <code>statmodels</code> library is that it has a lot of data sets already included. You can find them <a href="https://www.statsmodels.org/stable/datasets/index.html">here</a>. The data set I use is a <code>R</code> data set from <a href="https://vincentarelbundock.github.io/Rdatasets/">Rdatasets</a>. In particular, the dataset from the package <code>modeldata</code> called <code>car_prices</code> is used.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Data imports</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    statsmodels.api <span class="co">#&nbsp;imported as sm in following code</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    .datasets</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    .get_rdataset(<span class="st">"car_prices"</span>, package<span class="op">=</span><span class="st">'modeldata'</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    .data</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">## Data imports</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>df <span class="op">=</span> (</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    statsmodels.api <span class="co">#&nbsp;imported as sm in following code</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    .datasets</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    .get_rdataset(<span class="st">"car_prices"</span>, package<span class="op">=</span><span class="st">'modeldata'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    .data</span>
+<span id="cb1-7"><a href="#cb1-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Another important thing about this blog post is the usage of <a href="https://quarto.org/"><code>Quarto</code></a>. Quarto allowed me to write this blog post directly from a Jupyter-Notebook without any fancy and complicated transformations. For more information, please visit the quarto website.</p>
 <p>However, let’s start with the analysis. The first thing we do is to import the necessary libraries and the data set.</p>
 <div id="code" class="cell" data-execution_count="1">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## General imports</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Data manipulation imports</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Display imports</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">## statmodels import</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> patsy <span class="im">import</span> dmatrices</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot imports</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">5</span><span class="op">/</span><span class="fl">2.5</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>sns.set_theme()</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>sns.set_context(</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"paper"</span>, </span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    rc<span class="op">=</span>{</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"figsize"</span>       :   plt.rcParams[<span class="st">'figure.figsize'</span>],</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">'font_scale'</span>    :   <span class="fl">1.25</span>,</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">## Data imports</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    sm</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    .datasets</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    .get_rdataset(</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">"car_prices"</span>, </span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        package<span class="op">=</span><span class="st">'modeldata'</span>,</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    .data</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">## General imports</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> warnings</span>
+<span id="cb2-3"><a href="#cb2-3"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">## Data manipulation imports</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">## Display imports</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">## statmodels import</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="im">from</span> patsy <span class="im">import</span> dmatrices</span>
+<span id="cb2-17"><a href="#cb2-17"></a></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">## Plot imports</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-20"><a href="#cb2-20"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">5</span>,<span class="dv">5</span><span class="op">/</span><span class="fl">2.5</span>)</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-22"><a href="#cb2-22"></a>sns.set_style(<span class="st">'whitegrid'</span>)</span>
+<span id="cb2-23"><a href="#cb2-23"></a>sns.set_theme()</span>
+<span id="cb2-24"><a href="#cb2-24"></a>sns.set_context(</span>
+<span id="cb2-25"><a href="#cb2-25"></a>    <span class="st">"paper"</span>, </span>
+<span id="cb2-26"><a href="#cb2-26"></a>    rc<span class="op">=</span>{</span>
+<span id="cb2-27"><a href="#cb2-27"></a>        <span class="st">"figsize"</span>       :   plt.rcParams[<span class="st">'figure.figsize'</span>],</span>
+<span id="cb2-28"><a href="#cb2-28"></a>        <span class="st">'font_scale'</span>    :   <span class="fl">1.25</span>,</span>
+<span id="cb2-29"><a href="#cb2-29"></a>    }</span>
+<span id="cb2-30"><a href="#cb2-30"></a>)</span>
+<span id="cb2-31"><a href="#cb2-31"></a></span>
+<span id="cb2-32"><a href="#cb2-32"></a></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co">## Data imports</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a>df <span class="op">=</span> (</span>
+<span id="cb2-35"><a href="#cb2-35"></a>    sm</span>
+<span id="cb2-36"><a href="#cb2-36"></a>    .datasets</span>
+<span id="cb2-37"><a href="#cb2-37"></a>    .get_rdataset(</span>
+<span id="cb2-38"><a href="#cb2-38"></a>        <span class="st">"car_prices"</span>, </span>
+<span id="cb2-39"><a href="#cb2-39"></a>        package<span class="op">=</span><span class="st">'modeldata'</span>,</span>
+<span id="cb2-40"><a href="#cb2-40"></a>    )</span>
+<span id="cb2-41"><a href="#cb2-41"></a>    .data</span>
+<span id="cb2-42"><a href="#cb2-42"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -318,32 +321,32 @@ cookieconsent.run({
 <div>
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>aspect <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]<span class="op">/</span>plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>g1 <span class="op">=</span> sns.displot(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Price'</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    kde <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of car price'</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Price'</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.show(g1)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>g2 <span class="op">=</span> sns.displot(</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Mileage'</span>,</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    kde <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Mileage'</span>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Mileage'</span>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.show(g2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>height <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]</span>
+<span id="cb3-2"><a href="#cb3-2"></a>aspect <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]<span class="op">/</span>plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>g1 <span class="op">=</span> sns.displot(</span>
+<span id="cb3-5"><a href="#cb3-5"></a>    data <span class="op">=</span> df,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    x <span class="op">=</span> <span class="st">'Price'</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    kde <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    height <span class="op">=</span> height,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>    aspect <span class="op">=</span> aspect,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>plt.title(<span class="st">'Distribution of car price'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>plt.xlabel(<span class="st">'Price'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>plt.show(g1)</span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a>g2 <span class="op">=</span> sns.displot(</span>
+<span id="cb3-17"><a href="#cb3-17"></a>    data <span class="op">=</span> df,</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    x <span class="op">=</span> <span class="st">'Mileage'</span>,</span>
+<span id="cb3-19"><a href="#cb3-19"></a>    kde <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb3-20"><a href="#cb3-20"></a>    height <span class="op">=</span> height,</span>
+<span id="cb3-21"><a href="#cb3-21"></a>    aspect <span class="op">=</span> aspect,</span>
+<span id="cb3-22"><a href="#cb3-22"></a>)</span>
+<span id="cb3-23"><a href="#cb3-23"></a>plt.title(<span class="st">'Distribution of Mileage'</span>)</span>
+<span id="cb3-24"><a href="#cb3-24"></a>plt.xlabel(<span class="st">'Mileage'</span>)</span>
+<span id="cb3-25"><a href="#cb3-25"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
+<span id="cb3-26"><a href="#cb3-26"></a>plt.show(g2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="fig-distplot" class="cell quarto-layout-panel" data-execution_count="4">
 <figure class="figure">
@@ -374,34 +377,34 @@ cookieconsent.run({
 <div>
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>aspect <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]<span class="op">/</span>plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Cylinder'</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Cylinder'</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cylinder'</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.figure()</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> sns.displot(</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Doors'</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    shrink <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> height,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> aspect,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Doors'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Doors'</span>)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>height <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]</span>
+<span id="cb4-2"><a href="#cb4-2"></a>aspect <span class="op">=</span> plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">0</span>]<span class="op">/</span>plt.rcParams[<span class="st">'figure.figsize'</span>][<span class="dv">1</span>] <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>g <span class="op">=</span> sns.displot(</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    data <span class="op">=</span> df,</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    x <span class="op">=</span> <span class="st">'Cylinder'</span>,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    height <span class="op">=</span> height,</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    aspect <span class="op">=</span> aspect,</span>
+<span id="cb4-10"><a href="#cb4-10"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>plt.title(<span class="st">'Distribution of Cylinder'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12"></a>plt.xlabel(<span class="st">'Cylinder'</span>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>plt.show(g)</span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co"># plt.figure()</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>g <span class="op">=</span> sns.displot(</span>
+<span id="cb4-18"><a href="#cb4-18"></a>    data <span class="op">=</span> df,</span>
+<span id="cb4-19"><a href="#cb4-19"></a>    x <span class="op">=</span> <span class="st">'Doors'</span>,</span>
+<span id="cb4-20"><a href="#cb4-20"></a>    discrete <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    shrink <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span id="cb4-22"><a href="#cb4-22"></a>    height <span class="op">=</span> height,</span>
+<span id="cb4-23"><a href="#cb4-23"></a>    aspect <span class="op">=</span> aspect,</span>
+<span id="cb4-24"><a href="#cb4-24"></a>)</span>
+<span id="cb4-25"><a href="#cb4-25"></a>plt.title(<span class="st">'Distribution of Doors'</span>)</span>
+<span id="cb4-26"><a href="#cb4-26"></a>plt.xlabel(<span class="st">'Doors'</span>)</span>
+<span id="cb4-27"><a href="#cb4-27"></a>plt.ylabel(<span class="st">'Count of occurance'</span>)</span>
+<span id="cb4-28"><a href="#cb4-28"></a>plt.show(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div id="fig-distplot2" class="cell quarto-layout-panel" data-execution_count="5">
 <figure class="figure">
@@ -433,16 +436,16 @@ cookieconsent.run({
 <div class="cell" data-execution_count="8">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>brands <span class="op">=</span> (</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    df</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    [[<span class="st">'Buick'</span>, <span class="st">'Cadillac'</span>, <span class="st">'Chevy'</span>, <span class="st">'Pontiac'</span>, <span class="st">'Saab'</span>]]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    .melt()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'variable'</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>brands.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>brands <span class="op">=</span> (</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    df</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    [[<span class="st">'Buick'</span>, <span class="st">'Cadillac'</span>, <span class="st">'Chevy'</span>, <span class="st">'Pontiac'</span>, <span class="st">'Saab'</span>]]</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    .melt()</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    .groupby(<span class="st">'variable'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    .<span class="bu">sum</span>()</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    .reset_index()</span>
+<span id="cb5-8"><a href="#cb5-8"></a>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a>brands.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div id="tbl-carsbybrand" class="anchored">
@@ -493,18 +496,18 @@ cookieconsent.run({
 <div class="cell" data-execution_count="9">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.catplot(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    data    <span class="op">=</span> brands.sort_values(<span class="st">'value'</span>, ascending<span class="op">=</span><span class="va">False</span>),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x       <span class="op">=</span> <span class="st">'variable'</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    y       <span class="op">=</span> <span class="st">'value'</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    kind    <span class="op">=</span> <span class="st">'bar'</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    height  <span class="op">=</span> <span class="dv">5</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    aspect  <span class="op">=</span> <span class="dv">2</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of cars by brand'</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Brand'</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of cars'</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>sns.catplot(</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    data    <span class="op">=</span> brands.sort_values(<span class="st">'value'</span>, ascending<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    x       <span class="op">=</span> <span class="st">'variable'</span>,</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    y       <span class="op">=</span> <span class="st">'value'</span>,</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    kind    <span class="op">=</span> <span class="st">'bar'</span>,</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    height  <span class="op">=</span> <span class="dv">5</span>,</span>
+<span id="cb6-7"><a href="#cb6-7"></a>    aspect  <span class="op">=</span> <span class="dv">2</span>,</span>
+<span id="cb6-8"><a href="#cb6-8"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>plt.title(<span class="st">'Number of cars by brand'</span>)</span>
+<span id="cb6-10"><a href="#cb6-10"></a>plt.xlabel(<span class="st">'Brand'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11"></a>plt.ylabel(<span class="st">'Number of cars'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-brand" class="quarto-figure quarto-figure-center anchored">
@@ -522,15 +525,15 @@ cookieconsent.run({
 <h1>Modeling</h1>
 <p>Modeling with <code>statsmodels</code> becomes straightforward once the formula API and provided documentation are well understood. I encountered a minor challenge in grasping the formula API, but once I comprehended it, the usage turned out to be quite intuitive.</p>
 <p>Let’s delve into an understanding of the formula API (<code>statsmodels.formula.api</code>). This feature enables us to employ R-style formulas for specifying models. To illustrate, when fitting a linear model, the following formula suffices:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    formula<span class="op">=</span><span class="st">'y ~ x1 + x2 + x3'</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a>model <span class="op">=</span> smf.ols(</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    formula<span class="op">=</span><span class="st">'y ~ x1 + x2 + x3'</span>, </span>
+<span id="cb7-5"><a href="#cb7-5"></a>    data<span class="op">=</span>df</span>
+<span id="cb7-6"><a href="#cb7-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The formula API leverages the <code>patsy</code> package (<a href="https://patsy.readthedocs.io/en/latest/formulas.html">Patsy Package</a>). It’s worth noting that the formula API’s potency extends to intricate models. Additionally, it’s important to mention that the formula API automatically incorporates an intercept into the formula if one isn’t explicitly specified. For cases where the intercept is undesired, a <code>-1</code> can be used within the formula.</p>
 <p>With the <code>glm</code> class, a vast array of models becomes accessible importing as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> statsmodels.genmod.families.family <span class="im">as</span> fam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>fam</code> import is necessary for specifying the family of the model. The families available are:</p>
 <div class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="10">
