@@ -166,6 +166,16 @@ cookieconsent.run({
   <li><a href="#exercise-2-containers-and-images" id="toc-exercise-2-containers-and-images" class="nav-link" data-scroll-target="#exercise-2-containers-and-images">Exercise 2: Containers and images</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#section-2-containers-vs.-virtual-machines" id="toc-section-2-containers-vs.-virtual-machines" class="nav-link" data-scroll-target="#section-2-containers-vs.-virtual-machines">Section 2: Containers vs.&nbsp;Virtual Machines</a>
+  <ul class="collapse">
+  <li><a href="#containers-and-virtual-machines" id="toc-containers-and-virtual-machines" class="nav-link" data-scroll-target="#containers-and-virtual-machines">Containers and Virtual Machines</a></li>
+  <li><a href="#resource-virtualization" id="toc-resource-virtualization" class="nav-link" data-scroll-target="#resource-virtualization">Resource Virtualization</a></li>
+  <li><a href="#containers-vs-virtual-machines" id="toc-containers-vs-virtual-machines" class="nav-link" data-scroll-target="#containers-vs-virtual-machines">Containers vs Virtual Machines</a></li>
+  <li><a href="#security-of-virtualization" id="toc-security-of-virtualization" class="nav-link" data-scroll-target="#security-of-virtualization">Security of Virtualization</a></li>
+  <li><a href="#containers-are-lightweight-1" id="toc-containers-are-lightweight-1" class="nav-link" data-scroll-target="#containers-are-lightweight-1">Containers are lightweight</a></li>
+  <li><a href="#advantages-of-containers" id="toc-advantages-of-containers" class="nav-link" data-scroll-target="#advantages-of-containers">Advantages of containers</a></li>
+  <li><a href="#advantages-of-virtual-machines" id="toc-advantages-of-virtual-machines" class="nav-link" data-scroll-target="#advantages-of-virtual-machines">Advantages of Virtual Machines</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -377,9 +387,42 @@ Solution
 </div>
 </div>
 </div>
-
-
 </section>
+</section>
+</section>
+<section id="section-2-containers-vs.-virtual-machines" class="level1">
+<h1>Section 2: Containers vs.&nbsp;Virtual Machines</h1>
+<p>When learning about containers, the comparison to Virtual Machines is inevitable.</p>
+<section id="containers-and-virtual-machines" class="level2">
+<h2 class="anchored" data-anchor-id="containers-and-virtual-machines">Containers and Virtual Machines</h2>
+<p>Both Virtual Machines and containers aim to run software side by side on the same physical machine safely, that is, without interfering with each other. In that sense, Virtual Machines achieve many of the same goals as containers. However, from a technical perspective, there is a big difference making their use cases different.</p>
+<p>!</p>
+</section>
+<section id="resource-virtualization" class="level2">
+<h2 class="anchored" data-anchor-id="resource-virtualization">Resource Virtualization</h2>
+<p>Running software side by side on the same physical machine safely is done using virtualization. Virtualization means that resources like RAM, CPU, or Disk can be split up and look like separate resources to the software using them. For example, a hard disk of 100GB can be virtualized to look like four hard disks of 25GB. This way, different pieces of software can each use 25GB, yet they can’t interfere with the other parts. Both containers and VMs are virtualization technologies.</p>
+</section>
+<section id="containers-vs-virtual-machines" class="level2">
+<h2 class="anchored" data-anchor-id="containers-vs-virtual-machines">Containers vs Virtual Machines</h2>
+<p>The key difference between containers and virtual machines is that virtual machines virtualize the entire machine down to the hardware. Whereas with containers, their virtualization happens in a software layer above the operating system level. This means separation in VMs is better as only the hardware is shared, while for containers the host operating system is also shared.</p>
+</section>
+<section id="security-of-virtualization" class="level2">
+<h2 class="anchored" data-anchor-id="security-of-virtualization">Security of Virtualization</h2>
+<p>This better separation of VMs over containers makes them more secure and points us to the main drawback of containers, that there is always a possibility for attackers to get access to the host OS. This, in turn, can give access to all containers running on the same machine. Since attackers breaking out of a container to the host operating system is the main risk of using containers, Docker and other container providers spend extensive resources on making their containers as secure as possible. The risk of attackers accessing the host is limited when using an industry-standard container provider like Docker. Nonetheless, it is worth considering VMs when security is paramount, for example, when working with sensitive data.</p>
+</section>
+<section id="containers-are-lightweight-1" class="level2">
+<h2 class="anchored" data-anchor-id="containers-are-lightweight-1">Containers are lightweight</h2>
+<p>While containers have a slight disadvantage in the amount of security they provide, there are several advantages of using containers over VMs. One significant advantage is their size in memory and on disk compared to VMs. In other words, containers require less RAM and less disk space. Containers are significantly smaller because they only need to include a small part of a full OS, sharing the rest of the OS with the Host OS and other containers.</p>
+</section>
+<section id="advantages-of-containers" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-containers">Advantages of containers</h2>
+<p>The smaller size is at the base of many advantages of containers. It makes containers faster to start and stop. And also makes containers faster to distribute and to change or update. Because of their small size, there is a large ecosystem of pre-made containers with many popular software applications like programming languages, databases, or web servers pre-installed. In comparison, VMs can quickly become several GigaBytes in size, which means they are often built from scratch for every use case.</p>
+</section>
+<section id="advantages-of-virtual-machines" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-virtual-machines">Advantages of Virtual Machines</h2>
+<p>Of course, slightly better security is not the only advantage of VMs. If your use case needs a Graphical User Interface, then for now, a VM is the best option; no container supports GUI applications, while VMs support both GUIs and command lines fully.</p>
+
+
 </section>
 </section>
 

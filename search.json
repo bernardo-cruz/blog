@@ -915,5 +915,54 @@
     "title": "My Blog",
     "section": "",
     "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n\n\n\n\n\n\nMy first post about statmodels - so be nice! :)\n\n\n\n\n\n\n\nstatmodels\n\n\nSeaborn\n\n\nPandas\n\n\nPython vs. R\n\n\nFormula API\n\n\nRDatasets in Python\n\n\nPatsy in Python\n\n\n\n\n\n\n\n\n\n\n\nAug 1, 2023\n\n\n5 min\n\n\n\n\n\n\n\n\nPandas Method Chaining\n\n\n\n\n\n\n\nPandas\n\n\nReadability\n\n\nMethod Chaining\n\n\n\n\n\n\n\n\n\n\n\nAug 13, 2023\n\n\n3 min\n\n\n\n\n\n\n\n\nFastAPI\n\n\n\n\n\n\n\nAPI Development\n\n\nFastAPI\n\n\nPython\n\n\nSQL\n\n\nCRUD Operations\n\n\nSQLAlchemy\n\n\n\n\n\n\n\n\n\n\n\nAug 19, 2023\n\n\n12 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-and-virtual-machines",
+    "href": "WorkInProgress/DC_docker.html#containers-and-virtual-machines",
+    "title": "Datacamp Docker Course",
+    "section": "Containers and Virtual Machines",
+    "text": "Containers and Virtual Machines\nBoth Virtual Machines and containers aim to run software side by side on the same physical machine safely, that is, without interfering with each other. In that sense, Virtual Machines achieve many of the same goals as containers. However, from a technical perspective, there is a big difference making their use cases different.\n!"
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#resource-virtualization",
+    "href": "WorkInProgress/DC_docker.html#resource-virtualization",
+    "title": "Datacamp Docker Course",
+    "section": "Resource Virtualization",
+    "text": "Resource Virtualization\nRunning software side by side on the same physical machine safely is done using virtualization. Virtualization means that resources like RAM, CPU, or Disk can be split up and look like separate resources to the software using them. For example, a hard disk of 100GB can be virtualized to look like four hard disks of 25GB. This way, different pieces of software can each use 25GB, yet they can’t interfere with the other parts. Both containers and VMs are virtualization technologies."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-vs-virtual-machines",
+    "href": "WorkInProgress/DC_docker.html#containers-vs-virtual-machines",
+    "title": "Datacamp Docker Course",
+    "section": "Containers vs Virtual Machines",
+    "text": "Containers vs Virtual Machines\nThe key difference between containers and virtual machines is that virtual machines virtualize the entire machine down to the hardware. Whereas with containers, their virtualization happens in a software layer above the operating system level. This means separation in VMs is better as only the hardware is shared, while for containers the host operating system is also shared."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#security-of-virtualization",
+    "href": "WorkInProgress/DC_docker.html#security-of-virtualization",
+    "title": "Datacamp Docker Course",
+    "section": "Security of Virtualization",
+    "text": "Security of Virtualization\nThis better separation of VMs over containers makes them more secure and points us to the main drawback of containers, that there is always a possibility for attackers to get access to the host OS. This, in turn, can give access to all containers running on the same machine. Since attackers breaking out of a container to the host operating system is the main risk of using containers, Docker and other container providers spend extensive resources on making their containers as secure as possible. The risk of attackers accessing the host is limited when using an industry-standard container provider like Docker. Nonetheless, it is worth considering VMs when security is paramount, for example, when working with sensitive data."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#containers-are-lightweight-1",
+    "href": "WorkInProgress/DC_docker.html#containers-are-lightweight-1",
+    "title": "Datacamp Docker Course",
+    "section": "Containers are lightweight",
+    "text": "Containers are lightweight\nWhile containers have a slight disadvantage in the amount of security they provide, there are several advantages of using containers over VMs. One significant advantage is their size in memory and on disk compared to VMs. In other words, containers require less RAM and less disk space. Containers are significantly smaller because they only need to include a small part of a full OS, sharing the rest of the OS with the Host OS and other containers."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#advantages-of-containers",
+    "href": "WorkInProgress/DC_docker.html#advantages-of-containers",
+    "title": "Datacamp Docker Course",
+    "section": "Advantages of containers",
+    "text": "Advantages of containers\nThe smaller size is at the base of many advantages of containers. It makes containers faster to start and stop. And also makes containers faster to distribute and to change or update. Because of their small size, there is a large ecosystem of pre-made containers with many popular software applications like programming languages, databases, or web servers pre-installed. In comparison, VMs can quickly become several GigaBytes in size, which means they are often built from scratch for every use case."
+  },
+  {
+    "objectID": "WorkInProgress/DC_docker.html#advantages-of-virtual-machines",
+    "href": "WorkInProgress/DC_docker.html#advantages-of-virtual-machines",
+    "title": "Datacamp Docker Course",
+    "section": "Advantages of Virtual Machines",
+    "text": "Advantages of Virtual Machines\nOf course, slightly better security is not the only advantage of VMs. If your use case needs a Graphical User Interface, then for now, a VM is the best option; no container supports GUI applications, while VMs support both GUIs and command lines fully."
   }
 ]
