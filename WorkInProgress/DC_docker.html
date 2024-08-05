@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernardo Freire">
 <meta name="dcterms.date" content="2023-09-17">
 
-<title>Bernardo Cruz - Datacamp Docker Course</title>
+<title>Datacamp Docker Course – Bernardo Cruz</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,7 +19,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -51,7 +51,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -60,8 +66,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -76,6 +84,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -83,45 +93,45 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Bernardo Cruz - Datacamp Docker Course">
-<meta property="og:description" content="Docker is an open-source tool that allows us to create, run and manage containers.">
-<meta property="og:site-name" content="Bernardo Cruz">
+<meta property="og:title" content="Datacamp Docker Course – Bernardo Cruz">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Bernardo Cruz">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Bernardo Cruz</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../blog.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv.html">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -214,7 +224,9 @@ cookieconsent.run({
   </div>
   
 
+
 </header>
+
 
 <section id="section-1-containers-and-their-advantages" class="level1">
 <h1>Section 1: Containers and their advantages</h1>
@@ -266,17 +278,17 @@ cookieconsent.run({
 <h3 class="anchored" data-anchor-id="exercise-1-what-is-included-in-a-container">Exercise 1: What is included in a container?</h3>
 <p>A container is a portable computing environment, but what is included exactly?</p>
 <ul class="task-list">
-<li><p><input type="checkbox" disabled="">A container contains dependencies and code needed to run a workflow or application, but you have to configure your application from outside the container.</p></li>
-<li><p><input type="checkbox" disabled="">A container contains the configuration and code needed to run a workflow or application, but you have to install dependencies separately.</p></li>
-<li><p><input type="checkbox" disabled="">A container contains dependencies and configuration needed to run a workflow or application, but you can not put your code into a container.</p></li>
-<li><p><input type="checkbox" disabled="">A container contains everything needed to run a workflow or application; dependencies, code, and configuration.</p></li>
+<li><p><label><input type="checkbox">A container contains dependencies and code needed to run a workflow or application, but you have to configure your application from outside the container.</label></p></li>
+<li><p><label><input type="checkbox">A container contains the configuration and code needed to run a workflow or application, but you have to install dependencies separately.</label></p></li>
+<li><p><label><input type="checkbox">A container contains dependencies and configuration needed to run a workflow or application, but you can not put your code into a container.</label></p></li>
+<li><p><label><input type="checkbox">A container contains everything needed to run a workflow or application; dependencies, code, and configuration.</label></p></li>
 </ul>
-<div class="callout-tip callout callout-style-simple callout-captioned">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -339,18 +351,18 @@ Solution
 <h3 class="anchored" data-anchor-id="exercise-1-which-parts-does-the-docker-engine-consist-of">Exercise 1: Which parts does the Docker Engine consist of?</h3>
 <p>Docker is part of a now much larger ecosystem of applications built to support containers in various ways. Starting out on our journey to understand and use containers, we’re focusing on the Docker Engine and its components. Of which parts does the Docker Engine consist?</p>
 <ul class="task-list">
-<li><p><input type="checkbox" disabled="">Just the Docker daemon, other applications like the Docker client can then use the Docker daemon to work with containers.</p></li>
-<li><p><input type="checkbox" disabled="">The Docker daemon, Docker client, and Docker Compose. The latter is used for multi-container applications.</p></li>
-<li><p><input type="checkbox" disabled="">The Docker daemon, Docker client, Docker Compose, and Kubernetes are everything you need to run complex container setups in production environments.</p></li>
-<li><p><input type="checkbox" disabled="">The Docker client and daemon together make up the Docker client-server interface of Docker Engine.</p></li>
-<li><p><input type="checkbox" disabled="">The Docker client, daemon, and its API specifications.</p></li>
+<li><p><label><input type="checkbox">Just the Docker daemon, other applications like the Docker client can then use the Docker daemon to work with containers.</label></p></li>
+<li><p><label><input type="checkbox">The Docker daemon, Docker client, and Docker Compose. The latter is used for multi-container applications.</label></p></li>
+<li><p><label><input type="checkbox">The Docker daemon, Docker client, Docker Compose, and Kubernetes are everything you need to run complex container setups in production environments.</label></p></li>
+<li><p><label><input type="checkbox">The Docker client and daemon together make up the Docker client-server interface of Docker Engine.</label></p></li>
+<li><p><label><input type="checkbox">The Docker client, daemon, and its API specifications.</label></p></li>
 </ul>
-<div class="callout-tip callout callout-style-simple callout-captioned">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -366,17 +378,17 @@ Solution
 <h3 class="anchored" data-anchor-id="exercise-2-containers-and-images">Exercise 2: Containers and images</h3>
 <p>Getting an intuitive understanding on Docker and the many new concepts surrounding it can be difficult, especially the difference between images and containers can seem blurry because they are closely related. Did you fully grasp the difference?</p>
 <ul class="task-list">
-<li><p><input type="checkbox" disabled="">An image is just a different name for a container, but they really mean the same thing.</p></li>
-<li><p><input type="checkbox" disabled="">Containers are what you use in the Docker ecosystem; images are just the more general name.</p></li>
-<li><p><input type="checkbox" disabled="">Images are blueprints, while a container is a running image, the image is just the template it got started from.</p></li>
-<li><p><input type="checkbox" disabled="">Containers are blueprints; while an image is a running container, the container is just the template it got started from.</p></li>
+<li><p><label><input type="checkbox">An image is just a different name for a container, but they really mean the same thing.</label></p></li>
+<li><p><label><input type="checkbox">Containers are what you use in the Docker ecosystem; images are just the more general name.</label></p></li>
+<li><p><label><input type="checkbox">Images are blueprints, while a container is a running image, the image is just the template it got started from.</label></p></li>
+<li><p><label><input type="checkbox">Containers are blueprints; while an image is a running container, the container is just the template it got started from.</label></p></li>
 </ul>
-<div class="callout-tip callout callout-style-simple callout-captioned">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -396,27 +408,32 @@ Solution
 <section id="containers-and-virtual-machines" class="level2">
 <h2 class="anchored" data-anchor-id="containers-and-virtual-machines">Containers and Virtual Machines</h2>
 <p>Both Virtual Machines and containers aim to run software side by side on the same physical machine safely, that is, without interfering with each other. In that sense, Virtual Machines achieve many of the same goals as containers. However, from a technical perspective, there is a big difference making their use cases different.</p>
-<p>!</p>
+<p><img src="../imgs/dc_docker/chapter1/0X136.png" class="img-fluid"></p>
 </section>
 <section id="resource-virtualization" class="level2">
 <h2 class="anchored" data-anchor-id="resource-virtualization">Resource Virtualization</h2>
 <p>Running software side by side on the same physical machine safely is done using virtualization. Virtualization means that resources like RAM, CPU, or Disk can be split up and look like separate resources to the software using them. For example, a hard disk of 100GB can be virtualized to look like four hard disks of 25GB. This way, different pieces of software can each use 25GB, yet they can’t interfere with the other parts. Both containers and VMs are virtualization technologies.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X142.png" class="img-fluid"></p>
 </section>
 <section id="containers-vs-virtual-machines" class="level2">
 <h2 class="anchored" data-anchor-id="containers-vs-virtual-machines">Containers vs Virtual Machines</h2>
 <p>The key difference between containers and virtual machines is that virtual machines virtualize the entire machine down to the hardware. Whereas with containers, their virtualization happens in a software layer above the operating system level. This means separation in VMs is better as only the hardware is shared, while for containers the host operating system is also shared.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X148.png" class="img-fluid"></p>
 </section>
 <section id="security-of-virtualization" class="level2">
 <h2 class="anchored" data-anchor-id="security-of-virtualization">Security of Virtualization</h2>
 <p>This better separation of VMs over containers makes them more secure and points us to the main drawback of containers, that there is always a possibility for attackers to get access to the host OS. This, in turn, can give access to all containers running on the same machine. Since attackers breaking out of a container to the host operating system is the main risk of using containers, Docker and other container providers spend extensive resources on making their containers as secure as possible. The risk of attackers accessing the host is limited when using an industry-standard container provider like Docker. Nonetheless, it is worth considering VMs when security is paramount, for example, when working with sensitive data.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X154.png" class="img-fluid"></p>
 </section>
 <section id="containers-are-lightweight-1" class="level2">
 <h2 class="anchored" data-anchor-id="containers-are-lightweight-1">Containers are lightweight</h2>
 <p>While containers have a slight disadvantage in the amount of security they provide, there are several advantages of using containers over VMs. One significant advantage is their size in memory and on disk compared to VMs. In other words, containers require less RAM and less disk space. Containers are significantly smaller because they only need to include a small part of a full OS, sharing the rest of the OS with the Host OS and other containers.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X160.png" class="img-fluid"></p>
 </section>
 <section id="advantages-of-containers" class="level2">
 <h2 class="anchored" data-anchor-id="advantages-of-containers">Advantages of containers</h2>
 <p>The smaller size is at the base of many advantages of containers. It makes containers faster to start and stop. And also makes containers faster to distribute and to change or update. Because of their small size, there is a large ecosystem of pre-made containers with many popular software applications like programming languages, databases, or web servers pre-installed. In comparison, VMs can quickly become several GigaBytes in size, which means they are often built from scratch for every use case.</p>
+<p><img src="../imgs/dc_docker/chapter1/0X171.png" class="img-fluid"></p>
 </section>
 <section id="advantages-of-virtual-machines" class="level2">
 <h2 class="anchored" data-anchor-id="advantages-of-virtual-machines">Advantages of Virtual Machines</h2>
@@ -475,6 +492,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -543,13 +587,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -576,12 +622,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -613,11 +662,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -627,8 +722,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -640,9 +744,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -680,30 +1020,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
+
 
 
 
