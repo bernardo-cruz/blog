@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernardo Freire">
 <meta name="dcterms.date" content="2023-09-10">
 
-<title>Datacamp Airflow Course – Bernardo Cruz</title>
+<title>Bernardo Cruz - Datacamp Airflow Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,12 +19,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -49,13 +48,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -85,13 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -100,10 +123,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -118,8 +139,6 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
-  ,
-"language":"en"
   });
 });
 </script> 
@@ -127,45 +146,45 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Datacamp Airflow Course – Bernardo Cruz">
-<meta property="og:description" content="">
-<meta property="og:site_name" content="Bernardo Cruz">
+<meta property="og:title" content="Bernardo Cruz - Datacamp Airflow Course">
+<meta property="og:description" content="This post is about a Datacamp course on Airflow which I took recently. I share the course and personal notes. I will also share some of the code I wrote for the exercises.">
+<meta property="og:site-name" content="Bernardo Cruz">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Bernardo Cruz</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
-<span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../blog.html">
+ <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv.html"> 
-<span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../cv.html">
+ <span class="menu-text">CV</span></a>
   </li>  
 </ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -424,9 +443,7 @@ cookieconsent.run({
   </div>
   
 
-
 </header>
-
 
 <section id="summary" class="level1">
 <h1>Summary</h1>
@@ -442,7 +459,7 @@ cookieconsent.run({
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/dc_airflow/0X20.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption>Workflow example containing 5 steps</figcaption>
+<p></p><figcaption class="figure-caption">Workflow example containing 5 steps</figcaption><p></p>
 </figure>
 </div>
 <p>The complexity of a workflow is completely dependent on the needs of the user. We show an example of a possible workflow to the right. It’s important to note that we’re defining a workflow here in a general data engineering sense. This is an informal definition to introduce the concept. As you’ll see later, workflow can have specific meaning within specific tools.</p>
@@ -458,7 +475,7 @@ cookieconsent.run({
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/dc_airflow/0X48.png" class="img-fluid figure-img"></p>
-<figcaption>Example of DAG consisting of five set of tasks</figcaption>
+<p></p><figcaption class="figure-caption">Example of DAG consisting of five set of tasks</figcaption><p></p>
 </figure>
 </div>
 <p>DAGs are created with various details about the DAG, including the name, start date, owner, email alerting options, etc.</p>
@@ -470,12 +487,12 @@ cookieconsent.run({
 <span id="cb1-2"><a href="#cb1-2"></a>    dag_id <span class="op">=</span> <span class="st">'etl_pipeline'</span>,    </span>
 <span id="cb1-3"><a href="#cb1-3"></a>    default_args <span class="op">=</span> {<span class="st">"start_date"</span>: <span class="st">"2020-01-08"</span>},</span>
 <span id="cb1-4"><a href="#cb1-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that within any Python code, this is referred to via the variable identifier, etl_dag, but within the Airflow shell command, you must use the dag_id.</p>
 </div>
 </div>
@@ -493,12 +510,12 @@ cookieconsent.run({
 <section id="exercise-1-running-a-task-in-airflow" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1-running-a-task-in-airflow">Exercise 1: Running a task in Airflow</h3>
 <p>You’ve just started looking at using Airflow within your company and would like to try to run a task within the Airflow platform. You remember that you can use the <code>airflow run</code> command to execute a specific task within a workflow.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that an error while using <code>airflow run</code> will return <code>airflow.exceptions.AirflowException:</code> on the last line of output.</p>
 </div>
 </div>
@@ -506,11 +523,11 @@ cookieconsent.run({
 <p>An Airflow DAG is set up for you with a dag_id of <code>etl_pipeline</code>. The <code>task_id</code> is <code>download_file</code> and the <code>start_date</code> is <code>2020-01-08</code>. All other components needed are defined for you.</p>
 <p>Which command would you enter in the console to run the desired task?</p>
 <ul class="task-list">
-<li><label><input type="checkbox">airflow run dag task 2020-01-08<br>
-</label></li>
-<li><label><input type="checkbox">airflow run etl_pipeline task 2020-01-08<br>
-</label></li>
-<li><label><input type="checkbox">airflow run etl_pipeline download_file 2020-01-08</label></li>
+<li><input type="checkbox" disabled="">airflow run dag task 2020-01-08<br>
+</li>
+<li><input type="checkbox" disabled="">airflow run etl_pipeline task 2020-01-08<br>
+</li>
+<li><input type="checkbox" disabled="">airflow run etl_pipeline download_file 2020-01-08</li>
 </ul>
 </section>
 <section id="exercise-2-examining-airflow-commands" class="level3">
@@ -518,10 +535,10 @@ cookieconsent.run({
 <p>While researching how to use Airflow, you start to wonder about the airflow command in general. You realize that by simply running airflow you can get further information about various sub-commands that are available.</p>
 <p>Which of the following is NOT an Airflow sub-command?</p>
 <ul class="task-list">
-<li><label><input type="checkbox">list_dags</label></li>
-<li><label><input type="checkbox">edit_dag</label></li>
-<li><label><input type="checkbox">test</label></li>
-<li><label><input type="checkbox">scheduler</label></li>
+<li><input type="checkbox" disabled="">list_dags</li>
+<li><input type="checkbox" disabled="">edit_dag</li>
+<li><input type="checkbox" disabled="">test</li>
+<li><input type="checkbox" disabled="">scheduler</li>
 </ul>
 </section>
 </section>
@@ -557,12 +574,12 @@ cookieconsent.run({
 <span id="cb3-12"><a href="#cb3-12"></a>    default_args <span class="op">=</span> default_arguments</span>
 <span id="cb3-13"><a href="#cb3-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here we define the owner name as jdoe, an email address for any alerting, and specify the start date of the DAG. The start date represents the earliest datetime that a DAG could be run. Finally, we define our DAG object with the first argument using a name for the DAG, etl underscore workflow, and assign the default arguments dictionary to the default underscore args argument. There are many other optional configurations we will use later on.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that the entire DAG is assigned to a variable called etl underscore dag. This will be used later when defining the components of the DAG, but the variable name etl underscore dag does not actually appear in the Airflow interfaces. Note, DAG is case sensitive in Python code.</p>
 </div>
 </div>
@@ -579,7 +596,7 @@ cookieconsent.run({
 <section id="command-line-vs-python" class="level2">
 <h2 class="anchored" data-anchor-id="command-line-vs-python">Command line vs Python</h2>
 <p>You may be wondering when to use the Airflow command line tool vs writing Python.</p>
-<table class="caption-top table">
+<table class="table">
 <caption>Command line vs Python</caption>
 <thead>
 <tr class="header">
@@ -615,7 +632,7 @@ cookieconsent.run({
 <li>Define the default_args dictionary with a key owner and a value of ‘dsmith’. Add a start_date of January 14, 2020 to default_args using the value 1 for the month of January. Add a retries count of 2 to default_args.</li>
 <li>Instantiate the DAG object to a variable called etl_dag with a DAG named example_etl. Add the default_args dictionary to the appropriate argument.</li>
 </ol>
-<div id="cell-8" class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Import the DAG object</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">from</span> airflow.models <span class="im">import</span> DAG</span>
@@ -638,7 +655,7 @@ cookieconsent.run({
 <h3 class="anchored" data-anchor-id="exercise-2-working-with-dags-and-the-airflow-shell">Exercise 2: Working with DAGs and the Airflow shell</h3>
 <p>While working with Airflow, sometimes it can be tricky to remember what DAGs are defined and what they do. You want to gain some further knowledge of the Airflow shell command so you’d like to see what options are available.</p>
 <p>Multiple DAGs are already defined for you. How many DAGs are present in the Airflow system from the command-line?</p>
-<div id="cell-10" class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">!</span>airflow dags <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -652,12 +669,12 @@ No data found</code></pre>
 <section id="section-3-airflow-web-interface" class="level1">
 <h1>Section 3: Airflow web interface</h1>
 <p>The Airflow web UI is made up of several primary page groups useful in developing and administering workflows on the Airflow platform.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that for this course, we’ll only be focusing on a few pages but it’s helpful to click around the various options and get familiar with what’s available. The DAGs view of the Airflow UI is the page we’ll spend most of our time.</p>
 </div>
 </div>
@@ -700,12 +717,12 @@ No data found</code></pre>
 <section id="logs" class="level2">
 <h2 class="anchored" data-anchor-id="logs">Logs</h2>
 <p>The Logs page, under the Browse menu option, provides troubleshooting and audit ability while using Airflow. This includes items such as starting the Airflow webserver, viewing the graph or tree nodes, creating users, starting DAGs, etc. When using Airflow, look at the logs often to become more familiar with the types of information included, and also what happens behind the scenes of an Airflow install.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that you’ll often refer to the Event type present on the Logs view when searching (such as graph, tree, cli scheduler).</p>
 </div>
 </div>
@@ -725,10 +742,10 @@ No data found</code></pre>
 <p>Remember to select the operator NOT used in this DAG.</p>
 <p><img src="../imgs/dc_airflow/Exercise_3_1.png" class="img-fluid"></p>
 <ul class="task-list">
-<li><label><input type="checkbox">BashOperator</label></li>
-<li><label><input type="checkbox">PythonOperator</label></li>
-<li><label><input type="checkbox">JdbcOperator</label></li>
-<li><label><input type="checkbox">SimpleHttpOperator</label></li>
+<li><input type="checkbox" disabled="">BashOperator</li>
+<li><input type="checkbox" disabled="">PythonOperator</li>
+<li><input type="checkbox" disabled="">JdbcOperator</li>
+<li><input type="checkbox" disabled="">SimpleHttpOperator</li>
 </ul>
 </section>
 </section>
@@ -861,12 +878,12 @@ No data found</code></pre>
 <span id="cb15-3"><a href="#cb15-3"></a>    bash_command <span class="op">=</span> <span class="st">'echo "Example!"'</span>,</span>
 <span id="cb15-4"><a href="#cb15-4"></a>    dag <span class="op">=</span> dag,</span>
 <span id="cb15-5"><a href="#cb15-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that within the Airflow tools, this task is referred by its task id, not the variable name.</p>
 </div>
 </div>
@@ -917,12 +934,12 @@ No data found</code></pre>
 <span id="cb18-5"><a href="#cb18-5"></a>task3 <span class="op">&gt;&gt;</span> task2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../imgs/dc_airflow/1X86.png" class="img-fluid"></p>
 <p>This creates a DAG where first underscore task and third underscore task must finish prior to second underscore task. This means we could define the same dependency graph on two lines, in a possibly clearer form. task1 upstream of task2. task3 upstream of task2.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that because we don’t require it, either task1 or task3 could run first depending on Airflow’s scheduling.</p>
 </div>
 </div>
@@ -982,9 +999,9 @@ No data found</code></pre>
 </ul>
 <p><img src="../imgs/dc_airflow/Exercise_5_3.png" class="img-fluid"></p>
 <ul class="task-list">
-<li><label><input type="checkbox">task1 &gt;&gt; task2</label></li>
-<li><label><input type="checkbox">task2 &gt;&gt; task3</label></li>
-<li><label><input type="checkbox">task3 &gt;&gt; task1</label></li>
+<li><input type="checkbox" disabled="">task1 &gt;&gt; task2</li>
+<li><input type="checkbox" disabled="">task2 &gt;&gt; task3</li>
+<li><input type="checkbox" disabled="">task3 &gt;&gt; task1</li>
 </ul>
 </section>
 </section>
@@ -1025,12 +1042,12 @@ No data found</code></pre>
 <span id="cb22-9"><a href="#cb22-9"></a>    op_kwargs <span class="op">=</span> {<span class="st">'length_of_time'</span>: <span class="dv">5</span>},</span>
 <span id="cb22-10"><a href="#cb22-10"></a>    dag <span class="op">=</span> example_dag,</span>
 <span id="cb22-11"><a href="#cb22-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that the dictionary key must match the name of the function argument. If the dictionary contains an unexpected key, it will be passed to the Python function and typically cause an unexpected keyword argument error.</p>
 </div>
 </div>
@@ -1040,12 +1057,12 @@ No data found</code></pre>
 <h2 class="anchored" data-anchor-id="emailoperator">EmailOperator</h2>
 <p>There are many other operators available within the Airflow ecosystem. The primary operators are in the <code>airflow.operators</code> or <code>airflow.contrib.operators</code> libraries.</p>
 <p>Another useful operator is the EmailOperator, which as expected sends an email from within an Airflow task. It can contain the typical components of an email, including HTML content and attachments.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that the Airflow system must be configured with the email server details to successfully send a message.</p>
 </div>
 </div>
@@ -1064,12 +1081,12 @@ No data found</code></pre>
 <span id="cb23-8"><a href="#cb23-8"></a>    files <span class="op">=</span> <span class="st">'latest_sales.xlsx'</span>,</span>
 <span id="cb23-9"><a href="#cb23-9"></a>    dag <span class="op">=</span> example_dag</span>
 <span id="cb23-10"><a href="#cb23-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that in this case we assume the file latest underscore sales dot xlsx was previously generated - later in the course we’ll see how to verify that first. Finally we add it to our dag as usual.</p>
 </div>
 </div>
@@ -1167,7 +1184,7 @@ No data found</code></pre>
 <section id="section-7-airflow-scheduling" class="level1">
 <h1>Section 7: Airflow Scheduling</h1>
 <p>When referring to scheduling in Airflow<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, we must first discuss a DAG run. This is an instance of a workflow at a given point in time. For example, it could be the currently running instance, or it could be one run last Tuesday at 3pm. A DAG can be run manually, or via the schedule interval parameter passed when the DAG is defined. Each DAG run maintains a state for itself and the tasks within. The DAGs can the following states:</p>
-<div class="callout callout-style-simple callout-note">
+<div class="callout-note callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1177,7 +1194,7 @@ No data found</code></pre>
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-important">
+<div class="callout-important callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1187,7 +1204,7 @@ No data found</code></pre>
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip">
+<div class="callout-tip callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1229,7 +1246,7 @@ No data found</code></pre>
 <section id="airflow-scheduler-presets" class="level2">
 <h2 class="anchored" data-anchor-id="airflow-scheduler-presets">Airflow scheduler presets</h2>
 <p>Airflow has several presets, or shortcut syntax options representing often used time intervals.</p>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th>Preset</th>
@@ -1260,12 +1277,12 @@ No data found</code></pre>
 </tbody>
 </table>
 <p>The <span class="citation" data-cites="hourly">@hourly</span> preset means run once an hour at the beginning of the hour. It’s equivalent to 0 asterisk asterisk asterisk asterisk in cron. The <span class="citation" data-cites="daily">@daily</span>, <span class="citation" data-cites="weekly">@weekly</span>, <span class="citation" data-cites="monthly">@monthly</span>, and <span class="citation" data-cites="yearly">@yearly</span> presets behave similarly.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note: “0 12 * * <em>” != “</em> 12 * * *”</p>
 <p>“0 12 * * *” This cron expression specifies a specific minute and hour. It means the task should run at 12:00 PM (noon) every day. The 0 in the first position represents the minute, and 12 in the second position represents the hour.</p>
 <p>“* 12 * * *” This cron expression uses an asterisk in the minute position, which means the task will run every minute of the 12th hour (noon) of every day. In other words, it will run once every minute between 12:00 PM and 12:59 PM.</p>
@@ -1280,12 +1297,12 @@ No data found</code></pre>
 <li><span class="citation" data-cites="none">@none</span> means don’t ever schedule the DAG and is used for manually triggered workflows.</li>
 <li><span class="citation" data-cites="once">@once</span> means to only schedule a DAG once.</li>
 </ul>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Scheduling DAGs has an important nuance to consider. When scheduling DAG runs, Airflow will use the start date as the earliest possible value, but not actually schedule anything until at least one schedule interval has passed beyond the start date. Given a start_date of February 25, 2020 and a <span class="citation" data-cites="daily">@daily</span> schedule interval, Airflow would then use the date of February 26, 2020 for the first run of the DAG. This can be tricky to consider when adding new DAG schedules, especially if they have longer schedule intervals.</p>
 </div>
 </div>
@@ -1333,10 +1350,10 @@ No data found</code></pre>
 <p>Use the information you’ve learned about Airflow scheduling to determine what the issue is.</p>
 <p><img src="../imgs/chapter2/Exercise_7_3.png" class="img-fluid"></p>
 <ul class="task-list">
-<li><label><input type="checkbox">The <code>schedule_interval</code> has not yet passed since the <code>start_date</code>.</label></li>
-<li><label><input type="checkbox">The <code>email_manager_task</code> is not downstream of the other tasks.</label></li>
-<li><label><input type="checkbox">The DAG run has an error.</label></li>
-<li><label><input type="checkbox">The <code>op_kwargs</code> are incorrect for the <code>EmailOperator</code>.</label></li>
+<li><input type="checkbox" disabled="">The <code>schedule_interval</code> has not yet passed since the <code>start_date</code>.</li>
+<li><input type="checkbox" disabled="">The <code>email_manager_task</code> is not downstream of the other tasks.</li>
+<li><input type="checkbox" disabled="">The DAG run has an error.</li>
+<li><input type="checkbox" disabled="">The <code>op_kwargs</code> are incorrect for the <code>EmailOperator</code>.</li>
 </ul>
 </section>
 </section>
@@ -1356,12 +1373,12 @@ No data found</code></pre>
 <li><code>poke_interval</code>: The poke_interval is used in the poke mode, and tells Airflow how often to check for the condition. This is should be at least 1 minute to keep from overloading the Airflow scheduler.</li>
 <li><code>timeout</code>: The timeout field is how long to wait (in seconds) before marking the sensor task as failed. To avoid issues, make sure your timeout is significantly shorter than your schedule interval.</li>
 </ul>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that as sensors are operators, they also include normal operator attributes such as task_id and dag.</p>
 </div>
 </div>
@@ -1417,9 +1434,9 @@ No data found</code></pre>
 <p>You’ve recently taken over for another Airflow developer and are trying to learn about the various workflows defined within the system. You come across a DAG that you can’t seem to make run properly using any of the normal tools.</p>
 <p>Try exploring the DAG for any information about what it might be looking for before continuing.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">The DAG is waiting for the file salesdata_ready.csv to be present.</label></li>
-<li><label><input type="checkbox">The DAG expects a response from the SimpleHttpOperator before starting.</label></li>
-<li><label><input type="checkbox">part1 needs a dependency added.</label></li>
+<li><input type="checkbox" disabled="">The DAG is waiting for the file salesdata_ready.csv to be present.</li>
+<li><input type="checkbox" disabled="">The DAG expects a response from the SimpleHttpOperator before starting.</li>
+<li><input type="checkbox" disabled="">part1 needs a dependency added.</li>
 </ul>
 <p><img src="../imgs/chapter3/Exercise_8_2.png" class="img-fluid"></p>
 </section>
@@ -1449,12 +1466,12 @@ No data found</code></pre>
 <section id="determine-your-executor" class="level2">
 <h2 class="anchored" data-anchor-id="determine-your-executor">Determine your executor</h2>
 <p>Sometimes when developing Airflow workflows, you may want to know the executor being used. If you have access to the command line, you can determine this by: Looking at the appropriate <code>airflow.cfg</code> file. Search for the executor equal line, and it will specify the executor in use.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that we haven’t discussed the airflow.cfg file in depth as we assume a configured Airflow instance in this course. The airflow.cfg file is where most of the configuration and settings for the Airflow instance are defined, including the type of executor.</p>
 </div>
 </div>
@@ -1463,7 +1480,7 @@ No data found</code></pre>
 <section id="determine-your-executor-2" class="level2">
 <h2 class="anchored" data-anchor-id="determine-your-executor-2">Determine your executor #2</h2>
 <p>You can also determine the executor by running airflow list_dags from the command line. Within the first few lines, you should see an entry for which executor is in use (In this case, it’s the SequentialExecutor).</p>
-<div id="cell-67" class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="op">!</span> cat <span class="op">~/</span>airflow<span class="op">/</span>airflow.cfg <span class="op">|</span> grep <span class="st">"executor = "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>executor = SequentialExecutor</code></pre>
@@ -1476,11 +1493,11 @@ No data found</code></pre>
 <h3 class="anchored" data-anchor-id="exercise-1-determining-the-executor">Exercise 1: Determining the executor</h3>
 <p>While developing your DAGs in Airflow, you realize you’re not certain the configuration of the system. Using the commands you’ve learned, determine which of the following statements is true.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">This system can run 12 tasks at the same time.</label></li>
-<li><label><input type="checkbox">This system can run one task at a time.</label></li>
-<li><label><input type="checkbox">This system can run as many tasks as needed at a time.</label></li>
+<li><input type="checkbox" disabled="">This system can run 12 tasks at the same time.</li>
+<li><input type="checkbox" disabled="">This system can run one task at a time.</li>
+<li><input type="checkbox" disabled="">This system can run as many tasks as needed at a time.</li>
 </ul>
-<div id="cell-69" class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">!</span> cat <span class="op">~/</span>airflow<span class="op">/</span>airflow.cfg <span class="op">|</span> grep <span class="st">"executor = "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>executor = SequentialExecutor</code></pre>
@@ -1492,12 +1509,12 @@ No data found</code></pre>
 <h3 class="anchored" data-anchor-id="exercise-2-executor-implications">Exercise 2: Executor implications</h3>
 <p>You’re learning quite a bit about running Airflow DAGs and are gaining some confidence at developing new workflows. That said, your manager has mentioned that on some days, the workflows are taking a lot longer to finish and asks you to investigate. She also mentions that the salesdata_ready.csv file is taking longer to generate these days and the time of day it is completed is variable.</p>
 <p>This exercise requires information from the previous two lessons - remember the implications of the available arguments and modify the workflow accordingly.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that for this exercise, you’re expected to modify one line of code, not add any extra code.</p>
 </div>
 </div>
@@ -1588,12 +1605,12 @@ No data found</code></pre>
 <h2 class="anchored" data-anchor-id="dag-wont-load">DAG won’t load</h2>
 <p>You’ll often see an issue where a new DAG will not appear in your DAG view of the web UI or in the airflow list_dags output. The first thing to check is that the python file is in the expected DAGs folder or directory. You can determine the current DAGs folder setting by examining the airflow.cfg file. The line dags underscore folder will indicate where Airflow expects to find your Python DAG files.</p>
 <p><img src="../imgs/chapter3/0X112.png" class="img-fluid"></p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that the folder path must be an absolute path.</p>
 </div>
 </div>
@@ -1621,9 +1638,9 @@ No data found</code></pre>
 <p>You’ve taken over managing an Airflow cluster that you did not setup and are trying to learn a bit more about the system. Which of the following is true?</p>
 <p><img src="../imgs/chapter3/Exercise_10_1.png" class="img-fluid"></p>
 <ul class="task-list">
-<li><label><input type="checkbox">The DAG is scheduled for hourly processing.</label></li>
-<li><label><input type="checkbox">The Airflow user does not have proper permissions.</label></li>
-<li><label><input type="checkbox" checked="">The <code>dags_folder</code> is set to <code>/home/repl/workspace/dags</code>.</label></li>
+<li><input type="checkbox" disabled="">The DAG is scheduled for hourly processing.</li>
+<li><input type="checkbox" disabled="">The Airflow user does not have proper permissions.</li>
+<li><input type="checkbox" disabled="" checked="">The <code>dags_folder</code> is set to <code>/home/repl/workspace/dags</code>.</li>
 </ul>
 </section>
 <section id="exercise-2-missing-dag" class="level3">
@@ -1934,12 +1951,12 @@ No data found</code></pre>
 <span id="cb50-15"><a href="#cb50-15"></a>    dag<span class="op">=</span>example_dag</span>
 <span id="cb50-16"><a href="#cb50-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>First, we create our templated command as before. Next, create the first task and pass the params dict with a filename key and the value file1 dot txt. To pass another entry, we can create a second task and modify the params dict accordingly. This time the filename would contain file2 dot txt and Airflow would substitute that value instead. The resulting output would be as expected.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note, you may be wondering what templates do for you here. You’ll see more in the coming exercises and lessons.</p>
 </div>
 </div>
@@ -1950,7 +1967,7 @@ No data found</code></pre>
 <section id="exercise-1-creating-a-templated-bashoperator" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1-creating-a-templated-bashoperator">Exercise 1: Creating a templated BashOperator</h3>
 <p>You’ve successfully created a BashOperator that cleans a given data file by executing a script called <code>cleandata.sh</code>. This works, but unfortunately requires the script to be run only for the current day. Some of your data sources are occasionally behind by a couple of days and need to be run manually.</p>
-<p>You successfully modify the <code>cleandata.sh</code> script to take one argument - the date in YYYYMMDD format. Your testing works at the command-line, but you now need to implement this into your Airflow DAG. For now, use the term <code>{ ds_nodash }</code> in your template - you’ll see exactly what this is means later on.</p>
+<p>You successfully modify the <code>cleandata.sh</code> script to take one argument - the date in YYYYMMDD format. Your testing works at the command-line, but you now need to implement this into your Airflow DAG. For now, use the term <code>{{ ds_nodash }}</code> in your template - you’ll see exactly what this is means later on.</p>
 <ul>
 <li>Create a templated command to execute the <code>cleandata.sh</code> script with the current execution date given by Airflow. Assign this command to a variable called <code>templated_command</code>.</li>
 <li>Modify the BashOperator to use the templated command.</li>
@@ -2067,12 +2084,12 @@ No data found</code></pre>
 <span id="cb54-9"><a href="#cb54-9"></a>    params <span class="op">=</span> {<span class="st">'filenames'</span>: [<span class="st">'file1.txt'</span>, <span class="st">'file2.txt'</span>]}</span>
 <span id="cb54-10"><a href="#cb54-10"></a>    dag <span class="op">=</span> example_dag,</span>
 <span id="cb54-11"><a href="#cb54-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that this is required to define the end of the loop, as opposed to Python’s typical whitespace indention. Now let’s look at our BashOperator task. It looks similar except we’ve modified the params key to be filenames, and the value is now a list with two strings, file1 dot txt and file2 dot txt. When Airflow executes the BashOperator, it will iterate over the entries in the filenames list and substitute them in accordingly. Our output is the same as before, with a single task instead of two. Consider too the difference in code if you had 100 files in the list?</p>
 </div>
 </div>
@@ -2081,7 +2098,7 @@ No data found</code></pre>
 <section id="variables" class="level2">
 <h2 class="anchored" data-anchor-id="variables">Variables</h2>
 <p>As part of the templating system, Airflow provides a set of built-in runtime variables. These provide assorted information about DAG runs, individual tasks, and even the system configuration.</p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 49%">
 <col style="width: 50%">
@@ -2120,20 +2137,20 @@ No data found</code></pre>
 </tbody>
 </table>
 <p>Template examples include the execution date, which is ds in the double curly brace pairs. It returns the date in a 4 digit year dash 2 digit month dash 2 digit day format. There’s also a ds underscore nodash variety to get the same info without dashes.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that this is a string, not a python datetime object.</p>
 </div>
 </div>
 </div>
 <p>Another variable available is the prev underscore ds, which gives the date of the previous DAG run in the same format as ds. The nodash variety is here as well. You can also access the full DAG object using the dag variable. Or you can use the conf object to access the current Airflow configuration within code. There are many more variables available - you can refer to the documentation for more information<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
-<div id="cell-airflow_templates_variables" class="cell" data-execution_count="15">
-<div id="airflow_templates_variables" class="cell-output cell-output-display cell-output-markdown">
-<table class="caption-top table table-sm table-striped small">
+<div class="cell" data-execution_count="15">
+<div id="airflow_templates_variables" class="cell-output cell-output-display">
+<table class="table table-sm table-striped">
 <colgroup>
 <col style="width: 18%">
 <col style="width: 12%">
@@ -2280,7 +2297,7 @@ No data found</code></pre>
 <section id="macros" class="level2">
 <h2 class="anchored" data-anchor-id="macros">Macros</h2>
 <p>In addition to the other Airflow variables, there is also a macros variable. The macros package provides a reference to various useful objects or methods for Airflow templates.</p>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th>Macros object</th>
@@ -2362,9 +2379,9 @@ No data found</code></pre>
 <span id="cb57-6"><a href="#cb57-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Possible Answers</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Using a loop form is slower.</label></li>
-<li><label><input type="checkbox" checked="">Using specific tasks allows better monitoring of task state and possible parallel execution.</label></li>
-<li><label><input type="checkbox">The params object can only handle lists of a few items.</label></li>
+<li><input type="checkbox" disabled="">Using a loop form is slower.</li>
+<li><input type="checkbox" disabled="" checked="">Using specific tasks allows better monitoring of task state and possible parallel execution.</li>
+<li><input type="checkbox" disabled="">The params object can only handle lists of a few items.</li>
 </ul>
 </section>
 <section id="exercise-3-sending-templated-emails" class="level3">
@@ -2449,12 +2466,12 @@ No data found</code></pre>
 <p>Let’s look first at what happens if we run on an even numbered day.</p>
 <p><img src="../imgs/chapter4/0X99.png" class="img-fluid"></p>
 <p>The start task executes as normal, then the branch task checks the ds_nodash value and determines this is an even day. It returns the value even underscore day underscore task, which is then executed by Airflow followed by the even day task2.</p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>Note that the odd day tasks are marked in light pink, which refers to them being skipped.</p>
 </div>
 </div>
@@ -2498,9 +2515,9 @@ No data found</code></pre>
 <p>While working with a workflow defined by a colleague, you notice that a branching operator executes, but there’s never any change in the DAG results. You realize that regardless of the state defined by the branching operator, all other tasks complete, even as some should be skipped.</p>
 <p>Use what you’ve learned to determine the most likely reason that the branching operator is ineffective.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">The <code>branch_test</code> method does not return the correct value.</label></li>
-<li><label><input type="checkbox">The DAG does not run often enough for the callable to work properly.</label></li>
-<li><label><input type="checkbox" checked="">The dependency is missing between the <code>branch_task</code> and <code>even_day_task</code> and <code>odd_day_task</code>.</label></li>
+<li><input type="checkbox" disabled="">The <code>branch_test</code> method does not return the correct value.</li>
+<li><input type="checkbox" disabled="">The DAG does not run often enough for the callable to work properly.</li>
+<li><input type="checkbox" disabled="" checked="">The dependency is missing between the <code>branch_task</code> and <code>even_day_task</code> and <code>odd_day_task</code>.</li>
 </ul>
 <p><img src="../imgs/chapter4/Exercise_14_2.png" class="img-fluid"></p>
 </section>
@@ -2544,12 +2561,12 @@ No data found</code></pre>
 <h2 class="anchored" data-anchor-id="template-documentation-example">Template documentation example</h2>
 <p>This is an example of checking for help in the python interpreter. Notice the output with the template fields entry - in this case, the bash underscore command and the env fields can accept templated values.</p>
 <p><img src="../imgs/chapter4/1X139.png" class="img-fluid"></p>
-<div class="callout callout-style-simple callout-caution" data-apperance="simple">
+<div class="callout-caution callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-body-container" data-apperance="simple">
 <p>A final note before working through our last exercises - as a data engineer, your job is not to necessarily understand every component of a workflow. You may not fully understand all of a machine learning process, or perhaps how an Apache Spark job works. Your task is to implement any of those tasks in a repeatable and reliable fashion. Let’s practice implementing workflows for the last time in this course now.</p>
 </div>
 </div>
@@ -2642,7 +2659,7 @@ No data found</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../imgs/chapter4/Exercise_15_1.png" class="img-fluid figure-img"></p>
-<figcaption>The file is not found and timeout is triggered after 15 seconds. we have first to create the file</figcaption>
+<p></p><figcaption class="figure-caption">The file is not found and timeout is triggered after 15 seconds. we have first to create the file</figcaption><p></p>
 </figure>
 </div>
 <ul>
@@ -2891,33 +2908,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -2984,15 +2974,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -3019,15 +3007,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3059,57 +3044,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-          // default icon
-          link.classList.add("external");
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3119,17 +3058,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3141,245 +3071,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -3417,23 +3111,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-
-<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
-
 
 
 

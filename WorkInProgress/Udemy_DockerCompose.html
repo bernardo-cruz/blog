@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bernardo Freire">
 <meta name="dcterms.date" content="2023-10-26">
 
-<title>Docker Compose Course – Bernardo Cruz</title>
+<title>Bernardo Cruz - Docker Compose Course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,12 +19,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -49,13 +48,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -85,13 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -100,10 +123,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -118,8 +139,6 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
-  ,
-"language":"en"
   });
 });
 </script> 
@@ -130,45 +149,45 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Docker Compose Course – Bernardo Cruz">
-<meta property="og:description" content="">
-<meta property="og:site_name" content="Bernardo Cruz">
+<meta property="og:title" content="Bernardo Cruz - Docker Compose Course">
+<meta property="og:description" content="This course notes corresponds to course Docker Compose in Depth on Udemy.">
+<meta property="og:site-name" content="Bernardo Cruz">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Bernardo Cruz</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
-<span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../blog.html">
+ <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv.html"> 
-<span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../cv.html">
+ <span class="menu-text">CV</span></a>
   </li>  
 </ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -232,9 +251,7 @@ cookieconsent.run({
   </div>
   
 
-
 </header>
-
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
@@ -259,102 +276,87 @@ cookieconsent.run({
 <section id="docker-compose-in-depth" class="level1">
 <h1>Docker Compose in Depth</h1>
 <p>Let us start right away and have a look at a Docker Compose file<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. A Docker Compose file is essentially a <code>yaml</code> file, which defines the services that make up your app. Let us have a look at a simple example:</p>
-<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode numberSource yaml code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode yaml"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target"><a href="#annotated-cell-1-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'2'</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2"></a><span class="fu">services</span><span class="kw">:</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-3" class="code-annotation-target"><a href="#annotated-cell-1-3"></a><span class="at">  </span><span class="fu">hello-world</span><span class="kw">:</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> hello-world</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 8080:80</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1"><code>version</code> sets the version and is required and all compose files</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2"><code>services</code> maps container names and their configurations.</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3">Defines a single container called <code>hello-world</code></span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="4">Sets the <code>image</code> of the container to <code>tutum/hello-world</code></span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="5"><code>port</code> 80 is exposed</span>
-</dd>
-</dl>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'2'</span><span class="co">                    #&lt;1&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">services</span><span class="kw">:</span><span class="co">                       #&lt;2&gt;  </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="at">  </span><span class="fu">hello-world</span><span class="kw">:</span><span class="co">                  #&lt;3&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> hello-world</span><span class="co">          #&lt;4&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span><span class="co">                      #&lt;5&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 8080:80</span><span class="co">                 #&lt;6&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><code>version</code> sets the version and is required and all compose files</li>
+<li><code>services</code> maps container names and their configurations.</li>
+<li>Defines a single container called <code>hello-world</code></li>
+<li>Sets the <code>image</code> of the container to <code>tutum/hello-world</code></li>
+<li><code>port</code> 80 is exposed</li>
+</ol>
 <p>You’ll notice this is very similar to the verbiage used in the Docker run command and in many cases commands in compose mirror those from docker run. To run this environment all you need to do is exit the file and get to a terminal in the same directory as Docker composed YAML. From there you can issue the command <code>docker-compose up -d</code> to make it run in detached mode to launch. Once running the previous command you will see something similar to this output, indicating the the images have been pulled, started and are running.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">[+]</span> Running 2/2</span>
-<span id="cb1-2"><a href="#cb1-2"></a> <span class="ex">✔</span> hello-world 1 layers <span class="pp">[</span><span class="ss">⣿</span><span class="pp">]</span>      0B/0B      Pulled                                                               3.1s </span>
-<span id="cb1-3"><a href="#cb1-3"></a>   <span class="ex">✔</span> 70f5ac315c5a Pull complete                                                                                  0.6s </span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">[+]</span> Running 1/1</span>
-<span id="cb1-5"><a href="#cb1-5"></a> <span class="ex">✔</span> Container 0102-hello-world-1  Started                                                                         0.1s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">[+]</span> Running 2/2</span>
+<span id="cb2-2"><a href="#cb2-2"></a> <span class="ex">✔</span> hello-world 1 layers [⣿]      0B/0B      Pulled                                                               3.1s </span>
+<span id="cb2-3"><a href="#cb2-3"></a>   <span class="ex">✔</span> 70f5ac315c5a Pull complete                                                                                  0.6s </span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="ex">[+]</span> Running 1/1</span>
+<span id="cb2-5"><a href="#cb2-5"></a> <span class="ex">✔</span> Container 0102-hello-world-1  Started                                                                         0.1s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now if this is the first time you’ve run this you will see it pulling that image and then you should see creating network and creating the hello container to do that. However we need to find out which port is being redirected from port 80. In order to do that, we use the command <code>docker ps</code> to list all the running containers.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">docker</span> ps </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">docker</span> ps </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and here we see it’s port 8080</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">CONTAINER</span> ID   IMAGE               COMMAND                  CREATED         STATUS         PORTS                  NAMES</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">20224eea69b5</span>   tutum/hello-world   <span class="st">"/bin/sh -c 'php-fpm…"</span>   3 minutes ago   Up 3 minutes   0.0.0.0:8080-<span class="op">&gt;</span>80/tcp   0102-hello-world-1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">CONTAINER</span> ID   IMAGE               COMMAND                  CREATED         STATUS         PORTS                  NAMES</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="ex">20224eea69b5</span>   tutum/hello-world   <span class="st">"/bin/sh -c 'php-fpm…"</span>   3 minutes ago   Up 3 minutes   0.0.0.0:8080-<span class="op">&gt;</span>80/tcp   0102-hello-world-1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now we can use <code>curl</code> to see the output of the container.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">curl</span> localhost:8080</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">curl</span> localhost:8080</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, we can see the answer from the container.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="dt">&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>        <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Hello world!<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>        <span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> href</span><span class="op">=</span><span class="st">'http://fonts.googleapis.com/css?family=Open+Sans:400,700'</span><span class="ot"> rel</span><span class="op">=</span><span class="st">'stylesheet'</span><span class="ot"> type</span><span class="op">=</span><span class="st">'text/css'</span><span class="dt">&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>        <span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>        body {</span>
-<span id="cb5-7"><a href="#cb5-7"></a>                <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">white</span><span class="op">;</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>                <span class="kw">text-align</span><span class="ch">:</span> <span class="dv">center</span><span class="op">;</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>                <span class="kw">padding</span><span class="ch">:</span> <span class="dv">50</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>                <span class="kw">font-family</span><span class="ch">:</span> <span class="st">"Open Sans"</span><span class="op">,</span><span class="st">"Helvetica Neue"</span><span class="op">,</span><span class="dv">Helvetica</span><span class="op">,</span><span class="dv">Arial</span><span class="op">,</span><span class="dv">sans-serif</span><span class="op">;</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>        }</span>
-<span id="cb5-12"><a href="#cb5-12"></a></span>
-<span id="cb5-13"><a href="#cb5-13"></a>        <span class="pp">#logo</span> {</span>
-<span id="cb5-14"><a href="#cb5-14"></a>                <span class="kw">margin-bottom</span><span class="ch">:</span> <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>        }</span>
-<span id="cb5-16"><a href="#cb5-16"></a>        <span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a>        <span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> id</span><span class="op">=</span><span class="st">"logo"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"logo.png"</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>        <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Hello world!<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a>        <span class="dt">&lt;</span><span class="kw">h3</span><span class="dt">&gt;</span>My hostname is 20224eea69b5<span class="dt">&lt;/</span><span class="kw">h3</span><span class="dt">&gt;</span>    <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>        <span class="kw">&lt;title&gt;</span>Hello world!<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>        <span class="kw">&lt;link</span> <span class="er">href</span><span class="ot">=</span><span class="st">'http://fonts.googleapis.com/css?family=Open+Sans:400,700'</span> <span class="er">rel</span><span class="ot">=</span><span class="st">'stylesheet'</span> <span class="er">type</span><span class="ot">=</span><span class="st">'text/css'</span><span class="kw">&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>        <span class="kw">&lt;style&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>        body {</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                <span class="kw">background-color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>                <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>                <span class="kw">padding</span>: <span class="dv">50</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>                <span class="kw">font-family</span>: <span class="st">"Open Sans"</span><span class="op">,</span><span class="st">"Helvetica Neue"</span><span class="op">,</span>Helvetica<span class="op">,</span>Arial<span class="op">,</span><span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>        }</span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a>        <span class="pp">#logo</span> {</span>
+<span id="cb6-14"><a href="#cb6-14"></a>                <span class="kw">margin-bottom</span>: <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a>        }</span>
+<span id="cb6-16"><a href="#cb6-16"></a>        <span class="kw">&lt;/style&gt;</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a>        <span class="kw">&lt;img</span> <span class="er">id</span><span class="ot">=</span><span class="st">"logo"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"logo.png"</span> <span class="kw">/&gt;</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a>        <span class="kw">&lt;h1&gt;</span>Hello world!<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a>        <span class="kw">&lt;h3&gt;</span>My hostname is 20224eea69b5<span class="kw">&lt;/h3&gt;</span>    <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="docker-compose" class="level1">
 <h1>Docker Compose</h1>
 <section id="basics" class="level2">
 <h2 class="anchored" data-anchor-id="basics">Basics</h2>
 <p>Next, we are going to dive deeper into the basics of Docker Compose. We will start analyzing the <a href="https://gdevillele.github.io/compose/wordpress/">docker compose wordpress example</a>. This example contains the following information:</p>
-<div class="sourceCode" id="annotated-cell-7"><pre class="sourceCode numberSource yaml code-annotation-code number-lines code-with-copy"><code class="sourceCode yaml"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'2'</span></span>
-<span id="annotated-cell-7-2"><a href="#annotated-cell-7-2"></a></span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a><span class="fu">services</span><span class="kw">:</span></span>
-<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a><span class="at">   </span><span class="fu">db</span><span class="kw">:</span></span>
-<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a><span class="at">     </span><span class="fu">image</span><span class="kw">:</span><span class="at"> mysql:5.7</span><span class="co">                   #&lt;1.1&gt;</span></span>
-<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6"></a><span class="at">     </span><span class="fu">volumes</span><span class="kw">:</span><span class="co">                           #&lt;1.2&gt;</span></span>
-<span id="annotated-cell-7-7"><a href="#annotated-cell-7-7"></a><span class="at">       </span><span class="kw">-</span><span class="at"> </span><span class="st">"./.data/db:/var/lib/mysql"</span></span>
-<span id="annotated-cell-7-8"><a href="#annotated-cell-7-8"></a><span class="at">     </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span><span class="co">                    #&lt;1.3&gt;</span></span>
-<span id="annotated-cell-7-9"><a href="#annotated-cell-7-9"></a><span class="at">     </span><span class="fu">environment</span><span class="kw">:</span><span class="co">                       #&lt;1.4&gt;</span></span>
-<span id="annotated-cell-7-10"><a href="#annotated-cell-7-10"></a><span class="at">       </span><span class="fu">MYSQL_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span>
-<span id="annotated-cell-7-11"><a href="#annotated-cell-7-11"></a><span class="at">       </span><span class="fu">MYSQL_DATABASE</span><span class="kw">:</span><span class="at"> wordpress</span></span>
-<span id="annotated-cell-7-12"><a href="#annotated-cell-7-12"></a><span class="at">       </span><span class="fu">MYSQL_USER</span><span class="kw">:</span><span class="at"> wordpress</span></span>
-<span id="annotated-cell-7-13"><a href="#annotated-cell-7-13"></a><span class="at">       </span><span class="fu">MYSQL_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span>
-<span id="annotated-cell-7-14"><a href="#annotated-cell-7-14"></a></span>
-<span id="annotated-cell-7-15"><a href="#annotated-cell-7-15"></a><span class="at">   </span><span class="fu">wordpress</span><span class="kw">:</span></span>
-<span id="annotated-cell-7-16"><a href="#annotated-cell-7-16"></a><span class="at">     </span><span class="fu">depends_on</span><span class="kw">:</span></span>
-<span id="annotated-cell-7-17"><a href="#annotated-cell-7-17"></a><span class="at">       </span><span class="kw">-</span><span class="at"> db</span></span>
-<span id="annotated-cell-7-18"><a href="#annotated-cell-7-18"></a><span class="at">     </span><span class="fu">image</span><span class="kw">:</span><span class="at"> wordpress:4.5</span><span class="co">                #&lt;2.1&gt;</span></span>
-<span id="annotated-cell-7-19"><a href="#annotated-cell-7-19"></a><span class="at">     </span><span class="fu">links</span><span class="kw">:</span><span class="co">                              #&lt;2.2&gt;</span></span>
-<span id="annotated-cell-7-20"><a href="#annotated-cell-7-20"></a><span class="at">       </span><span class="kw">-</span><span class="at"> db</span></span>
-<span id="annotated-cell-7-21"><a href="#annotated-cell-7-21"></a><span class="at">     </span><span class="fu">ports</span><span class="kw">:</span><span class="co">                              #&lt;2.3&gt;</span></span>
-<span id="annotated-cell-7-22"><a href="#annotated-cell-7-22"></a><span class="at">       </span><span class="kw">-</span><span class="at"> </span><span class="st">"8000:80"</span></span>
-<span id="annotated-cell-7-23"><a href="#annotated-cell-7-23"></a><span class="at">     </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
-<span id="annotated-cell-7-24"><a href="#annotated-cell-7-24"></a><span class="at">     </span><span class="fu">environment</span><span class="kw">:</span><span class="co">                        #&lt;2.4&gt;</span></span>
-<span id="annotated-cell-7-25"><a href="#annotated-cell-7-25"></a><span class="at">       </span><span class="fu">WORDPRESS_DB_HOST</span><span class="kw">:</span><span class="at"> db:3306</span></span>
-<span id="annotated-cell-7-26"><a href="#annotated-cell-7-26"></a><span class="at">       </span><span class="fu">WORDPRESS_DB_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'2'</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="at">   </span><span class="fu">db</span><span class="kw">:</span><span class="co">                                  #&lt;1&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="at">     </span><span class="fu">image</span><span class="kw">:</span><span class="at"> mysql:5.7</span><span class="co">                   #&lt;1.1&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="at">     </span><span class="fu">volumes</span><span class="kw">:</span><span class="co">                           #&lt;1.2&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="at">       </span><span class="kw">-</span><span class="at"> </span><span class="st">"./.data/db:/var/lib/mysql"</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="at">     </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span><span class="co">                    #&lt;1.3&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="at">     </span><span class="fu">environment</span><span class="kw">:</span><span class="co">                       #&lt;1.4&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="at">       </span><span class="fu">MYSQL_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="at">       </span><span class="fu">MYSQL_DATABASE</span><span class="kw">:</span><span class="at"> wordpress</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="at">       </span><span class="fu">MYSQL_USER</span><span class="kw">:</span><span class="at"> wordpress</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="at">       </span><span class="fu">MYSQL_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="at">   </span><span class="fu">wordpress</span><span class="kw">:</span><span class="co">                            #&lt;2&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="at">     </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="at">       </span><span class="kw">-</span><span class="at"> db</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="at">     </span><span class="fu">image</span><span class="kw">:</span><span class="at"> wordpress:4.5</span><span class="co">                #&lt;2.1&gt;</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="at">     </span><span class="fu">links</span><span class="kw">:</span><span class="co">                              #&lt;2.2&gt;</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="at">       </span><span class="kw">-</span><span class="at"> db</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="at">     </span><span class="fu">ports</span><span class="kw">:</span><span class="co">                              #&lt;2.3&gt;</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="at">       </span><span class="kw">-</span><span class="at"> </span><span class="st">"8000:80"</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="at">     </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="at">     </span><span class="fu">environment</span><span class="kw">:</span><span class="co">                        #&lt;2.4&gt;</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="at">       </span><span class="fu">WORDPRESS_DB_HOST</span><span class="kw">:</span><span class="at"> db:3306</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="at">       </span><span class="fu">WORDPRESS_DB_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>where:</p>
 <ol type="1">
 <li>denotes the first service called <code>db</code>,
@@ -375,11 +377,11 @@ cookieconsent.run({
 </ol></li>
 </ol>
 <p>Taking a look at the setup provided by docker-compose file, the following schema is obtained:</p>
-<div class="cell" data-fig-width="8" data-layout-align="default">
+<div class="cell" data-fig-width="8">
 <div class="cell-output-display">
 <div id="docker_compose_example">
-<div>
-<pre class="mermaid mermaid-js" data-label="docker_compose_example">flowchart LR
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
     subgraph Docker[Docker Container]
         direction TB
 
@@ -414,7 +416,10 @@ cookieconsent.run({
     Docker -- Maps port 80 to 8000 --&gt; Host
     
 </pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
 </div>
+<p></p>
 <p>Schematics of the Docker compose example showing</p>
 </div>
 </div>
@@ -423,50 +428,44 @@ cookieconsent.run({
 </section>
 <section id="persiting-database-with-a-volume" class="level2">
 <h2 class="anchored" data-anchor-id="persiting-database-with-a-volume">Persiting Database with a Volume</h2>
-<div class="sourceCode" id="annotated-cell-8"><pre class="sourceCode numberSource yaml code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'2'</span></span>
-<span id="annotated-cell-8-2"><a href="#annotated-cell-8-2"></a></span>
-<span id="annotated-cell-8-3"><a href="#annotated-cell-8-3"></a><span class="fu">services</span><span class="kw">:</span></span>
-<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4"></a><span class="at">  </span><span class="fu">wordpress</span><span class="kw">:</span></span>
-<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> wordpress:4.5</span></span>
-<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
-<span id="annotated-cell-8-7"><a href="#annotated-cell-8-7"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
-<span id="annotated-cell-8-8"><a href="#annotated-cell-8-8"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
-<span id="annotated-cell-8-9"><a href="#annotated-cell-8-9"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
-<span id="annotated-cell-8-10"><a href="#annotated-cell-8-10"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
-<span id="annotated-cell-8-11"><a href="#annotated-cell-8-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8080:80"</span></span>
-<span id="annotated-cell-8-12"><a href="#annotated-cell-8-12"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
-<span id="annotated-cell-8-13"><a href="#annotated-cell-8-13"></a><span class="at">      </span><span class="fu">WORDPRESS_DB_HOST</span><span class="kw">:</span><span class="at"> db:3306</span></span>
-<span id="annotated-cell-8-14"><a href="#annotated-cell-8-14"></a><span class="at">      </span><span class="fu">WORDPRESS_DB_USER</span><span class="kw">:</span><span class="at"> wordpress</span></span>
-<span id="annotated-cell-8-15"><a href="#annotated-cell-8-15"></a><span class="at">      </span><span class="fu">WORDPRESS_DB_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span>
-<span id="annotated-cell-8-16"><a href="#annotated-cell-8-16"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
-<span id="annotated-cell-8-17"><a href="#annotated-cell-8-17"></a></span>
-<span id="annotated-cell-8-18"><a href="#annotated-cell-8-18"></a><span class="at">  </span><span class="fu">db</span><span class="kw">:</span></span>
-<span id="annotated-cell-8-19"><a href="#annotated-cell-8-19"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> mariadb:10.1</span></span>
-<span id="annotated-cell-8-20"><a href="#annotated-cell-8-20"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-21" class="code-annotation-target"><a href="#annotated-cell-8-21"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./volumes/db:/var/lib/mysql"</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-22" class="code-annotation-target"><a href="#annotated-cell-8-22"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
-<span id="annotated-cell-8-23"><a href="#annotated-cell-8-23"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
-<span id="annotated-cell-8-24"><a href="#annotated-cell-8-24"></a><span class="at">      </span><span class="fu">MYSQL_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> example</span></span>
-<span id="annotated-cell-8-25"><a href="#annotated-cell-8-25"></a><span class="at">      </span><span class="fu">MYSQL_DATABASE</span><span class="kw">:</span><span class="at"> wordpress</span></span>
-<span id="annotated-cell-8-26"><a href="#annotated-cell-8-26"></a><span class="at">      </span><span class="fu">MYSQL_USER</span><span class="kw">:</span><span class="at"> wordpress</span></span>
-<span id="annotated-cell-8-27"><a href="#annotated-cell-8-27"></a><span class="at">      </span><span class="fu">MYSQL_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="21" data-code-annotation="1">Creates a folder to persist the data in <code>./volumes/db</code> (host path) to <code>/var/lib/mysql</code> (container path).</span>
-</dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-8" data-code-lines="22" data-code-annotation="2">Restarts the container if it stops - more on this in the next part.</span>
-</dd>
-</dl>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'2'</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="at">  </span><span class="fu">wordpress</span><span class="kw">:</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> wordpress:4.5</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="at">    </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="at">      </span><span class="kw">-</span><span class="at"> db</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8080:80"</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="at">      </span><span class="fu">WORDPRESS_DB_HOST</span><span class="kw">:</span><span class="at"> db:3306</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="at">      </span><span class="fu">WORDPRESS_DB_USER</span><span class="kw">:</span><span class="at"> wordpress</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="at">      </span><span class="fu">WORDPRESS_DB_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a></span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="at">  </span><span class="fu">db</span><span class="kw">:</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> mariadb:10.1</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"./volumes/db:/var/lib/mysql"</span><span class="co">       #&lt;1&gt;</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span><span class="co">                         #&lt;2&gt;</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a><span class="at">      </span><span class="fu">MYSQL_ROOT_PASSWORD</span><span class="kw">:</span><span class="at"> example</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a><span class="at">      </span><span class="fu">MYSQL_DATABASE</span><span class="kw">:</span><span class="at"> wordpress</span></span>
+<span id="cb8-26"><a href="#cb8-26"></a><span class="at">      </span><span class="fu">MYSQL_USER</span><span class="kw">:</span><span class="at"> wordpress</span></span>
+<span id="cb8-27"><a href="#cb8-27"></a><span class="at">      </span><span class="fu">MYSQL_PASSWORD</span><span class="kw">:</span><span class="at"> wordpress</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Creates a folder to persist the data in <code>./volumes/db</code> (host path) to <code>/var/lib/mysql</code> (container path).</li>
+<li>Restarts the container if it stops - more on this in the next part.</li>
+</ol>
 <p>Let us now discuss restart policies as we’ve defined one of them for each of our containers (but we don’t quite know exactly what that means yet). In the case of two separate containers each with their own restart policies you’ll find that restarts occur independently:</p>
 <p>So for example: if the database container went down in this environment our restart policy would cause it to restart its own but independently of Wordpress would then be up and things might be running again.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div id="independent_restarts">
-<div>
-<pre class="mermaid mermaid-js" data-label="independent_restarts">flowchart LR
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
     subgraph Docker["Case 1: without dependencies"]
         direction LR
         wordpress["wordpress"]
@@ -476,17 +475,20 @@ cookieconsent.run({
         db -. restarts always .- db
     end
 </pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
 </div>
+<p></p>
 <p>Independent restarts</p>
 </div>
 </div>
 </div>
 <p>Many applications that depend on a data layer like this may just stop working if their database disappears and/or is replaced. Therefore, we define a hierarchy between containers. We can do that by using the <code>depends_on</code> keyword. So in this case we’re going to say that the Wordpress container depends on the database container.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div id="independent_restarts">
-<div>
-<pre class="mermaid mermaid-js" data-label="independent_restarts">flowchart LR
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">flowchart LR
     subgraph Docker["Case 2: with depends_on"]
         direction LR
         wordpress["wordpress"]
@@ -497,7 +499,10 @@ cookieconsent.run({
         wordpress -. restart in case db restarts .-&gt; wordpress
     end
 </pre>
+<div id="mermaid-tooltip-3" class="mermaidTooltip">
+
 </div>
+<p></p>
 <p>Restart using depends_on</p>
 </div>
 </div>
@@ -556,33 +561,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -651,15 +629,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -686,15 +662,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -726,57 +699,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
-          // default icon
-          link.classList.add("external");
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -786,17 +713,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -808,245 +726,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1084,23 +766,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-
-<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
   </div>
 </footer>
-
 
 
 
