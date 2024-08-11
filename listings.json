@@ -8,10 +8,10 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/glm.html",
-      "/posts/pandas_method_chaning.html",
+      "/posts/devops.html",
       "/posts/api.html",
-      "/posts/devops.html"
+      "/posts/pandas_method_chaning.html",
+      "/posts/glm.html"
     ]
   }
 ]
