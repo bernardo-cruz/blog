@@ -189,7 +189,6 @@ cookieconsent.run({
   <li><a href="#dockerfile" id="toc-dockerfile" class="nav-link" data-scroll-target="#dockerfile">Dockerfile</a></li>
   <li><a href="#docker-registry" id="toc-docker-registry" class="nav-link" data-scroll-target="#docker-registry">Docker Registry</a></li>
   <li><a href="#gitlab-cicd" id="toc-gitlab-cicd" class="nav-link" data-scroll-target="#gitlab-cicd">Gitlab CI/CD</a></li>
-  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages">Github Pages</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
@@ -209,6 +208,7 @@ cookieconsent.run({
     <div class="quarto-category">DevOps</div>
     <div class="quarto-category">CI/CD</div>
     <div class="quarto-category">Automation</div>
+    <div class="quarto-category">Github Pages</div>
   </div>
   </div>
 
@@ -254,7 +254,6 @@ cookieconsent.run({
 <p>In my previous jobs, when the code was done, I only needed to push it to a repository while providing a <code>requirements.txt</code> file. The rest was handled by the DevOps team. I never had to worry about how the code was deployed to the server.</p>
 <p>But now, I am working on my own projects and have to manage everything myself. I had to set up servers, deploy the code, and ensure everything is working correctly. This is why I started learning DevOps. So far I used <code>Gitlab CI/CD</code> to automate the process of building, pushing, and pulling a Docker image. For those of you who are not familiar with <code>GitLab CI/CD</code>, it is a tool that automates the process of testing and deploying code. It is essentially a pipeline that <strong>runs every time you push code to a repository</strong> and executes the steps you define in the <code>.gitlab-ci.yml</code> file. You can also leverage <code>Gitlab Runner</code> to run the pipeline on your own server/computer, and not rely on <code>GitLab</code> to run the pipeline for you.</p>
 <p>When combined with <code>Docker</code>, it can be used to automate the process of building, pushing, and pulling Docker images and customizing the deployment process. Moreover, when using a private Docker registry, you can ensure that your images are secure and not publicly available.</p>
-<p>Last but not least (but strongly optional), I use <code>Github Pages</code> to publish a website - which is also a very neat feature from <code>GitHub</code>. You can use <code>GitHub Pages</code> to host a website for free. You can also use it to host a website for your project, blog, or portfolio.</p>
 <p>Enough talking, let’s get started!</p>
 <section id="requirements" class="level2">
 <h2 class="anchored" data-anchor-id="requirements">Requirements</h2>
@@ -299,7 +298,7 @@ cookieconsent.run({
 <section id="dockerfile" class="level2">
 <h2 class="anchored" data-anchor-id="dockerfile">Dockerfile</h2>
 <p>Again, the <code>Dockerfile</code> is a text document that contains all the commands a user could call on the command line to assemble an image. Using <code>Dockerfile</code>, we can automate the process of building a <code>Docker</code> image.</p>
-<p>In particular, I show here how I have leverage the <code>Dockerfile</code> to build a <code>Docker</code> image for this blog using the Framework <a href="https://quarto.org/"><code>Quarto</code></a>. I also decided to build my image from scratch using the ubuntu image and installing all the dependencies and also quarto application.</p>
+<p>Here, I demonstrate how I utilized a <code>Dockerfile</code> to build a Docker image for this blog. I used <a href="https://quarto.org/"><code>Quarto</code></a> framework to render HTML&nbsp;pages. I chose to build the image from scratch, starting with the Ubuntu base image and installing all necessary dependencies along with the Quarto application.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Base image</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">FROM</span> ubuntu:jammy</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -333,11 +332,11 @@ cookieconsent.run({
 <span id="cb1-31"><a href="#cb1-31"></a><span class="kw">COPY</span> . .</span>
 <span id="cb1-32"><a href="#cb1-32"></a><span class="co"># Make a directory for the output (empty for now)</span></span>
 <span id="cb1-33"><a href="#cb1-33"></a><span class="kw">RUN</span> <span class="fu">mkdir</span> <span class="at">-p</span> ./_output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We use the base image <code>ubuntu:jammy</code> which is a <code>Docker</code> image that contains the <code>Ubuntu</code> operating system. We install first dependencies and download the <code>Quarto</code> installer from <code>Github</code> and install it. We then create a directory for the app and set the working directory to <code>/app</code>. We copy the content of the current directory to the <code>/app</code> directory and create a directory called <code>_output</code> - which is where the output of the process will be stored and will be pushed to <code>Github</code>. For now, <code>_output</code> is empty.</p>
+<p>We start with the base image <code>ubuntu:jammy</code>, which is a Docker image containing the Ubuntu operating system. First, we install the necessary dependencies and download the <code>Quarto</code> installer from GitHub, then proceed with its installation. Next, we create a directory for the app and set the working directory to <code>/app</code>. We copy the contents of the current directory into the <code>/app</code> directory and create an <code>_output</code> directory. This <code>_output</code> directory will store the process output, which will eventually be pushed to GitHub. Currently, <code>_output</code> is empty.</p>
 </section>
 <section id="docker-registry" class="level2">
 <h2 class="anchored" data-anchor-id="docker-registry">Docker Registry</h2>
-<p>As we decided to create a <code>private Docker registry</code> to store our <code>Docker</code> images, we used the <code>Docker registry</code> image to create a <code>private Docker registry</code> and also a convenient UI to manage the registry. The easiest way to do this is by using <code>Docker Compose</code>, which is a tool for defining and running multi-container <code>Docker</code> applications.</p>
+<p>As we decided to create a <code>private Docker registry</code> to store our <code>Docker</code> images, we use the <code>Docker registry</code> image to create a <code>private Docker registry</code> and also a convenient UI to manage the registry. The easiest way to do this is by using <code>Docker Compose</code>, which is a tool for defining and running multi-container <code>Docker</code> applications.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">services</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="at">  </span><span class="fu">registry-server</span><span class="kw">:</span></span>
@@ -475,10 +474,8 @@ cookieconsent.run({
 <li>Commits and pushes the changes to the main branch.</li>
 <li>The file also includes a tip that variables like $GITHUB_TOKEN should be defined in the GitLab CI/CD settings.</li>
 </ul>
-</section>
-<section id="github-pages" class="level2">
-<h2 class="anchored" data-anchor-id="github-pages">Github Pages</h2>
-<p>We need to have <code>Github Pages</code> enabled for our repository. <code>Github Pages</code> is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on <code>Github</code> and publishes a website. We are going to use <code>Github Pages</code> to host the output of the process - for more information on how to enable <code>Github Pages</code> for your repository, please refer to the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">official documentation</a>.</p>
+<p>We have seen how to build a Docker image, push it to a private Docker registry, render the content, and push the output to GitHub.</p>
+<p>In my case, where I would like to publish a static HTML&nbsp;website I still need to go one step further. I need enable <code>Github Actions</code> to publish a website using <code>Github Pages</code>. <code>Github Pages</code> is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on <code>Github</code> and publishes a website - for more information on how to enable <code>Github Pages</code> for your repository, please refer to the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">official documentation</a>.</p>
 </section>
 </section>
 <section id="summary" class="level1">
